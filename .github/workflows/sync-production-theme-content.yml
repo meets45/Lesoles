@@ -57,11 +57,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: chore/sync-production-theme-content
-          base: develop
+          base: shopify-development
           delete-branch: true
           commit-message: 'chore: sync production theme content'
           title: 'chore: sync production theme content'
           body: |
             Automated two-hour pull of merchant-managed JSON from the production theme.
 
-            Review and merge this PR to update develop's content baseline.
+            Review and merge this PR to update shopify-development's content baseline.
