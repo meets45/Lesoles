@@ -1,0 +1,55 @@
+name: Deploy Shopify Theme
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shopify-theme-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install Yarn
+        run: npm install --global yarn@1.22.22
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build theme assets
+        run: yarn build
+
+      - name: Check Shopify theme
+        run: yarn run shopify theme check --path=shopify
+
+      - name: Deploy to Shopify
+        env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        run: >
+          yarn run shopify theme push
+          --store "$SHOPIFY_STORE"
+          --theme "$SHOPIFY_THEME_ID"
+          --password "$SHOPIFY_CLI_THEME_TOKEN"
+          --nodelete
+          --ignore "(templates|sections|locales).*.json"
+          --ignore "config/settings_data.json"
+          --path=shopify
