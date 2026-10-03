@@ -32,6 +32,11 @@
       %}
     </div>
 
+    {%- assign email_state = '' -%}
+    {%- if form.errors contains 'email' -%}
+      {%- assign email_state = 'aria-invalid="true" aria-describedby="email-error"' -%}
+    {%- endif -%}
+
     {%
       render 'form-input',
       type: 'email',
@@ -40,11 +45,11 @@
       label: 'Email',
       input_placeholder: 'Email',
       required: true,
-      state: form.errors contains 'email' ? 'aria-invalid="true" aria-describedby="email-error"' : ''
+      state: email_state
     %}
 
     {%- if form.errors contains 'email' -%}
-      <div class="field-error">
+      <div id="email-error" class="field-error">
         <span class="field-error__message body-xsmall">
           <div class="icon-m">
             {% render 'icon-error', class: 'icon-s' %}
@@ -85,10 +90,10 @@
       "label": "Show Page Title",
       "default": true,
       "info": "Display the default page title. Use in the first block on the page."
-    },
+    }
   ],
   "enabled_on": {
-    "templates": ["page"],
+    "templates": ["page"]
   }
 }
 {% endschema %}

@@ -35,13 +35,13 @@
         "heading_nLcCzw": {
           "type": "heading",
           "settings": {
-            "text": "Napajiri Universe"
+            "text": "Lesoles"
           }
         },
         "body_GFGLLU": {
           "type": "body",
           "settings": {
-            "text": "<p>Napapijri's journey from makers of travel bags to an authentic lifestyle brand spans almost four decades. From the meaning of its name, to the iconic Norwegian flag, Napapijri's original inspiration came from the timeless appeal of polar expeditions.To this day, collection after collection, the brand strives to capture the essence of exploration as a cultural and aesthetic experience through a distinct style applied to functional apparel.</p>"
+            "text": "<p>Lesoles is built for the journeys that matter, bringing together considered design and dependable utility.</p>"
           }
         }
       },
@@ -50,7 +50,7 @@
         "body_GFGLLU"
       ],
       "settings": {
-        "image_desktop": "shopify://shop_images/wk51-hp-update-banner1-d.webp",
+        "image_desktop": "",
         "image_placement": "right",
         "image_height": "medium",
         "image_width": "medium",
@@ -66,13 +66,13 @@
         "heading_VENXLw": {
           "type": "heading",
           "settings": {
-            "text": "1987"
+            "text": "Our Beginning"
           }
         },
         "body_4RJyFR": {
           "type": "body",
           "settings": {
-            "text": "<p>Named after the Finnish term for the Arctic Circle, Napapijri tracks its origins in the late 1980s in Aosta as a family-run, pioneering brand specialising in technical backpacks and bags designed for discerning travelers. Drawing inspiration from polar explorers, Napapijri utilised waxed cotton canvas, known for its durability and weather resistance. This choice of fabric set the tone for the brand's future in material research.</p>"
+            "text": "<p>Every Lesoles collection starts with a simple goal: create useful, well-made products for real life.</p>"
           }
         }
       },
@@ -81,7 +81,7 @@
         "body_4RJyFR"
       ],
       "settings": {
-        "image_desktop": "shopify://shop_images/napa-brandhub-ourstory-d-img-1.webp",
+        "image_desktop": "",
         "image_placement": "left",
         "image_height": "medium",
         "image_width": "medium",
@@ -97,13 +97,13 @@
         "heading_EpPyzM": {
           "type": "heading",
           "settings": {
-            "text": "1990"
+            "text": "Looking Ahead"
           }
         },
         "body_xPEQGz": {
           "type": "body",
           "settings": {
-            "text": "<p>As the new decade dawned, Napapijri's innovative spirit led to an expansion into apparel. The brand applied its technical expertise while introducing its distinctive style that set it apart from conventional sports brands.</p><p><br/>This year marked the birth of the iconic Skidoo Anorak. With its unique blend of patches, colours, and the emblematic Norwegian flag, it quickly catapulted Napapijri into urban fashion circles.</p>"
+            "text": "<p>Lesoles will continue to refine every detail, balancing thoughtful materials, practical function, and a distinct point of view.</p>"
           }
         }
       },
@@ -112,7 +112,7 @@
         "body_xPEQGz"
       ],
       "settings": {
-        "image_desktop": "shopify://shop_images/napa-brandhub-ourstory-d-img-2.webp",
+        "image_desktop": "",
         "image_placement": "right",
         "image_height": "medium",
         "image_width": "medium",

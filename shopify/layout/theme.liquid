@@ -48,11 +48,6 @@
         render 'vite-tag' with 'main.js'
       %}
 
-      {% render 'vendor-onetrust' %}
-      {% render 'vendor-quantum-metric' %}
-      {% render 'vendor-curalate' %}
-      {% render 'gtm-storefront-snippet' %}
-
       {% if page.template_suffix contains 'sheer-id' %}
         <link
           rel="stylesheet"
@@ -61,11 +56,10 @@
           crossorigin="anonymous"
         >
       {% endif %}
-      {% render 'onetrust_datalayer_tracking' %}
       {% render 'styleguide' %}
     </head>
 
-    <body style="visibility: hidden;">
+    <body>
       <a class="skip-to-content-link" href="#MainContent">
         {{ 'accessibility.skip_to_text' | t }}
       </a>
@@ -123,10 +117,5 @@
           newsletter: {% if customer and customer.tags contains 'newsletter' %}true{% else %}false{% endif %}
         }
       </script>
-      {% render 'salesforce_servicecloud_chat' %}
-      {% if template == 'index' or template == 'product' or template == 'collection' %}
-        {% render 'swatch-clicked-event' %}
-      {% endif %}
-      {%- render 'powerreviews' -%}
     </body>
   </html>

@@ -155,14 +155,14 @@
           "type": "accordion",
           "settings": {
             "title": "International Warranty (Outside United States and Canada)",
-            "content": "<p>For Warranty Questions outside of the United States or Canada please see the International JanSport section specific to your region for further information on who to contact, and they will help guide you on navigating your warranty claim within your region. If your region is not listed, you may also contact U.S. Warranty/ Customer Service Center at: <a href=\"mailto:%20jansport_warranty_service@vfc.com\">jansport_warranty_service@vfc.com</a> for further information.</p>"
+            "content": "<p>For warranty questions outside the United States and Canada, please contact Lesoles Customer Service through our contact form.</p>"
           }
         },
         "accordion_HTpcLK": {
           "type": "accordion",
           "settings": {
-            "title": "JanSport Warranty Center COVID-19 safety precautions:",
-            "content": "<p>From the onset of the COVID-10 pandemic, we’ve made protecting the health and well-being of our employees a top priority. In this rapidly changing environment, we will continue to frequently evaluate all our actions to ensure we are making the right decisions and always putting safety first. <br/><a href=\"https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.vfc.com%2Fnews%2Ffeature-story%2F71111%2Fvf-corporation-health-safety-team-shares-its-covid-19-prevention-best-practices&data=02%7C01%7CCody_Willets%40vfc.com%7C83faa0bc17c7454a9a7e08d879e1eb78%7C7d97f40069b44df4a009c9806ec70783%7C0%7C0%7C637393358509509264&sdata=MXUR7FPzkXJls6r3LQwgVpYjp7zvVKLFUvJhkvOSW%2Fg%3D&reserved=0\">Learn More </a>Safety and support measures include:</p><ul><li><br/>Pre-Entry Screening</li><li>Daily Temperature checks for all employees (morning and any time after returning to work after leaving facility)</li><li>Temperature Screening for Vendors and Contractors</li><li>Restructured Cleaning Procedures</li><li>Social Distancing</li><li>Cleaning/disinfecting the breakroom tables before and after each use</li><li>Provide employees with PPE’s upon arrival and as needed (face masks, gloves)</li><li>Hand sanitizer (placed at Kiosks, EE & Front door entrance, breakroom & work stations)</li><li>Antibacterial Wipes and disinfecting spray provided and used for disinfecting work stations and breakroom</li><li>Scattered breaks (10 employees per group)</li><li>Cleaning and sanitization of personal work areas 2-3X times a day</li><li>Electrostatic sprayer and disinfectant for deep cleaning in order (implementation to take place soon)</li></ul>"
+            "title": "Warranty Updates",
+            "content": "<p>Lesoles will publish warranty updates and service information here.</p>"
           }
         },
         "accordion_Q9BdXB": {
@@ -226,7 +226,7 @@
           "type": "body",
           "settings": {
             "paragraph_size": "body-medium",
-            "text": "<h3>Warranty Return Address</h3><h4>United States</h4><p>JanSport Warranty Service<br/>510 Crystal City Hwy. 83 South / Suite 9<br/>Uvalde, TX 78801<br/>*No drop offs accepted</p><p>1-800-426-9227<br/>Monday – Friday: 8am – 6pm (CT)<br/>jansport_warranty_service@vfc.com</p><h4>Canada</h4><p>For information on warranty claims in Canada, please check our Canadian website <a href=\"https://jansport.ca/en/lifetime-warranty/\" title=\"JanSport CA Warranty\">here</a>.<br/>Did you want to begin a return instead? Go To <a href=\"/pages/returns\" title=\"Returns\">Return Policy</a></p>"
+            "text": "<h3>Warranty Return Details</h3><p>Warranty return instructions and contact details will be published by Lesoles soon.</p>"
           }
         }
       },

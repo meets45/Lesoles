@@ -54,6 +54,8 @@
             <img
               src="{{ section.settings.brand_logo | image_url: width: 100 }}"
               alt="{{ section.settings.brand_logo.alt }}"
+              width="{{ section.settings.brand_logo.width }}"
+              height="{{ section.settings.brand_logo.height }}"
             >
           {%- endunless -%}
           {% if section.settings.brand_statement != blank %}
@@ -122,7 +124,7 @@
       "type": "text",
       "id": "brand_statement",
       "label": "Brand Statement",
-      "default": "BRAND, a VF Company"
+      "default": "Lesoles"
     }
   ],
   "blocks": [

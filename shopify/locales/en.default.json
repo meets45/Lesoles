@@ -227,7 +227,7 @@
   },
   "employee_discount": {
     "banner": {
-      "default_text": "VF Associate Discount: You have spent {{ current_spend }} out of your annual discount limit of {{ total_spend }} on {{ store }}."
+      "default_text": "Lesoles Team Discount: You have spent {{ current_spend }} out of your annual discount limit of {{ total_spend }} on {{ store }}."
     },
     "terms": {
       "accept": "I Accept",

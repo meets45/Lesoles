@@ -15,14 +15,14 @@
         "subheading_zJUqyU": {
           "type": "subheading",
           "settings": {
-            "text": "{{ page.metafields.custom.adaptive_content_video_subtext.value }}"
+            "text": ""
           }
         },
         "video_bbpUgw": {
           "type": "video",
           "settings": {
             "video_source": "youtube",
-            "video_url": "{{ page.metafields.custom.adaptive_content_video_url.value }}",
+            "video_url": "",
             "autoplay": false,
             "loop": false
           }
@@ -45,13 +45,13 @@
         "eyebrow_XzQraL": {
           "type": "eyebrow",
           "settings": {
-            "text": "{{ page.metafields.custom.adaptive_content_richtext_title.value }}"
+            "text": ""
           }
         },
         "body_ccgizT": {
           "type": "body",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.adaptive_content_richtext_body | metafield_tag }}</p>"
+            "text": ""
           }
         }
       },

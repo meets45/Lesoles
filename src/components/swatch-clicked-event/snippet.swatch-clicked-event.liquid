@@ -1,14 +1,1 @@
-<script>
-  document.addEventListener('DOMContentLoaded', function (event) {
-    document.querySelectorAll('.color-swatch__dot').forEach((element) => {
-      element.addEventListener('click', (e) => {
-        const productName = e?.target
-          ?.closest('.product-card__content')
-          ?.querySelector('.product-card__title-link')
-          ?.innerText?.trim();
-        const swatch = e?.target?.parentNode?.parentNode?.querySelector('input')?.value || null;
-        window.Shopify.analytics.publish('swatch_clicked', { color: swatch, productName });
-      });
-    });
-  });
-</script>
+{% comment %} Legacy swatch analytics intentionally disabled for Lesoles. {% endcomment %}

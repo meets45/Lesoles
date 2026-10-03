@@ -31,8 +31,8 @@
         "eyebrow_kjKPWY"
       ],
       "settings": {
-        "image_desktop": "shopify://shop_images/jansport_sustainability_update_240327_v1_hero.webp",
-        "image_mobile": "shopify://shop_images/Jansport_SustainabilityLandingPage_Mobile_2024_HERO.webp",
+        "image_desktop": "",
+        "image_mobile": "",
         "scrim": 0,
         "image_height": "large",
         "full_screen": false,
@@ -48,7 +48,7 @@
         "body_K6jMYd": {
           "type": "body",
           "settings": {
-            "text": "<p>For decades, JanSport has reshaped how you carry your essentials.<br/><br/>Our mission is to be your lifelong partner in protecting the things<br/>you carry—and our planet.<br/><br/>We're constantly evaluating how we adopt sustainable product<br/>practices without compromising durability, innovation, and accessibility.</p>"
+            "text": "<p>Lesoles is building a more considered approach to materials, product design, and the life of every item we make.</p>"
           }
         }
       },
@@ -137,7 +137,7 @@
         "body_Wk3mzd": {
           "type": "body",
           "settings": {
-            "text": "<p>*Calculated based on a 16floz, 9.89gm plastic bottle.<br/>*100% recycled content refers to face fabric and excludes coatings.<br/>** These results were calculated using the Higg Materials Sustainability Index V3.3 developed by the Sustainable Apparel Coalition at msi.higg.org. Calculated by VF Corp, not 3rd party verified.</p>"
+            "text": "<p>Detailed sustainability commitments and supporting evidence will be published as they become available.</p>"
           }
         }
       },
@@ -168,20 +168,20 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/bts2050-footer-button-2-v2.webp",
-            "heading": "Back'd by Jansport",
+            "heading": "Our Commitment",
             "description": "",
             "link_text": "Learn More",
-            "link_url": "shopify://pages/backed-by-jansport"
+            "link_url": ""
           }
         },
         "card_7AQeEB": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/bts2050-footer-button-3-v2.webp",
-            "heading": "VF Corporate Responsibility",
+            "heading": "Learn About Lesoles",
             "description": "",
             "link_text": "Learn More",
-            "link_url": "https://www.vfc.com/responsibility/planet"
+            "link_url": "shopify://pages/about-us"
           }
         }
       },

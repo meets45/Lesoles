@@ -413,14 +413,14 @@
           "type": "accordion",
           "settings": {
             "title": "Is JanSport hiring?",
-            "content": "<p>To browse through our current job opportunities, check out our <a href=\"https://vfc.wd5.myworkdayjobs.com/jansport_usca_careers/jobs\">Careers section</a>.</p>"
+            "content": "<p>Career opportunities will be announced by Lesoles.</p>"
           }
         },
         "accordion_PQzpDf": {
           "type": "accordion",
           "settings": {
             "title": "How do I request a donation or sponsorship from JanSport?",
-            "content": "<p>Please e-mail the request to  <a href=\"mailto:jansportdonations@vfc.com\" title=\"mailto:jansportdonations@vfc.com\">jansportdonations@vfc.com</a>.</p>"
+            "content": "<p>Please contact Lesoles through our contact form with donation or sponsorship requests.</p>"
           }
         }
       },

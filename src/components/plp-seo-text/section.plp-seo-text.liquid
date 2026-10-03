@@ -2,7 +2,7 @@
   <section
     data-component="plp-seo-text"
     class="plp-seo-text"
-    aria-label="{{ 'collection.seo.label' | t }}"
+    aria-label="{{ 'general.collection.seo.label' | t }}"
   >
     {% assign seo_content = collection.metafields.custom.collection_seo_text | metafield_tag %}
     {% render 'formatting-helper', location: 'plp', content: seo_content %}
