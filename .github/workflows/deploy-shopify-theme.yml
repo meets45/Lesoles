@@ -37,7 +37,7 @@ jobs:
         run: yarn build
 
       - name: Check Shopify theme
-        run: yarn run shopify theme check --path=shopify
+        run: yarn run shopify theme check --config=.theme-check.yml --path=shopify
 
       - name: Deploy to Shopify
         env:
