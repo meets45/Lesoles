@@ -33,6 +33,11 @@ jobs:
       - name: Build theme assets
         run: yarn build
 
+      - name: Verify generated theme assets
+        run: |
+          test -f shopify/snippets/vite-tag.liquid
+          find shopify/assets -maxdepth 1 -name '*.css' -print -quit | grep -q .
+
       - name: Check Shopify theme
         run: yarn run shopify theme check --config=.theme-check.yml --path=shopify
 
