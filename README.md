@@ -131,15 +131,15 @@ The repository has three Shopify deployment workflows:
 - `Deploy Preproduction Shopify Theme` runs only when started manually from GitHub Actions.
 - `Deploy Production Shopify Theme` runs only when started manually from GitHub Actions and can update the live theme.
 
-Configure these repository Actions secrets before running a workflow:
+All three workflows use the same store and Theme Access password. Configure these repository Actions secrets before running a workflow:
 
-| Environment | Store secret | Theme ID secret | Theme Access password secret |
-| --- | --- | --- | --- |
-| Production | `SHOPIFY_STORE` | `SHOPIFY_THEME_ID` | `SHOPIFY_CLI_THEME_TOKEN` |
-| Preproduction | `SHOPIFY_PREPROD_STORE` | `SHOPIFY_PREPROD_THEME_ID` | `SHOPIFY_PREPROD_CLI_THEME_TOKEN` |
-| Development | `SHOPIFY_DEV_STORE` | `SHOPIFY_DEV_THEME_ID` | `SHOPIFY_DEV_CLI_THEME_TOKEN` |
+| Environment | Theme ID secret |
+| --- | --- |
+| Production | `SHOPIFY_THEME_ID` |
+| Preproduction | `SHOPIFY_PREPROD_THEME_ID` |
+| Development | `SHOPIFY_DEV_THEME_ID` |
 
-Use a permanent `*.myshopify.com` store domain and a numeric theme ID. Theme Access passwords must be stored only as GitHub Actions secrets.
+Shared secrets: `SHOPIFY_STORE` must be a permanent `*.myshopify.com` store domain, and `SHOPIFY_CLI_THEME_TOKEN` must be the Theme Access password. Theme IDs must be numeric.
 
 ## Windows Notes
 

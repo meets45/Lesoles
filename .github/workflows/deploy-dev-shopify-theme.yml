@@ -40,9 +40,9 @@ jobs:
 
       - name: Deploy to Shopify
         env:
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_DEV_STORE }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_DEV_THEME_ID }}
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_DEV_CLI_THEME_TOKEN }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: >
           yarn run shopify theme push
           --store "$SHOPIFY_STORE"
