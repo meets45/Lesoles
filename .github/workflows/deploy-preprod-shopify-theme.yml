@@ -1,4 +1,4 @@
-name: Deploy Production Shopify Theme
+name: Deploy Preproduction Shopify Theme
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: shopify-theme-production
+  group: shopify-theme-preproduction
   cancel-in-progress: false
 
 jobs:
@@ -38,15 +38,14 @@ jobs:
 
       - name: Deploy to Shopify
         env:
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
-          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_PREPROD_STORE }}
+          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_PREPROD_THEME_ID }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_PREPROD_CLI_THEME_TOKEN }}
         run: >
           yarn run shopify theme push
           --store "$SHOPIFY_STORE"
           --theme "$SHOPIFY_THEME_ID"
           --password "$SHOPIFY_CLI_THEME_TOKEN"
-          --allow-live
           --nodelete
           --ignore "(templates|sections|locales).*.json"
           --ignore "config/settings_data.json"
