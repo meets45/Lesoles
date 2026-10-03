@@ -1,1 +1,6 @@
 root: shopify
+
+# Akkurat Pro font binaries are licensed assets stored in the Shopify theme,
+# not in this repository. The deployment preserves them with --nodelete.
+ignore:
+  - snippets/fonts.liquid
