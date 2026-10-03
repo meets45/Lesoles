@@ -1,0 +1,43 @@
+<div data-pdp-review-section class="main-product__accordions-reviews" id="Section-{{ section.id }}">
+  <div class="main-product__accordions-reviews-inner container">
+    <div class="main-product__accordions">
+      {% render 'pdp-accordions', blocks: section.blocks %}
+    </div>
+    <div class="main-product__reviews">
+      {% render 'pdp-reviews' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MP Accordion Reviews",
+  "presets": [
+    {
+      "name": "MP Accordion Reviews",
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"]
+  }
+}
+{% endschema %}

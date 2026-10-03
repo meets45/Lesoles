@@ -1,0 +1,180 @@
+/* Base select styles */
+.styled-select {
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+}
+
+/* Field wrapper styles */
+.styled-select[data-has-help],
+.styled-select[data-has-error] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-50);
+}
+
+/* Trigger button styling */
+.styled-select__trigger {
+  background-color: transparent;
+  border: var(--borders-width-standard) solid var(--ui-elements-forms-default);
+  border-radius: var(--borders-radius-default);
+  box-sizing: border-box;
+  color: var(--typography-color-default);
+  font-size: var(--typography-styles-sizing-body-medium);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--typography-styles-line-height-body-medium);
+  letter-spacing: var(--typography-styles-tracking-body);
+
+  height: 48px;
+  width: 100%;
+  padding: var(--spacing-500) var(--spacing-200) var(--spacing-300) var(--spacing-300);
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Label styling */
+.styled-select__label {
+  color: var(--typography-color-secondary);
+  font-size: var(--typography-styles-sizing-body-medium);
+  left: var(--spacing-300);
+  height: 48px;
+  line-height: var(--typography-styles-line-height-body-medium);
+  letter-spacing: var(--typography-styles-tracking-body);
+  margin-bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transition: all 0.3s ease;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Selected value styling */
+.styled-select__trigger [data-label] {
+  display: block;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* When value is selected */
+.styled-select[data-has-value] {
+  /* Move label up */
+  & .styled-select__label {
+    font-size: var(--typography-styles-sizing-body-xsmall);
+    top: var(--spacing-50);
+    transform: translateY(0);
+    text-align: left;
+    left: var(--spacing-300);
+    right: auto;
+  }
+
+  /* Show selected value */
+  & .styled-select__trigger [data-label] {
+    opacity: 1;
+  }
+
+  /* Adjust trigger padding for label */
+  & .styled-select__trigger {
+    padding-top: var(--spacing-500);
+  }
+}
+
+/* Listbox styling */
+.styled-select__listbox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48px;
+  background-color: var(--color-neutrals-0);
+  border: var(--borders-width-standard) solid var(--color-neutrals-400);
+  border-radius: var(--borders-radius-default);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: none;
+
+  & ul {
+    padding: 0;
+  }
+}
+
+.styled-select[data-active="true"] .styled-select__listbox {
+  display: block;
+}
+
+/* Option styling */
+.styled-select__option {
+  padding: var(--spacing-200) var(--spacing-300);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: var(--typography-color-default);
+  font-size: var(--typography-styles-sizing-body-medium);
+  list-style: none;
+}
+
+.styled-select__option[data-selected="true"] {
+  background-color: var(--color-neutrals-50);
+}
+
+/* Help text */
+.styled-select__help {
+  color: var(--typography-color-default);
+  font-size: var(--typography-styles-sizing-body-xsmall);
+}
+
+/* Error state - using native form validation */
+.styled-select input:invalid ~ .styled-select__trigger {
+  border-color: var(--typography-color-error-sale);
+}
+
+.styled-select input:invalid ~ .styled-select__label {
+  color: var(--typography-color-error-sale);
+}
+
+/* Remove the custom error styles since we're using native validation */
+.styled-select[data-has-error] .styled-select__trigger,
+.styled-select[data-has-error] .styled-select__label,
+.styled-select__error {
+  display: none;
+}
+
+/* Disabled state */
+.styled-select[disabled] .styled-select__trigger {
+  color: var(--typography-color-disabled);
+  background-color: rgba(0, 0, 0, 0.08);
+  cursor: not-allowed;
+}
+
+.styled-select[disabled] .styled-select__label {
+  color: var(--typography-color-disabled);
+}
+
+/* Focus state */
+.styled-select__trigger:focus {
+  border-color: var(--ui-elements-forms-focus);
+  border-width: 2px;
+  outline: none;
+}
+
+/* Icon */
+.styled-select__trigger svg {
+  position: absolute;
+  right: var(--spacing-300);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  pointer-events: none;
+  color: var(--typography-color-default);
+  width: 24px;
+}
+
+.styled-select[data-active="true"] .styled-select__trigger svg {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Remove the old dropdown styles */
+.dropdown {
+  display: none;
+}

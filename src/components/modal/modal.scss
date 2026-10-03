@@ -1,0 +1,66 @@
+/*
+  Basic Modal Styles
+*/
+
+.modal {
+  display: none;
+}
+
+[data-active="true"] .modal {
+  display: block;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal__container {
+  background-color: var(--ui-elements-overlays-background);
+  padding: var(--spacing-500);
+  max-width: 500px;
+  max-height: 100vh;
+  border-radius: var(--ui-elements-forms-border-radius);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__footer {
+  background: transparent;
+  padding: var(--spacing-400) 0;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--typography-color-brand);
+  box-sizing: border-box;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+}
+
+.modal__header .modal__close:before {
+  content: "\2715";
+}
+
+.modal__content {
+  margin-top: var(--spacing-300);
+  margin-bottom: var(--spacing-300);
+}

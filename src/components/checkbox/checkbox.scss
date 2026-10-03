@@ -1,0 +1,141 @@
+/* Checkbox */
+
+.checkbox-wrapper {
+  .checkbox {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding-left: calc(24px + var(--spacing-200));
+    position: relative;
+  }
+
+  .checkbox input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .checkbox span {
+    margin-top: var(--spacing-25);
+  }
+
+  .checkbox__indicator {
+    position: absolute;
+    top: var(--spacing-25);
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background: transparent;
+    border-radius: var(--ui-elements-forms-border-radius);
+    border: 1px solid var(--ui-elements-forms-default);
+  }
+
+  .checkbox input:checked ~ .checkbox__indicator {
+    background: var(--ui-elements-forms-focus);
+  }
+
+  .checkbox:hover input:not([disabled]):checked ~ .checkbox__indicator,
+  .checkbox input:checked:focus ~ .checkbox__indicator {
+    background: var(--ui-elements-forms-focus);
+  }
+
+  .checkbox input:disabled ~ .checkbox__indicator {
+    background: rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+  }
+
+  .checkbox__indicator:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .checkbox input:checked ~ .checkbox__indicator:after {
+    display: block;
+  }
+
+  .checkbox .checkbox__indicator:after {
+    /* checkmark styling */
+    left: 8px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid var(--icons-default-inverse);
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+  }
+
+  .checkbox input:disabled ~ span {
+    color: var(--ui-elements-forms-disabled);
+  }
+
+  .checkbox input:disabled ~ .checkbox__indicator:after {
+    border-radius: var(--ui-elements-forms-border-radius);
+    border-color: var(--ui-elements-forms-disabled);
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Add these new styles for validation */
+form-checkbox[data-invalid] .checkbox__indicator {
+  border-color: var(--typography-color-error-sale);
+}
+
+form-checkbox[data-invalid] span {
+  color: var(--typography-color-error-sale);
+}
+
+/* Required field indicator already handled by the * in the template */
+
+.checkbox__count {
+  color: var(--typography-color-secondary);
+  margin-left: var(--spacing-50);
+}
+
+/* Size filter specific styles */
+.checkbox-wrapper__size {
+  width: auto;
+}
+
+.checkbox-wrapper__size .checkbox {
+  border-radius: var(--components-pickers-border-radius);
+  border: var(--borders-width-standard, 1px) solid var(--borders-color-medium);
+  display: flex;
+  height: 44px;
+  padding: 0 var(--spacing-200);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-100);
+  cursor: pointer;
+}
+
+.checkbox-wrapper__size .checkbox__input {
+  display: none;
+}
+
+.checkbox-wrapper__size .checkbox__indicator {
+  display: none;
+}
+
+/* Selected state */
+.checkbox-wrapper__size[data-checked] .checkbox {
+  border-color: var(--borders-color-black);
+  background: var(--ui-elements-interactive-primary);
+}
+
+/* Hover state */
+.checkbox-wrapper__size .checkbox:hover {
+  border-color: var(--borders-color-black);
+}
+
+/* Disabled state */
+.checkbox-wrapper__size .checkbox__input:disabled + .checkbox {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Focus state*/
+.checkbox.body-medium:focus {
+  outline: 2px solid initial;
+}

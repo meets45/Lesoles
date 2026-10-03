@@ -1,0 +1,17 @@
+<div data-component="product-search-card" class="product-search-card">
+  {% if product.featured_image %}
+    <div class="product-search-card__image">
+      {{ product.featured_image | image_url: width: 200 | image_tag }}
+    </div>
+  {% endif %}
+  <div class="product-search-card__content">
+    <div class="product-search-card__title heading-xsmall">
+      <a class="click-fill" href="{{ product.url }}">
+        {{ product.title }}
+      </a>
+    </div>
+    <div class="product-search-card__price">
+      {{ product.price | money }}
+    </div>
+  </div>
+</div>

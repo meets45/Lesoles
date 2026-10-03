@@ -1,0 +1,23 @@
+<div data-component="specifications-table" class="specifications-table">
+  <table>
+    <tbody>
+      {% for specification in specifications %}
+        {% if specification contains '|' %}
+          {% assign heading = specification | split: '|' | first %}
+          {% assign value = specification | split: '|' | last %}
+        {% else %}
+          {% assign heading = specification | split: ':' | first %}
+          {% assign value = specification | split: ':' | last %}
+        {% endif %}
+        <tr>
+          <th>
+            {{ heading }}
+          </th>
+          <td>
+            {{ value }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

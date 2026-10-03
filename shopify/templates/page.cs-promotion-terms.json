@@ -1,0 +1,224 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customer_service_banner_kBp9x3": {
+      "type": "customer-service-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_7.png",
+        "image_mobile": "shopify://shop_images/image_7.png"
+      }
+    },
+    "customer_service_menu_4Qewar": {
+      "type": "customer-service-menu",
+      "blocks": {
+        "link_ffGwKD": {
+          "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "link_xhA7Lr": {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        "link_mcEd6j": {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "link_qGNwU3": {
+          "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        "link_mL6hj8": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_DYiH4q": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        "link_D4aE8C": {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "link_nNPNNN": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        "link_HTD3Nw": {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      },
+      "block_order": [
+        "link_ffGwKD",
+        "link_xhA7Lr",
+        "link_mcEd6j",
+        "link_qGNwU3",
+        "link_mL6hj8",
+        "link_DYiH4q",
+        "link_D4aE8C",
+        "link_nNPNNN",
+        "link_HTD3Nw"
+      ],
+      "settings": {
+        "header": "Customer Service"
+      }
+    },
+    "section_accordions_RkHmpM": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_E4rGMy": {
+          "type": "accordion",
+          "settings": {
+            "title": "Student & Teacher Discounts",
+            "content": "<p>Learn all about JanSport’s <a href=\"/pages/education-discount-for-students-and-teachers\" title=\"Education Discount for Students and Teachers\">Student and Teacher Discounts</a></p>"
+          }
+        },
+        "accordion_b64pVw": {
+          "type": "accordion",
+          "settings": {
+            "title": "Heroes Discounts",
+            "content": "<p>Learn all about JanSport’s <a href=\"/pages/education-discount-for-students-and-teachers\" title=\"Education Discount for Students and Teachers\">Military Discounts</a></p>"
+          }
+        },
+        "accordion_XtCcg9": {
+          "type": "accordion",
+          "settings": {
+            "title": "Free Shipping on Orders $50+",
+            "content": "<p>No promo code necessary. Select preferred Shipping method at checkout. Shipping rates on all orders are based on the merchandise subtotal in a single transaction (pre-tax), before any promotional offers, coupons or discounts are applied. Shipping only available to the continental US.</p><p>Standard Shipping on all orders at Jansport.com 6/24/2023 @ 12:00 am MT to 6/26/2025 @ 11:59 pm MT. For Standard Shipping, delivery within 5 – 7 business days (Monday – Friday, excluding federal holidays) with placement of order by 9:00 am CT. (See Delivery Options below for delivery timing for Expedited Shipping.) Regardless of Shipping method chosen, shipment may be delayed due to supply chain issues, COVID-19/Coronavirus or other factors beyond JanSport’s control w/o liability. Special Standard Shipping rates not valid on orders shipping to Alaska or Hawaii or military APO/FPO/DPO addresses; see Delivery options below for additional information for delivery to these areas. Valid on in-stock merchandise only; not valid on prior purchases. Free returns are subject to certain restrictions; see here for details. JanSport reserves the right to cancel orders arising from pricing, promotions, or other errors w/o liability. Void where prohibited.</p>"
+          }
+        },
+        "accordion_kcJkDJ": {
+          "type": "accordion",
+          "settings": {
+            "title": "Tax Free Weekend For Your State",
+            "content": "<p>No sales tax for residents of specific states on qualifying JanSport products during designated dates as per chart below.  Shipping address must be located in applicable state to qualify.</p><p>Must be 16 or older. No promo code required.  Sales tax will be automatically eliminated when total amount due is calculated at checkout.  Not valid at any 3rd party retail store or website selling JanSport products. This offer cannot be combined with other JanSport discounts, offers, coupons or promotions.</p><p>All decisions of JanSport are final and binding in all respects. All purchases are subject to terms and conditions of sale of <a href=\"http://www.jansport.com/\">www.jansport.com</a>. JanSport is not responsible for technological failure/error/malfunction of any kind. Remaining balance of product purchase must be paid using another form of payment. This offer cannot be redeemed for cash or applied as payment to any account. Offer rights not transferable. No cash refund of sales tax if qualifying product is later returned by consumer. JanSport reserves the right to require payment of purchase in full and perhaps pursue legal sanctions in the event of consumer fraud of any kind; such activity may also constitute a violation of applicable state law.  No price adjustment allowed on previous purchases or product returns/exchanges. Offer void should applicable state cancel its officially sanctioned “sales tax holiday” or if modified class of qualifying products are not sold by JanSport in the normal course of business. If applicable state retains “sales tax holiday” on qualifying products but only changes date of same, offer will be valid only on revised dates (in 2023).  No variance from these terms and conditions allowed except as required by law.  Void where prohibited, taxed or restricted. Offer subject to change at any time without notice. NOT SPONSORED OR ENDORSED BY ANY STATE GOVERNMENT BODY.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_E4rGMy",
+        "accordion_b64pVw",
+        "accordion_XtCcg9",
+        "accordion_kcJkDJ"
+      ],
+      "settings": {
+        "show_page_title": true,
+        "title": "Active Promotional Offers"
+      }
+    },
+    "rte_content_gqTRVQ": {
+      "type": "rte-content",
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": true,
+        "highlight_section": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left"
+      }
+    },
+    "rte_content_nGgMtT": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_kRXjVz": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "Wanna talk?"
+          }
+        },
+        "text_link_zz7iji": {
+          "type": "text_link",
+          "settings": {
+            "label": "Call Us",
+            "icon": "phone"
+          }
+        },
+        "text_link_F7EHGQ": {
+          "type": "text_link",
+          "settings": {
+            "label": "Text Link",
+            "icon": "chat"
+          }
+        },
+        "text_link_RpPHKc": {
+          "type": "text_link",
+          "settings": {
+            "label": "Email Us",
+            "icon": "email"
+          }
+        },
+        "text_link_FQibVJ": {
+          "type": "text_link",
+          "settings": {
+            "label": "Int'l help",
+            "icon": "map"
+          }
+        },
+        "body_bGdB7e": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-small",
+            "text": "<p>JanSport Customer Service is here to help Monday through Friday 8am - 4:30pm (CT) (USA only).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kRXjVz",
+        "text_link_zz7iji",
+        "text_link_F7EHGQ",
+        "text_link_RpPHKc",
+        "text_link_FQibVJ",
+        "body_bGdB7e"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    }
+  },
+  "order": [
+    "customer_service_banner_kBp9x3",
+    "customer_service_menu_4Qewar",
+    "section_accordions_RkHmpM",
+    "rte_content_gqTRVQ",
+    "rte_content_nGgMtT"
+  ]
+}

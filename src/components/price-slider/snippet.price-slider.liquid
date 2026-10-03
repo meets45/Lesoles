@@ -1,0 +1,71 @@
+{% comment %}
+  Accepts:
+  - min_value: {Number} Minimum price value
+  - max_value: {Number} Maximum price value
+  - current_min: {Number} Current minimum selected
+  - current_max: {Number} Current maximum selected
+{% endcomment %}
+
+{% liquid
+  assign min = min_value | money_without_currency | replace: ',', '' | round
+  assign max = max_value | money_without_currency | replace: ',', '' | round
+  assign current_min_value = current_min | default: min_value | money_without_currency | replace: ',', '' | round
+  assign current_max_value = current_max | default: max_value | money_without_currency | replace: ',', '' | round
+%}
+
+<price-slider
+  data-component="price-slider"
+  class="price-slider"
+  data-min="{{ min }}"
+  data-max="{{ max }}"
+  data-currency="{{ cart.currency.symbol }}"
+>
+  <div class="price-slider__inputs">
+    <div class="price-slider__field">
+      <input
+        type="number"
+        data-min-input
+        name="filter.v.price.gte"
+        value="{{ current_min_value }}"
+        min="{{ min }}"
+        max="{{ max }}"
+        data-filter-input
+      >
+      <span class="price-slider__currency">{{ cart.currency.symbol }}</span>
+    </div>
+    <div class="price-slider__field">
+      <input
+        type="number"
+        data-max-input
+        name="filter.v.price.lte"
+        value="{{ current_max_value }}"
+        min="{{ min }}"
+        max="{{ max }}"
+        data-filter-input
+      >
+      <span class="price-slider__currency">{{ cart.currency.symbol }}</span>
+    </div>
+  </div>
+
+  <div class="price-slider__range">
+    <div class="price-slider__track">
+      <div class="price-slider__progress" data-slider-progress></div>
+    </div>
+    <input
+      type="range"
+      class="price-slider__input"
+      data-slider-min
+      min="{{ min }}"
+      max="{{ max }}"
+      value="{{ current_min_value }}"
+    >
+    <input
+      type="range"
+      class="price-slider__input"
+      data-slider-max
+      min="{{ min }}"
+      max="{{ max }}"
+      value="{{ current_max_value }}"
+    >
+  </div>
+</price-slider>

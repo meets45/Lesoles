@@ -1,0 +1,24 @@
+.mobile-header {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  position: absolute;
+  top: calc(var(--header-top-offset) + 0);
+  left: 0;
+  padding: var(--spacing-50) var(--screens-mobile-margin);
+  z-index: 100;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.mobile-header__logo {
+  height: 38px;
+
+  & img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}

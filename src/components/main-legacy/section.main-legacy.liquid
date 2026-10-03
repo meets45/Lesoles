@@ -1,0 +1,128 @@
+<div class="main-product">
+  <div class="main-product__inner">
+    <div class="main-product__media">
+      {% render 'product-media-gallery' %}
+    </div>
+    <div class="main-product__content">
+      <div class="main-product__content-inner">
+        <div class="main-product__content-header">
+          <div class="main-product__content-header-actions">
+            <div class="main-product__content-header-discontinued-title">
+              <p class="body-light body-small">
+                {{ section.settings.legacy_text_title }}
+              </p>
+            </div>
+            <div class="main-product__content-header-breadcrumbs">
+              {% render 'breadcrumbs' %}
+            </div>
+          </div>
+          <div class="main-product__content-header-legacy-body body-medium">
+            {{ section.settings.legacy_text | replace: '%%product_title%%', product.title }}
+          </div>
+        </div>
+        <div class="main-product__content-legacy-product">
+          <div class="main-product__content-legacy-product-inner">
+            <div class="legacy-product__image">
+              <img
+                src="{{ section.settings.legacy_product.featured_image | img_url: 'master' }}"
+                alt="{{ section.settings.legacy_product.title }}"
+                width="100%"
+                height="100%"
+              >
+            </div>
+            <div class="legacy-product__content">
+              <div class="legacy-product__title display-small">
+                {{ section.settings.legacy_product.title }}
+              </div>
+
+              {% for option in section.settings.legacy_product.options_with_values %}
+                {% if option.name == 'Color' %}
+                  {% assign color_values_count = option.values.size %}
+                {% endif %}
+              {% endfor %}
+
+              <div class="legacy-product__options">
+                {{ 'products.product.more_colors' | t: color_values_count: color_values_count }}
+              </div>
+
+              <div class="legacy-product__price body-large bold">
+                {{ section.settings.legacy_product.price | money }}
+              </div>
+            </div>
+          </div>
+          <div class="legacy-product__cta">
+            <a href="{{ section.settings.legacy_product.url }}" class="button button--primary">
+              {{ section.settings.legacy_cta_text }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-pdp-review-section class="main-product__accordions-reviews">
+    <div class="main-product__accordions-reviews-inner container">
+      <div class="main-product__accordions">
+        {% render 'pdp-accordions', blocks: section.blocks %}
+      </div>
+      <div class="main-product__reviews">
+        {% render 'pdp-reviews' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Product Legacy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "legacy_text_title",
+      "label": "Legacy Text Title",
+      "default": "Legacy"
+    },
+    {
+      "type": "richtext",
+      "id": "legacy_text",
+      "label": "Legacy Text Body",
+      "default": "<p><strong>Sorry, the %%product_title%% is no longer available.</strong> Check out these other styles we think you’ll like:</p>"
+    },
+    {
+      "type": "product",
+      "id": "legacy_product",
+      "label": "Legacy Product"
+    },
+    {
+      "type": "text",
+      "id": "legacy_cta_text",
+      "label": "Legacy CTA Text",
+      "default": "View Product Details"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Product Legacy"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,348 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Section: Video Section
+  - Displays content blocks alongside video
+  - Supports multiple video sources (Shopify, YouTube, Vimeo)
+  - Responsive layout with lazy loading
+------------------------------------------------------------------------------
+{% endcomment %}
+
+<video-section
+  data-component="video-section"
+  class="
+    video-section
+    video-section__content
+    {% if section.settings.full_screen %}
+      video-section--full-screen
+    {% endif %}
+  "
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  <div class="video-section__content-wrapper">
+    {% render 'content-blocks',
+      blocks: section.blocks,
+      section_settings: section.settings,
+      layout: 'row'
+    %}
+  </div>
+
+  <div class="video-section__video-wrapper">
+    {% for block in section.blocks %}
+      {% if block.type == 'video' %}
+        {% assign video_source = block.settings.video_source %}
+        {% assign video_url = block.settings.video_url %}
+        {% assign video_id = video_url | split: '/' | last %}
+
+        <div
+          class="video-section__video"
+          data-video-wrapper
+          data-video-source="{{ video_source }}"
+          {% if video_url %}data-video-url="{{ video_url }}"{% endif %}
+        >
+          {% if block.settings.cover_image != blank %}
+            <div class="video-section__cover" data-video-cover>
+              {{ block.settings.cover_image | image_url: width: 1500 | image_tag:
+                loading: 'lazy',
+                class: 'video-section__cover-image'
+              }}
+              <button class="video-section__play-button" data-video-play>
+                {% render 'icon-play' %}
+                <span class="sr-only">{{ 'accessibility.play' | t }}</span>
+              </button>
+            </div>
+          {% endif %}
+
+          {% case video_source %}
+            {% when 'shopify' %}
+              {% if block.settings.video_file != blank %}
+                <video
+                  class="video-section__video-element"
+                  playsinline
+                  controls
+                  {% unless block.settings.cover_image %}
+                    autoplay
+                    muted
+                    loop
+                  {% endunless %}
+                >
+                  <source src="{{ block.settings.video_file | file_url }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              {% endif %}
+
+            {% when 'youtube' %}
+              <div class="video-section__iframe-wrapper" data-youtube-wrapper>
+                {% if block.settings.cover_image == blank %}
+                  <iframe
+                    src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&rel=0&mute=1{% if block.settings.autoplay %}&autoplay=1{% endif %}{% if block.settings.loop %}&loop=1{% endif %}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                {% endif %}
+              </div>
+
+            {% when 'vimeo' %}
+              <div class="video-section__iframe-wrapper" data-vimeo-wrapper>
+                {% if block.settings.cover_image == blank %}
+                  <iframe
+                    src="https://player.vimeo.com/video/{{ video_id }}?muted=1{% if block.settings.autoplay %}&autoplay=1{% endif %}{% if block.settings.loop %}&loop=1{% endif %}"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                {% endif %}
+              </div>
+
+          {% endcase %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</video-section>
+
+{% schema %}
+{
+  "name": "Video Section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_screen",
+      "label": "Full Screen",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Text Alignment - Desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Text Alignment - Mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "color_scheme_1",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat. Nisl dui libero turpis dolor egestas ipsum nam. Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading Text"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_source",
+          "label": "Video Source",
+          "options": [
+            {
+              "value": "shopify",
+              "label": "Shopify"
+            },
+            {
+              "value": "youtube",
+              "label": "YouTube"
+            },
+            {
+              "value": "vimeo",
+              "label": "Vimeo"
+            }
+          ],
+          "default": "shopify"
+        },
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "Video File",
+          "info": "Upload directly to Shopify"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL",
+          "info": "YouTube or Vimeo URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Cover Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay video",
+          "default": false,
+          "info": "Video will be muted when autoplay is enabled"
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "Loop video",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Section",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "subheading" },
+        { "type": "button", "settings": { "variant": "secondary" } },
+        { "type": "video" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,577 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customer_service_banner_bWm6XP": {
+      "type": "customer-service-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_7.png",
+        "image_mobile": "shopify://shop_images/image_7.png"
+      }
+    },
+    "customer_service_menu_nYL3Vn": {
+      "type": "customer-service-menu",
+      "blocks": {
+        "link_DPkXiU": {
+          "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "link_jEUNEH": {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        "link_gkCAV3": {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "link_gCUrkJ": {
+          "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        "link_wwm8JJ": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_8qfiGV": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        "link_XCWErw": {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "link_Q4gdmN": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        "link_VVJhfV": {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      },
+      "block_order": [
+        "link_DPkXiU",
+        "link_jEUNEH",
+        "link_gkCAV3",
+        "link_gCUrkJ",
+        "link_wwm8JJ",
+        "link_8qfiGV",
+        "link_XCWErw",
+        "link_Q4gdmN",
+        "link_VVJhfV"
+      ],
+      "settings": {
+        "header": "Customer Service"
+      }
+    },
+    "section_accordions_FtX3xn": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_zJBeLi": {
+          "type": "accordion",
+          "settings": {
+            "title": "How long will my JanSport order take to arrive including processing and shipping?",
+            "content": "<p>We make the best effort to process orders within one business day. For an estimate of shipping times, please reference the times below:</p><p>Shipping and Delivery days for all methods of shipping are Monday – Friday, excluding federal holidays. If your order is completed before 9am (CT) it will be shipped the same day. Orders placed after 9am (CT) will ship the next shipping day.</p>"
+          }
+        },
+        "accordion_XeeDBP": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I know when my JanSport order ships?",
+            "content": "<p>When your order ships, you’ll receive an email confirmation with the tracking number(s) and estimated delivery date(s). You can also <a href=\"https://www.jansport.com/shop/LogonForm?langId=-1&storeId=7201&pageName=orderlookup\">Track Your Order</a> to see all order updates.</p>"
+          }
+        },
+        "accordion_gHWBDJ": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I track my JanSport order?",
+            "content": "<p>When an order is shipped, we’ll update your account to show the tracking number(s) for an order, and send you an email with the shipping and tracking information. Using the tracking number(s) provided, you can either click on the tracking numbers themselves or enter the tracking number(s) into the chosen carrier’s website (FedEx or USPS) to follow the path of your order from our warehouse to your destination. You can also <a href=\"https://www.jansport.com/shop/LogonForm?langId=-1&storeId=7201&pageName=orderlookup\">Track Your Order</a> to see all order updates.</p>"
+          }
+        },
+        "accordion_k3FP9G": {
+          "type": "accordion",
+          "settings": {
+            "title": "Does JanSport have flat rate shipping?",
+            "content": "<p>Yes - JanSport.com charges a $5 flat fee for standard shipping on all orders $49.99 and under.</p>"
+          }
+        },
+        "accordion_ciBy9a": {
+          "type": "accordion",
+          "settings": {
+            "title": "What methods of payment does JanSport.com accept?",
+            "content": "<p>JanSport.com accepts several forms of payments for your shopping convenience, including both domestic and international versions of the below cards:</p><ul><li>Visa</li><li>MasterCard</li><li>Discover</li><li>American Express</li></ul><p>Debit cards with a Visa or MasterCard logo are also accepted</p><ul><li>Apple Pay</li><li>Klarna</li><li>PayPal</li></ul>"
+          }
+        },
+        "accordion_zb6wgE": {
+          "type": "accordion",
+          "settings": {
+            "title": "The address I typed is correct, but JanSport.com is not accepting it. What should I do?",
+            "content": "<p>Does the address you typed match the address on file with the credit card company? If you still encounter a problem after you’ve verified that the address matches, please call our Customer Center at 1-855-818-5966 for further assistance.</p>"
+          }
+        },
+        "accordion_aQaEe8": {
+          "type": "accordion",
+          "settings": {
+            "title": "What do I do if my promotion code/coupon code doesn’t work?",
+            "content": "<p>Verify that you entered the promotion code number exactly as shown, without spaces and using the correct capitalization. If problems persist, please refer to the terms and conditions associated with the promotion code.</p>"
+          }
+        },
+        "accordion_k43mgU": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I get a price adjustment for items now on sale?",
+            "content": "<p>Online price adjustments can be made within 1 week of the original purchase</p><p>*No price adjustments on Black Friday or Cyber Monday deals</p>"
+          }
+        },
+        "accordion_4iiGCi": {
+          "type": "accordion",
+          "settings": {
+            "title": "Why does my credit card or debit card show two charges?",
+            "content": "<p>Sometimes credit/debit card statements contain two transactions, but this is only a temporary scenario. When a purchase is made, an authorization charge is placed on credit/debit cards which temporarily hold funds on an account. This is not actually a charge on your card. Once the order has been shipped, this authorization becomes an approval and charges your account. The authorization is released at a maximum of 72 hours from the time of order. </p><p>For your own protection and security, JanSport.com may pre-authorize $1 to verify your billing address and credit/debit card information. Upon successful pre-authorization, we’ll authorize the full amount of your purchase (plus any applicable sales tax and shipping fees). If this $1 pre-authorization fails, JanSport.com will not authorize the full amount of your purchase. This $1 pre-authorization will drop off from your account within 2-3 business days (depending on your financial institution). We will collect payment or charge your debit/credit card only when the order is shipped.</p>"
+          }
+        },
+        "accordion_qwaAA9": {
+          "type": "accordion",
+          "settings": {
+            "title": "How is sales tax calculated?",
+            "content": "<p>Taxes that appear on your online order are approximate. The actual taxes charged to your credit card will reflect the applicable state and local sales tax, and will be calculated when your order is shipped.</p>"
+          }
+        },
+        "accordion_ggaTn9": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I get in touch with JanSport customer service?",
+            "content": "<p>Please contact <a href=\"https://www.jansport.com/customer-service/contact-us.html\">JanSport customer service</a> with any questions or concerns.</p>"
+          }
+        },
+        "accordion_xpYGtV": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is JanSport's return policy?",
+            "content": "<p>Learn more about the JanSport.com<a href=\"https://www.jansport.com/my-account/returns.html\">return policy.</a></p>"
+          }
+        },
+        "accordion_W6LQCp": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to cancel a JanSport order?",
+            "content": "<p>To cancel a JanSport order, please contact <a href=\"https://www.jansport.com/customer-service/contact-us.html\">customer service.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_zJBeLi",
+        "accordion_XeeDBP",
+        "accordion_gHWBDJ",
+        "accordion_k3FP9G",
+        "accordion_ciBy9a",
+        "accordion_zb6wgE",
+        "accordion_aQaEe8",
+        "accordion_k43mgU",
+        "accordion_4iiGCi",
+        "accordion_qwaAA9",
+        "accordion_ggaTn9",
+        "accordion_xpYGtV",
+        "accordion_W6LQCp"
+      ],
+      "settings": {
+        "show_page_title": true,
+        "title": "Online Ordering"
+      }
+    },
+    "section_accordions_WCM7JQ": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_wEGRAq": {
+          "type": "accordion",
+          "settings": {
+            "title": "What are JanSport's shipping terms?",
+            "content": "<p>The legal title to purchase product transfers to the buyer at point of shipment.</p>"
+          }
+        },
+        "accordion_UXzaLy": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I ship to international addresses?",
+            "content": "<p>No. JanSport.com currently does not ship orders to international countries.</p><p>To find your local warranty policy including where to submit, please change your country selection on the bottom right corner of this website page.</p>"
+          }
+        },
+        "accordion_bKBeeR": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I ship my JanSport order to APO/FPO addresses?",
+            "content": "<p>No. JanSport.com currently does not ship orders to APO/FPO addresses.</p>"
+          }
+        },
+        "accordion_Xmy3ny": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I ship my order to someone else or a different address?",
+            "content": "<p>Yes, orders can be shipped to a different address than the billing address. After you enter your billing address during checkout, you’ll have the option to enter a new shipping address (different from billing address). We also offer gifting options, which allow you to select a gift for a recipient or send a gift card. Learn more <a href=\"https://www.jansport.com/en_us/egifting-a-backpack.html\">here.</a></p>"
+          }
+        },
+        "accordion_HyJHwe": {
+          "type": "accordion",
+          "settings": {
+            "title": "How is the shipping cost determined?",
+            "content": "<p>For orders $50.00+ the shipping cost is based on an item’s size, weight, shipping method and delivery address. </p><p>For orders $49.99 and under, shipping is a flat $5.00 charge for standard shipping.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_wEGRAq",
+        "accordion_UXzaLy",
+        "accordion_bKBeeR",
+        "accordion_Xmy3ny",
+        "accordion_HyJHwe"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Shipping"
+      }
+    },
+    "section_accordions_NDT3YQ": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_HGdVyP": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is JanSport’s Warranty Policy?",
+            "content": "<p><a href=\"https://www.jansport.com/customer-service/warranty.html\">JanSport’s Warranty Policy </a>contains everything you need to know about the JanSport warranty and terms & conditions.</p>"
+          }
+        },
+        "accordion_QE4WiK": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I send my JanSport backpack in for repair?",
+            "content": "<p> If you’re having problems with your backpack, please see our <a href=\"/pages/warranty\" title=\"Warranty\">warranty page </a>to start a warranty claim.</p>"
+          }
+        },
+        "accordion_xPJ93f": {
+          "type": "accordion",
+          "settings": {
+            "title": "How long will it take my JanSport backpack to be repaired through warranty?",
+            "content": "<p>Our normal turnaround time is about four weeks, usually less. During peak season our turnaround time can stretch to six weeks. This includes the shipping time by ground to you. If this turnaround time becomes a problem for you, let us know. We can sometimes “rush” repairs through for special situations.</p>"
+          }
+        },
+        "accordion_DAjwVE": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can my JanSport product repair be rushed?",
+            "content": "<p>In special cases, if you need your repair back before the normal expected turnaround time, we can do a rush repair for you for no additional charge. To request a rush, please send your product to us by way of Federal Express, UPS 2nd Day Air, or some other speedy means. Please write RUSH in big letters on the box. Include a note, asking us to do a rush repair, with your name, address, and phone number. Please explain what the necessary repairs are, and give us the date you need your product back. While we cannot make any guarantees on rush requests, we will do all we can to see that you have it back in time.</p>"
+          }
+        },
+        "accordion_fmamYN": {
+          "type": "accordion",
+          "settings": {
+            "title": "Will my JanSport product be repaired or replaced?",
+            "content": "<p>If your JanSport bag is eligible under the warranty and in need of repair, our first option will be to repair the item, free of charge. If the product is not repairable, or if the cost of repairing the item exceeds the cost of a new one, we will replace it. Many of our customers become very attached to their JanSport® pack and do not want us to exercise the option to replace. If your JanSport pack has special memories attached to it that make it irreplaceable to you, please let us know.</p>"
+          }
+        },
+        "accordion_Ar8xDn": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who pays for shipping on warranty claims?",
+            "content": "<p>As stated in our<a href=\"https://www.jansport.com/customer-service/warranty.html\">JanSport warranty policy</a>, the customer pays the shipping charges to send products to the Warranty Department. JanSport will absorb the return shipping charges. If you request that we return your product by UPS Overnight or 2nd Day Air, the additional shipping charges will be billed to you.</p>"
+          }
+        },
+        "accordion_4a7Gej": {
+          "type": "accordion",
+          "settings": {
+            "title": "How can I find out the status of my repair order?",
+            "content": "<p>Once we have logged in your warranty repair, we will email you a service action number to reference with questions. If you have further questions, please call the Warranty Department at 1-800-426-9227.</p>"
+          }
+        },
+        "accordion_6RQMdt": {
+          "type": "accordion",
+          "settings": {
+            "title": "Where should I send my JanSport product for repair if I do not live in the United States?",
+            "content": "<p>Please contact the point of purchase to find your local warranty policy including where to submit. JanSport US cannot accept international warranty requests.</p>"
+          }
+        },
+        "accordion_6kk3DU": {
+          "type": "accordion",
+          "settings": {
+            "title": "What are the JanSport Warranty Department hours of operation?",
+            "content": "<p>Monday through Friday 8-4:30 CT 1-800-426-9227</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_HGdVyP",
+        "accordion_QE4WiK",
+        "accordion_xPJ93f",
+        "accordion_DAjwVE",
+        "accordion_fmamYN",
+        "accordion_Ar8xDn",
+        "accordion_4a7Gej",
+        "accordion_6RQMdt",
+        "accordion_6kk3DU"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Warranty Info"
+      }
+    },
+    "section_accordions_KYbq8Q": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_mL394r": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I adjust my JanSport backpack?",
+            "content": "<p><span style=\"text-decoration:underline\">Adjusting Straps:</span> Adjust the shoulder straps of your backpack to ensure a comfortable fit; the easiest way to do this is pull down and back on the webbing at the bottom of the strap. The backpack should fit snugly against your back without sagging or pulling on your shoulders.</p><p><span style=\"text-decoration:underline\">Hip Belt:</span> If your pack features a hip belt, ensure it is fastened correctly to distribute the weight evenly across your hips and reduce any strain on your back and shoulders. Ideally the hip belt should sit centered on your iliac crest, these are the top of your hip bones that are the most prominent at your sides. Another way to ensure your hip belt is fitted correctly is to position it so that the buckle is over your belly button.</p><p><span style=\"text-decoration:underline\">Sternum Straps:</span> Some packs feature sternum straps. These are mounted around the center of the shoulder straps and go across your chest to help stabilize and distribute the load more evenly. After you get the shoulder strap length adjusted comfortably, position the sternum straps across your chest, ideally just below your clavicle but placement can be personal preference. Be careful not to overtighten or it could interfere with your breathing.</p>"
+          }
+        },
+        "accordion_Uc3bpC": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to Clean a JanSport Backpack?",
+            "content": "<p>Our backpacks are hand wash only. You can spot clean with a damp cloth or hand wash and then air or line dry. Please do not use detergent or bleach. Use our tips and tricks to learn how to clean a JanSport backpack.</p>"
+          }
+        },
+        "accordion_GJAeB7": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I pack my JanSport backpack?",
+            "content": "<p>Step 1: <span style=\"text-decoration:underline\">Choose the Right Backpack:</span> Choosing the right backpack is the first and most important step to ensure comfort and accessibility. The backpack should be proportional to your body size and have a padded back, and shoulder straps to distribute the weight evenly. We also recommend having multiple compartments in the backpack to help you organize your items better.</p><p>Step 2: <span style=\"text-decoration:underline\">Prioritize Essentials:</span> Make a list of the essential items you need to carry in your backpack. This may include books, notebooks, a laptop, a charger, a water bottle, snacks, and any other necessary materials. It's important to prioritize the most critical items and leave out the non-essential ones to avoid overloading your backpack.</p><p>Step 3: <span style=\"text-decoration:underline\">Organize Your Backpack</span>: Start organizing your backpack by placing the heaviest and most substantial items at the bottom and towards the back. This will help distribute the weight evenly across your back and prevent any strain on your shoulders or neck. Additionally, place the lighter items towards the top and front of your backpack.</p><p>Step 4: <span style=\"text-decoration:underline\">Use Compartments</span>: Utilize the compartments in your backpack to organize your items better. Put your books and larger items in the main compartment and use the smaller compartments for smaller items such as your phone, keys, and wallet. This way, you'll be able to access everything easily without having to dig through your backpack.</p><p>Step 5: <span style=\"text-decoration:underline\">Keep Your Backpack Clean</span>: It's essential to keep your backpack clean to maintain its durability and longevity. Ensure that you empty your backpack and clean it regularly to avoid any dirt or debris buildup. This will also help you stay organized and reduce the chances of losing any items.</p>"
+          }
+        },
+        "accordion_RctzBE": {
+          "type": "accordion",
+          "settings": {
+            "title": "When does JanSport restock?",
+            "content": "<p>JanSport does our best to restock products in a timely manner, however we cannot guarantee restocks.</p>"
+          }
+        },
+        "accordion_XQqCy7": {
+          "type": "accordion",
+          "settings": {
+            "title": "How much weight can a JanSport backpack hold?",
+            "content": "<p>Every JanSport backpack differs. In general, your backpack should hold between 10% to 20% of your body weight, with a maximum weight of 40lbs. For example, if you weigh 150 pounds, your backpack should not exceed 15 to 30 pounds.</p><p>It's important to note that carrying a backpack that is too heavy can cause discomfort, pain, or even injury, especially if you carry it for an extended period. To avoid any issues, make sure to pack your backpack wisely, prioritize the essential items, and distribute the weight evenly. Also, consider using a backpack with a hip belt to help distribute the weight more evenly and reduce any strain on your back and shoulders.</p><p>Overall, it's always better to avoid carrying a backpack that is too heavy for your body. Listen to your body and take breaks if needed and consider using a rolling backpack or asking for help if your backpack becomes too heavy to carry.</p>"
+          }
+        },
+        "accordion_C37KVd": {
+          "type": "accordion",
+          "settings": {
+            "title": "Does the JanSport warranty cover zippers?",
+            "content": "<p>For more information on qualifying JanSport repairs, please refer to the <a href=\"https://www.jansport.com/customer-service/warranty.html\">JanSport warranty</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_mL394r",
+        "accordion_Uc3bpC",
+        "accordion_GJAeB7",
+        "accordion_RctzBE",
+        "accordion_XQqCy7",
+        "accordion_C37KVd"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Product"
+      }
+    },
+    "section_accordions_KCyLbe": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_iBw8C6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Is JanSport hiring?",
+            "content": "<p>To browse through our current job opportunities, check out our <a href=\"https://vfc.wd5.myworkdayjobs.com/jansport_usca_careers/jobs\">Careers section</a>.</p>"
+          }
+        },
+        "accordion_PQzpDf": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I request a donation or sponsorship from JanSport?",
+            "content": "<p>Please e-mail the request to  <a href=\"mailto:jansportdonations@vfc.com\" title=\"mailto:jansportdonations@vfc.com\">jansportdonations@vfc.com</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_iBw8C6",
+        "accordion_PQzpDf"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Company Information"
+      }
+    },
+    "section_accordions_rKQJaL": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_A7nKWh": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is Klarna?",
+            "content": "<p>Klarna is a global payment solutions provider that works with retailers to provide customers the smoothest online shopping experience. Klarna is in over 170,000 online stores and has more than 70 million users globally.</p>"
+          }
+        },
+        "accordion_9Kg8iM": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I pay in 4 interest-free instalments?",
+            "content": "<p>Select 4 interest-free installments to split your purchase into four payments, charged every two weeks beginning at the time your order is confirmed (usually the shipping date). No bills are sent - you can simply sit back, relax, and enjoy your purchase.</p>"
+          }
+        },
+        "accordion_fEjdG6": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do automatic payments work?",
+            "content": "<p>Payments are collected bi-weekly from the debit or credit card you provide at the time of purchase. All scheduled payments are communicated to you by email and you can review your purchases by logging in at <a href=\"https://app.klarna.com/login\">https://app.klarna.com/login</a></p>"
+          }
+        },
+        "accordion_BXE4Cy": {
+          "type": "accordion",
+          "settings": {
+            "title": "Is there a fee to use 4 interest-free instalments?",
+            "content": "<p>There are no interest charges with Pay later in 4 installments, and no fees when you follow your automatic payment schedule.  A Late Fee of up to $7 may be charged if an automatic payment cannot be collected. Please refer to the  <a href=\"https://urldefense.proofpoint.com/v2/url?u=https-3A__cdn.klarna.com_1.0_shared_content_legal_terms_0_en-5Fus_checkout&d=DwMFaQ&c=7hkCqVsDKDTt8zdLsM8LWA&r=bWNyMWp42_-8JkUXKaLAXrDqorAt83vx9kms4yiLDXo&m=ED6zvHi65jcv_WrhUq6y1-6ut1b32G4OJNml6MqF2WM&s=CKvYgy91h4-g27Og-joizoo4QcKGbRg47D8ExUeeVqc&e=\">Klarna Terms of Service</a>  for more information.</p>"
+          }
+        },
+        "accordion_jh6hnM": {
+          "type": "accordion",
+          "settings": {
+            "title": "Will this affect my credit score?",
+            "content": "<p>When you pay in 4 interest-free installments, Klarna may perform a soft credit check. This type of check will not impact your credit score or show up as a hard inquiry on your credit report.</p>"
+          }
+        },
+        "accordion_8E6GkB": {
+          "type": "accordion",
+          "settings": {
+            "title": "How can I reach Klarna?",
+            "content": "<p>You can reach Klarna anytime at <a href=\"https://www.klarna.com/us/customer-service/\">https://www.klarna.com/us/customer-service/</a> or by downloading the Klarna App for 24/7 chat.</p>"
+          }
+        },
+        "accordion_BtVc8t": {
+          "type": "accordion",
+          "settings": {
+            "title": "Klarna Terms of Service",
+            "content": "<p>Click on <a href=\"https://urldefense.proofpoint.com/v2/url?u=https-3A__cdn.klarna.com_1.0_shared_content_legal_terms_0_en-5Fus_checkout&d=DwMFaQ&c=7hkCqVsDKDTt8zdLsM8LWA&r=bWNyMWp42_-8JkUXKaLAXrDqorAt83vx9kms4yiLDXo&m=ED6zvHi65jcv_WrhUq6y1-6ut1b32G4OJNml6MqF2WM&s=CKvYgy91h4-g27Og-joizoo4QcKGbRg47D8ExUeeVqc&e=\">Klarna Terms of Service</a> to see the entire Klarna Policy</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_A7nKWh",
+        "accordion_9Kg8iM",
+        "accordion_fEjdG6",
+        "accordion_BXE4Cy",
+        "accordion_jh6hnM",
+        "accordion_8E6GkB",
+        "accordion_BtVc8t"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Klarna"
+      }
+    },
+    "rte_content_HdhYhz": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_wewcn4": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "wanna talk?"
+          }
+        },
+        "text_link_4nDzfm": {
+          "type": "text_link",
+          "settings": {
+            "label": "Call Us",
+            "icon": "phone"
+          }
+        },
+        "text_link_3qXCjq": {
+          "type": "text_link",
+          "settings": {
+            "label": "Live Chat",
+            "icon": "chat"
+          }
+        },
+        "text_link_hx6bG7": {
+          "type": "text_link",
+          "settings": {
+            "label": "Email",
+            "icon": "email"
+          }
+        },
+        "text_link_8KNmjG": {
+          "type": "text_link",
+          "settings": {
+            "label": "International Help",
+            "icon": "map"
+          }
+        },
+        "body_phYdPp": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-small",
+            "text": "<p>JanSport Customer Service is here to help Monday through Friday 8am - 6:00pm (CT) (USA only).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wewcn4",
+        "text_link_4nDzfm",
+        "text_link_3qXCjq",
+        "text_link_hx6bG7",
+        "text_link_8KNmjG",
+        "body_phYdPp"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left"
+      }
+    }
+  },
+  "order": [
+    "customer_service_banner_bWm6XP",
+    "customer_service_menu_nYL3Vn",
+    "section_accordions_FtX3xn",
+    "section_accordions_WCM7JQ",
+    "section_accordions_NDT3YQ",
+    "section_accordions_KYbq8Q",
+    "section_accordions_KCyLbe",
+    "section_accordions_rKQJaL",
+    "rte_content_HdhYhz"
+  ]
+}

@@ -1,0 +1,29 @@
+{% comment %}
+  Accepts:
+  - title: {String} Button text
+  - content: {String} Dropdown content
+  - title_class: {String} Optional class for title
+  - active: {Boolean} Whether dropdown is open
+{% endcomment %}
+
+<filter-dropdown
+  data-component="filter-dropdown"
+  data-filter-dropdown
+  data-active="{{ active | default: false }}">
+  <button
+    class="filter-dropdown__header"
+    data-dropdown-toggle
+    aria-expanded="false"
+  >
+    <span class="body-medium'">
+      {{ filter.label }}
+    </span>
+    <span class="icon-s">
+      {% render 'icon-chevron-down' %}
+    </span>
+  </button>
+
+  <div class="filter-dropdown__content" data-dropdown-content>
+    {{ content }}
+  </div>
+</filter-dropdown>

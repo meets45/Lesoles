@@ -1,0 +1,32 @@
+filter-chips {
+  display: block;
+}
+
+[data-filter-chips][data-active="false"] {
+  display: none;
+}
+
+/* Filter chips */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-200);
+}
+
+.filter-chips--mobile.filter-chips--visible {
+  border-bottom: 1px solid var(--ui-elements-dividers-primary);
+}
+
+.filter-chips__clear-all {
+  background-color: transparent;
+  border: none;
+  font-family: var(--typography-styles-font-family-body);
+  font-size: var(--typography-styles-sizing-body-medium);
+  text-decoration-line: underline;
+  padding: 0 var(--spacing-200);
+
+  &:hover,
+  &:focus {
+    color: var(--typography-color-hover-active);
+  }
+}

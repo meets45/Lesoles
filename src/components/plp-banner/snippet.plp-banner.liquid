@@ -1,0 +1,37 @@
+<section
+  data-component="plp-banner"
+  class="plp-banner plp-banner--height-small"
+  aria-label="{{ 'collection.banner.label' | t }}"
+>
+  <div class="plp-banner__image plp-banner__image--desktop">
+    {% if collection.image %}
+      {{ collection.image | image_url: width: 2000 | image_tag:
+        sizes: '100vw',
+        loading: 'eager',
+        alt: collection.image.alt | default: collection.title
+      }}
+    {% endif %}
+  </div>
+
+  <div class="plp-banner__image plp-banner__image--mobile">
+    {% if collection.metafields.custom.mobile_banner_image %}
+      {{ collection.metafields.custom.mobile_banner_image | image_url: width: 800 | image_tag:
+        sizes: '100vw',
+        loading: 'eager',
+        alt: collection.title
+      }}
+    {% endif %}
+  </div>
+
+  <div
+    class="content-blocks content-blocks--left--desktop content-blocks--left--mobile"
+    aria-labelledby="collection-title"
+  >
+    {% if collection.metafields.custom.banner_eyebrow_text != blank %}
+      <p class="content-blocks__eyebrow subheading-xsmall">
+        {{ collection.metafields.custom.banner_eyebrow_text }}
+      </p>
+    {% endif %}
+    <h1 id="collection-title" class="content-blocks__heading display-medium">{{ collection.title }}</h1>
+  </div>
+</section>

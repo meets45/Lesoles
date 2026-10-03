@@ -1,0 +1,294 @@
+<div
+  data-component="hero-banner"
+  class="
+    hero-banner
+    {% case section.settings.image_height %}
+      {% when 'small' %}
+        hero-banner--height-small
+      {% when 'medium' %}
+        hero-banner--height-medium
+      {% when 'large' %}
+        hero-banner--height-large
+      {% when 'full' %}
+        hero-banner--height-full
+    {% endcase %}
+    {% if section.settings.layout_style == 'block' %}
+      hero-banner--layout-block
+    {% endif %}
+    {% case section.settings.layout_style %}
+      {% when 'block' %}
+        hero-banner--layout-block
+      {% when 'transparent' %}
+        hero-banner--layout-transparent
+    {% endcase %}
+  "
+
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  <div class="hero-banner__image hero-banner__image--desktop">
+    {%- unless section.settings.image_desktop == blank -%}
+      {{ section.settings.image_desktop | image_url: width: 2000 | image_tag: sizes: '100vw' }}
+    {%- endunless -%}
+  </div>
+
+  <div class="hero-banner__image hero-banner__image--mobile">
+    {% if section.settings.image_mobile %}
+      {{ section.settings.image_mobile | image_url: width: 1440 | image_tag: sizes: '100vw' }}
+    {% else %}
+      {%- unless section.settings.image_desktop == blank -%}
+        {{ section.settings.image_desktop | image_url: width: 1440 | image_tag: sizes: '100vw' }}
+      {%- endunless -%}
+    {% endif %}
+  </div>
+
+  <div
+    class="hero-banner__scrim"
+    role="presentation"
+    style="--scrim: rgba(0,0,0, {{ section.settings.scrim | times: 0.01 }})"
+  ></div>
+
+  <div class="hero-banner__content">
+    {% render 'content-blocks', section_settings: section.settings, blocks: section.blocks %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "Image Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_screen",
+      "label": "Full Width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Text Alignment - Desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Text Alignment - Mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout Style",
+      "options": [
+        {
+          "value": "transparent",
+          "label": "Transparent"
+        },
+        {
+          "value": "block",
+          "label": "Block"
+        }
+      ],
+      "default": "transparent"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "color_scheme_1",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "button" },
+        { "type": "button", "settings": { "variant": "secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

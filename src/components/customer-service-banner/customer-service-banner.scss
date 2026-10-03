@@ -1,0 +1,71 @@
+/*
+ * Customer Service Template
+ * - Layout structure for customer service pages
+ * - Responsive behavior for sidebar and content
+ */
+
+#MainContent {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto var(--spacing-1100);
+
+  /* Banner styling */
+  .customer-service__banner {
+    width: 100%;
+    order: 1;
+
+    & .hero-banner.customer-service-banner {
+      display: block;
+      height: 150px;
+
+      @media (min-width: 798px) {
+        height: 213px;
+      }
+    }
+  }
+
+  /* Sidebar styling */
+  .customer-service__sidebar {
+    width: 100%;
+    order: 2;
+    margin-top: var(--spacing-600);
+    margin-bottom: var(--spacing-600);
+
+    @media (min-width: 798px) {
+      width: 20%;
+      margin-top: var(--spacing-300);
+      margin-left: var(--screens-desktop-margin);
+      margin-bottom: 0;
+    }
+  }
+
+  /* Main content area */
+  .shopify-section:not(.customer-service__banner):not(.customer-service__sidebar) {
+    width: 100%;
+    order: 3;
+
+    @media (min-width: 798px) {
+      width: 70%;
+      margin-left: auto;
+      margin-right: var(--screens-desktop-margin);
+    }
+  }
+
+  .shopify-section:last-child .rte-content {
+    margin-bottom: 0;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 798px) {
+    .shopify-section:not(.customer-service__banner) {
+      margin-left: var(--screens-mobile-margin);
+      margin-right: var(--screens-mobile-margin);
+    }
+  }
+
+  /* Desktop adjustments */
+  @media (min-width: 798px) {
+    gap: var(--spacing-800);
+  }
+}

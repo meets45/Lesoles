@@ -1,0 +1,157 @@
+{% assign is_card = is_card | default: false %}
+
+<product-media-gallery
+  data-component="product-media-gallery"
+  data-product-id="{{ product.id }}"
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  data-mode="{{ mode | default: 'default' }}"
+  {% if is_card %}
+    data-is-card="true"
+  {% endif %}
+>
+  <div class="product-media-gallery {% if is_card%}product-media-gallery--card{% endif %}">
+    <div
+      class="product-media-gallery__inner"
+      data-variant-id="{{ variant.id }}"
+    >
+      <div class="swiper" data-swiper>
+        <div class="swiper-wrapper">
+          {% if product.selected_or_first_available_variant.metafields.attributes.media.value
+              != blank
+          %}
+            {% for media in product.selected_or_first_available_variant.metafields.attributes.media.value %}
+              <div class="swiper-slide" data-swiper-slide>
+                {% if media.media_type == 'image' %}
+                  <div class="product-media-gallery__image">
+                    {% if is_card %}
+                      <a
+                        href="{{ product_href }}"
+                        class="product-media-gallery__link"
+                        aria-label="{{ product.title }}"
+                      >
+                        {{
+                          media
+                          | image_url: width: 1200
+                          | image_tag:
+                            widths: '200,400,600,800,1200',
+                            sizes: '(min-width: 769px) 33vw, (min-width: 1400px) 600px, 100vw',
+                            class: 'swiper-image'
+                        }}
+                      </a>
+                    {% else %}
+                      <button type="button" class="product-media-gallery__button">
+                        {{
+                          media
+                          | image_url: width: 1200
+                          | image_tag:
+                            widths: '200,400,600,800,1200',
+                            sizes: '(min-width: 769px) 33vw, (min-width: 1400px) 600px, 100vw',
+                            class: 'swiper-image'
+                        }}
+                      </button>
+                    {% endif %}
+                  </div>
+                {% elsif media.media_type == 'video' %}
+                  <div class="product-media-gallery__video">
+                    <video
+                      controls
+                      playsinline
+                      preload="none"
+                      poster="{{ media | img_url: '1200x' }}"
+                    >
+                      <source src="{{ media.sources[1].url }}" type="video/mp4">
+                    </video>
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% else %}
+            {% for media in product.media %}
+              <div class="swiper-slide" data-swiper-slide>
+                <div class="product-media-gallery__image">
+                  {% if is_card %}
+                    <a href="{{ product_href }}" class="product-media-gallery__link">
+                      {% if media.media_type == 'image' %}
+                        {{
+                          media
+                          | image_url: width: 1200
+                          | image_tag:
+                            widths: '200,400,600,800,1200',
+                            sizes: '(min-width: 769px) 33vw, (min-width: 1400px) 600px, 100vw',
+                            class: 'swiper-image'
+                        }}
+                      {% endif %}
+                    </a>
+                  {% else %}
+                    <button type="button" class="product-media-gallery__button">
+                      {% if media.media_type == 'image' %}
+                        {{
+                          media
+                          | image_url: width: 1200
+                          | image_tag:
+                            widths: '200,400,600,800,1200',
+                            sizes: '(min-width: 769px) 33vw, (min-width: 1400px) 600px, 100vw',
+                            class: 'swiper-image'
+                        }}
+                      {% endif %}
+                    </button>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="swiper-pagination" data-swiper-pagination></div>
+      </div>
+    </div>
+  </div>
+
+  {% unless is_card %}
+    <div class="main-product__media-modal">
+      <button class="main-product__media-modal-close" type="button" aria-label="Close">
+        {% render 'icon-close' %}
+      </button>
+      <div class="main-product__media-modal-content">
+        <div class="main-product__media-modal-thumbnails">
+          {% if product.selected_or_first_available_variant.metafields.attributes.media.value
+              != blank
+          %}
+            {% for media in product.selected_or_first_available_variant.metafields.attributes.media.value %}
+              {% if media.media_type == 'image' %}
+                <button
+                  class="main-product__media-modal-thumbnail"
+                  data-modal-thumbnail
+                  data-image-url="{{ media | image_url: width: 1200 }}"
+                >
+                  {{ media | image_url: width: 120 | image_tag }}
+                </button>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {% for media in product.media %}
+              {% if media.media_type == 'image' %}
+                <button
+                  class="main-product__media-modal-thumbnail"
+                  data-modal-thumbnail
+                  data-image-url="{{ media | image_url: width: 1200 }}"
+                >
+                  {{ media | image_url: width: 120 | image_tag }}
+                </button>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="main-product__media-modal-image-container">
+          <img
+            class="main-product__media-modal-image"
+            src=""
+            alt="Product image"
+            loading="lazy"
+            width="1200"
+            height="1200"
+          >
+        </div>
+      </div>
+    </div>
+  {% endunless %}
+</product-media-gallery>

@@ -1,0 +1,49 @@
+.pdp-reviews .pdp-reviews__header {
+  text-align: center;
+}
+
+.pdp-reviews
+  .pdp-reviews__header
+  .pdp-reviews__header-rating
+  .product-reviews__header-rating-stars {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-400);
+}
+
+.pdp-reviews .pr-rating-stars {
+  display: inline-block;
+}
+.pdp-reviews .pdp-reviews__header-rating .pr-star-v4 {
+  border-radius: 3px;
+  height: 20px;
+  margin-left: 0;
+  margin-right: 2px;
+  padding: 3px;
+  width: 20px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.pdp-reviews__content {
+  margin-top: var(--spacing-600);
+}
+
+.pdp-reviews__content-inner {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.pdp-reviews__content-inner ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pdp-reviews__content-inner button,
+.pdp-reviews__content-inner a {
+  width: 100%;
+}

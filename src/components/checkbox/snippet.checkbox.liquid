@@ -1,0 +1,62 @@
+{% comment %}
+  -------------------------------------------
+  Checkbox
+  - id: {String} Input id and label for attribute
+  - name: {String} Input name
+  - value: {String} Input value
+  - label: {String} Label text
+  - state: {String} Input state (disabled, readonly)
+  - checked: {Boolean} Whether the input is checked
+  - data_attributes: {String} Additional data attributes
+  - count: {Number} Optional count of items with this value
+  -------------------------------------------
+{% endcomment %}
+
+<form-checkbox
+  data-component="checkbox"
+  class="checkbox-wrapper {% if name contains 'size' %}checkbox-wrapper__size{% endif %}"
+  {% if help_text %}
+    data-has-help
+  {% endif %}
+  {% if required %}
+    data-required
+  {% endif %}
+>
+  <label class="checkbox body-medium" for="{{ id }}">
+    <input
+      type="checkbox"
+      id="{{ id }}"
+      name="{{ name | default: id }}"
+      value="{{ value }}"
+      class="checkbox__input"
+      {% if state == 'disabled' %}
+        disabled
+      {% endif %}
+      {% if state == 'readonly' %}
+        readonly
+      {% endif %}
+      {% if required %}
+        required
+      {% endif %}
+      {% if checked %}
+        checked
+      {% endif %}
+      {{ data_attributes }}
+      data-checkbox-input
+    >
+    <span data-checkbox-label>
+      {{- label -}}
+      {% if required %}*{% endif %}
+      {% if count != blank %}
+        <span class="checkbox__count" data-count>({{ count }})</span>
+      {% endif %}
+    </span>
+    <div class="checkbox__indicator"></div>
+  </label>
+
+  {% if help_text %}
+    <span class="checkbox__help body-xsmall" data-checkbox-help>
+      {{ help_text }}
+    </span>
+  {% endif %}
+</form-checkbox>

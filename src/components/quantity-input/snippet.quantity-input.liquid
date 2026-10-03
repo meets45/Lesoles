@@ -1,0 +1,51 @@
+{% assign show_label = show_label | default: false %}
+{% assign value = quantity | default: 1 %}
+{% assign name = name | default: 'quantity' %}
+
+<quantity-input
+  data-component="quantity-input"
+  class="quantity-input">
+  <label
+    for="{{ id }}"
+    class="
+      quantity-input__label
+      {% if show_label == false %}
+      sr-only
+      {% endif %}
+    "
+  >
+    {{- 'products.product.quantity.label' | t -}}
+    :
+  </label>
+
+  <div class="quantity-input__input" data-quantity-input role="group">
+    <button
+      class="quantity-input__button"
+      data-quantity-decrement
+      type="button"
+      aria-controls="{{ id }}"
+    >
+      <span class="sr-only">{{ 'products.product.quantity.subtract' | t }}</span>
+      <div class="icon-m">
+        {% render 'icon-minus' %}
+      </div>
+    </button>
+    <input
+      type="number"
+      id="{{ id }}"
+      name="{{ name }}"
+      min="1"
+      value="{{ value }}"
+    >
+    <button
+      class="quantity-input__button"
+      data-quantity-increment
+      type="button"
+    >
+      <span class="sr-only">{{ 'products.product.quantity.add' | t }}</span>
+      <div class="icon-m">
+        {% render 'icon-plus' %}
+      </div>
+    </button>
+  </div>
+</quantity-input>

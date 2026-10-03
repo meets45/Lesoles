@@ -1,0 +1,3 @@
+# Remove the ".windows" extension for this file if you're on a PC
+
+script-shell=C:\\Program Files\\git\\bin\\bash.exe

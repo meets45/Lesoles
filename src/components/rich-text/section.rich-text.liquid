@@ -1,0 +1,227 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Section: Rich Text
+  - Displays content with customizable colour scheme and width options
+  - Supports eyebrow, heading, body text, text links and buttons
+------------------------------------------------------------------------------
+{% endcomment %}
+
+<div
+  data-component="rich-text"
+  class="
+    rich-text
+    rich-text__content
+    {% if section.settings.full_screen %}
+      rich-text--full-screen
+    {% endif %}
+  "
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  {% render 'section-bg-image', section_settings: section.settings %}
+
+  <div class="rich-text__inner">
+    {% render 'content-blocks',
+      blocks: section.blocks,
+      section_settings: section.settings
+    %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_screen",
+      "label": "Full Width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Text Alignment - Desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Text Alignment - Mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "color_scheme_1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich Text",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "button", "settings": { "variant": "secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

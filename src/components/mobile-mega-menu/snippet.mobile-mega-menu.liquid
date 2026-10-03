@@ -1,0 +1,91 @@
+{% liquid
+  assign mobile_mega_menu = section.settings.mobile_menu | default: linklists['main-menu']
+  assign utility_menu = section.settings.utility_menu
+%}
+
+<mobile-mega-menu
+  data-component="mobile-mega-menu"
+  style="display:none;"
+  data-mobile-mega-menu
+  data-active="false"
+  aria-modal="true"
+  role="dialog"
+  aria-hidden="true"
+>
+  <nav class="mobile-mega-menu">
+    <div class="mobile-mega-menu__content" data-mobile-mega-menu-content>
+      <ul class="mobile-mega-menu__list" role="menu">
+        {% for link in mobile_mega_menu.links %}
+          <li class="mobile-mega-menu__list-item heading-small" role="menuitem">
+            {% if link.links.size == 0 %}
+              <a href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            {% endif %}
+
+            {% if link.links.size > 0 %}
+              <button
+                class="mobile-mega-menu__list-item-button"
+                data-mobile-mega-menu-panel-trigger="mobile-{{ link.title | handle }}-1"
+                aria-expanded="false"
+                aria-label="{{ 'general.navigation.open_menu' | t: title: link.title }}"
+              >
+                <span>
+                  {{ link.title }}
+                </span>
+                <div class="icon-m">
+                  {% render 'icon-chevron-right' %}
+                </div>
+              </button>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      {% if mobile_mega_menu.tile_list.value != blank %}
+        <div class="mobile-mega-menu-panel__divider" role="presentation"></div>
+        <div class="mobile-mega-menu__tile-list-wrapper">
+          {% render 'mobile-mega-menu-tile-slider', list: mobile_mega_menu.tile_list.value %}
+        </div>
+      {% endif %}
+
+      {% if utility_menu != blank %}
+        <div class="mobile-mega-menu__utility-menu">
+          {% render 'mobile-mega-menu-utility-menu',
+            utility_items: utility_menu
+          %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% for link in mobile_mega_menu.links %}
+      {% if link.links.size > 0 %}
+        {% render 'mobile-mega-menu-panel',
+          parent: link,
+          utility_items: utility_menu,
+          level: 1
+        %}
+
+        {% if link.levels > 1 %}
+          {% for link_1 in link.links %}
+            {% render 'mobile-mega-menu-panel',
+              parent: link_1,
+              utility_items: utility_menu,
+              level: 2
+            %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  {% comment %} this is a load bearing div, required for focus trapping {% endcomment %}
+  <div class="mobile-mega-menu__close-wrapper">
+    <button class="mobile-mega-menu__close" data-close>
+      <span class="sr-only">{{ 'general.navigation.close' | t }}</span>
+      <div class="mobile-mega-menu__close-icon">
+        {% render 'icon-close' %}
+      </div>
+    </button>
+  </div>
+</mobile-mega-menu>

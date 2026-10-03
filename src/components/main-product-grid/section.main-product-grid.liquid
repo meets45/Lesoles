@@ -1,0 +1,35 @@
+{% if collection %}
+  {% if collection.image %}
+    {% render 'plp-banner', collection: collection %}
+  {% endif %}
+
+  {% paginate collection.products by 24 %}
+    {% assign products = collection.products %}
+    {% assign filters = collection.filters %}
+    {% render 'product-grid', products: products, filters: filters %}
+    {% render 'pagination', paginate: paginate, type: 'load-more' %}
+  {% endpaginate %}
+{% endif %}
+
+{% if search %}
+  {% paginate search.results by 24 %}
+    {% assign products = search.results | where: 'object_type', 'product' %}
+    {% assign filters = search.filters %}
+    {% render 'product-grid', products: products, filters: filters %}
+     {% render 'pagination', paginate: paginate, type: 'load-more' %}
+  {% endpaginate %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "metaobject",
+      "id": "search_drawer",
+      "label": "Search Drawer",
+      "metaobject_type": "search_drawer"
+    }
+  ]
+}
+{% endschema %}

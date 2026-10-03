@@ -1,0 +1,107 @@
+{% liquid
+  assign mega_menu_title_handle = mega_menu.title | handle
+  assign mega_menu_title_anchor = mega_menu_title_handle | prepend: '|||' | append: ':'
+  assign image_blocks = ''
+  assign mega_menu_type = ''
+  assign mega_menu_link_text = ''
+  assign mega_menu_link_url = ''
+  assign mega_menu_columns = ''
+
+  if blocks_data contains mega_menu_title_anchor
+    assign mega_menu_type = blocks_data | split: mega_menu_title_anchor | last | split: ':' | first
+    assign mega_menu_link_text = blocks_data | split: mega_menu_title_anchor | last | split: ':'
+    assign mega_menu_link_text = mega_menu_link_text[1]
+    assign mega_menu_link_url = blocks_data | split: mega_menu_title_anchor | last | split: ':'
+    assign mega_menu_link_url = mega_menu_link_url[2]
+    assign mega_menu_columns = blocks_data | split: mega_menu_title_anchor | last | split: '|||' | first | split: ':' | last | plus: 0
+  endif
+%}
+
+{% for block in layout_image_blocks %}
+  {% assign menu_id_handle = block.settings.menu_id | handle %}
+
+  {% unless menu_id_handle == mega_menu_title_handle %}
+    {% continue %}
+  {% endunless %}
+
+  {% capture image_blocks %}
+    {{ image_blocks }}
+
+    <li role="menuitem">
+      <div class="mega-menu-tile-list__card">
+        {% if block.settings.image != blank %}
+          <div class="mega-menu-tile-list__card-image">
+            {{
+              block.settings.image
+              | image_url: width: 556
+              | image_tag:
+                widths: '556,800',
+                sizes: '(max-width: 767px) 0vw, 556px',
+                loading: 'lazy'
+            }}
+          </div>
+        {% endif %}
+
+        <div class="mega-menu-tile-list__card-content">
+          {% if block.settings.heading != blank %}
+            <h4 class="mega-menu-tile-list__card-title">
+              {{ block.settings.heading }}
+            </h4>
+          {% endif %}
+
+          {% if block.settings.excerpt != blank %}
+            <div class="mega-menu-tile-list__card-description">
+              {{ block.settings.excerpt }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.link_text != blank and block.settings.link_url != blank %}
+            <div class="mega-menu-tile-list__card-link">
+              {% render 'text-link',
+                label: block.settings.link_text,
+                href: block.settings.link_url,
+                arrow: true
+              %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+  {% endcapture %}
+{% endfor %}
+
+<mega-menu
+  data-component="mega-menu"
+  id="mega-menu-{{ mega_menu.title | handle }}-{{ index }}"
+  data-mega-menu data-active="false">
+  <div class="mega-menu" role="menu">
+    <div class="mega-menu__columns">
+      {% for link in mega_menu.links %}
+        {% case mega_menu_type %}
+          {% when 'enhanced-list' %}
+            {% render 'mega-menu-enhanced-list', list: link, columns: mega_menu_columns %}
+          {% else %}
+            {% render 'mega-menu-list', list: link, columns: mega_menu_columns %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    {% if image_blocks != '' %}
+      <div data-component="mega-menu-tile-list" class="mega-menu-tile-list">
+        <ul class="mega-menu-tile-list__list" aria-describedby="{{ title_id }}">
+          {{ image_blocks }}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if mega_menu_link_text != '' and mega_menu_link_url != '' %}
+      <div class="mega-menu__bottom-link">
+        {% render 'text-link',
+          label: mega_menu_link_text,
+          href: mega_menu_link_url,
+          arrow: true
+        %}
+      </div>
+    {% endif %}
+  </div>
+</mega-menu>

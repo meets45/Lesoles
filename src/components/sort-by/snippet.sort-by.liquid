@@ -1,0 +1,20 @@
+{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+{% for option in collection.sort_options %}
+  {% liquid
+    assign radio_id = 'Sort-' | append: option.value | handleize
+    if option.value == sort_by
+      assign radio_checked = true
+    else
+      assign radio_checked = false
+    endif
+  %}
+
+  {% render 'radio',
+    id: radio_id,
+    name: 'sort_by',
+    value: option.value,
+    label: option.name,
+    checked: radio_checked,
+    data_attributes: 'data-filter-input'
+  %}
+{% endfor %}

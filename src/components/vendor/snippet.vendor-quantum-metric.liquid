@@ -1,0 +1,11 @@
+{% if request.host contains 'jansport.com' %}
+  <script
+    src="https://cdn.quantummetric.com/network-interceptor/quantum-jansportus.js"
+    crossorigin="anonymous"
+  ></script>
+{% elsif request.host contains 'jansportus-dev.myshopify.com' %}
+  <script
+    src="https://cdn.quantummetric.com/network-interceptor/quantum-jansportus-test.js"
+    crossorigin="anonymous"
+  ></script>
+{% endif %}

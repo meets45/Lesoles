@@ -1,0 +1,31 @@
+.search-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: var(--borders-radius-default);
+  border: var(--borders-width-standard) solid var(--borders-color-medium);
+  height: 44px;
+  /* this is a little wacky */
+  padding: 0 44px 0 calc(var(--spacing-200) + 24px + var(--spacing-200));
+}
+
+.search-input__icon {
+  position: absolute;
+  left: var(--spacing-200);
+  color: var(--icons-default);
+}
+
+.search-input__input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+.search-input__close {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  height: 44px;
+  width: 44px;
+}

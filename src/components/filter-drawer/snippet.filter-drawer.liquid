@@ -1,0 +1,70 @@
+{% comment %} Mobile drawer {% endcomment %}
+<filter-drawer
+  data-component="filter-drawer"
+  data-filter-drawer
+  data-active="false"
+  style="display: none;"
+  aria-modal="false"
+  role="dialog"
+>
+  <div class="filter-drawer">
+    <div class="filter-drawer__overlay"></div>
+    <div class="filter-drawer__drawer" data-content>
+      <div class="filter-drawer__header">
+        <h2 class="heading-medium">{{ 'products.facets.filter_and_sort' | t }}</h2>
+        <button
+          class="button-unstyled icon-m"
+          data-close
+          aria-label="{{ 'general.accessibility.close' | t }}"
+        >
+          {% render 'icon-close' %}
+        </button>
+      </div>
+
+      <div class="filter-drawer__content">
+        <div class="filter-drawer__chips">
+          {% render 'filter-chips' %}
+        </div>
+
+        <div class="filter-group filter-drawer__filters">
+          {% comment %} Sort By Accordion {% endcomment %}
+          {% capture sort_content %}
+            {% render 'sort-by' %}
+          {% endcapture %}
+
+          {% render 'accordion', title: 'Sort By', content: sort_content, active: false %}
+
+          {% comment %} Filter Accordions {% endcomment %}
+          {% for filter in collection.filters %}
+            {% capture content_for_filter %}
+              {% render 'filter-inputs', filter: filter, id:'filter-drawer' %}
+            {% endcapture %}
+
+            {% render 'accordion',
+              title: filter.label,
+              content: content_for_filter,
+              active: false
+            %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="filter-drawer__footer">
+        <button
+          class="button button--secondary"
+          type="button"
+          data-filter-reset
+        >
+          {{ 'products.facets.reset' | t }}
+        </button>
+        <button
+          class="button button--primary"
+          type="button"
+          data-filter-apply
+        >
+          {{ 'products.facets.apply' | t -}}
+          {%- if collection.products_count %} ({{ collection.products_count }}){% endif %}
+        </button>
+      </div>
+    </div>
+  </div>
+</filter-drawer>

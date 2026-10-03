@@ -1,0 +1,42 @@
+{% capture title_id %}mega-menu-tile-list-title-{{ list.system.handle }}{% endcapture %}
+
+<div data-component="mega-menu-tile-list" class="mega-menu-tile-list">
+  {% if list.title != blank %}
+    <h2 id="{{ title_id }}" class="heading-small">
+      {{ list.title }}
+    </h2>
+  {% endif %}
+
+  <ul class="mega-menu-tile-list__list" aria-describedby="{{ title_id }}">
+    {% for item in list.items.value %}
+      <li role="menuitem">
+        <div class="mega-menu-tile-list__card">
+          {% if item.image.value != blank %}
+            <div class="mega-menu-tile-list__card-image">
+              {{
+                item.image.value
+                | image_url: width: 400
+                | image_tag:
+                  widths: '400,600',
+                  sizes: '(max-width: 767px) 0vw, 400px',
+                  loading: 'lazy'
+              }}
+            </div>
+          {% endif %}
+          <div class="mega-menu-tile-list__card-content">
+            <div class="mega-menu-tile-list__card-description">
+              {{ item.description.value }}
+            </div>
+            <div class="mega-menu-tile-list__card-link">
+              {% render 'text-link',
+                label: item.link.value.text,
+                href: item.link.value.url,
+                arrow: true
+              %}
+            </div>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

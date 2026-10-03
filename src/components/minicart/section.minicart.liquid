@@ -1,0 +1,145 @@
+<site-minicart
+  data-component="minicart"
+  class="minicart"
+  data-section-id="{{ section.id }}"
+  aria-hidden="true"
+>
+  <div class="minicart__overlay" aria-hidden="true" data-close></div>
+  <div class="minicart__drawer">
+    <div class="minicart__content">
+      {% if cart.empty? == false %}
+        <div class="minicart__header">
+          <div class="minicart__header-inner">
+            <h2 class="minicart__title heading-medium">Your Cart</h2>
+            <button class="minicart__close" data-close aria-label="Close cart">
+              <div class="icon-l">
+                {% render 'icon-close' %}
+                <span class="sr-only">Close</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="minicart__items">
+          {% for line_item in cart.items %}
+            <div
+              class="minicart__item"
+              data-line-item
+              data-line-item-key="{{ line_item.key }}"
+            >
+              <div>
+                {% if line_item.image %}
+                  <div class="minicart__item-image">
+                    {{ line_item.image | image_url: width: 200 | image_tag }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="minicart__item-content">
+                <div class="minicart__item-title-container">
+                  <h3 class="minicart__item-title">{{ line_item.title }}</h3>
+                </div>
+                {% for option in line_item.options_with_values %}
+                  <div class="minicart__item-option">
+                    <span class="minicart__item-option-name">{{ option.name }}:</span>
+                    <span class="minicart__item-option-value">{{ option.value }}</span>
+                  </div>
+                {% endfor %}
+
+                <div class="minicart__item-edit-container">
+                  <button
+                    aria-label="Edit item"
+                    data-product-handle="{{ line_item.product.handle }}"
+                    data-variant-id="{{ line_item.variant_id }}"
+                    data-line-item-key="{{ line_item.key }}"
+                    data-variant-editor-open
+                  >
+                    Edit Selection
+                  </button>
+                </div>
+
+                <div class="minicart__item-quantity-container">
+                  <div class="minicart__item-quantity">
+                    {% capture quantity_id %}quantity-{{line_item.key}}{% endcapture %}
+                    {% render 'quantity-input',
+                      id: quantity_id,
+                      name: 'quantity',
+                      quantity: line_item.quantity
+                    %}
+                  </div>
+                  <div class="minicart__item-remove-container">
+                    <button
+                      class="minicart__item-remove"
+                      aria-label="Remove item"
+                      data-remove
+                      data-line-item-key="{{ line_item.key }}"
+                    >
+                      {% render 'icon-delete' %}
+                    </button>
+                  </div>
+                </div>
+                <div class="minicart__item-price minicart__item-price--mobile">
+                  {% render 'product-price', line_item: line_item, product: null, variant: null %}
+                </div>
+              </div>
+              <div class="minicart__item-price minicart__item-price--desktop">
+                {% render 'product-price', line_item: line_item, product: null, variant: null %}
+              </div>
+              {% if line_item.discount_allocations.size > 0 %}
+                <div class="minicart__discounts">
+                  {% for discount_allocation in line_item.discount_allocations %}
+                    {% render 'discount', discount_allocation: discount_allocation %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if line_item.variant.available == false %}
+                <div class="minicart__notifications">
+                  {% render 'notification',
+                    variant: 'error-alt',
+                    text: 'This item is not available'
+                  %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="minicart__footer">
+          <div class="minicart__subtotal">
+            <span class="minicart__subtotal-label heading-xsmall">Subtotal</span>
+            <span class="minicart__subtotal-amount heading-xsmall">
+              {{- cart.items_subtotal_price | money -}}
+            </span>
+          </div>
+
+          <div class="minicart__subtotal-note">
+            <p class="minicart__subtotal-note-label body-small">
+              <span>Shipping and taxes calculated at checkout.</span>
+            </p>
+          </div>
+
+          <div class="minicart__buttons">
+            {% comment %} <a href="/cart" class="button button--secondary">View Cart</a> {% endcomment %}
+            <a href="/checkout" class="button button--primary">Checkout</a>
+          </div>
+        </div>
+
+      {% else %}
+        <div class="minicart__empty">
+          <p class="minicart__empty-text heading-small">Your cart is empty</p>
+          <a href="/collections/all" class="button button--primary">Continue Shopping</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</site-minicart>
+
+{%- render "minicart-variant-editor" with cart -%}
+
+{% schema %}
+  {
+    "name": "Minicart",
+    "settings": []
+  }
+{% endschema %}

@@ -1,0 +1,100 @@
+
+<main-blog data-component="main-blog" class="main-blog">
+  {%- liquid
+    assign select_label = 'blogs.general.filter_by_tag' | t
+    assign select_placeholder = 'blogs.general.all_posts' | t
+
+    # Get available tags from metaobject
+    assign tag_colors = shop.metaobjects.blog_tag_colors.values
+    assign available_tags = ''
+
+    # Build array of available tags
+    for color in tag_colors
+      assign available_tags = available_tags | append: color.tag
+    endfor
+
+    # Get current tag from URL if it exists
+    assign current_tag = request.path | split: '/' | last
+
+    # First try to find an article tagged with 'featured_article'
+    assign featured_article = ''
+    for article in blog.articles
+      if article.tags contains 'featured_article'
+        assign featured_article = article
+        break
+      endif
+    endfor
+
+    # If no featured article found, use the most recent
+    if featured_article == blank and blog.articles.size > 0
+      assign featured_article = blog.articles.first
+    endif
+  -%}
+
+  {% if featured_article %}
+    <div class="blog-articles__featured">
+      {%- render 'article-card',
+        article: featured_article,
+        button: true,
+        featured: true,
+        heading_class: 'display-small'
+      -%}
+    </div>
+  {% endif %}
+
+  <div class="blog-articles__header">
+    <h3 class="heading-medium">
+      {{ 'blogs.general.blogs_titles' | t: blog: blog.title }}
+    </h3>
+    <div class="blog-articles__filtering">
+      <label for="blog-tag-filter" class="body-xsmall">{{ select_label }}</label>
+      <select
+        id="blog-tag-filter"
+        name="tag"
+        data-blog-filter
+        class="blog-articles__filter"
+      >
+        <option value="">{{ select_placeholder }}</option>
+        {% for color in tag_colors %}
+          {% assign color_tag_sanitized = color.tag | replace: ' ', '-' %}
+          <option
+            value="{{ color_tag_sanitized }}"
+            {% if current_tag == color_tag_sanitized %}selected{% endif %}
+          >
+            {{- color.tag -}}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  {%- paginate blog.articles by 10 -%}
+    <div class="blog-articles">
+      {%- for article in blog.articles -%}
+        {% unless article == featured_article %}
+          <div class="blog-articles__article article-card">
+            {%- render 'article-card',
+              article: article,
+            -%}
+          </div>
+        {% endunless %}
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate, type: 'page' -%}
+    {%- endif -%}
+  {%- endpaginate -%}
+</main-blog>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "settings": [
+
+  ],
+  "enabled_on": {
+    "templates": ["blog"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+<ul
+  data-component="mobile-mega-menu-utility-menu"
+  class="mobile-mega-menu-utility-menu" role="menu">
+  {% for item in utility_items.links %}
+    <li class="mobile-mega-menu-utility-menu__item" role="menuitem">
+      <a href="{{ item.url }}">
+        {% if item.icon != blank %}
+          <div class="icon-s">
+            {{ item.icon.value | image_url: width: 16 | image_tag }}
+          </div>
+        {% endif %}
+
+        <span>
+          {{ item.title }}
+        </span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

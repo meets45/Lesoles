@@ -1,0 +1,78 @@
+<div
+  data-component="content-card"
+  class="
+    content-card
+    content-card--{{ style }}
+    {% if image_ratio %}
+      content-card--ratio-{{ image_ratio | replace: ':', '-' }}
+    {% endif %}
+  "
+>
+  {% if link_url != blank and style == 'overlay' %}
+    <a href="{{ link_url }}" class="content-card__link-wrapper">
+  {% endif %}
+
+  {% if style == 'enhanced' %}
+    <div class="content-card__content">
+      {% if heading != blank %}
+        <h3 class="content-card__heading display-small">
+          {{ heading }}
+        </h3>
+      {% endif %}
+
+      {% if link_url != blank %}
+        <a href="{{ link_url }}" class="content-card__link">
+          <span class="text-link">{{ link_text }}</span>
+          <span class="content-card__link-icon">
+            {% render 'icon-arrow-right' %}
+          </span>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if image %}
+    <div class="content-card__image">
+      {{ image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+    </div>
+  {% endif %}
+
+  {% if style == 'overlay' %}
+    <div class="content-card__scrim"></div>
+  {% endif %}
+
+  {% if style != 'enhanced' %}
+    <div class="content-card__content">
+      {% if heading != blank %}
+        <h3 class="content-card__heading {% if style == 'standard' %}heading-medium{% else %}display-small{% endif %}">
+          {{ heading }}
+        </h3>
+      {% endif %}
+
+      {% if description != blank and style == 'standard' %}
+        <div class="content-card__description body-medium">
+          {{ description }}
+        </div>
+      {% endif %}
+
+      {% if link_url != blank and style == 'standard' %}
+        <a href="{{ link_url }}" class="content-card__link">
+          <span class="text-link">{{ link_text }}</span>
+          <span class="content-card__link-icon">
+            {% render 'icon-arrow-right' %}
+          </span>
+        </a>
+      {% endif %}
+
+      {% if style == 'overlay' %}
+        <div class="content-card__icon">
+          {% render 'icon-chevron-right' %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if link_url != blank and style == 'overlay' %}
+    </a>
+  {% endif %}
+</div>

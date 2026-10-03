@@ -1,0 +1,33 @@
+{% assign discontinued_products = discontinued_products | default: blank %}
+
+<div class="discontinued-slider">
+  <div class="discontinued-slider__content">
+    <discontinued-slider class="discontinued-slider__container">
+      <div class="discontinued-slider__inner">
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {% for product in discontinued_products %}
+              <div class="swiper-slide">
+                {% render 'product-card' with product as product %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <button class="swiper-button swiper-button--prev" data-swiper-prev>
+          {% render 'icon-chevron-left' %}
+        </button>
+        <button class="swiper-button swiper-button--next" data-swiper-next>
+          {% render 'icon-chevron-right' %}
+        </button>
+      </div>
+    </discontinued-slider>
+    <div class="discontinued-slider__scrollbar-wrapper">
+      <div class="swiper-scrollbar" data-scrollbar>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="discontinued-slider__cta">
+  <a href="#" class="button button--primary">Shop Similar Styles</a>
+</div>

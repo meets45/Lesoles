@@ -1,0 +1,41 @@
+<!-- OneTrust dataLayer Tracking -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  var originalDataLayerPush = window.dataLayer.push;
+
+  window.dataLayer.push = function (eventObj) {
+    if (
+      eventObj.event === 'OneTrustLoaded' ||
+      eventObj.event === 'OptanonLoaded' ||
+      eventObj.event === 'OneTrustGroupsUpdated'
+    ) {
+      Shopify.analytics.publish(eventObj.event, eventObj);
+    }
+
+    return originalDataLayerPush.apply(this, arguments);
+  };
+
+  if (window.dataLayer.length > 0) {
+    window.dataLayer.forEach(function (eventObj) {
+      if (
+        eventObj.event === 'OneTrustLoaded' ||
+        eventObj.event === 'OptanonLoaded' ||
+        eventObj.event === 'OneTrustGroupsUpdated'
+      ) {
+        Shopify.analytics.publish(eventObj.event, eventObj);
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href="#trustTool"]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+        OneTrust.ToggleInfoDisplay(); // Call the function
+      });
+    });
+  });
+</script>
+<!-- END OneTrust dataLayer Tracking -->

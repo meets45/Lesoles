@@ -1,0 +1,13 @@
+.footer-social-icons {
+  display: flex;
+  margin-top: var(--spacing-400);
+}
+
+.footer-social-icons > * + * {
+  margin-left: var(--spacing-600);
+}
+
+.footer-social-icons svg {
+  width: 20px;
+  height: 20px;
+}

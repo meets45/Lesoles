@@ -1,0 +1,315 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customer_service_banner_P7GnU8": {
+      "type": "customer-service-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_7.png",
+        "image_mobile": "shopify://shop_images/image_7.png"
+      }
+    },
+    "customer_service_menu_8fXCtB": {
+      "type": "customer-service-menu",
+      "blocks": {
+        "link_peikdW": {
+          "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "link_YG4nDD": {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        "link_QBAQT9": {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "link_6aUWGk": {
+          "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        "link_BEJFwq": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_UtQ3na": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        "link_4NcUzR": {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "link_btqC4t": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        "link_YRp4WA": {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      },
+      "block_order": [
+        "link_peikdW",
+        "link_YG4nDD",
+        "link_QBAQT9",
+        "link_6aUWGk",
+        "link_BEJFwq",
+        "link_UtQ3na",
+        "link_4NcUzR",
+        "link_btqC4t",
+        "link_YRp4WA"
+      ],
+      "settings": {
+        "header": "Customer Service"
+      }
+    },
+    "rte_content_zdd3Vx": {
+      "type": "rte-content",
+      "blocks": {
+        "button_6d3jXr": {
+          "type": "button",
+          "settings": {
+            "label": "Start a warranty claim",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_6d3jXr"
+      ],
+      "settings": {
+        "show_page_title": true,
+        "show_page_content": true,
+        "highlight_section": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left"
+      }
+    },
+    "section_accordions_EaURFq": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_8JyD7K": {
+          "type": "accordion",
+          "settings": {
+            "title": "WHO PAYS FOR SHIPPING COST?",
+            "content": "<p>All shipping to Warranty must be pre-paid and insured. JanSport will not be liable for lost in-bound packages. Products repaired or replaced under warranty will be shipped back to you free of charge. Please note that warranty turnaround time is currently approximately 3 weeks, but may vary by location. Our policy requires that products accepted for repair be clean. Charges will be assessed if cleaning is necessary or product may be returned to you if it cannot be adequately cleaned.</p>"
+          }
+        },
+        "accordion_Baptjb": {
+          "type": "accordion",
+          "settings": {
+            "title": "WHAT DOES MATERIAL, COMPONENT, AND WORKMANSHIP DEFECT MEAN?",
+            "content": "<p>Defects in materials, components, or workmanship are covered for the lifetime of the product. Materials and components refer to zippers, buckles and fabrics, etc. Workmanship refers to seams and construction. Damage due to normal wear and tear such as rips, tears, abrasion or UV degradation, misuse or neglect is not covered under our warranty policy (as further discussed below).</p>"
+          }
+        },
+        "accordion_Ld8Aqx": {
+          "type": "accordion",
+          "settings": {
+            "title": "WHAT IS SPECIFICALLY COVERED?",
+            "content": "<p>The products eligible for the lifetime warranty are covered to the original owner, for the lifetime of the product. Unfortunately, this does not mean your lifetime. Inevitably, well used (and well loved!) products will eventually wear out—fabrics will deteriorate, and colors will fade. Please use your judgment when assessing whether your product is likely to be covered under the warranty policy—it may simply be time to replace it.</p>"
+          }
+        },
+        "accordion_dqX7gL": {
+          "type": "accordion",
+          "settings": {
+            "title": "WHAT IS NOT COVERED?",
+            "content": "<p>Consequently, we will cover your product against defect and malfunction until such a time that it has been used and worn out beyond reasonable repair. This warranty does not cover normal wear and tear or the natural breakdown of colors and materials over extended time and use. “Normal wear and tear” generally mean the wear and tear caused by the expected use of the bag over an extended period of time. There are a few factors that determine the end of “product life”, including the following:<br/><br/>(1) Fabric—if the fabric is discolored, degraded, de-laminated or deteriorated, we may determine this to be end of “product life”’;<br/><br/>(2) If a major component fails due to extended use (such as a handle, wheel or zipper) we may deem the product to have met its full life cycle.</p>"
+          }
+        },
+        "accordion_CgkQ6d": {
+          "type": "accordion",
+          "settings": {
+            "title": "International Warranty (Outside United States and Canada)",
+            "content": "<p>For Warranty Questions outside of the United States or Canada please see the International JanSport section specific to your region for further information on who to contact, and they will help guide you on navigating your warranty claim within your region. If your region is not listed, you may also contact U.S. Warranty/ Customer Service Center at: <a href=\"mailto:%20jansport_warranty_service@vfc.com\">jansport_warranty_service@vfc.com</a> for further information.</p>"
+          }
+        },
+        "accordion_HTpcLK": {
+          "type": "accordion",
+          "settings": {
+            "title": "JanSport Warranty Center COVID-19 safety precautions:",
+            "content": "<p>From the onset of the COVID-10 pandemic, we’ve made protecting the health and well-being of our employees a top priority. In this rapidly changing environment, we will continue to frequently evaluate all our actions to ensure we are making the right decisions and always putting safety first. <br/><a href=\"https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.vfc.com%2Fnews%2Ffeature-story%2F71111%2Fvf-corporation-health-safety-team-shares-its-covid-19-prevention-best-practices&data=02%7C01%7CCody_Willets%40vfc.com%7C83faa0bc17c7454a9a7e08d879e1eb78%7C7d97f40069b44df4a009c9806ec70783%7C0%7C0%7C637393358509509264&sdata=MXUR7FPzkXJls6r3LQwgVpYjp7zvVKLFUvJhkvOSW%2Fg%3D&reserved=0\">Learn More </a>Safety and support measures include:</p><ul><li><br/>Pre-Entry Screening</li><li>Daily Temperature checks for all employees (morning and any time after returning to work after leaving facility)</li><li>Temperature Screening for Vendors and Contractors</li><li>Restructured Cleaning Procedures</li><li>Social Distancing</li><li>Cleaning/disinfecting the breakroom tables before and after each use</li><li>Provide employees with PPE’s upon arrival and as needed (face masks, gloves)</li><li>Hand sanitizer (placed at Kiosks, EE & Front door entrance, breakroom & work stations)</li><li>Antibacterial Wipes and disinfecting spray provided and used for disinfecting work stations and breakroom</li><li>Scattered breaks (10 employees per group)</li><li>Cleaning and sanitization of personal work areas 2-3X times a day</li><li>Electrostatic sprayer and disinfectant for deep cleaning in order (implementation to take place soon)</li></ul>"
+          }
+        },
+        "accordion_Q9BdXB": {
+          "type": "accordion",
+          "settings": {
+            "title": "OTHER WARRANTY LIMITATIONS AND EXCLUSIONS",
+            "content": "<p>This warranty is available in only the United States and Canada and applies only to JanSport equipment, purchased from authorized dealers. Only equipment, including back packs, pouches, and other bags, is covered. JanSport does not offer warranties for pins, patches, or related accessories. As an exception to the lifetime warranty, the warranty for JanSport-branded cooler bags is limited to five (5) years, rather than the lifetime of the product.<br/><br/>JanSport is not responsible for direct, incidental or consequential damages for any reason including damage resulting from a breach of a warranty or condition such as scratches in a device surface, lost data or lost or destroyed personal property. Some states do not allow the exclusion or limitation of incidental or consequential damages, so the above limitation or exclusion may not apply to you.<br/><br/>Some states do not allow limitations on how long an implied warranty lasts, so the above limitations on the duration of the warranty may not apply to you. This warranty gives you specific legal rights; you may have other rights, which vary from state to state.</p>"
+          }
+        },
+        "accordion_BHXHD4": {
+          "type": "accordion",
+          "settings": {
+            "title": "WHAT IF I SPILLED LIQUIDS INSIDE MY BAG?",
+            "content": "<p>Liquids spilled inside packs causing deterioration to fabric and/or materials will not be covered.</p>"
+          }
+        },
+        "accordion_cNgHH8": {
+          "type": "accordion",
+          "settings": {
+            "title": "HOW LONG DOES IT TAKE MY PACK TO BE REPAIRED THROUGH WARRANTY?",
+            "content": "<p>Our normal turnaround time is about four weeks, usually less. During peak seasonour turnaround time can stretch to six weeks. This includes the shipping time by ground to you. If this turnaround time becomes a problem for you, tell us. We can sometimes “rush” repairs through for special situations. Just let us know.</p>"
+          }
+        },
+        "accordion_D3MmRe": {
+          "type": "accordion",
+          "settings": {
+            "title": "CAN MY PRODUCT REPAIR BE RUSHED?",
+            "content": "<p>In special cases, if you need your repair back before the normal expected turnaround time, we can do a rush repair for you for no additional charge. To request a rush, please send your product to us by way of Federal Express, UPS2nd Day Air, or some other speedy means. Please write RUSH in big letters on the box. Include a note, asking us to do a rush repair, with your name, address, and phone number. Please explain what the necessary repairs are, andgive us the date you need your product back. We will do all we can to see that you have it back in time.</p>"
+          }
+        },
+        "accordion_i6gN6a": {
+          "type": "accordion",
+          "settings": {
+            "title": "HOW CAN I FIND OUT THE STATUS OF MY REPAIR ORDER?",
+            "content": "<p>Once we have logged in your warranty repair, we will email you a service action number to reference with questions. If you have further questions, please call the Warranty Department, at 1-800-426-9227.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_8JyD7K",
+        "accordion_Baptjb",
+        "accordion_Ld8Aqx",
+        "accordion_dqX7gL",
+        "accordion_CgkQ6d",
+        "accordion_HTpcLK",
+        "accordion_Q9BdXB",
+        "accordion_BHXHD4",
+        "accordion_cNgHH8",
+        "accordion_D3MmRe",
+        "accordion_i6gN6a"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Warranty FAQ"
+      }
+    },
+    "rte_content_Lwc4tg": {
+      "type": "rte-content",
+      "blocks": {
+        "body_dJwG8m": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": "<h3>Warranty Return Address</h3><h4>United States</h4><p>JanSport Warranty Service<br/>510 Crystal City Hwy. 83 South / Suite 9<br/>Uvalde, TX 78801<br/>*No drop offs accepted</p><p>1-800-426-9227<br/>Monday – Friday: 8am – 6pm (CT)<br/>jansport_warranty_service@vfc.com</p><h4>Canada</h4><p>For information on warranty claims in Canada, please check our Canadian website <a href=\"https://jansport.ca/en/lifetime-warranty/\" title=\"JanSport CA Warranty\">here</a>.<br/>Did you want to begin a return instead? Go To <a href=\"/pages/returns\" title=\"Returns\">Return Policy</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "body_dJwG8m"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left"
+      }
+    },
+    "rte_content_a9hxJb": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_Y8wg7R": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "wanna talk?"
+          }
+        },
+        "text_link_wc9mzQ": {
+          "type": "text_link",
+          "settings": {
+            "label": "Call Us",
+            "icon": "phone"
+          }
+        },
+        "text_link_RXzMDJ": {
+          "type": "text_link",
+          "settings": {
+            "label": "Live Chat",
+            "icon": "chat"
+          }
+        },
+        "text_link_dDQMdm": {
+          "type": "text_link",
+          "settings": {
+            "label": "Email Us",
+            "icon": "email"
+          }
+        },
+        "text_link_GqbLQi": {
+          "type": "text_link",
+          "settings": {
+            "label": "Int'l help",
+            "icon": "map"
+          }
+        },
+        "body_BbGKXE": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": "<p>JanSport Customer Service is here to help Monday through Friday 8am - 6pm (CT) (USA only).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Y8wg7R",
+        "text_link_wc9mzQ",
+        "text_link_RXzMDJ",
+        "text_link_dDQMdm",
+        "text_link_GqbLQi",
+        "body_BbGKXE"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    }
+  },
+  "order": [
+    "customer_service_banner_P7GnU8",
+    "customer_service_menu_8fXCtB",
+    "rte_content_zdd3Vx",
+    "section_accordions_EaURFq",
+    "rte_content_Lwc4tg",
+    "rte_content_a9hxJb"
+  ]
+}

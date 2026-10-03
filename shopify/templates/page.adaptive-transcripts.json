@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_section_fJXhqw": {
+      "type": "video-section",
+      "blocks": {
+        "subheading_zJUqyU": {
+          "type": "subheading",
+          "settings": {
+            "text": "{{ page.metafields.custom.adaptive_content_video_subtext.value }}"
+          }
+        },
+        "video_bbpUgw": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "{{ page.metafields.custom.adaptive_content_video_url.value }}",
+            "autoplay": false,
+            "loop": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_zJUqyU",
+        "video_bbpUgw"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_bqrWhX": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow_XzQraL": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "{{ page.metafields.custom.adaptive_content_richtext_title.value }}"
+          }
+        },
+        "body_ccgizT": {
+          "type": "body",
+          "settings": {
+            "text": "<p>{{ page.metafields.custom.adaptive_content_richtext_body | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_XzQraL",
+        "body_ccgizT"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "video_section_fJXhqw",
+    "rich_text_bqrWhX"
+  ]
+}

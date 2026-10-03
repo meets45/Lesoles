@@ -1,0 +1,166 @@
+.filter-container {
+  z-index: 9;
+  transition: top 0.3s ease-in-out;
+  transition: padding-top 0.3s;
+  margin: 0 var(--spacing-400);
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-gap: var(--spacing-700);
+    margin: 0;
+  }
+}
+
+.filter-container__sticky {
+  background: var(--page-default);
+  padding: var(--spacing-200) var(--screens-mobile-margin);
+
+  @media (max-width: 768px) {
+    gap: var(--spacing-700);
+  }
+
+  @media (min-width: 769px) {
+    padding: var(--spacing-400) 0 var(--spacing-600);
+    border-bottom: 1px solid var(--ui-elements-dividers-primary);
+  }
+}
+
+.filter-container__inner {
+  display: grid;
+  gap: var(--spacing-300);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-container__breadcrumbs {
+  display: flex;
+  padding: var(--spacing-400) var(--spacing-400) 0 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    justify-content: end;
+  }
+}
+
+.filter-container__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-group [data-accordion]:not(:first-child) .accordion__header {
+  border-top: 1px solid var(--ui-elements-dividers-primary);
+}
+
+.filter-container__mobile-trigger {
+  padding: var(--spacing-200);
+}
+
+.filter-container__filters {
+  display: grid;
+  grid-gap: var(--spacing-600);
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.filter-group .accordion__content {
+  display: flex;
+  gap: var(--spacing-600);
+  flex-direction: column;
+}
+
+/* Specific styling */
+.price-range {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+
+.price-range__field {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+}
+
+.price-range__field input {
+  width: 100px;
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .filter-container__count {
+    display: none;
+  }
+
+  /* Hide mobile elements */
+  .filter-container__mobile-trigger {
+    display: none;
+  }
+
+  .filter-container__title {
+    /* subheading/Small */
+    color: var(--typography-color-default);
+    font-family: var(--typography-styles-font-family-subheadings);
+    font-size: var(--typography-styles-sizing-subheading-small);
+    font-style: normal;
+    font-weight: var(--typography-styles-weight-subheading);
+    line-height: var(--typography-styles-line-height-subheading-small);
+    letter-spacing: var(--typography-styles-tracking-heading);
+  }
+}
+
+.filter-inputs__color-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  grid-gap: var(--spacing-elements-group-gap-interactive);
+  max-width: 400px;
+}
+
+.filter-container__dropdowns {
+  display: none;
+  justify-content: space-between;
+  gap: var(--spacing-50);
+  margin: 0;
+}
+
+.filter-container__dropdowns .filter-group {
+  position: relative;
+}
+
+.filter-container__dropdowns basic-accordion[data-active="true"] .accordion__content {
+  display: block;
+}
+
+.filter-container__dropdowns .filter-group--sort {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: var(--ui-elements-forms-border-radius);
+  border: var(--ui-elements-forms-border-default) solid var(--ui-elements-forms-default);
+  display: flex;
+  position: relative;
+  padding: 0 var(--spacing-200) 0 var(--spacing-300);
+  align-items: center;
+  gap: var(--spacing-200);
+  background-color: transparent;
+  cursor: pointer;
+  padding-right: var(--spacing-700);
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M27.1999 12.8002L16.5656 23.4345C16.2532 23.747 15.7466 23.747 15.4342 23.4345L4.7999 12.8002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat: no-repeat;
+  background-position: 98%;
+  background-size: 24px;
+}
+
+/* Adjust form layout */
+.filter-container__dropdowns .filter-group__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-600);
+  max-height: 300px;
+  overflow-y: auto;
+}

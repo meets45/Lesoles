@@ -1,0 +1,270 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Section: RTE Content
+  - Optional display of standarised RTE page content.
+  - Display of content blocks.
+------------------------------------------------------------------------------
+{% endcomment %}
+
+{%- liquid
+  if section.settings.highlight_section != false
+    assign class = 'rte-content__highlight '
+  endif
+
+  if section.settings.margin_top == true
+    assign class = class | append: 'rte-content__margin'
+  endif
+-%}
+
+<div data-component="rte-content" class="rte-content {{ class }}">
+  {% if section.settings.show_page_title %}
+    <h1 class="rte-content__title display-medium">
+      {{ page.title }}
+    </h1>
+  {% endif %}
+
+  {% if section.settings.show_page_content and page.content != blank %}
+    {% render 'formatting-helper', location: 'rte-section', content: page.content %}
+  {% endif %}
+
+  {% render 'content-blocks',
+    section_settings: section.settings,
+    blocks: section.blocks
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "RTE Content",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show Page Title",
+      "default": true,
+      "info": "Display the default page title. Use in the first block on the page."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_content",
+      "label": "Show Page Content",
+      "default": true,
+      "info": "Display the default page content above custom blocks"
+    },
+    {
+      "type": "checkbox",
+      "id": "margin_top",
+      "label": "Add margin to top of the section",
+      "default": false,
+      "info": "For use when this section is the first on a page."
+    },
+    {
+      "type": "checkbox",
+      "id": "highlight_section",
+      "label": "Show Highlight Background",
+      "default": false,
+      "info": "Display the content with a highlighted background"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Text Alignment - Desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Text Alignment - Mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            }
+          ],
+          "default": "h2",
+          "info": "This affects both SEO and styling"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "select",
+          "id": "paragraph_size",
+          "label": "Paragraph Size",
+          "options": [
+            {
+              "value": "body-medium",
+              "label": "Default"
+            },
+            {
+              "value": "body-small",
+              "label": "Small"
+            },
+          ],
+          "default": "body-medium",
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "chat",
+              "label": "Chat"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "email",
+              "label": "Email"
+            },
+            {
+              "value": "map",
+              "label": "Map"
+            }
+          ],
+          "default": "chat",
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "name": "Divider",
+      "settings": []
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RTE Content",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "button" },
+        { "type": "divider" }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"],
+  }
+}
+{% endschema %}

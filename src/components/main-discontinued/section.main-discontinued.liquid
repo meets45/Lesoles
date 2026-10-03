@@ -1,0 +1,91 @@
+<div class="main-product">
+  <div class="main-product__inner">
+    <div class="main-product__media">
+      {% render 'product-media-gallery' %}
+    </div>
+    <div class="main-product__content">
+      <div class="main-product__content-inner">
+        <div class="main-product__content-header">
+          <div class="main-product__content-header-actions">
+            <div class="main-product__content-header-discontinued-title">
+              <p class="body-light body-small">
+                {{ section.settings.discontinued_text_title }}
+              </p>
+            </div>
+            <div class="main-product__content-header-breadcrumbs">
+              {% render 'breadcrumbs' %}
+            </div>
+          </div>
+          <div class="main-product__content-header-discontinued-body body-medium">
+            {{ section.settings.discontinued_text | replace: '%%product_title%%', product.title }}
+          </div>
+        </div>
+        <div class="main-product__content-discontinued-products">
+          {% render 'discontinued-slider',
+            discontinued_products: section.settings.discontinued_products
+          %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-pdp-review-section class="main-product__accordions-reviews">
+    <div class="main-product__accordions-reviews-inner container">
+      <div class="main-product__accordions">
+        {% render 'pdp-accordions', blocks: section.blocks %}
+      </div>
+      <div class="main-product__reviews">
+        {% render 'pdp-reviews' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Product Discontinued",
+  "settings": [
+    {
+      "type": "text",
+      "id": "discontinued_text_title",
+      "label": "Discontinued Text Title",
+      "default": "Discontinued"
+    },
+    {
+      "type": "richtext",
+      "id": "discontinued_text",
+      "label": "Discontinued Text Body",
+      "default": "<p><strong>Sorry, the %%product_title%% is no longer available.</strong> Check out these other styles we think you'll like:</p>"
+    },
+    {
+      "type": "product_list",
+      "id": "discontinued_products",
+      "label": "Discontinued Products"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Product Discontinued"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+.mobile-mega-menu-utility-menu {
+  display: grid;
+  grid-gap: var(--spacing-elements-group-gap-interactive);
+  padding: 0;
+}
+
+.mobile-mega-menu-utility-menu__item {
+  list-style: none;
+  padding: var(--spacing-200) 0;
+
+  & a {
+    display: flex;
+    text-decoration: none;
+  }
+}

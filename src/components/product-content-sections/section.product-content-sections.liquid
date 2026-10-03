@@ -1,0 +1,203 @@
+{% comment %}
+  this is an amalgamation of multiple content sections,
+  because of some incompatabilities between content sections powered by metaobjects,
+  and theme sections. specifically, theme sections have fields like section.settings and section.blocks
+  that we can't re-create with metaobjects
+{% endcomment %}
+
+{% if product.metafields.custom.content_sections.value != blank %}
+  <product-content-sections data-component="product-content-sections">
+    <div class="product-content-sections">
+      {% for content_section in product.metafields.custom.content_sections.value %}
+        {% case content_section.system.type %}
+          {% when 'content_card_collection' %}
+            <div class="product-content-sections__card-collection">
+              {% if content_section.heading.value
+                or content_section.eyebrow.value
+                or content_section.subheading.value
+              %}
+                <div class="product-content-sections__card-collection-header">
+                  {% if content_section.eyebrow.value %}
+                    <div class="subheading-xsmall">
+                      {{ content_section.eyebrow.value }}
+                    </div>
+                  {% endif %}
+
+                  {% if content_section.heading.value %}
+                    <h2 class="product-content-sections__card-collection-heading display-medium">
+                      {{ content_section.heading.value }}
+                    </h2>
+                  {% endif %}
+
+                  {% if content_section.subheading.value %}
+                    <div class="subheading-small">
+                      {{ content_section.subheading.value }}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="product-content-sections__content-card-slider" data-card-slider>
+                <div class="swiper" data-swiper>
+                  <div class="swiper-wrapper">
+                    {%- for card in content_section.cards.value -%}
+                      {% assign description = card.description | metafield_tag %}
+                      <div class="swiper-slide">
+                        <div class="product-content-sections__content-card">
+                          {% render 'content-card',
+                            image: card.image.value,
+                            heading: card.heading.value,
+                            description: description,
+                            link_text: card.link_text.value,
+                            link_url: card.link_url.value,
+                            style: 'standard',
+                            image_ratio: '4:5'
+                          %}
+                        </div>
+                      </div>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% when 'video_section' %}
+            <div class="product-content-sections__video-section">
+              <div class="product-content-sections__video-aspect">
+                {{ content_section.embed_code.value }}
+              </div>
+            </div>
+          {% when 'image_banner' %}
+            <div
+              class="
+                product-content-sections__image-banner
+                {% if content_section.color_scheme.value == 'Light' %}
+                  product-content-sections__image-banner--light
+                {% endif %}
+                {% if content_section.color_scheme.value == 'Dark' %}
+                  product-content-sections__image-banner--dark
+                {% endif %}
+              "
+            >
+              {% if content_section.desktop_image.value %}
+                <div
+                  class="
+                    product-content-sections__image-banner-image
+                    product-content-sections__image-banner-image--desktop
+                  "
+                >
+                  {{
+                    content_section.desktop_image.value
+                    | image_url: width: 1400
+                    | image_tag: sizes: '100vw'
+                  }}
+                </div>
+              {% endif %}
+              {% if content_section.mobile_image.value %}
+                <div
+                  class="
+                    product-content-sections__image-banner-image
+                    product-content-sections__image-banner-image--mobile
+                  "
+                >
+                  {{
+                    content_section.mobile_image.value
+                    | image_url: width: 1400
+                    | image_tag: sizes: '100vw'
+                  }}
+                </div>
+              {% elsif content_section.desktop_image.value %}
+                <div
+                  class="
+                    product-content-sections__image-banner-image
+                    product-content-sections__image-banner-image--mobile
+                  "
+                >
+                  {{
+                    content_section.desktop_image.value
+                    | image_url: width: 1400
+                    | image_tag: sizes: '100vw'
+                  }}
+                </div>
+              {% endif %}
+              {% if content_section.heading.value
+                or content_section.eyebrow.value
+                or content_section.subheading.value
+                or content_section.cta_text.value
+              %}
+                <div class="product-content-sections__image-banner-scrim"></div>
+                <div class="product-content-sections__image-banner-content">
+                  {% if content_section.eyebrow.value %}
+                    <div class="subheading-xsmall">
+                      {{ content_section.eyebrow.value }}
+                    </div>
+                  {% endif %}
+
+                  {% if content_section.heading.value %}
+                    <h2 class="product-content-sections__card-collection-heading display-medium">
+                      {{ content_section.heading.value }}
+                    </h2>
+                  {% endif %}
+
+                  {% if content_section.subheading.value %}
+                    <div class="subheading-small">
+                      {{ content_section.subheading.value }}
+                    </div>
+                  {% endif %}
+
+                  {%- if content_section.cta_text.value -%}
+                    {% render 'button',
+                      as: 'a',
+                      label: content_section.cta_text.value,
+                      href: content_section.cta_link.value
+                    %}
+                  {%- endif -%}
+                </div>
+              {% endif %}
+            </div>
+
+          {% when 'image_card_collection' %}
+            <div class="product-content-sections__image-card-collection">
+              {% if content_section.heading.value != blank %}
+                <div class="product-content-sections__image-card-collection-header">
+                  <h2 class="display-medium">
+                    {{ content_section.heading.value }}
+                  </h2>
+                </div>
+              {% endif %}
+              <div class="product-content-sections__image-card-slider" data-card-slider>
+                <div class="swiper" data-swiper>
+                  <div
+                    class="swiper-wrapper"
+                  >
+                    {% for card in content_section.cards.value %}
+                      <div class="swiper-slide">
+                        <div class="product-content-sections__image-card">
+                          {% render 'image-card',
+                            image: card.image.value,
+                            width: 800,
+                            sizes: '(min-width: 769px) 33vw, (min-width: 1440px) 500px, 100vw',
+                            heading: card.heading.value
+                          %}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% when 'custom_html_section' %}
+            {{ content_section.html.value }}
+          {% else %}
+
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </product-content-sections>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Content Sections",
+  "settings": [],
+  "presets": [{ "name": "Product Content Sections" }]
+}
+{% endschema %}

@@ -1,0 +1,50 @@
+{%- capture class -%}
+  button
+  {%- case variant -%}
+  {%- when 'secondary' %}
+      button--secondary
+  {%- when 'tertiary' %}
+      button--tertiary
+  {%- endcase -%}
+  {% if tiny %}
+      button--tiny
+  {%- endif -%}
+{%- endcapture -%}
+
+{% assign as = as | default: 'button' %}
+{%- case as -%}
+{%- when 'a' -%}
+  <a
+    {% if id -%}
+      id="{{ id }}"
+    {% endif %}
+    class="{{- class -}}"
+    href="{{ href }}"
+    {{ attr }}
+  >
+    {% if icon %}
+      <div class="button__icon">
+        {{ icon }}
+      </div>
+    {% endif %}
+
+    {{ label }}
+  </a>
+
+{%- when 'button' -%}
+  <button
+    class="{{- class -}}"
+    type="{{ type | default: 'button' }}"
+    {% if disabled -%}
+      disabled
+    {%- endif %}
+    {{ attr }}
+  >
+    {% if icon %}
+      <div class="button__icon">
+        {{ icon }}
+      </div>
+    {% endif %}
+    {{ label }}
+  </button>
+{%- endcase -%}

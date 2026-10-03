@@ -1,0 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "promo-bar": {
+      "type": "promo-bar",
+      "blocks": {
+        "block_1": {
+          "type": "promo",
+          "settings": {
+            "text": "Promotion text goes here",
+            "link": "/collections/all"
+          }
+        },
+        "block_2": {
+          "type": "promo",
+          "settings": {
+            "text": "Promotion text goes here",
+            "link": ""
+          }
+        },
+        "block_3": {
+          "type": "promo",
+          "settings": {
+            "text": "Super long promotion text that will probably break to a second line",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3"
+      ],
+      "settings": {
+        "color_mode": "dark",
+        "autoplay": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "enable_sticky_header": true,
+        "enable_full_width": true,
+        "desktop_menu": "main-menu",
+        "mobile_menu": "main-menu",
+        "utility_menu": "customer-account-main-menu"
+      }
+    }
+  },
+  "order": [
+    "promo-bar",
+    "header"
+  ]
+}

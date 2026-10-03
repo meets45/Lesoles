@@ -1,0 +1,101 @@
+<minicart-variant-editor
+  data-component="minicart-variant-editor"
+  class="minicart-variant-editor"
+>
+  <div class="minicart-variant-editor__overlay" data-close></div>
+  <div class="minicart-variant-editor__drawer">
+    <div class="minicart-variant-editor__content">
+      <div class="minicart-variant-editor__header">
+        <h2 class="minicart-variant-editor__title heading-medium">Edit your Item</h2>
+        <button
+          class="minicart-variant-editor__close"
+          aria-label="Close editor"
+          data-close
+        >
+          <div class="icon-l">
+            {% render 'icon-close' %}
+            <span class="sr-only">Close</span>
+          </div>
+        </button>
+      </div>
+      {%- for line_item in cart.items -%}
+        {%- liquid
+          assign line_item_key = line_item.key
+          assign product = line_item.product
+          assign variant = line_item.variant
+        -%}
+
+        <variant-editor
+          style="display: none;"
+          data-line-item-key="{{ line_item_key }}"
+          data-product="{{ product | json | escape }}"
+        >
+          {% form 'product', product %}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ variant.id }}"
+            >
+            <div class="minicart-variant-editor__item">
+              <div class="minicart-variant-editor__item-image">
+                <variant-image>
+                  {% if variant.image %}
+                    <div class="minicart__item-image">
+                      {{
+                        variant.image
+                        | image_url: width: 200
+                        | image_tag
+                      }}
+                    </div>
+                  {% elsif product.featured_image %}
+                    <div class="minicart__item-image">
+                      {{ product.featured_image | image_url: width: 200 | image_tag }}
+                    </div>
+                  {% endif %}
+                </variant-image>
+              </div>
+              <div class="minicart-variant-editor__item-details">
+                <h3 class="minicart-variant-editor__item-title">{{ product.title }}</h3>
+                <div class="minicart-variant-editor__item-quantity">
+                  <div class="minicart__item-quantity-container">
+                    <div class="minicart__item-quantity">
+                      {% capture quantity_id %}quantity-edit-{{product.handle}}{% endcapture %}
+                      {% render 'quantity-input', id: quantity_id, name: 'quantity', quantity: 1 %}
+                    </div>
+                    <div class="minicart__item-remove-container">
+                      <button class="minicart__item-remove" aria-label="Remove item">
+                        {% render 'icon-delete' %}
+                      </button>
+                    </div>
+                  </div>
+                  <div class="minicart-variant-editor__item-price">
+                    {% render 'product-price',
+                      product: product,
+                      variant: variant.id
+                    %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="minicart-variant-editor__options">
+              {% render 'product-form-options', product: product, variant: variant %}
+            </div>
+            <div class="minicart-variant-editor__footer ">
+              <button type="submit" class="button button--primary minicart-variant-editor__update">
+                Update
+              </button>
+              <button
+                type="button"
+                class="button button--secondary minicart-variant-editor__cancel"
+                data-close
+              >
+                Cancel
+              </button>
+            </div>
+          {% endform %}
+        </variant-editor>
+      {%- endfor -%}
+    </div>
+  </div>
+</minicart-variant-editor>

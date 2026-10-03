@@ -1,0 +1,213 @@
+.header {
+  display: block;
+
+  @media (min-width: 769px) {
+    position: fixed;
+    /* --header-top-offset is set by promo-bar component */
+    top: var(--spacing-400);
+    right: var(--spacing-400);
+    left: var(--spacing-400);
+    z-index: 20;
+    height: 64px;
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+    transition:
+      transform,
+      0.3s ease-in-out;
+
+    &--full-width {
+      max-width: 100%;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+[data-is-top="true"] .header {
+  @media (min-width: 769px) {
+    /* --header-top-offset is set by promo-bar component */
+    top: calc(var(--header-top-offset) + var(--spacing-400));
+  }
+}
+
+[data-is-top="true"] .header--full-width {
+  @media (min-width: 769px) {
+    top: calc(var(--header-top-offset));
+  }
+}
+
+[data-is-top="false"][data-scrolled="false"] .header--full-width {
+  @media (min-width: 769px) {
+    top: 0;
+  }
+}
+
+[data-enable-sticky="false"] .header {
+  @media (min-width: 769px) {
+    position: absolute;
+    top: calc(var(--header-top-offset) + var(--spacing-400));
+  }
+}
+
+[data-enable-sticky="false"] .header--full-width {
+  @media (min-width: 769px) {
+    top: 0;
+  }
+}
+
+.header__bar {
+  background-color: var(--ui-elements-navigation-header-desktop-background);
+  border: var(--ui-elements-navigation-header-desktop-border-width);
+  box-shadow: var(--overlay);
+  padding: var(--spacing-200) var(--spacing-600);
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.header:not(.header--full-width) .header__bar {
+  border-radius: var(--borders-radius-default);
+}
+
+[data-scrolled="true"] .header {
+  @media (min-width: 769px) {
+    transform: translateY(-300px);
+  }
+}
+
+.header__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: var(--spacing-600);
+}
+
+.header__left,
+.header__center,
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  height: 44px;
+  width: auto;
+
+  & img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+.header__nav-list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  grid-gap: var(--spacing-400);
+  justify-content: start;
+  padding: 0;
+
+  & li {
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.header__nav-list-item {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  align-items: center;
+  grid-gap: var(--spacing-100);
+}
+
+.header__nav-list-item--overflow {
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.header__nav-overflow {
+  display: none;
+  @media (max-width: 1200px) {
+    display: grid;
+  }
+}
+
+.header__nav-link {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-bottom: 1px solid var(--typography-color-hover-active);
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.header__mega-menu-trigger {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* this uses some tricky keyboard only user styles */
+html:not([data-whatintent="keyboard"]) {
+  .header__mega-menu-trigger {
+    &:not(:focus) {
+      position: absolute;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  }
+}
+
+.header__action-list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  grid-gap: var(--spacing-200);
+  justify-content: start;
+  padding: 0;
+
+  & li {
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.icon-button__badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--color-napa-orange-300);
+  color: var(--color-essential-100);
+  font-size: var(--type-fontsize-25);
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

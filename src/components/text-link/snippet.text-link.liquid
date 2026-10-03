@@ -1,0 +1,25 @@
+<a
+  data-component="text-link"
+  class="
+    text-link
+    {%- if arrow %} text-link--arrow{%- endif -%}
+    {%- if icon %} text-link--icon{%- endif -%}
+  "
+  href="{{ href }}"
+  {{ attr }}
+>
+  {% if icon %}
+    <div class="text-link__icon">
+      {{ icon }}
+    </div>
+  {% endif %}
+  <div class="text-link__label">
+    {{ label }}
+  </div>
+
+  {% if arrow %}
+    <div class="text-link__icon">
+      {% render 'icon-arrow-right' %}
+    </div>
+  {% endif %}
+</a>

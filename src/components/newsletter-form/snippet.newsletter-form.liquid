@@ -1,0 +1,15 @@
+{% assign email_placeholder = section.settings.email_placeholder | default: 'Email' %}
+
+<form data-component="newsletter-form" class="newsletter-form">
+  {% render 'form-input',
+    type: 'email',
+    id: 'email',
+    name: 'contact[email]',
+    label: 'Email',
+    input_placeholder: email_placeholder,
+    required: true
+  %}
+  <button type="submit">
+    {% render 'icon-arrow-right' %}
+  </button>
+</form>

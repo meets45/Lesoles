@@ -1,0 +1,132 @@
+.signup-modal .modal__container {
+  max-width: 800px;
+  max-height: 600px;
+  padding: 0;
+  background: var(--surface-primary);
+  border-radius: var(--borders-radius-large);
+  overflow: hidden;
+  position: relative;
+}
+
+.signup-modal__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.signup-modal__image {
+  position: relative;
+}
+
+.signup-modal__image img,
+.signup-modal__image .placeholder-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signup-modal__text-content {
+  padding: var(--spacing-800);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-modal__subtitle {
+  margin-top: var(--spacing-100);
+  margin-bottom: var(--spacing-400);
+}
+
+.signup-modal__form {
+  margin-top: var(--spacing-600);
+}
+
+.signup-modal__form-field {
+  margin-bottom: var(--spacing-400);
+}
+
+.signup-modal__input {
+  padding: 10px;
+  border: 1px solid var(--borders-color-medium);
+  border-radius: var(--borders-radius-default);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signup-modal__input::placeholder {
+  color: var(--typography-color-default);
+}
+
+.signup-modal__buttons {
+  display: grid;
+  gap: var(--spacing-300);
+  margin-bottom: var(--spacing-400);
+}
+
+.signup-modal__submit,
+.signup-modal__close {
+  width: 100%;
+  justify-content: center;
+}
+
+.signup-modal__terms {
+  margin: 0;
+}
+
+.signup-modal .modal__close {
+  position: absolute;
+  top: var(--spacing-400);
+  right: var(--spacing-400);
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.signup-modal .modal__close svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .signup-modal .modal__container {
+    max-width: 100%;
+    height: 100vh;
+    max-height: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .signup-modal__content {
+    grid-template-columns: 1fr;
+    min-height: min-content;
+  }
+
+  .signup-modal__image {
+    height: 30vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .signup-modal .modal__close {
+    position: fixed;
+    top: var(--spacing-400);
+    right: var(--spacing-400);
+    z-index: 3;
+  }
+
+  .signup-modal__text-content {
+    padding: var(--spacing-600);
+    position: relative;
+    z-index: 0;
+    background: var(--surface-primary);
+  }
+}

@@ -1,0 +1,24 @@
+.carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: var(--background-blur);
+  height: 44px;
+  width: 44px;
+  border-radius: var(--borders-radius-full);
+
+  &.carousel-arrow--light {
+    background-color: var(--ui-elements-controls-light);
+  }
+
+  &.carousel-arrow--dark {
+    background-color: var(--ui-elements-controls-dark);
+  }
+
+  &:hover {
+    @media (min-width: 768px) {
+      background-color: var(--ui-elements-controls-light);
+    }
+  }
+}

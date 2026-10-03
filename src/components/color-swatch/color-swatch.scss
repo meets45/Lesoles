@@ -1,0 +1,139 @@
+.color-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100);
+  /* this is different from design to account for long colour names */
+  /* this currently breaks pdp and the other colour swatches. Let's update when we start displaying them */
+  /* width: 76px; */
+}
+
+.color-swatch__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-100);
+  cursor: pointer;
+}
+
+.color-swatch__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.color-swatch__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.color-swatch__count {
+  color: var(--typography-color-secondary);
+}
+
+/* Disabled state */
+input:disabled + .color-swatch__label {
+  cursor: not-allowed;
+}
+
+input:disabled + .color-swatch__label .color-swatch__circle {
+  opacity: 0.4;
+}
+
+input:disabled + .color-swatch__label .color-swatch__circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 200%;
+  height: 1px;
+  background: var(--borders-color-medium);
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+input:disabled + .color-swatch__dot {
+  opacity: 0.4;
+}
+
+.color-swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.color-swatch.default .color-swatch__dot {
+  background-color: #777;
+  background-image: url("https://cdn.shopify.com/s/files/1/0731/6353/8646/files/8883a46e7a2a60ee806e73a8052191be.png?v=1738452721");
+  background-position: center;
+  background-repeat: repeat;
+}
+
+.color-swatch__dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--color-neutrals-400);
+  display: inline-block;
+  position: relative;
+  display: block;
+  transition: box-shadow 0.2s ease;
+
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+/* Focus state */
+.color-swatch__dot:focus {
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px var(--color-neutrals-100);
+}
+
+/* Optional: Hover effect */
+.color-swatch:hover .color-swatch__dot {
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px black;
+}
+
+/* Selected state */
+input:checked + .color-swatch__dot {
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px black;
+}
+
+[data-option-wrapper].is-active .color-swatch__dot {
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px black;
+}
+
+.color-swatch.disabled {
+  opacity: 0.5;
+}
+
+.color-swatch.disabled .color-swatch__dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  height: 1px;
+  background-color: var(--typography-color-disabled);
+  transform: translateY(-50%) rotate(-45deg) scale(1.5);
+  z-index: 100;
+}

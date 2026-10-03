@@ -1,0 +1,50 @@
+<style>
+  #accordion-samples {
+    display: grid;
+    grid-gap: 24px;
+    padding: 24px;
+  }
+
+  @media (min-width: 481px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+</style>
+
+<div
+  id="accordion-samples"
+  style=""
+>
+  <div>
+    {% capture accordion_content %}
+          Bacon ipsum dolor amet pig tongue sirloin meatball pork belly chicken, brisket bacon. Flank pork loin rump short loin corned beef...
+        {% endcapture %}
+    {% render 'accordion', title: 'Accordion Title', content: accordion_content %}
+    {% render 'accordion', title: 'Accordion Title', content: accordion_content %}
+  </div>
+
+  <div>
+    {% capture accordion_content_preview %}
+      Bacon ipsum dolor amet pig tongue sirloin meatball pork belly chicken, brisket bacon. Flank pork loin rump short loin corned beef...
+    {% endcapture %}
+    {% capture accordion_content_full %}
+      Bacon ipsum dolor amet pig tongue sirloin meatball pork belly chicken, brisket bacon. Flank pork loin rump short loin corned beef sausage meatloaf strip steak. Landjaeger cow pork belly bresaola short loin tongue. Beef shank picanha sausage shankle short ribs ham shoulder doner landjaeger cow jowl kielbasa.
+    {% endcapture %}
+
+    {% render 'accordion',
+      title: 'Accordion Title',
+      content: accordion_content_full,
+      content_preview: accordion_content_preview,
+      preview: true,
+      preview_show_label: 'View More',
+      preview_hide_label: 'See Less'
+    %}
+    {% render 'accordion',
+      title: 'Accordion Title',
+      content: accordion_content_full,
+      content_preview: accordion_content_preview,
+      preview: true,
+      preview_show_label: 'View More',
+      preview_hide_label: 'See Less'
+    %}
+  </div>
+</div>

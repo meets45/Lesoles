@@ -1,0 +1,28 @@
+.feature-list {
+  display: grid;
+  grid-gap: var(--components-accordions-content-gap);
+  padding: 0;
+}
+
+.feature-list-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: var(--spacing-200);
+  list-style: none;
+}
+
+.feature-list-item__image {
+  position: relative;
+  height: 72px;
+  width: 72px;
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}

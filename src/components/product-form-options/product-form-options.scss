@@ -1,0 +1,102 @@
+.main-product .product-form-options {
+  margin-top: var(--spacing-300);
+}
+
+.product-form-options fieldset {
+  margin-top: var(--spacing-600);
+  padding: 0;
+  border: none;
+  margin-bottom: var(--spacing-600);
+}
+
+.product-form-options fieldset:first-child {
+  margin-top: 0;
+}
+
+.product-form-options fieldset legend {
+  font-weight: 700;
+  padding: 0;
+}
+
+.product-form-options__current-value {
+  font-weight: 400;
+}
+
+.product-form-options__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-200);
+  padding: var(--spacing-200) 0 0;
+}
+
+/* Color swatch specific spacing */
+.product-form-options__list--color {
+  gap: var(--spacing-600) var(--spacing-600);
+  max-width: 100% !important;
+}
+
+/* standard options */
+
+.product-form-options__list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-form-options__list-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: 40px;
+  background: #ffff;
+  border: 1px solid #000;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .product-form-options__list {
+    flex-wrap: wrap;
+    max-width: calc(100vw - 32px);
+    padding: 10px 0;
+  }
+
+  .product-form-options__list--color {
+    flex-wrap: wrap;
+    max-width: calc(100vw - 32px);
+    padding: 10px 5px;
+  }
+}
+
+.product-form-options__radio-label {
+  display: block;
+  cursor: pointer;
+}
+
+.product-form-options__radio-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  padding: 0 var(--spacing-400);
+  background: var(--color-background);
+  border: 1px solid var(--color-neutrals-400);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+input[type="radio"]:checked + .product-form-options__radio-button,
+input[type="radio"]:focus-visible + .product-form-options__radio-button {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-width: 2px;
+  border-color: var(--color-primary);
+}
+
+input[type="radio"]:focus-visible + .product-form-options__radio-button {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

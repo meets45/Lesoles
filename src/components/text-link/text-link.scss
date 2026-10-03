@@ -1,0 +1,51 @@
+/* these styles overlap with the basic link styles, but include some extra padding and animations */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-50);
+  color: var(--typography-color-default);
+  text-decoration: none;
+  padding: var(--spacing-50) 0px;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: var(--typography-color-hover-active);
+  }
+}
+
+.text-link__label {
+  transition: transform 0.3s ease-out;
+}
+
+.text-link__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  & svg {
+    height: 100%;
+    width: 100%;
+    scale: 80%;
+    transition: scale 0.3s ease-out;
+  }
+}
+
+.text-link--arrow {
+  &:hover,
+  &:focus {
+    & .text-link__icon svg {
+      scale: 100%;
+    }
+  }
+}
+
+.text-link--icon {
+  &:hover,
+  &:focus {
+    & .text-link__label {
+      transform: translateX(-2px);
+    }
+  }
+}

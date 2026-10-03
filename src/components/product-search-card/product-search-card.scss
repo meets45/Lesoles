@@ -1,0 +1,32 @@
+.product-search-card {
+  position: relative;
+}
+
+.product-search-card__image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.product-search-card__content {
+  display: grid;
+  grid-gap: var(--spacing-400);
+  padding: var(--spacing-400) var(--spacing-200);
+}
+
+.product-search-card__title {
+  & a {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,163 @@
+<simple-blog-collection data-component="simple-blog-collection">
+  <div
+    class="simple-blog-collection"
+    style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+  >
+
+    {% render 'section-bg-image', section_settings: section.settings %}
+
+    <div class="simple-blog-collection__inner">
+      <div class="simple-blog-collection__header">
+       {% render 'content-blocks',
+          section_settings: section.settings,
+          blocks: section.blocks,
+          layout: 'default'
+        %}
+      </div>
+
+      <div class="simple-blog-collection__slider" data-slider>
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {% for article in section.settings.blog.articles
+              limit: section.settings.posts_to_show
+            %}
+              <div
+                class="swiper-slide"
+                style="{% render 'color-scheme-vars', color_scheme: section.settings.card_color_scheme %}"
+              >
+                {% render 'article-card', article: article %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="simple-blog-collection__scrollbar" data-scrollbar>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="simple-blog-collection__footer">
+        <a href="{{ section.settings.blog.url }}" class="button button--secondary">
+          {{ 'blogs.general.view_all' | t }}
+        </a>
+      </div>
+    </div>
+  </div>
+</simple-blog-collection>
+
+{% schema %}
+{
+  "name": "Simple Blog Collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Image",
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Optional"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Content Settings",
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog",
+      "info": "Select which blog to display"
+    },
+    {
+      "type": "range",
+      "id": "posts_to_show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Posts to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Section color scheme",
+      "default": "color_scheme_1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "Card color scheme",
+      "default": "color_scheme_1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Blog Collection",
+      "settings": {
+        "posts_to_show": 4
+      },
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+.mega-menu-tile-list {
+  background-color: var(--ui-elements-navigation-mega-menu-highlight);
+  padding: var(--spacing-800) var(--spacing-700);
+  grid-column: 4;
+
+  & > * + * {
+    margin-top: var(--spacing-600);
+  }
+
+  & li {
+    list-style: none;
+  }
+}
+
+.mega-menu-tile-list__list {
+  display: grid;
+  grid-gap: var(--spacing-800);
+  padding: 0;
+}
+
+.mega-menu-tile-list__card {
+  display: grid;
+  grid-gap: var(--spacing-400);
+}
+
+.mega-menu-tile-list__card-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 67%;
+
+  & img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

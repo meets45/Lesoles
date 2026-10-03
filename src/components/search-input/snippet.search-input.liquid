@@ -1,0 +1,21 @@
+<search-input data-component="search-input">
+  <div class="search-input">
+    <div class="search-input__icon">
+      <div class="icon-m">
+        {% render 'icon-search' %}
+      </div>
+    </div>
+    <input id="{{ id }}" class="search-input__input" name="q"
+    ><label for="{{ id }}" class="sr-only">{{ 'general.search.label' | t }}</label>
+    <button
+      class="search-input__close"
+      type="button"
+      data-search-input-clear
+    >
+      <span class="sr-only">{{ 'general.search.clear' | t }}</span>
+      <div class="icon-m">
+        {% render 'icon-clear' %}
+      </div>
+    </button>
+  </div>
+</search-input>

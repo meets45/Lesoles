@@ -1,0 +1,263 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_aNFFmf": {
+      "type": "hero-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/LTL_Page_Header_Image_edited.webp",
+        "scrim": 0,
+        "image_height": "large",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_g8GndU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_ncWADH": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "More than 7 out of 10 young people say mental health issues are weighing them down"
+          }
+        },
+        "body_VUrQUJ": {
+          "type": "body",
+          "settings": {
+            "text": "<p>That’s why JanSport created #LightenTheLoad, a new mission to connect you with tools and resources to support your mental health.</p>"
+          }
+        },
+        "text_link_TPay9p": {
+          "type": "text_link",
+          "settings": {
+            "label": "PEWRESEARCH.ORG",
+            "url": "https://PEWRESEARCH.ORG"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ncWADH",
+        "body_VUrQUJ",
+        "text_link_TPay9p"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "interactive_link_list_Y8HhJc": {
+      "type": "interactive-link-list",
+      "blocks": {
+        "link_kYJrMJ": {
+          "type": "link",
+          "settings": {
+            "text": "NSP Hotline",
+            "url": "https://suicidepreventionlifeline.org/"
+          }
+        },
+        "link_RNefbK": {
+          "type": "link",
+          "settings": {
+            "text": "Active Minds",
+            "url": "https://www.activeminds.org/"
+          }
+        },
+        "link_VPrbgz": {
+          "type": "link",
+          "settings": {
+            "text": "Do Something",
+            "url": "https://www.dosomething.org/us"
+          }
+        },
+        "link_z37WNm": {
+          "type": "link",
+          "settings": {
+            "text": "LGBTQIA+ Support",
+            "url": "https://www.thetrevorproject.org/"
+          }
+        },
+        "link_rbNyAa": {
+          "type": "link",
+          "settings": {
+            "text": "Inclusive Therapists",
+            "url": "https://www.inclusivetherapists.com/"
+          }
+        },
+        "link_n6RxRd": {
+          "type": "link",
+          "settings": {
+            "text": "Nami",
+            "url": "https://www.nami.org/Home"
+          }
+        }
+      },
+      "block_order": [
+        "link_kYJrMJ",
+        "link_RNefbK",
+        "link_VPrbgz",
+        "link_z37WNm",
+        "link_rbNyAa",
+        "link_n6RxRd"
+      ],
+      "settings": {
+        "eyebrow_text": "#lightentheload Resources",
+        "image_desktop": "shopify://shop_images/close-up-of-a-pine-tree-showing-texture-of-pine-needles.jpg",
+        "image_mobile": "shopify://shop_images/close-up-of-a-pine-tree-showing-texture-of-pine-needles.jpg",
+        "link_placement": "right",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_7ACdbx": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_xmyD3H": {
+          "type": "heading",
+          "settings": {
+            "text": "Jansport & teenager therapy"
+          }
+        },
+        "body_QbLfHG": {
+          "type": "body",
+          "settings": {
+            "text": "<p>For May, JanSport is partnering with Teenager Therapy in an ongoing mission to support mental wellness and to #LightenTheLoad. Join us and Teenager Therapy for four Comfort Calls and POV Sessions each Sunday in May to chat live on the topics of self-esteem, isolation, compassion fatigue and family. Head to our Instagram for streaming and call details.</p>"
+          }
+        },
+        "text_link_c9j77X": {
+          "type": "text_link",
+          "settings": {
+            "label": "Listen now",
+            "url": "https://podcasts.apple.com/us/podcast/teenager-therapy/id1437039510"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xmyD3H",
+        "body_QbLfHG",
+        "text_link_c9j77X"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/LTL-teenage-therapy-group-photo-v2.webp",
+        "image_placement": "left",
+        "image_height": "medium",
+        "image_width": "medium",
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "image_gallery_jDwTGV": {
+      "type": "image-gallery",
+      "blocks": {
+        "heading_cLgNGJ": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "Strength through sharing"
+          }
+        },
+        "subheading_FyYQt6": {
+          "type": "subheading",
+          "settings": {
+            "text": "We asked young people across the country to talk a bit about their mental health journeys and how they #LightenTheLoad by sharing. Here are their unscripted stories."
+          }
+        },
+        "image_dKh8fr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/close-up-of-a-pine-tree-showing-texture-of-pine-needles.jpg"
+          }
+        },
+        "image_pWKbAE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/close-up-of-a-pine-tree-showing-texture-of-pine-needles.jpg"
+          }
+        },
+        "image_LK6Tnn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/close-up-of-a-pine-tree-showing-texture-of-pine-needles.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cLgNGJ",
+        "subheading_FyYQt6",
+        "image_dKh8fr",
+        "image_pWKbAE",
+        "image_LK6Tnn"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_raL9Ym": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow_gBRFmT": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_8THxrA": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Heading Text"
+          }
+        },
+        "body_zxDm8m": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_KxKFcx": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_gBRFmT",
+        "heading_8THxrA",
+        "body_zxDm8m",
+        "button_KxKFcx"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": "scheme-2"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_aNFFmf",
+    "rich_text_g8GndU",
+    "interactive_link_list_Y8HhJc",
+    "image_with_text_7ACdbx",
+    "image_gallery_jDwTGV",
+    "rich_text_raL9Ym"
+  ]
+}

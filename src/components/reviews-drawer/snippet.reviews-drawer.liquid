@@ -1,0 +1,64 @@
+<reviews-drawer data-component="reviews-drawer">
+  {% capture drawer_content %}
+    <button
+        class="drawer__close"
+        aria-label="Close drawer"
+        data-drawer-close
+      >
+    {% render 'icon-close' %}
+    </button>
+    <div class="reviews-drawer__tabs" role="tablist">
+      <button
+        class="reviews-drawer__tab reviews-drawer__tab--active"
+        data-tab="reviews"
+        role="tab"
+        aria-selected="true"
+        aria-controls="reviews-tab-content"
+        id="reviews-tab"
+      >
+        {{ 'products.product.reviews.header' | t }}
+      </button>
+      <button
+        class="reviews-drawer__tab"
+        data-tab="questions"
+        role="tab"
+        aria-selected="false"
+        aria-controls="questions-tab-content"
+        id="questions-tab"
+      >
+        {{ 'products.product.reviews.q_and_a' | t }}
+      </button>
+    </div>
+
+    <div class="reviews-drawer__content">
+      <div
+        class="reviews-drawer__tab-content reviews-drawer__tab-content--active"
+        data-tab-content="reviews"
+        role="tabpanel"
+        aria-labelledby="reviews-tab"
+        id="reviews-tab-content"
+      >
+        <div id="pr-reviewdisplay"></div>
+      </div>
+
+      <div
+        class="reviews-drawer__tab-content"
+        data-tab-content="questions"
+        role="tabpanel"
+        aria-labelledby="questions-tab"
+        id="questions-tab-content"
+        hidden
+      >
+        <div id="pr-questiondisplay"></div>
+      </div>
+    </div>
+  {% endcapture %}
+
+  {% render 'drawer',
+    id: 'reviews-drawer',
+    title: '',
+    content: drawer_content,
+    hidden: true,
+    additional_class: 'reviews-drawer'
+  %}
+</reviews-drawer>

@@ -1,0 +1,39 @@
+{% assign variant = variant | default: product.selected_or_first_available_variant %}
+
+<pdp-sticky-atc
+  data-component="pdp-sticky-atc"
+  class="pdp-sticky-atc--hidden"
+  data-current-variant-id="{{ current_variant.id }}">
+  <div class="pdp-sticky-atc__inner container">
+    <div class="pdp-sticky-atc__content">
+      <div class="pdp-sticky-atc__content-left">
+        {% if variant.image %}
+          <div class="pdp-sticky-atc__image">
+            {{ variant.image | image_url: width: 200 | image_tag: loading: 'lazy' }}
+          </div>
+        {% endif %}
+        <h2 class="pdp-sticky-atc__title display-small">{{ product.title }}</h2>
+      </div>
+      <div class="pdp-sticky-atc__content-right">
+        {% render 'product-price', product: product, variant: variant %}
+        <button
+          type="submit"
+          class="pdp-sticky-atc__button button"
+          {% if variant.available == false %}
+            disabled
+          {% endif %}
+          {% if product.tags contains 'bluecore-notify-me' %}
+            data-bluecore-notify-me
+          {% endif %}
+        >
+          {% if variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </button>
+      </div>
+    </div>
+  </div>
+</pdp-sticky-atc>
+

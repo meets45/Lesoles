@@ -1,0 +1,156 @@
+<div
+  data-component="user-testimonial"
+  class="user-testimonial"
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  {% render 'section-bg-image', section_settings: section.settings %}
+
+  <div class="user-testimonial__inner">
+    <div class="user-testimonial__image">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+    <div class="user-testimonial__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="user-testimonial__eyebrow subheading-xsmall">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.quote != blank %}
+        <blockquote class="user-testimonial__quote display-small">
+          "{{ section.settings.quote }}"
+        </blockquote>
+      {% endif %}
+
+      <div class="user-testimonial__author">
+        {% if section.settings.author_name != blank %}
+          <p class="user-testimonial__author-name body-medium">
+            {{ section.settings.author_name }}
+          </p>
+          {%- if section.settings.author_location != blank
+            or section.settings.author_title != blank
+          %}
+            â€¢
+          {% endif -%}
+        {% endif %}
+
+        {% if section.settings.author_location != blank or section.settings.author_title != blank %}
+          <p class="user-testimonial__author-details body-medium">
+            {{ section.settings.author_location -}}
+            {%- if section.settings.author_location != blank
+              and section.settings.author_title != blank
+            %}
+              â€¢
+            {% endif -%}
+            {{- section.settings.author_title }}
+          </p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.link_url != blank and section.settings.link_text != blank %}
+        <a href="{{ section.settings.link_url }}" class="user-testimonial__link text-link">
+          {{ section.settings.link_text }}
+          <span class="text-link__icon">{% render 'icon-arrow-right' %}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "User Testimonial",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Image",
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Optional"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Testimonial Content",
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author Name"
+    },
+    {
+      "type": "text",
+      "id": "author_location",
+      "label": "Author Location"
+    },
+    {
+      "type": "text",
+      "id": "author_title",
+      "label": "Author Title"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "color_scheme_1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "User Testimonial",
+      "settings": {
+        "quote": "A quote goes here. Lorem ipsum dolor sit amet consectetur reprehenderit in voluptate velit esse cillum.",
+        "author_name": "Kate Zessel",
+        "author_location": "Whistler B.C.",
+        "author_title": "Artist",
+        "link_text": "Text Link"
+      }
+    }
+  ]
+}
+{% endschema %}

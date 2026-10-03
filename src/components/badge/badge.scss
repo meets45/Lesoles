@@ -1,0 +1,8 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ui-elements-badges-400);
+  border-radius: var(--borders-radius-full);
+  padding: var(--spacing-25) var(--spacing-200);
+  font-weight: 700;
+}

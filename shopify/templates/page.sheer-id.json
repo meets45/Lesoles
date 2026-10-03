@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_d3j9ck": {
+      "type": "hero-banner",
+      "blocks": {
+        "heading_64LhcJ": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Student and teacher discount"
+          }
+        }
+      },
+      "block_order": [
+        "heading_64LhcJ"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/sheer-id-banner.webp",
+        "image_mobile": "shopify://shop_images/sheer-id-banner_MOBILE.webp",
+        "scrim": 20,
+        "image_height": "small",
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "transparent",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "section_sheer_id_qgCibC": {
+      "type": "sheer-id",
+      "blocks": {
+        "heading_iJrwfx": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "Student and Teachers Discount"
+          }
+        },
+        "eyebrow_YAeLkp": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Enjoy 15% off"
+          }
+        },
+        "body_i7m3xg": {
+          "type": "body",
+          "settings": {
+            "text": "<p>We are proud to offer all eligible college and university students and teachers in the U.S. up to a 15% discount on JanSport.</p><p>Unlock the JanSport student and teacher discount and carry your books, supplies, gym gear and more to school in a durable JanSport backpack or bag.</p>"
+          }
+        },
+        "button_Fxtd8W": {
+          "type": "button",
+          "settings": {
+            "label": "Student",
+            "variant": "primary"
+          }
+        },
+        "button_3W3A9j": {
+          "type": "button",
+          "settings": {
+            "label": "Teacher",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iJrwfx",
+        "eyebrow_YAeLkp",
+        "body_i7m3xg",
+        "button_Fxtd8W",
+        "button_3W3A9j"
+      ],
+      "settings": {
+        "text_alignment_mobile": "center",
+        "text_alignment_desktop": "center",
+        "color_scheme": ""
+      }
+    },
+    "section_accordions_piEzfk": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_cy7tKb": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I verify my eligibility for a student/teacher discount?",
+            "content": "<p>Verify your eligibility for a student/teacher discount by clicking the link above. After successful verification through SheerID, you'll receive a single-use promo code you can use for a 15% discount on purchases at JanSport.com</p>"
+          }
+        },
+        "accordion_iWYKbU": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I use the discount more than once?",
+            "content": "<p>Yes, you can use the student/teacher discount once every 30 days, but you’ll need a new promo code each time. Once you’re ready to shop again, you can re-verify your status to receive a new promo code.</p>"
+          }
+        },
+        "accordion_6LcNrc": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is SheerID?",
+            "content": "<p>Our verification process is powered by SheerID. You will not be contacted by SheerID outside of any requests for additional information in regard to your student/teacher verification status. You can learn more about the SheerID student/teacher verification process <a href=\"https://verify.sheerid.com/us-student-faq/\" target=\"_blank\" title=\"SheerID\">here</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_cy7tKb",
+        "accordion_iWYKbU",
+        "accordion_6LcNrc"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_d3j9ck",
+    "section_sheer_id_qgCibC",
+    "section_accordions_piEzfk"
+  ]
+}

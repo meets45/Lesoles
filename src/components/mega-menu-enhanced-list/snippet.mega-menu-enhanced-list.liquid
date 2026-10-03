@@ -1,0 +1,59 @@
+{% capture title_id %}mega-menu-enhanced-list-title-{{ list.title | handle }}{% endcapture %}
+
+<div
+  data-component="mega-menu-enhanced-list"
+  class="
+      mega-menu-enhanced-list
+    {% case columns %}
+      {% when 1 %}
+        mega-menu-enhanced-list--single
+      {% when 2 %}
+        mega-menu-enhanced-list--double
+      {% when 3 %}
+        mega-menu-enhanced-list--triple
+      {% when 4 %}
+        mega-menu-enhanced-list--full
+      {% else %}
+        mega-menu-enhanced-list--double
+    {% endcase %}
+  "
+>
+  {% if list.links.size > 0 %}
+    <h2 id="{{ title_id }}" class="heading-small">
+      {{ list.title }}
+    </h2>
+
+    <ul class="mega-menu-enhanced-list__list" aria-describedby="{{ title_id }}">
+      {% for item in list.links %}
+        <li role="menuitem">
+          <div class="mega-menu-enhanced-list__card">
+            <div>
+              {% assign image = item.object.metafields.custom.navigation_image.value | default: item.object.images[0] %}
+
+              {% if image %}
+                <div class="mega-menu-enhanced-list__card-image">
+                  {{ image | image_url: width: 192 | image_tag: loading: 'lazy' }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="mega-menu-enhanced-list__card-content">
+              <a
+                class="mega-menu-enhanced-list__card-title body-medium click-fill"
+                href="{{ item.url }}"
+              >
+                {{ item.title }}
+              </a>
+
+              {% if item.object.metafields.custom.navigation_short_description %}
+                <div class="mega-menu-enhanced-list__card-description body-medium">
+                  {{ item.object.metafields.custom.navigation_short_description }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

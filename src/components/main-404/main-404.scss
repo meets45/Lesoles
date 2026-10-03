@@ -1,0 +1,14 @@
+.main-404 {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-1300) var(--screens-mobile-margin) var(--spacing-1300);
+
+  @media (min-width: 769px) {
+    padding: 192px var(--screens-desktop-margin) var(--spacing-1300);
+  }
+
+  & > * + * {
+    margin-top: var(--spacing-200);
+  }
+}

@@ -1,0 +1,136 @@
+<div
+  data-component="interactive-link-list"
+  class="
+    interactive-link-list
+    {% if section.settings.link_placement == 'left' %}
+      interactive-link-list--links-left
+    {% else %}
+      interactive-link-list--links-right
+    {% endif %}
+  "
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  <div class="interactive-link-list__inner">
+    <div class="interactive-link-list__image-container">
+      {% if section.settings.image_mobile %}
+        <div class="interactive-link-list__image interactive-link-list__image--mobile">
+          {{ section.settings.image_mobile | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.image_desktop %}
+        <div class="interactive-link-list__image interactive-link-list__image--desktop">
+          {{ section.settings.image_desktop | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="interactive-link-list__links">
+      <div class="interactive-link-list__links-inner">
+        {% if section.settings.eyebrow_text != blank %}
+          <h2 class="interactive-link-list__eyebrow subheading-small">
+            {{ section.settings.eyebrow_text }}
+          </h2>
+        {% endif %}
+
+        <ul>
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'link' %}
+                <li>
+                  <a
+                    href="{{ block.settings.url }}"
+                    class="
+                      heading-large
+                      interactive-link-list__link
+                    "
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.text }}
+                  </a>
+                </li>
+            {% endcase %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Interactive Link List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "Eyebrow Text (Optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "select",
+      "id": "link_placement",
+      "label": "Link Placement",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "color_scheme_1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text",
+          "default": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Interactive Link List",
+      "blocks": [
+        { "type": "link" },
+        { "type": "link" },
+        { "type": "link" },
+        { "type": "link" },
+        { "type": "link" },
+        { "type": "link" }
+      ]
+    }
+  ]
+}
+{% endschema %}

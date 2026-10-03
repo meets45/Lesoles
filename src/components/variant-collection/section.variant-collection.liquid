@@ -1,0 +1,66 @@
+{% comment %}
+ Variant Collection
+ - Display a list of variants from a page metafield.
+ - Option to use multiple lists to display sections of variants on pages.
+{% endcomment %}
+
+<div data-component="variant-collection" class="variant-collection">
+  {% if section.settings.show_title == true %}
+    <div class="variant-collection__header">
+      <h2 class="display-medium">{{ page.title }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="variant-collection__grid">
+    {% assign variants_list = page.metafields.custom.product_variants_lists.value[section.settings.variant_list].value %}
+    {% for variant in variants_list %}
+      {% if variant != blank %}
+        <div
+          class="variant-collection__item"
+        >
+          {% render 'product-card',
+            product: variant.product,
+            variant: variant,
+            is_variant: true
+          %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Variant Collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show page title",
+      "default": true,
+      "info": "For use when no hero banner is displayed."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page title",
+      "default": "{{ page.title }}"
+    },
+    {
+      "type": "text",
+      "id": "variant_list",
+      "label": "Variant list name",
+      "default": "list_1",
+      "info": "Add the list name this section should show. e.g. list_1, list_2, list_3 etc"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Variant Collection"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"]
+  }
+}
+{% endschema %}

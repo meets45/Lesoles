@@ -1,0 +1,21 @@
+.plp-seo-text {
+  margin: 0 var(--screens-mobile-gutter) var(--spacing-700);
+
+  @media (min-width: 768px) {
+    margin: 0 auto var(--spacing-800);
+    max-width: 1280px;
+    padding: var(--screens-desktop-gutter);
+  }
+
+  p {
+    margin-bottom: var(--spacing-400);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-200);
+  }
+
+  .rte-text-link {
+    color: var(--typography-color-brand);
+  }
+}

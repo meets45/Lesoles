@@ -1,0 +1,40 @@
+<pdp-reviews data-component="pdp-reviews" class="pdp-reviews">
+  <div class="pdp-reviews__header">
+    <h2 class="display-large"><span class="pdp-reviews__header-rating-value">0</span>/5</h2>
+    <div class="pdp-reviews__header-rating">
+      <div class="product-reviews__header-rating-stars">
+        <div aria-hidden="true" class="pr-rating-stars">
+          <div class="pr-star-v4 pr-star-v4-0-filled"></div>
+          <div class="pr-star-v4 pr-star-v4-0-filled"></div>
+          <div class="pr-star-v4 pr-star-v4-0-filled"></div>
+          <div class="pr-star-v4 pr-star-v4-0-filled"></div>
+          <div class="pr-star-v4 pr-star-v4-0-filled"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pdp-reviews__content">
+    <div class="pdp-reviews__content-inner">
+      <ul>
+        <li>
+          {% render 'button',
+            label: 'Read <span class="pdp-reviews__content-inner-reviews-count">0 Reviews</span>',
+            variant: 'primary',
+            attr: 'data-drawer-trigger="reviews-drawer"'
+          %}
+        </li>
+        <li>
+          {% render 'button',
+            label: 'Write a Review',
+            variant: 'secondary',
+            as: 'a',
+            href: '/pages/write-a-review?pr_page_id={{ product.id }}&pr_merchant_id=1529981111&pr_merchant_group_id=1568971717',
+            attr: 'target="_blank"'
+          %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</pdp-reviews>
+
+{% render 'reviews-drawer' %}

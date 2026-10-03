@@ -1,0 +1,33 @@
+<site-modal id="site-modal" data-component="modal">
+  <div class="modal micromodal-slide" id="site-modal" aria-hidden="true" data-modal>
+    <div class="modal__overlay" tabindex="-1" data-modal-close>
+      <div
+        class="modal__container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="site-modal-title"
+      >
+        <header class="modal__header">
+          <h2 class="modal__title" id="site-modal-title">Micromodal</h2>
+          <button class="modal__close" aria-label="Close modal" data-modal-close></button>
+        </header>
+        <main class="modal__content" id="site-modal-content">
+          <p>
+            Try hitting the <code>tab</code> key and notice how the focus stays within the modal
+            itself. Also, <code>esc</code> to close modal.
+          </p>
+        </main>
+        <footer class="modal__footer">
+          <button class="modal__btn button button--primary">Continue</button>
+          <button
+            class="modal__btn button button--secondary"
+            data-modal-close
+            aria-label="Close this dialog window"
+          >
+            Close
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</site-modal>

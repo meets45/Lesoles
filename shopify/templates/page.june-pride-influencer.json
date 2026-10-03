@@ -1,0 +1,289 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_fiAkVU": {
+      "type": "hero-banner",
+      "blocks": {
+        "eyebrow_FtKrmg": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "#lightentheload"
+          }
+        },
+        "heading_atHcFr": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "Affirmations"
+          }
+        },
+        "body_j4PpDk": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Get inspired with some self-love and care. Learn a few tips from our favourite LGBTQ creators on expressing your self-love.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_FtKrmg",
+        "heading_atHcFr",
+        "body_j4PpDk"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_ECOMM_MHM_LP_Hero_DT-04272023.webp",
+        "image_mobile": "shopify://shop_images/JS_ECOMM_MHM_LP_Hero_MB-04272023.webp",
+        "scrim": 0,
+        "image_height": "large",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "block",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "image_with_text_KnLfPq": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_3m3Q74": {
+          "type": "heading",
+          "settings": {
+            "text": "MIGUEL ALEJANDRO"
+          }
+        },
+        "eyebrow_aHehqg": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "THEY/HE"
+          }
+        },
+        "body_wH89Ry": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li> I deserve to feel good about my body.</li><li> Bad days come and go, I will not always feel this way.</li></ul>"
+          }
+        },
+        "button_zwEigx": {
+          "type": "button",
+          "settings": {
+            "label": "Watch Miguel's affirmations",
+            "url": "https://www.tiktok.com/@miguelalejopena/video/7230845898006514990",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3m3Q74",
+        "eyebrow_aHehqg",
+        "body_wH89Ry",
+        "button_zwEigx"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/01_MIGUEL-04272023.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_JCHWmB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_XUxpqt": {
+          "type": "heading",
+          "settings": {
+            "text": "CAPRI CAMPEAU"
+          }
+        },
+        "eyebrow_MbYyfD": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "THEY/SHE"
+          }
+        },
+        "body_akQDxa": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li> I am queer enough.</li><li> I am valid.</li><li> I am enough.</li></ul>"
+          }
+        },
+        "button_4mbnKk": {
+          "type": "button",
+          "settings": {
+            "label": "Watch Capri's affirmations",
+            "url": "https://www.tiktok.com/@capricampeau/video/7230826793257700650",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XUxpqt",
+        "eyebrow_MbYyfD",
+        "body_akQDxa",
+        "button_4mbnKk"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/04_CAPRI-04272023.webp",
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_EBUQLQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_aYHwzn": {
+          "type": "heading",
+          "settings": {
+            "text": "JACKSON MATTHIESEN"
+          }
+        },
+        "eyebrow_Gr8aVU": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "THEY/THEM"
+          }
+        },
+        "body_igP9iE": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li> I am beautiful just the way I am.</li><li> I am worthy of love and respect.</li></ul>"
+          }
+        },
+        "button_fAzi3A": {
+          "type": "button",
+          "settings": {
+            "label": "Watch Jackson's affirmations",
+            "url": "https://www.tiktok.com/@jackson.matthiesen/video/7230826545865166122",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aYHwzn",
+        "eyebrow_Gr8aVU",
+        "body_igP9iE",
+        "button_fAzi3A"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/03_JACKSON-04272023.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_9iDxfP": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_LzdmY3": {
+          "type": "heading",
+          "settings": {
+            "text": "HINA SABATINE"
+          }
+        },
+        "eyebrow_xJgcbM": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "THEY/THEM"
+          }
+        },
+        "body_iP7LQD": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li>I honor myself by loving myself extra when I have a bad day.</li><li>I am capable of achieving my dreams.</li><li>My confidence is not determined by the opinions of others.</li></ul>"
+          }
+        },
+        "button_7gq336": {
+          "type": "button",
+          "settings": {
+            "label": "Watch Hina's affirmations",
+            "url": "https://www.tiktok.com/@hina/video/7230876048207121710",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LzdmY3",
+        "eyebrow_xJgcbM",
+        "body_iP7LQD",
+        "button_7gq336"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/02_HINA-04272023.webp",
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_wLUgEC": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow_GjbwCf": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_NBNXn7": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Heading Text"
+          }
+        },
+        "body_Gycf8n": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_7gba64": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_GjbwCf",
+        "heading_NBNXn7",
+        "body_Gycf8n",
+        "button_7gba64"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "color_scheme": "scheme-4"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_fiAkVU",
+    "image_with_text_KnLfPq",
+    "image_with_text_JCHWmB",
+    "image_with_text_EBUQLQ",
+    "image_with_text_9iDxfP",
+    "rich_text_wLUgEC"
+  ]
+}

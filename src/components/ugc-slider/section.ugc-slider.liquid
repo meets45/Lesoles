@@ -1,0 +1,35 @@
+<ugc-slider data-component="ugc-slider" class="ugc-slider">
+  {% if product %}
+    {% assign product_sku_parts = product.selected_or_first_available_variant.sku | split: ':' %}
+    {% capture product_id %}{{product_sku_parts[0]}}{{product_sku_parts[1]}}{% endcapture %}
+
+    <div data-crl8-container-id="product" data-crl8-filter="productId:{{ product_id }}"></div>
+  {% else %}
+    <div data-crl8-container-id="homepage"></div>
+  {% endif %}
+</ugc-slider>
+
+{% schema %}
+{
+  "name": "UGC Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The Original Since 1967"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Share your photos by tagging us @jansport to be featured"
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Slider"
+    }
+  ]
+}
+{% endschema %}

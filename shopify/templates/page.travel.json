@@ -1,0 +1,416 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_mygmPQ": {
+      "type": "hero-banner",
+      "blocks": {
+        "heading_GzBeLi": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "A much needed Break"
+          }
+        },
+        "body_gXTgA9": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Give yourself a much needed getaway with our Spring Break ready packs</p>"
+          }
+        },
+        "button_QAHxrX": {
+          "type": "button",
+          "settings": {
+            "label": "Spring Break Packs",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GzBeLi",
+        "body_gXTgA9",
+        "button_QAHxrX"
+      ],
+      "settings": {
+        "scrim": 0,
+        "image_height": "medium",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "hero_banner_DFXtch": {
+      "type": "hero-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Jansport-Travel-020922-Desktop2-Weekend-Illustration.webp",
+        "scrim": 0,
+        "image_height": "medium",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "transparent",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "rich_text_jaqNcK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xtCdgj": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "For your weekend getaways"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xtCdgj"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_7UakPw": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_G6bjaJ": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "XL CAPACITY | PADDED STRAP | FRONT UTILITY POCKET"
+          }
+        },
+        "heading_KGmR4t": {
+          "type": "heading",
+          "settings": {
+            "text": "SUPERBREAK® AWAY DUFFEL"
+          }
+        },
+        "body_kKqADe": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Going on an adventure? Our SuperBreak® Away Duffel is here to assist! Packing all of your essential travel items, the weekend awaits.</p>"
+          }
+        },
+        "button_P7hPam": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/superbreak-away-duffel-40l-js0a4qvg",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_G6bjaJ",
+        "heading_KGmR4t",
+        "body_kKqADe",
+        "button_P7hPam"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/Duffel_Mobile_3200_x_3215.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_BRpCxt": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_UGjyG6": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "XL CAPACITY | ORGANIZER POCKET | LAPTOP COMPARTMENT"
+          }
+        },
+        "heading_B9LmYL": {
+          "type": "heading",
+          "settings": {
+            "text": "MAIN CAMPUS"
+          }
+        },
+        "body_QJE638": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Keep organized on the go with the Main Campus. Dedicated pockets for organization and your laptop make traveling a breeze.</p>"
+          }
+        },
+        "button_NrNE8H": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/main-campus-js0a4qul",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_UGjyG6",
+        "heading_B9LmYL",
+        "body_QJE638",
+        "button_NrNE8H"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/MainCampus_Mobile_3200_x_3215.webp",
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "right",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_W8j33Y": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_HKQrha": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "WHEELED | RETRACTABLE HANDLE | TUCK AWAY SHOULDER STRAPS"
+          }
+        },
+        "heading_ikkG9k": {
+          "type": "heading",
+          "settings": {
+            "text": "DRIVER 8 BACKPACK"
+          }
+        },
+        "body_VYwaKM": {
+          "type": "body",
+          "settings": {
+            "text": "<p>For a life on-the-move, the JanSport Driver 8 rolling backpack converts from backpack to roller with tuck-away shoulder straps.</p>"
+          }
+        },
+        "button_bQt7Qy": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_HKQrha",
+        "heading_ikkG9k",
+        "body_VYwaKM",
+        "button_bQt7Qy"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/Driver8_Mobile_3200_x_3215.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "hero_banner_ky44Ap": {
+      "type": "hero-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Jansport-Travel-020922-Desktop6-DayTrip-Illustration.webp",
+        "scrim": 40,
+        "image_height": "small",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_tXKa7n": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_HfrjjB": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "For your day trips"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HfrjjB"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_kWLTX6": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_A44UF8": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "CONVERTIBLE CARRY | SURPRISINGLY ROOMY | FRONT UTILITY POCKET"
+          }
+        },
+        "heading_xMyFe6": {
+          "type": "heading",
+          "settings": {
+            "text": "HALF PINT"
+          }
+        },
+        "body_XGhQeE": {
+          "type": "body",
+          "settings": {
+            "text": "<p>The perfect grab and go bag for your local day trips. Go ahead and be a tourist in your own town.</p>"
+          }
+        },
+        "button_Gw6bLq": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/half-pint-mini-backpack-tdh6",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_A44UF8",
+        "heading_xMyFe6",
+        "body_XGhQeE",
+        "button_Gw6bLq"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/HalfPint_Mobile_3200_x_3215.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_mWyaWh": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_3KkNWe": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "MULTI CARRY | ZIPPERED POCKETS | FOR ON THE GO STYLE"
+          }
+        },
+        "heading_My4mLJ": {
+          "type": "heading",
+          "settings": {
+            "text": "FIFTH AVENUE"
+          }
+        },
+        "body_MmxCUB": {
+          "type": "body",
+          "settings": {
+            "text": "<p>The JanSport Fifth Ave fanny pack allows for everything you need to be within close reach. Wear on your waist or as a sling in your back.</p>"
+          }
+        },
+        "button_eLMqmN": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/fifth-avenue-fanny-pack-tan1",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_3KkNWe",
+        "heading_My4mLJ",
+        "body_MmxCUB",
+        "button_eLMqmN"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/FifthAve_Mobile_3200_x_3215.webp",
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_PgewBj": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_jMFYYC": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "PREMIUM DETAILS | ZIPPERED POCKETS | ADJUSTABLE CROSSBODY STRAP"
+          }
+        },
+        "heading_EbeycM": {
+          "type": "heading",
+          "settings": {
+            "text": "CORE CROSSBODY"
+          }
+        },
+        "body_RqxDkV": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Meet the Core Crossbody, developed to stash all your essentials while keeping you on trend.</p>"
+          }
+        },
+        "button_Jh6Ywt": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/core-crossbody-js0a7znv",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_jMFYYC",
+        "heading_EbeycM",
+        "body_RqxDkV",
+        "button_Jh6Ywt"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/Crossbody_Mobile_3200_x_3215.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_banner_mygmPQ",
+    "hero_banner_DFXtch",
+    "rich_text_jaqNcK",
+    "image_with_text_7UakPw",
+    "image_with_text_BRpCxt",
+    "image_with_text_W8j33Y",
+    "hero_banner_ky44Ap",
+    "rich_text_tXKa7n",
+    "image_with_text_kWLTX6",
+    "image_with_text_mWyaWh",
+    "image_with_text_PgewBj"
+  ]
+}

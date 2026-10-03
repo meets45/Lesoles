@@ -1,0 +1,42 @@
+<filter-chip
+  data-component="filter-chip"
+  data-filter-chip
+  data-filter-name="{{ filter_value.param_name }}"
+  data-filter-value="{{ filter_value.value }}"
+>
+  <button class="filter-chip" data-filter-remove>
+    {% if filter_value.swatch %}
+      <div
+        class="filter-chip__swatch"
+        role="presentation"
+        style="--swatch-color: {{ filter_value.swatch.color }}"
+      >
+        {% if filter_value.swatch.image %}
+          {{ filter_value.swatch.image | image_url: width: 12, height: 12 | image_tag }}
+        {% endif %}
+      </div>
+    {% endif %}
+    <span class="filter-chip__value body-small">
+      {% case type %}
+        {% when 'price_range' %}
+          {% if min_value.value and max_value.value == null %}
+            {{ min_value.value | money }}+
+          {% endif %}
+
+          {% if min_value.value == null and max_value.value %}
+            Less than {{ max_value.value | money }}
+          {% endif %}
+
+          {% if min_value.value and max_value.value %}
+            {{ min_value.value | money }} - {{ max_value.value | money }}
+          {% endif %}
+
+        {% when 'list' %}
+          {{ filter_value.label }}
+      {% endcase %}
+    </span>
+    <div class="icon-s">
+      {% render 'icon-clear' %}
+    </div>
+  </button>
+</filter-chip>

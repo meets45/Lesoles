@@ -1,0 +1,41 @@
+<product-search-card-slider
+  data-component="product-search-card-slider"
+  data-product-search-card-slider
+  data-active="true"
+  data-title="{{ title }}"
+  {% if dynamic_title %}
+    data-dynamic-title="{{ dynamic_title }}"
+  {% endif %}
+>
+  <div class="product-search-card-slider">
+    {% if title %}
+      <h3
+        class="product-search-card-slider__heading body-xsmall"
+        data-heading
+      >
+        {{ title }}
+      </h3>
+    {% endif %}
+    <div class="swiper" data-swiper>
+      <div class="swiper-wrapper">
+        {% for product in products %}
+          <div class="swiper-slide">
+            {% render 'product-search-card', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="product-search-card-slider__nav-container">
+        <button class="product-search-card-slider__prev" data-swiper-prev>
+          <div class="icon-s">
+            {% render 'icon-arrow-left' %}
+          </div>
+        </button>
+        <button class="product-search-card-slider__next" data-swiper-next>
+          <div class="icon-s">
+            {% render 'icon-arrow-right' %}
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</product-search-card-slider>

@@ -1,0 +1,86 @@
+/*
+  Basic Drawer Styles
+*/
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+[data-active="true"] .drawer {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.drawer__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+[data-active="true"] .drawer__overlay {
+  opacity: 1;
+}
+
+.drawer__container {
+  background-color: var(--ui-elements-overlays-background);
+  height: 100vh;
+  width: 100%;
+  max-width: 512px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  position: relative;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+[data-active="true"] .drawer__container {
+  transform: translateX(0);
+}
+
+.drawer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-500);
+  border-bottom: 1px solid var(--borders-color-light);
+}
+
+.drawer__title {
+  margin: 0;
+  color: var(--typography-color-brand);
+  box-sizing: border-box;
+}
+
+.drawer__close {
+  background: transparent;
+  border: 0;
+  padding: var(--spacing-200);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer__content {
+  padding: var(--spacing-500);
+}
+
+@media screen and (max-width: 768px) {
+  .drawer__container {
+    max-width: 100%;
+  }
+}

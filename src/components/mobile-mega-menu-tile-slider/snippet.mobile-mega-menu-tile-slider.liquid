@@ -1,0 +1,39 @@
+<mobile-mega-menu-tile-slider data-component="mobile-mega-menu-tile-slider">
+  <div class="mobile-mega-menu-tile-slider">
+    <h2 class="mobile-mega-menu-tile-slider__heading heading-small">
+      {{ list.title.value }}
+    </h2>
+
+    <button class="mobile-mega-menu-tile-slider__prev" data-swiper-prev>
+      {% render 'carousel-arrow', direction: 'left' %}
+    </button>
+
+    <div class="swiper" data-swiper>
+      <div class="swiper-wrapper">
+        {% for item in list.items.value %}
+          <div class="swiper-slide">
+            <div class="mobile-mega-menu-tile-slider__card">
+              <div class="mobile-mega-menu-tile-slider__card-image">
+                {{ item.image.value | image_url: width: 200 | image_tag: loading: 'lazy' }}
+              </div>
+              <div class="mobile-mega-menu-tile-slider__card-content">
+                <div class="body-medium">
+                  {{ item.description.value }}
+                </div>
+                {% render 'text-link',
+                  label: item.link.value.text,
+                  href: item.link.value.url,
+                  arrow: true
+                %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <button class="mobile-mega-menu-tile-slider__next" data-swiper-next>
+      {% render 'carousel-arrow', direction: 'right' %}
+    </button>
+  </div>
+</mobile-mega-menu-tile-slider>

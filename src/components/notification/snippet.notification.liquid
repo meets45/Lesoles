@@ -1,0 +1,35 @@
+<div
+  class="
+    notification
+    {% case variant %}
+      {% when 'success' %}
+        notification--success
+      {% when 'information' %}
+        notification--information
+      {% when 'error' %}
+        notification--error
+      {% when 'error-alt' %}
+        notification--error-alt
+      {% else %}
+    {% endcase %}
+  "
+>
+  <div class="notification__icon">
+    <div class="icon-m">
+      {%- case variant -%}
+        {% when 'success' %}
+          {% render 'icon-success' %}
+        {% when 'information' %}
+          {% render 'icon-information' %}
+        {%- when 'error' -%}
+          {% render 'icon-error' %}
+        {%- when 'error-alt' -%}
+          {% render 'icon-error' %}
+        {%- else -%}
+      {%- endcase -%}
+    </div>
+  </div>
+  <div class="notification__text">
+    {{ text }}
+  </div>
+</div>

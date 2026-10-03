@@ -1,0 +1,91 @@
+{% comment %}
+  -------------------------------------------
+  Styled Select
+  id: Used for input ID and label for
+  label: Label text
+  help_text: Helper text under label
+  error_text: Error message text
+  state: disabled
+  -------------------------------------------
+{% endcomment %}
+
+<styled-select
+  data-component="styled-select"
+  class="styled-select"
+  {% if help_text %}data-has-help{% endif %}
+  {% if error_text %}data-has-error{% endif %}
+  {% if link_select %}data-link-select{% endif %}
+  data-active="false"
+>
+  <label
+    for="{{ id }}"
+    class="styled-select__label"
+    data-select-label
+  >
+    {{ label }}{% if required %}*{% endif %}
+  </label>
+
+  <input
+    type="hidden"
+    id="{{ id }}"
+    name="{{ name }}"
+    {{ state }}
+    {% if required %}required{% endif %}
+    data-input
+  >
+
+  <button
+    type="button"
+    class="styled-select__trigger"
+    role="combobox"
+    aria-expanded="false"
+    {% if help_text %}aria-describedby="{{ id }}-help"{% endif %}
+    {% if error_text %}aria-describedby="{{ id }}-error"{% endif %}
+    {% if required %}aria-required="true"{% endif %}
+    data-trigger
+  >
+    <span data-label>
+      {% if link_select %}
+        {% for option in options %}
+          {% if request.path == option.settings.link %}
+            {{ option.settings.text }}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </span>
+    {% render 'icon-chevron-down' %}
+  </button>
+
+  <div
+    class="styled-select__listbox"
+    role="listbox"
+    data-listbox
+  >
+    <ul>
+      {% for option in options %}
+        <li
+          role="option"
+          tabindex="0"
+          class="styled-select__option"
+          data-option
+          data-value="{{ option.settings.link }}"
+          {% if option.selected %}data-selected="true"{% endif %}
+        >
+          {{ option.settings.text }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% if help_text %}
+    <span id="{{ id }}-help" class="styled-select__help" data-select-help>
+      {{ help_text }}
+    </span>
+  {% endif %}
+
+  {% if error_text %}
+    <span id="{{ id }}-error" class="styled-select__error" data-select-error>
+      {{ error_text }}
+    </span>
+  {% endif %}
+</styled-select>

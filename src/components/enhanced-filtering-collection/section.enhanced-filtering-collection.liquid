@@ -1,0 +1,242 @@
+<enhanced-filtering-collection data-component="enhanced-filtering-collection">
+  <div
+    class="enhanced-filtering-collection"
+    role="region"
+    aria-label="{{ section.settings.title | escape }}"
+    style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+  >
+    {% render 'section-bg-image', section_settings: section.settings %}
+
+    <div class="enhanced-filtering-collection__inner">
+      <div class="enhanced-filtering-collection__header">
+        {% render 'content-blocks',
+          section_settings: section.settings,
+          blocks: section.blocks,
+          heading_class: 'display-large',
+          highlighted_word: true
+        %}
+      </div>
+
+      {% if section.blocks.size > 0 %}
+        <div class="enhanced-filtering-collection__filters">
+          <div class="enhanced-filtering-collection__filter-slider" data-filter-slider>
+            {% for block in section.blocks %}
+              {% if block.type == 'filter' %}
+                <div class="enhanced-filtering-collection__filter-item">
+                  <button
+                    class="enhanced-filtering-collection__filter-link"
+                    data-filter-button
+                    data-filter-value="{{ block.settings.filter_value | escape }}"
+                    data-filter-param="{{ block.settings.filter_param | escape }}"
+                  >
+                    <div class="enhanced-filtering-collection__filter-image">
+                      {% if block.settings.image %}
+                        {{
+                          block.settings.image
+                          | image_url: width: 300
+                          | image_tag: sizes: '(min-width: 1025px) 20vw, 33vw'
+                        }}
+                      {% else %}
+                        {{ 'collection-' | append: forloop.index | placeholder_svg_tag }}
+                      {% endif %}
+                    </div>
+                    <div
+                      class="
+                        enhanced-filtering-collection__filter-title
+                        heading-small
+                      "
+                    >
+                      {{ block.settings.title }}
+                    </div>
+                  </button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</enhanced-filtering-collection>
+
+{% schema %}
+{
+  "name": "Filter Collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Image",
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Optional"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Filter Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "color_scheme_1"
+    },
+    {
+      "type": "header",
+      "content": "Highlighted word",
+    },
+    {
+      "type": "text",
+      "id": "highlighted_word",
+      "label": "Enter the exact word from your title that you want to highlight",
+      "default": "Feature"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Pick Your Feature"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading Text"
+        }
+      ]
+    },
+    {
+      "type": "filter",
+      "name": "Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Filter"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "filter_param",
+          "label": "Filter Type",
+          "options": [
+            {
+              "value": "filter.v.t.shopify.color-pattern",
+              "label": "Color"
+            },
+            {
+              "value": "filter.p.m.filters.features",
+              "label": "Feature"
+            },
+            {
+              "value": "filter.p.m.attributes.fabric",
+              "label": "Fabric"
+            },
+            {
+              "value": "filter.p.m.attributes.capacity_family",
+              "label": "Size"
+            }
+          ],
+          "default": "filter.p.m.filters.features"
+        },
+        {
+          "type": "text",
+          "id": "filter_value",
+          "label": "Filter Value",
+          "info": "Value to be used in URL. Will be equal to the title, or in case of color, a metaobject"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Filter Collection",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "text": "Pick Your Feature"
+          }
+        },
+        {
+          "type": "filter",
+          "settings": {
+            "title": "Feature 1",
+            "filter_param": "filter.p.m.filters.features",
+            "filter_value": ""
+          }
+        },
+        {
+          "type": "filter",
+          "settings": {
+            "title": "Feature 2",
+            "filter_param": "filter.p.m.attributes.capacity_family",
+            "filter_value": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,99 @@
+{% liquid
+  assign variant = variant
+  assign variant_id = variant.id | default: product.selected_or_first_available_variant.id
+
+  assign product_href = product.url
+  if collection
+    assign product_href = product.url | within: collection
+  endif
+%}
+
+<product-card
+  data-component="product-card"
+  class="product-card{% if is_variant %} product-card--variant{% endif %}"
+  data-product-id="{{ product.id }}"
+  data-current-variant-id="{{ display_variant.id }}"
+>
+  <product-form
+    data-product="{{ product | json | escape }}"
+    data-variant="{{ variant | default: null | json }}"
+  >
+    {% form 'product', product %}
+      <input type="hidden" name="id" value="{{ variant_id }}">
+      <div class="product-card__inner">
+        <button
+          class="product-card__add-to-cart"
+          type="submit"
+          data-submit
+          data-quick-add="true"
+        >
+          {% render 'icon-cart-plus-icon' %}
+        </button>
+        <div class="product-card__media">
+          {% if variant %}
+            {% if variant.image %}
+              {{
+                variant.image
+                | image_url: width: 800
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: '(min-width: 769px) 400px, 200px',
+                  class: 'product-card__image'
+              }}
+            {% else %}
+              {{
+                product.featured_image
+                | image_url: width: 800
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: '(min-width: 769px) 400px, 200px',
+                  class: 'product-card__image'
+              }}
+            {% endif %}
+          {% else %}
+            {% render 'product-media-gallery',
+              product: product,
+              mode: 'compact',
+              is_card: true,
+              product_href: product_href
+            %}
+          {% endif %}
+        </div>
+
+        <div class="product-card__content">
+          <div class="product-card__content-inner">
+            <div class="product-card__options">
+              {% unless variant %}
+                {% render 'product-form-options',
+                  product: product,
+                  is_card: true,
+                  product_href: product_href
+                %}
+              {% endunless %}
+            </div>
+            <div class="product-card__content-inner-header">
+              <div class="product-card__eyebrow">
+                <p class="body-medium">Eyebrow</p>
+              </div>
+              <h2 class="product-card__title">
+                <a
+                  href="{{ product_href }}{% if variant %}?variant={{ variant.id }}{% endif %}"
+                  class="product-card__title-link heading-xsmall"
+                >
+                  {% if variant %}
+                    {{ product.title }} - {{ variant.title }}
+                  {% else %}
+                    {{ product.title }}
+                  {% endif %}
+                </a>
+              </h2>
+            </div>
+
+            {% render 'product-price', product: product, variant: variant %}
+            {% render 'powerreviews-plp-snippet' with product as product %}
+          </div>
+        </div>
+      </div>
+    {% endform %}
+  </product-form>
+</product-card>

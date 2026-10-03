@@ -1,0 +1,35 @@
+product-price {
+  [data-active="false"] {
+    display: none;
+  }
+}
+
+.product-price__price {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  gap: var(--spacing-200);
+  /* margin-top: var(--spacing-200); */
+  /* prevent jumping when price is hidden */
+  min-height: 40px;
+}
+
+.product-price__price-current {
+  font-weight: var(--type-fontweight-bold);
+  margin: 0;
+}
+
+.product-price__price-compare {
+  margin: 0;
+  color: var(--typography-color-secondary);
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.product-price__price-savings-text {
+  background-color: var(--color-red-100);
+  padding: var(--spacing-200);
+  border-radius: 4px;
+  color: var(--color-red-400);
+  font-weight: var(--type-fontweight-bold);
+}

@@ -1,0 +1,52 @@
+<!-- Click Tracking -->
+<script>
+  function click_element_path(element) {
+    var el = element;
+    if (el instanceof Node) {
+      var elList = [];
+      do {
+        if (el instanceof Element) {
+          var classString = el.classList ? [].slice.call(el.classList).join('.') : '';
+          var elementName =
+            (el.tagName ? el.tagName.toLowerCase() : '') +
+            (classString ? '.' + classString : '') +
+            (el.id ? '#' + el.id : '');
+          if (elementName) elList.unshift(elementName);
+        }
+        el = el.parentNode;
+      } while (el != null);
+      // element object name
+      var objString = element.toString().match(/\[object (\w+)\]/);
+      var elementType = objString ? objString[1] : element.toString();
+      var cssString = elList.join(' > ');
+      // return the CSS path
+      return cssString ? elementType + ': ' + cssString : elementType;
+    }
+  }
+
+  window.addEventListener('click', function (event) {
+    // track clicks on any element
+    Shopify.analytics.publish('custom_click', {
+      click_element: click_element_path(event.target) || '',
+      click_id: event.target.id || '',
+      click_classes: event.target.className || '',
+      click_text: event.target.innerText || '',
+      click_target: event.target.target || '',
+      click_url: event.target.href || '',
+    });
+
+    // track link clicks
+    var closestLink = event.target.closest('a');
+    if (closestLink) {
+      Shopify.analytics.publish('custom_link_click', {
+        click_element: click_element_path(closestLink.target) || '',
+        click_id: closestLink.id || '',
+        click_classes: closestLink.className || '',
+        click_text: closestLink.innerText || '',
+        click_target: closestLink.target || '',
+        click_url: closestLink.href || '',
+      });
+    }
+  });
+</script>
+<!-- End Click Tracking -->

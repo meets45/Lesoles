@@ -1,0 +1,99 @@
+<div
+  data-component="product-form-options"
+  class="product-form-options">
+  {% assign selected_variant = variant | default: product.selected_or_first_available_variant %}
+
+  {% assign color_patterns = product.metafields.shopify['color-pattern'].value %}
+
+  {% for option in product.options_with_values %}
+    {% assign option_index = forloop.index0 %}
+    {% assign correct_value = selected_variant.options[option_index] %}
+
+    {% assign is_color_option = false %}
+    {% for value in option.values %}
+      {% if value.swatch != blank %}
+        {% assign is_color_option = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    <fieldset class="product-form-options__fieldset {% if is_color_option %}product-form-options__fieldset--color{% endif %}">
+      <legend>
+        {{ option.name }}:
+        <span class="product-form-options__current-value" data-option-{{ option.position }}-label>
+          {{ correct_value }}
+        </span>
+      </legend>
+
+      <ul class="product-form-options__list {% if is_color_option %}product-form-options__list--color{% endif %}">
+        {% if is_color_option %}
+          {% for value in option.values %}
+            <li class="product-form-options__list-item">
+              {%- capture id -%}{{ section.id }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}{%- endcapture -%}
+              {% capture name %}option-{{ option.position }}{% endcapture %}
+              {% capture attrs %}
+                data-product-option
+              {% endcapture %}
+
+              {% assign disabled = false %}
+
+              {% if value.available == false %}
+                {% assign disabled = true %}
+              {% endif %}
+
+              {% liquid
+                assign is_checked = false
+
+                if value == correct_value
+                  assign is_checked = true
+                endif
+              %}
+
+              {% render 'color-swatch',
+                id: id,
+                name: name,
+                type: 'radio',
+                image: value.swatch.image,
+                value: value,
+                checked: is_checked,
+                attrs: attrs,
+                disabled: disabled
+              %}
+            </li>
+          {% endfor %}
+          {% if is_card %}
+            <li class="product-form-options__list-item product-form-options__list-item--more">
+              <a href="{{ product_href }}" class="product-form-options__more body-small">
+                +{{ option.values.size }}
+              </a>
+            </li>
+          {% endif %}
+        {% else %}
+          {% for value in option.values %}
+            <li class="product-form-options__list-item">
+              {%- capture id -%}{{ section.id }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}{%- endcapture -%}
+              {% capture name %}option-{{ option.position }}{% endcapture %}
+
+              <label class="product-form-options__radio-label">
+                <input
+                  type="radio"
+                  id="{{ id }}"
+                  name="{{ name }}"
+                  value="{{ value }}"
+                  class="sr-only"
+                  {% if value == correct_value %}
+                    checked
+                  {% endif %}
+                  data-product-option
+                >
+                <span class="product-form-options__radio-button body-medium">
+                  {{ value }}
+                </span>
+              </label>
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </fieldset>
+  {% endfor %}
+</div>

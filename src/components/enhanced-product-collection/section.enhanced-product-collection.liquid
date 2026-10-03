@@ -1,0 +1,213 @@
+<div
+  data-component="enhanced-product-collection"
+  class="enhanced-product-collection"
+  role="region"
+  aria-label="{{ section.settings.collection.title | escape }}"
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  <div
+    class="
+      enhanced-product-collection__inner
+      {% if section.settings.full-screen %}enhanced-product-collection--full{% endif %}
+    "
+  >
+    {% if section.settings.image %}
+      <div class="enhanced-product-collection__image">
+        {{ section.settings.image | image_url: width: 800 | image_tag:
+          loading: 'lazy',
+          alt: section.settings.image.alt | default: section.settings.collection.title,
+          sizes: '(min-width: 769px) 45vw, 100vw'
+        }}
+      </div>
+    {% endif %}
+
+    <div class="enhanced-product-collection__content">
+      <div class="enhanced-product-collection__header">
+        {% render 'content-blocks', section_settings: section.settings, blocks: section.blocks %}
+      </div>
+
+      <div class="enhanced-product-collection__slider" data-slider>
+        <div
+          class="enhanced-product-collection__swiper swiper"
+          data-swiper
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="{{ section.settings.collection.title | escape }} products"
+        >
+          <div class="swiper-wrapper">
+            {% for product in section.settings.collection.products
+              limit: section.settings.products_to_show
+            %}
+              <div
+                class="swiper-slide"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="{{ product.title | escape }}"
+              >
+                {% render 'product-card', product: product %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="enhanced-product-collection__nav">
+          <button
+            class="enhanced-product-collection__prev button-unstyled"
+            data-swiper-prev
+            aria-label="Previous products"
+          >
+            {% render 'carousel-arrow', direction: 'left' %}
+          </button>
+          <button
+            class="enhanced-product-collection__next button-unstyled"
+            data-swiper-next
+            aria-label="Next products"
+          >
+            {% render 'carousel-arrow', direction: 'right' %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Enhanced Collection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Featured Image"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 48,
+      "step": 1,
+      "default": 16,
+      "label": "Products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "color_scheme_1"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_screen",
+      "label": "Full Width",
+      "default": false
+    },
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Enhanced Collection",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "subheading" },
+        { "type": "button", "settings": { "variant": "secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

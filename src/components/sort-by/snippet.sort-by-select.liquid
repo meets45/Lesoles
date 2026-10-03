@@ -1,0 +1,20 @@
+{% assign sort_options = collection.sort_options | default: search.sort_options %}
+
+<label for="SortBy" class="sr-only"></label>
+<select
+  name="sort_by"
+  class="filter-dropdown__header filter-group--sort body-medium"
+  id="SortBy"
+>
+  {% for option in sort_options %}
+    {% assign option_name = 'products.facets.sort_by_label' | t: option: option.name %}
+    <option
+      value="{{ option.value | escape }}"
+      {% if option.value == sort_by %}
+        selected="selected"
+      {% endif %}
+    >
+      {{ option_name | escape }}
+    </option>
+  {%- endfor -%}
+</select>

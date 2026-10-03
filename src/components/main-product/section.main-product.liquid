@@ -1,0 +1,316 @@
+<div data-component="main-product" class="main-product" id="Section-{{ section.id }}">
+  {% assign eyebrow_default_text = 'sections.main_product.eyebrow_default' | t %}
+  {% assign eyebrow_text = product.metafields.custom.product_eyebrow_text| default: eyebrow_default_text %}
+  <div class="main-product__inner">
+    <div class="main-product__media">
+      {% render 'product-media-gallery' %}
+    </div>
+    <div class="main-product__content">
+      <div class="main-product__content-inner">
+        <div class="main-product__content-header">
+          <div class="main-product__content-header-actions">
+            {%- if section.settings.show_eyebrow -%}
+              <div class="main-product__content-header-actions-eyebrow" {{ block.shopify_attributes }}>
+                <p class="body-light">{{ eyebrow_text }}</p>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.show_breadcrumbs -%}
+              <div class="main-product__content-header-breadcrumbs" {{ block.shopify_attributes }}>
+                {% render 'breadcrumbs' %}
+              </div>
+            {%- endif -%}
+          </div>
+
+        {% assign form_blocks = '' %}
+        {% assign info_blocks = '' %}
+
+        <div class="main-product__content-product-title">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+              {%- when 'title' -%}
+                <h1 class="display-small" {{ block.shopify_attributes }}>
+                  {{ product.title }}
+                </h1>
+
+              {%- when 'subtitle' -%}
+                {% if product.metafields.custom.pdp_product_information_subtitle != blank %}
+                  <p class="main-product__content-product-subtitle body-light" {{ block.shopify_attributes }}>
+                    {{ product.metafields.custom.pdp_product_information_subtitle }}
+                  </p>
+                {% endif %}
+
+              {% comment %} This is just placeholder, so the string is hardcoded and not in translatable string. Note: Removed from the Refapp {% endcomment %}
+              {% comment %} {%- when 'social-proof' -%}
+                <p class="main-product__content-social-proof" {{ block.shopify_attributes }}>🔥 XX people recently purchased</p> {% endcomment %}
+
+              {%- when 'review-summary' -%}
+                <div {{ block.shopify_attributes }}>
+                  {% render 'powerreviews-pdp-snippet' %}
+                </div>
+
+              {%- when 'promo-text' -%}
+                {% capture form_blocks %}
+                  {{ form_blocks }}
+
+                  {% assign promo_text_value = product.metafields.custom.pdp_product_information_promo_text %}
+                  {% if promo_text_value != blank %}
+                    <p class="body-small main-product__content-promo-text" {{ block.shopify_attributes }}>{{ promo_text_value }}</p>
+                  {% endif %}
+                {% endcapture %}
+              {%- when 'upsell-product' -%}
+                {% capture form_blocks %}
+                  {{ form_blocks }}
+
+                  {% if product.metafields.custom.pdp_product_information_upsell_product != blank %}
+                    {% assign upsell_product_variant = product.metafields.custom.pdp_product_information_upsell_product.value %}
+                    <div {{ block.shopify_attributes }}>
+                      {% render 'pdp-upsell-product', upsell_product_variant: upsell_product_variant %}
+                    </div>
+                  {% endif %}
+                {% endcapture %}
+
+              {% comment %} To be re-enabled once inventory logic is added. Note: Commented out in RefApp{% endcomment %}
+              {% comment %} {%- when 'low-inventory' -%}
+                {% capture form_blocks %}
+                  {{ form_blocks }}
+                  <p class="body-small main-product__content-low-inventory" {{ block.shopify_attributes }}>
+                    <span class="main-product__content-low-inventory-icon">{% render 'icon-warning' %}</span>
+                    {{ "sections.main_product.low_inventory_text" | t }}
+                  </p>
+                {% endcapture %} {% endcomment %}
+
+              {% comment %} This is just placeholder, so the klarna text is hardcoded and not in translatable string. Note: Commented out in RefApp {% endcomment %}
+              {% comment %} {%- when 'klarna-text' -%}
+                {% capture info_blocks %}
+                  {{ info_blocks }}
+                    <p class="body-small klarna-text">
+                      Pay in 4 interest-free payments of $13.75 with Klarna. <a href="#">Details</a>
+                    </p>
+
+                {% comment %} Need to add merchant ID here to get this to work: https://admin.shopify.com/store/jansportus-dev/apps/klarna-on-site-messaging/app/merchant-account?warning=mid_not_found&warning_title=Please+check+your+configuration {% endcomment %}
+                  <klarna-placement
+                    data-key="credit-promotion-badge"
+                    data-locale="en-US"
+                    data-purchase-amount="{{ product.selected_or_first_available_variant.price | money_without_currency }}"
+                  ></klarna-placement>
+                {% endcapture %} {% endcomment %}
+
+              {%- when 'text' -%}
+                {% capture info_blocks %}
+                  {{ info_blocks }}
+
+                  <p class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {{- block.settings.text -}}
+                  </p>
+                {% endcapture %}
+              {%- when 'cross-promotion-product' -%}
+                {% capture info_blocks %}
+                  {{ info_blocks }}
+
+                  {%- assign cross_promotion_product = product.metafields.custom.pdp_product_information_cross_promotion_item.value -%}
+                  <div class="cross-promotion__container" {{ block.shopify_attributes }}>
+                    <div class="cross-promotion__container-inner">
+                      <div class="cross-promotion__container-content">
+                        {% if cross_promotion_product.eyebrow_text != blank %}
+                          <p class="cross-promotion__container-eyebrow">
+                            {{ cross_promotion_product.eyebrow_text }}
+                          </p>
+                        {% endif %}
+
+                        {% if cross_promotion_product.title != blank %}
+                          <p class="cross-promotion__container-title heading-xsmall">
+                            {{ cross_promotion_product.title }}
+                          </p>
+                        {% endif %}
+
+                        {% if cross_promotion_product.description != blank %}
+                          <p class="cross-promotion__container-description body-medium">
+                            {{ cross_promotion_product.description }}
+                          </p>
+                        {% endif %}
+
+                        {% if cross_promotion_product.cta_text != blank %}
+                          <p class="cross-promotion__container-link desktop">
+                            <a href="{{ cross_promotion_product.cta_url }}">
+                              {{ cross_promotion_product.cta_text }}
+
+                              <span class="cross-promotion__container-link-icon">
+                                {%- render 'icon-arrow-right' -%}
+                              </span>
+                            </a>
+                          </p>
+                        {% endif %}
+                      </div>
+
+                      <div class="cross-promotion__container-image">
+                        {% if cross_promotion_product.image != blank %}
+                          {% assign cpp_alt_text = 'sections.main_product.cross_promotion_image_alt_text' | t %}
+                          {{ cross_promotion_product.image | image_url: width: 400 | image_tag: cpp_alt_text, 'width: 100%; height: 100%;' }}
+                        {% endif %}
+
+                        {% if cross_promotion_product.cta_text != blank %}
+                          <p class="cross-promotion__container-link mobile">
+                            <a href="{{ cross_promotion_product.cta_url }}">
+                              {{ cross_promotion_product.cta_text }}
+                              <span class="cross-promotion__container-link-icon">
+                                {%- render 'icon-arrow-right' -%}
+                              </span>
+                            </a>
+                          </p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endcapture %}
+            {%- endcase -%}
+          {%- endfor -%}
+          </div>
+        </div>
+
+        {% render 'product-form'
+          with product as product,
+          promo_text: form_blocks,
+          is_main_form: true,
+          above_selector_content: form_blocks
+        %}
+
+        {{ info_blocks }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_eyebrow",
+      "label": "t:sections.main-product.blocks.eyebrow.name",
+      "default": true,
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "t:sections.main-product.blocks.breadcrumbs.name",
+      "default": true,
+    },
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "t:sections.main-product.blocks.title.name",
+      "limit": 1,
+    },
+    {
+      "type": "subtitle",
+      "name": "t:sections.main-product.blocks.subtitle.name",
+      "limit": 1,
+    },
+    {
+      "type": "social-proof",
+      "name": "t:sections.main-product.blocks.social-proof.name",
+      "limit": 1,
+    },
+    {
+      "type": "review-summary",
+      "name": "t:sections.main-product.blocks.review-summary.name",
+      "limit": 1,
+    },
+    {
+      "type": "price",
+      "name": "t:sections.main-product.blocks.price.name",
+      "limit": 1,
+    },
+    {
+      "type": "show-variants",
+      "name": "t:sections.main-product.blocks.show-variants.name",
+      "limit": 1,
+    },
+    {
+      "type": "quantity-input",
+      "name": "t:sections.main-product.blocks.quantity-input.name",
+      "limit": 1,
+    },
+    {
+      "type": "above-selector-content",
+      "name": "t:sections.main-product.blocks.above-selector-content.name",
+      "limit": 1,
+    },
+    {
+      "type": "buy-buttons",
+      "name": "t:sections.main-product.blocks.buy-buttons.name",
+      "limit": 1,
+    },
+    {
+      "type": "promo-text",
+      "name": "t:sections.main-product.blocks.promo-text.name",
+      "limit": 1,
+    },
+    {
+      "type": "upsell-products",
+      "name": "t:sections.main-product.blocks.upsell-products.name",
+      "limit": 1,
+    },
+    {
+      "type": "low-inventory",
+      "name": "t:sections.main-product.blocks.low-inventory.name",
+      "limit": 1,
+    },
+    {
+      "type": "klarna-text",
+      "name": "t:sections.main-product.blocks.klarna-text.name",
+      "limit": 1,
+    },
+    {
+      "type": "cross-promotion-product",
+      "name": "t:sections.main-product.blocks.cross-promotion-product.name",
+      "limit": 1,
+    },
+    {
+      "type": "text",
+      "name": "t:sections.main-product.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.main-product.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Main Product"
+    }
+  ]
+}
+{% endschema %}

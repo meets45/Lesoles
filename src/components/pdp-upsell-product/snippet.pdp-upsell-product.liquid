@@ -1,0 +1,41 @@
+{% assign upsell_product_variant = upsell_product_variant | default: variant %}
+
+{% if upsell_product_variant != blank %}
+  <pdp-upsell-product
+    data-component="pdp-upsell-product"
+    class="not-initialized"
+    data-variant-id="{{ upsell_product_variant.id }}">
+    <div class="pdp-upsell">
+      <div class="pdp-upsell__inner">
+        <div class="pdp-upsell__checkbox">
+          <input type="checkbox" id="upsell-checkbox" name="upsell-checkbox">
+          <label class="hidden" for="upsell-checkbox"
+            >Add <strong>{{ upsell_product_variant.product.title }}</strong> for
+            <strong>
+              {{- upsell_product_variant.price | money_without_trailing_zeros -}}
+            </strong></label
+          >
+        </div>
+        <div class="pdp-upsell__image">
+          <a href="{{ upsell_product_variant.url }}">
+            <img
+              src="{{ upsell_product_variant.featured_image | image_url: width: 400 }}"
+              alt="Upsell Image"
+              width="100%"
+              height="100%"
+            >
+          </a>
+        </div>
+        <div class="pdp-upsell__content">
+          <p class="body-medium">
+            Add <strong>{{ upsell_product_variant.product.title }}</strong> for
+            <strong>{{ upsell_product_variant.price | money_without_trailing_zeros }}</strong>
+          </p>
+          <p class="body-small">
+            <a href="{{ upsell_product_variant.url }}">View Product Details</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </pdp-upsell-product>
+{% endif %}

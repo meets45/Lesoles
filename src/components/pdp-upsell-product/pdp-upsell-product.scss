@@ -1,0 +1,44 @@
+pdp-upsell-product.is-completed,
+pdp-upsell-product.not-initialized {
+  display: none;
+}
+.pdp-upsell {
+  /* margin-top: var(--spacing-600); */
+  margin-bottom: var(--spacing-600);
+  border: 1px solid var(--color-primary-warmgray-300);
+  padding: var(--spacing-400);
+  border-radius: 4px;
+}
+
+.pdp-upsell__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-400);
+}
+
+.pdp-upsell__image {
+  /* flex: 0 0 40%; */
+}
+
+.pdp-upsell__checkbox input {
+  width: 24px;
+  height: 24px;
+}
+
+.pdp-upsell__image img {
+  max-width: 80px;
+  height: auto;
+  width: 100%;
+}
+
+.pdp-upsell__content a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary-dirtyblue-400);
+  border-bottom: 1px solid var(--color-primary-dirtyblue-400);
+  transition: opacity 0.3s ease;
+}
+
+.pdp-upsell__content a:hover {
+  opacity: 0.8;
+}

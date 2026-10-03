@@ -1,0 +1,170 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_e6cQQ8": {
+      "type": "hero-banner",
+      "blocks": {
+        "eyebrow_RhW87k": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_RmjHbz": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Heading Text"
+          }
+        },
+        "body_jH8pJM": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_cUJbnL": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "primary"
+          }
+        },
+        "button_paindT": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_RhW87k",
+        "heading_RmjHbz",
+        "body_jH8pJM",
+        "button_cUJbnL",
+        "button_paindT"
+      ],
+      "settings": {
+        "scrim": 0,
+        "image_height": "medium",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "simple_content_collection_EEJymt": {
+      "type": "simple-content-collection",
+      "blocks": {
+        "card_RhTVnz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-placeholders.png",
+            "heading": "Content Card Heading",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur. Velit adipiscing Lorem ipsum dolor sit</p>",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/about-us"
+          }
+        },
+        "card_j7RJed": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-placeholders.png",
+            "heading": "Content Card Heading",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur. Velit adipiscing Lorem ipsum dolor sit</p>",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/about-us"
+          }
+        },
+        "card_CFHp9m": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-placeholders.png",
+            "heading": "Content Card Heading",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur. Velit adipiscing Lorem ipsum dolor sit</p>",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/about-us"
+          }
+        }
+      },
+      "block_order": [
+        "card_RhTVnz",
+        "card_j7RJed",
+        "card_CFHp9m"
+      ],
+      "settings": {
+        "eyebrow": "Eyebrow Text (optional)",
+        "title": "Heading Text",
+        "description": "",
+        "style": "standard",
+        "image_ratio": "4:5",
+        "color_scheme": ""
+      }
+    },
+    "simple_content_collection_jnNVMy": {
+      "type": "simple-content-collection",
+      "blocks": {
+        "card_bpQDHn": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-placeholders.png",
+            "heading": "Content Card Heading",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur. Velit adipiscing Lorem ipsum dolor sit</p>",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/about-us"
+          }
+        },
+        "card_VBdmx3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-placeholders.png",
+            "heading": "Content Card Heading",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur. Velit adipiscing Lorem ipsum dolor sit</p>",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/about-us"
+          }
+        },
+        "card_pBdBVz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-placeholders.png",
+            "heading": "Content Card Heading",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur. Velit adipiscing Lorem ipsum dolor sit</p>",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/about-us"
+          }
+        }
+      },
+      "block_order": [
+        "card_bpQDHn",
+        "card_VBdmx3",
+        "card_pBdBVz"
+      ],
+      "settings": {
+        "eyebrow": "Eyebrow Text (optional)",
+        "title": "Heading Text",
+        "description": "",
+        "style": "standard",
+        "image_ratio": "4:5",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_banner_e6cQQ8",
+    "simple_content_collection_EEJymt",
+    "simple_content_collection_jnNVMy"
+  ]
+}

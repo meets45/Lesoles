@@ -1,0 +1,271 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customer_service_banner_WJQPDp": {
+      "type": "customer-service-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_7.png",
+        "image_mobile": "shopify://shop_images/image_7.png"
+      }
+    },
+    "customer_service_menu_RmEtt6": {
+      "type": "customer-service-menu",
+      "blocks": {
+        "link_VXfTrh": {
+          "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "link_37ajze": {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        "link_T4BcqB": {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "link_8kcRfe": {
+          "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        "link_rUXVb6": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_AkAyhA": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        "link_QERqXa": {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "link_GzKYrq": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        "link_KRL3WC": {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      },
+      "block_order": [
+        "link_VXfTrh",
+        "link_37ajze",
+        "link_T4BcqB",
+        "link_8kcRfe",
+        "link_rUXVb6",
+        "link_AkAyhA",
+        "link_QERqXa",
+        "link_GzKYrq",
+        "link_KRL3WC"
+      ],
+      "settings": {
+        "header": "Customer Service"
+      }
+    },
+    "rte_content_K8NiF8": {
+      "type": "rte-content",
+      "settings": {
+        "show_page_title": true,
+        "show_page_content": true,
+        "highlight_section": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left"
+      }
+    },
+    "section_accordions_BUPYT9": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_V84Y9q": {
+          "type": "accordion",
+          "settings": {
+            "title": "What if there is no return label included in my package?",
+            "content": "<p>You will need to contact customer service and they will email you a return label to print.</p>"
+          }
+        },
+        "accordion_9jtyLG": {
+          "type": "accordion",
+          "settings": {
+            "title": "How much will I be refunded?",
+            "content": "<p>Your order total minus the cost of shipping will be refunded to your original form of payment.</p>"
+          }
+        },
+        "accordion_TJbhJr": {
+          "type": "accordion",
+          "settings": {
+            "title": "What if I lost my return slip?",
+            "content": "<p>If you do not have the mailing label from the original packaging, please contact Customer Service for a courtesy label.</p><p>Mail your package to:<br/>JANSPORT E-COM RETURNS<br/>DOOR 31<br/>2525 N PLAZA DRIVE<br/>VISALIA, CA 93291-9308</p><p>Once your return is received and processed, your purchase will be credited to your initial form of payment for the product price plus any applicable taxes. (Please note that refunds can only be posted to the credit card used to make the purchase, not to a different credit card.)</p>"
+          }
+        },
+        "accordion_67XYw9": {
+          "type": "accordion",
+          "settings": {
+            "title": "What if I lost my order number?",
+            "content": "<p>If you don’t have your order number, please contact Customer Service so we can help you to get the order number. Please contact them via email at <a href=\"mailto:js_customer_services@vfc.com?subject=JanSport.com%20Inquiry\">js_customer_services@vfc.com</a> or call them at <a href=\"tel:1-855-818-5966\">855-818-5966</a>.</p>"
+          }
+        },
+        "accordion_DLK7e4": {
+          "type": "accordion",
+          "settings": {
+            "title": "When will I get my return?",
+            "content": "<p>We'll do everything we can to take care of your return quickly. Received returns are generally processed within three business days of receipt. Please allow one billing cycle for credit card refunds to appear on your statement. Returns with complete documentation receive priority.</p><p>Please note that JanSport is not responsible for returns lost in transit to us.</p>"
+          }
+        },
+        "accordion_GAqDwa": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping Damage",
+            "content": "<p>If you receive an item that was damaged during shipment, contact our Customer Service team within 10 days of delivery at 855-818-5966. Please have your order number, item number and tracking number from your original confirmation e-mail. JanSport.com will make every reasonable effort to reorder the item or credit your purchase in a timely manner.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_V84Y9q",
+        "accordion_9jtyLG",
+        "accordion_TJbhJr",
+        "accordion_67XYw9",
+        "accordion_DLK7e4",
+        "accordion_GAqDwa"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "title": ""
+      }
+    },
+    "rte_content_9JUn79": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_bpKRmG": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "Lifetime Warranty"
+          }
+        },
+        "body_iLf7FB": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": "<p>Quality. Durability. Reliability.</p><p>That’s what JanSport stands for. So if your pack ever breaks down, simply return it to our warranty center. We’ll fix it and if we can’t we’ll replace it. We stand by our packs for a lifetime and since we’ve been making packs since 1967, that’s a guarantee you can stand by.</p><p><a href=\"/pages/warranty\" title=\"Warranty\">Learn more about our lifetime warranty and get the address of our warranty center here.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bpKRmG",
+        "body_iLf7FB"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    },
+    "rte_content_jMVPNy": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_3qFGqy": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "Wanna talk?"
+          }
+        },
+        "text_link_whhBcJ": {
+          "type": "text_link",
+          "settings": {
+            "label": "Call Us",
+            "icon": "phone"
+          }
+        },
+        "text_link_rRQhwY": {
+          "type": "text_link",
+          "settings": {
+            "label": "Live Chat",
+            "icon": "chat"
+          }
+        },
+        "text_link_WeM9te": {
+          "type": "text_link",
+          "settings": {
+            "label": "Email Us",
+            "icon": "email"
+          }
+        },
+        "text_link_mEhzPP": {
+          "type": "text_link",
+          "settings": {
+            "label": "Int'l help",
+            "icon": "map"
+          }
+        },
+        "body_J4q4m7": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-small",
+            "text": "<p>JanSport Customer Service is here to help Monday through Friday 8am - 4:30pm (CT) (USA only).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3qFGqy",
+        "text_link_whhBcJ",
+        "text_link_rRQhwY",
+        "text_link_WeM9te",
+        "text_link_mEhzPP",
+        "body_J4q4m7"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    }
+  },
+  "order": [
+    "customer_service_banner_WJQPDp",
+    "customer_service_menu_RmEtt6",
+    "rte_content_K8NiF8",
+    "section_accordions_BUPYT9",
+    "rte_content_9JUn79",
+    "rte_content_jMVPNy"
+  ]
+}

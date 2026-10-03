@@ -1,0 +1,56 @@
+<div>
+  <h1>{{ 'customer.login_page.title' | t }}</h1>
+
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+
+    <div>
+      <label for="email">{{ 'customer.login_page.email' | t }}</label>
+      <input type="email" name="customer[email]">
+    </div>
+
+    <div>
+      <label for="password">{{ 'customer.login_page.password' | t }}</label>
+      <input type="password" name="customer[password]">
+    </div>
+
+    <div>
+      <button type="submit">{{ 'customer.login_page.submit' | t }}</button>
+    </div>
+
+    <div>
+      <a href="{{ routes.account_register_url }}">{{ 'customer.login_page.create_account' | t }}</a>
+    </div>
+    <div>
+      <a href="{{ routes.account_recover_url }}">{{ 'customer.login_page.forgot_password' | t }}</a>
+    </div>
+  {% endform %}
+
+  <div>
+    {%- form 'reset_customer_password' -%}
+      {{ form.errors | default_errors }}
+
+      <div>
+        <label for="reset_password">{{ 'customer.reset_password.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="reset_password"
+        >
+      </div>
+
+      <div>
+        <label for="reset_password_confirmation">
+          {{- 'customer.reset_password.password_confirm' | t -}}
+        </label>
+        <input
+          type="password"
+          name="customer[password_confirmation]"
+          id="reset_password_confirmation"
+        >
+      </div>
+
+      <button type="submit">{{ 'customer.reset_password.submit' | t }}</button>
+    {%- endform -%}
+  </div>
+</div>

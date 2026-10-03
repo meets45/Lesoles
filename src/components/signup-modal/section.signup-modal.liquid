@@ -1,0 +1,167 @@
+{% comment %}
+  Email Signup Modal
+{% endcomment %}
+
+<signup-modal
+  data-component="signup-modal"
+  data-modal-delay="{{ section.settings.delay_seconds }}"
+>
+  <site-modal id="signup-modal">
+    <div
+      class="modal micromodal-slide signup-modal"
+      id="signup-modal"
+      aria-hidden="true"
+      data-modal
+    >
+      <div class="modal__overlay" tabindex="-1">
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="signup-modal-title"
+        >
+          <button
+            type="button"
+            class="modal__close"
+            aria-label="{{ 'newsletter.close' | t }}"
+            data-modal-close
+          >
+            {% render 'icon-close' %}
+          </button>
+
+          <div class="signup-modal__content">
+            <div class="signup-modal__image">
+              {%- if section.settings.image != blank -%}
+                <img
+                  srcset="
+                    {{ section.settings.image | image_url: width: 800 }} 800w,
+                    {{ section.settings.image | image_url: width: 1000 }} 1000w,
+                    {{ section.settings.image | image_url: width: 1200 }} 1200w
+                  "
+                  src="{{ section.settings.image | image_url: width: 800 }}"
+                  alt="{{ section.settings.image.alt | escape }}"
+                  width="{{ section.settings.image.width }}"
+                  height="{{ section.settings.image.height }}"
+                  loading="lazy"
+                >
+              {%- else -%}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+
+            <div class="signup-modal__text-content">
+              <h2 id="signup-modal-title" class="signup-modal__title display-large">
+                {{ section.settings.title }}
+              </h2>
+
+              {%- if section.settings.subtitle != blank -%}
+                <p class="signup-modal__subtitle subheading">
+                  {{ section.settings.subtitle }}
+                </p>
+              {%- endif -%}
+
+              {%- if section.settings.description != blank -%}
+                <p class="signup-modal__description body-medium">
+                  {{ section.settings.description }}
+                </p>
+              {%- endif -%}
+
+              {%- form 'customer', class: 'signup-modal__form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+
+                <div class="signup-modal__form-field">
+                  <input
+                    type="email"
+                    name="contact[email]"
+                    class="signup-modal__input field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    placeholder="{{ 'newsletter.email_placeholder' | t }}"
+                    required
+                  >
+                </div>
+
+                {%- if section.settings.terms != blank -%}
+                  <p class="signup-modal__terms body-small">
+                    {{ section.settings.terms }}
+                  </p>
+                {%- endif -%}
+
+                <div class="signup-modal__buttons">
+                  <button type="submit" class="button button--primary signup-modal__submit">
+                    {{ 'newsletter.submit' | t }}
+                  </button>
+
+                  <button
+                    type="button"
+                    class="button button--secondary signup-modal__close"
+                    data-modal-close
+                  >
+                    {{ 'newsletter.close' | t }}
+                  </button>
+                </div>
+              {%- endform -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </site-modal>
+</signup-modal>
+
+{% schema %}
+{
+  "name": "Signup Modal",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Modal Settings"
+    },
+    {
+      "type": "range",
+      "id": "delay_seconds",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 1,
+      "label": "Delay (seconds)",
+      "info": "Delay before showing the modal"
+    },
+    {
+      "type": "header",
+      "content": "Modal Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Get 15% Off"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "your next order."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Sign up for our emails to get exclusive information on product drops, promotions, and more.</p>"
+    },
+    {
+      "type": "text",
+      "id": "terms",
+      "label": "Terms and Conditions"
+    }
+  ]
+}
+{% endschema %}

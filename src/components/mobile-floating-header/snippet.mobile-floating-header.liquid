@@ -1,0 +1,108 @@
+{% assign mode = 'default' %}
+{% assign expanded = 'primary' %}
+{% if product %}
+  {% assign mode = 'alternate' %}
+  {% assign expanded = 'secondary' %}
+{% endif %}
+
+<mobile-floating-header
+  data-component="mobile-floating-header"
+  data-mobile-floating-header
+  data-mode="{{ mode }}"
+  data-expanded="{{ expanded }}"
+>
+  <div class="mobile-floating-header">
+    <div class="mobile-floating-header__primary">
+      <div class="mobile-floating-header__primary-inner">
+        {% if mode == 'alternate' %}
+          <div class="mobile-floating-header__primary-expand">
+            {% capture icon_menu_kabob_vertical %}
+            {% render 'icon-menu-kabob-vertical' %}
+          {% endcapture %}
+            {% render 'icon-button',
+              as: 'button',
+              icon: icon_menu_kabob_vertical,
+              label: 'Expand menu',
+              attr: 'data-expand-primary'
+            %}
+          </div>
+        {% endif %}
+
+        <ul class="mobile-floating-header__primary-actions-list" data-primary-actions>
+          <li>
+            {% capture icon_chat %}{% render 'icon-chat' %}{% endcapture %}
+            {% capture label_chat %}{{'general.navigation.chat' | t}}{% endcapture %}
+            {% render 'icon-button', as: 'button', icon: icon_chat, label: label_chat %}
+          </li>
+          <li>
+            {% capture icon_search %}{% render 'icon-search' %}{% endcapture %}
+            {% capture label_search %}{{'general.navigation.search' | t}}{% endcapture %}
+            {% render 'icon-button',
+              as: 'button',
+              icon: icon_search,
+              label: label_search,
+              attr: 'data-search-drawer-trigger aria-expanded="false"'
+            %}
+          </li>
+          <li>
+            {% capture icon_account %}{% render 'icon-account' %}{% endcapture %}
+            {% capture label_account %}{{'general.navigation.account' | t}}{% endcapture %}
+            {%- capture href_account -%}{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.storefront_login_url }}{%- endif -%}{%- endcapture -%}
+            {% render 'icon-button',
+              as: 'link',
+              icon: icon_account,
+              label: label_account,
+              href: href_account
+            %}
+          </li>
+          <li>
+            {% capture icon_cart %}{% render 'icon-cart' %}{% endcapture %}
+            {% capture label_cart %}{{'general.navigation.cart' | t}}{% endcapture %}
+            {% render 'icon-button',
+              as: 'button',
+              icon: icon_cart,
+              label: label_cart,
+              attr: 'data-cart-toggle-button'
+            %}
+          </li>
+          <li>
+            {% capture icon_menu_hamburger %}{% render 'icon-menu-hamburger' %}{% endcapture %}
+            {% capture label_menu %}{{'general.navigation.menu' | t}}{% endcapture %}
+            {% render 'icon-button',
+              as: 'button',
+              icon: icon_menu_hamburger,
+              label: label_menu,
+              attr: 'data-mobile-mega-menu-trigger'
+            %}
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% if mode == 'alternate' %}
+      <div class="mobile-floating-header__secondary">
+        <div class="mobile-floating-header__secondary-inner">
+          <div class="mobile-floating-header__expand-secondary">
+            {% capture icon_plus %}
+            {% render 'icon-plus' %}
+          {% endcapture %}
+            {% render 'icon-button',
+              as: 'button',
+              icon: icon_plus,
+              label: 'Expand secondary',
+              attr: 'data-expand-secondary'
+            %}
+          </div>
+
+          <div data-secondary-actions>
+            {% render 'button',
+              as: 'button',
+              id: 'secondary-add-to-cart',
+              label: 'Add to Cart',
+              attr: 'data-add-to-cart'
+            %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</mobile-floating-header>

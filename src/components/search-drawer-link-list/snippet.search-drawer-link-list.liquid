@@ -1,0 +1,33 @@
+{% capture title_id %}search-drawer-link-list-heading{% endcapture %}
+
+<search-drawer-link-list
+  data-component="search-drawer-link-list"
+  data-search-drawer-link-list
+>
+  <div class="search-drawer-link-list">
+    <h3
+      class="search-drawer-link-list__heading body-xsmall"
+      id="{{ title_id }}"
+    >
+      {{ 'general.search.link_results_title' | t }}
+    </h3>
+    <ul
+      class="search-drawer__links-list"
+      aria-describedby="{{ title_id }}"
+    >
+      {% for link in links %}
+        <li class="search-drawer__links-list-item" data-search-drawer-link>
+          <a href="{{ link.url }}">
+            {{ link.text }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="template" data-template>
+    <li class="search-drawer__links-list-item" data-search-drawer-link>
+      <a href=""> </a>
+    </li>
+  </div>
+</search-drawer-link-list>

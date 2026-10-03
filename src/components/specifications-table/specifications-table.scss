@@ -1,0 +1,12 @@
+.specifications-table {
+  text-align: left;
+  & tbody {
+    display: grid;
+    grid-gap: var(--components-accordions-content-gap);
+  }
+  & tr {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    grid-gap: var(--spacing-400);
+  }
+}

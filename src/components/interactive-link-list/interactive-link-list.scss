@@ -1,0 +1,118 @@
+.interactive-link-list {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 769px) {
+    padding: var(--spacing-700) var(--screens-desktop-margin);
+  }
+}
+
+.interactive-link-list__inner {
+  background-color: var(--surface-primary);
+
+  @media (min-width: 769px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-800);
+  }
+}
+
+@media (max-width: 768px) {
+  .interactive-link-list__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-400);
+  }
+}
+
+@media (min-width: 769px) {
+  .interactive-link-list--links-left .interactive-link-list__inner {
+    grid-template-areas: "links image";
+  }
+
+  .interactive-link-list--links-right .interactive-link-list__inner {
+    grid-template-areas: "image links";
+  }
+
+  .interactive-link-list__image-container {
+    grid-area: image;
+  }
+}
+
+.interactive-link-list__image {
+  position: relative;
+  padding-bottom: 100%;
+
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.interactive-link-list__image--mobile {
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.interactive-link-list__image--desktop {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.interactive-link-list__eyebrow {
+  writing-mode: vertical-lr;
+  margin-bottom: 0;
+  transform-origin: center;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.interactive-link-list__link {
+  color: var(--typography-color);
+  text-decoration: none;
+  font-weight: var(--type-fontweight-medium);
+  transition: color 0.2s ease-out;
+
+  &:hover {
+    color: var(--typography-color-hover-active);
+  }
+}
+
+.interactive-link-list__links {
+  @media (max-width: 768px) {
+    padding: var(--spacing-800) var(--screens-mobile-margin);
+  }
+
+  @media (min-width: 769px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.interactive-link-list__links-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--spacing-600);
+
+  @media (min-width: 769px) {
+    gap: var(--spacing-800);
+  }
+
+  & ul {
+    padding: 0;
+  }
+
+  & li {
+    list-style: none;
+  }
+}

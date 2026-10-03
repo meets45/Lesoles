@@ -1,0 +1,28 @@
+/* Banner */
+.employee-discount-banner {
+  display: none;
+  background: var(--ui-elements-notifications-promo-callout-default);
+  color: var(--typography-color-default);
+  padding: var(--spacing-200);
+  align-items: center;
+  align-content: center;
+  gap: var(--spacing-200);
+  align-self: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Modal */
+.employee-discount-modal .modal__container {
+  max-width: 600px;
+}
+
+.employee-discount-modal p:not(:last-child) {
+  margin-bottom: var(--spacing-100);
+}
+
+.employee-discount-modal .modal__footer {
+  gap: var(--spacing-400);
+  display: flex;
+  flex-wrap: wrap;
+}

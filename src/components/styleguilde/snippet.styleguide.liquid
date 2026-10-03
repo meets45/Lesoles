@@ -1,0 +1,419 @@
+<!-- Style guide -->
+<style>
+  :root {
+    /* -------------------- Colors -------------------- */
+
+    /* Neutrals */
+    --color-neutrals-0: #FFFFFF;
+    --color-neutrals-25: #F7F7F7;
+    --color-neutrals-50: #E0E0E0;
+    --color-neutrals-100: #C9C9C9;
+    --color-neutrals-200: #B2B2B2;
+    --color-neutrals-300: #9B9B9B;
+    --color-neutrals-400: #848484;
+    --color-neutrals-500: #6D6D6D;
+    --color-neutrals-600: #565656;
+    --color-neutrals-700: #3F3F3F;
+    --color-neutrals-800: #282828;
+    --color-neutrals-900: #111111;
+    --color-neutrals-1000: #000000;
+
+    /* Error, Warnings, Success */
+    --color-red-100: #FEF3F2;
+    --color-red-200: #F04438;
+    --color-red-300: #D92D20;
+    --color-red-400: #B42318;
+    --color-orange-100: #FFFAEB;
+    --color-orange-200: #F79009;
+    --color-orange-300: #DC6803;
+    --color-orange-400: #B54708;
+    --color-green-100: #D1FADF;
+    --color-green-200: #32D583;
+    --color-green-300: #12B76A;
+    --color-green-400: #008247;
+
+    /* Napapijri specific */
+    --color-essential-100: #FFFFFF;
+    --color-essential-200: #E2E2E2;
+    --color-essential-300: #CDCDCD;
+    --color-essential-400: #000000;
+
+    --color-napa-orange-100: #FFF0EA;
+    --color-napa-orange-200: #FF9C6E;
+    --color-napa-orange-300: #FF6C2C;
+    --color-napa-orange-400: #F05C1C;
+    --color-napa-orange-500: #BC4A1A;
+
+    --color-stone-beige-100: #FBFAF8;
+    --color-stone-beige-200: #EDE8DA;
+
+    /* -------------------- Typography -------------------- */
+    --font-family-display: "Akkurat Pro";
+    --font-family-headings: "Akkurat Pro";
+    --font-family-subheadings: "Akkurat Pro";
+    --font-family-body: "Akkurat Pro";
+
+    --type-fontweight-light: 300;
+    --type-fontweight-regular: 400;
+    --type-fontweight-medium: 500;
+    --type-fontweight-bold: 700;
+
+    --type-letterspacing-100: 0px;
+
+    --type-fontsize-25: 12px;
+    --type-fontsize-50: 14px;
+    --type-fontsize-100: 16px;
+    --type-fontsize-200: 18px;
+    --type-fontsize-300: 20px;
+    --type-fontsize-500: 24px;
+    --type-fontsize-700: 32px;
+    --type-fontsize-800: 40px;
+    --type-fontsize-900: 48px;
+    --type-fontsize-1000: 56px;
+
+    --spacing-300: 12px;
+    --spacing-400: 16px;
+    --spacing-450: 18px;
+    --spacing-500: 20px;
+    --spacing-600: 24px;
+    --spacing-650: 28px;
+    --spacing-700: 32px;
+    --spacing-800: 40px;
+    --spacing-850: 44px;
+    --spacing-900: 48px;
+    --spacing-925: 52px;
+    --spacing-950: 56px;
+    --spacing-1000: 64px;
+    --spacing-1050: 72px;
+
+    /* Display Styles */
+    --typography-styles-sizing-display-large-desktop: var(--type-fontsize-1000);
+    --typography-styles-line-height-display-large-desktop: var(--spacing-1050);
+
+    --typography-styles-sizing-display-large-mobile: var(--type-fontsize-800);
+    --typography-styles-line-height-display-large-mobile: var(--spacing-950);
+
+    --typography-styles-sizing-display-medium-desktop: var(--type-fontsize-900);
+    --typography-styles-line-height-display-medium-desktop: var(--spacing-1000);
+
+    --typography-styles-sizing-display-medium-mobile: var(--type-fontsize-700);
+    --typography-styles-line-height-display-medium-mobile: var(--spacing-850);
+
+    --typography-styles-sizing-display-small-desktop: var(--type-fontsize-700);
+    --typography-styles-line-height-display-small-desktop: var(--spacing-800);
+
+    --typography-styles-sizing-display-small-mobile: var(--type-fontsize-500);
+    --typography-styles-line-height-display-small-mobile: var(--spacing-650);
+
+    /* Heading Styles */
+    --typography-styles-weight-heading: var(--type-fontweight-light);
+    --typography-styles-tracking-heading: var(--type-letterspacing-100);
+
+    --typography-styles-sizing-heading-xlarge-desktop: var(--type-fontsize-800);
+    --typography-styles-line-height-heading-xlarge-desktop: var(--spacing-925);
+    --typography-styles-sizing-heading-xlarge-mobile: var(--type-fontsize-700);
+    --typography-styles-line-height-heading-xlarge-mobile: var(--spacing-850);
+
+    --typography-styles-sizing-heading-large-desktop: var(--type-fontsize-700);
+    --typography-styles-line-height-heading-large-desktop: var(--spacing-850);
+    --typography-styles-sizing-heading-large-mobile: var(--type-fontsize-500);
+    --typography-styles-line-height-heading-large-mobile: var(--spacing-700);
+
+    --typography-styles-sizing-heading-medium: var(--type-fontsize-300);
+    --typography-styles-line-height-heading-medium: var(--spacing-650);
+
+    --typography-styles-sizing-heading-small: var(--type-fontsize-200);
+    --typography-styles-line-height-heading-small: var(--spacing-600);
+
+    --typography-styles-sizing-heading-xsmall: var(--type-fontsize-100);
+    --typography-styles-line-height-heading-xsmall: var(--spacing-500);
+
+    /* Subheading Styles */
+    --typography-styles-weight-subheading: 700;
+    --typography-styles-tracking-heading: 0;
+
+    --typography-styles-sizing-subheading-xlarge-desktop: var(--type-fontsize-800);
+    --typography-styles-line-height-subheading-xlarge-desktop: var(--spacing-925);
+    --typography-styles-sizing-heading-xlarge-mobile: var(--type-fontsize-700);
+    --typography-styles-line-height-heading-xlarge-mobile: var(--spacing-850);
+
+    --typography-styles-sizing-subheading-large-desktop: var(--type-fontsize-700);
+    --typography-styles-line-height-subheading-large-desktop: var(--spacing-850);
+    --typography-styles-sizing-heading-large-mobile: var(--type-fontsize-500);
+    --typography-styles-line-height-heading-large-mobile: var(--spacing-700);
+
+    --typography-styles-sizing-subheading-medium: var(--type-fontsize-300);
+    --typography-styles-line-height-subheading-medium: var(--spacing-650);
+
+    --typography-styles-sizing-subheading-small: var(--type-fontsize-200);
+    --typography-styles-line-height-subheading-small: var(--spacing-600);
+
+    --typography-styles-sizing-subheading-xsmall: var(--type-fontsize-100);
+    --typography-styles-line-height-subheading-xsmall: var(--spacing-500);
+
+
+    /* Body Styles */
+    --typography-styles-sizing-body-large: var(--type-fontsize-200);
+    --typography-styles-line-height-body-large: var(--spacing-650);
+
+    --typography-styles-sizing-body-medium: var(--type-fontsize-100);
+    --typography-styles-line-height-body-medium: var(--spacing-600);
+
+    --typography-styles-sizing-body-small: var(--type-fontsize-50);
+    --typography-styles-line-height-body-small: var(--spacing-450);
+
+    --typography-styles-sizing-body-xsmall: var(--type-fontsize-25);
+    --typography-styles-line-height-body-xsmall: var(--spacing-400);
+
+    /* -------------------- Grids & Spacing -------------------- */
+
+    --space-none: 0px;
+    --space-025: 2px;
+    --space-050: 4px;
+    --space-100: 6px;
+    --space-200: 8px;
+    --space-300: 12px;
+    --space-400: 16px;
+    --space-500: 20px;
+    --space-600: 24px;
+    --space-700: 32px;
+    --space-800: 40px;
+    --space-900: 48px;
+    --space-1000: 64px;
+    --space-1100: 80px;
+    --space-1200: 96px;
+    --space-1300: 128px;
+
+    /* Mobile */
+    --screens-mobile-width: 375px;
+    --screens-mobile-height: 812px;
+    --screens-mobile-gutter: var(--spacing-400);
+    --screens-mobile-margin: var(--spacing-400);
+
+    /* Tablet */
+    --screens-tablet-width: 768px;
+    --screens-tablet-height: 1024px;
+    --screens-tablet-gutter: var(--spacing-400);
+    --screens-tablet-margin: var(--spacing-400);
+
+    /* Laptop */
+    --screens-laptop-width: 1024px;
+    --screens-laptop-height: 768px;
+    --screens-laptop-gutter: var(--spacing-400);
+    --screens-laptop-margin: var(--spacing-400);
+
+    /* Desktop */
+    --screens-desktop-width: 1440px;
+    --screens-desktop-height: 720px;
+    --screens-desktop-gutter: var(--spacing-400);
+    --screens-desktop-margin: var(--spacing-400);
+
+    /* -------------------- Shadows & Blurs -------------------- */
+
+    --overlay: 0px 4px 40px 0px rgba(0, 0, 0, 0.1);
+    --top-shadow: 0px -4px 10px 0px rgba(0, 0, 0, 0.08);
+    --bottom-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.08);
+    --left-shadow: -4px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    --right-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    --background-blur: blur(4px);
+
+    /* -------------------- Borders & Radius -------------------- */
+
+    --borders-radius-none: 0px;
+    --borders-radius-50: 2px;
+
+    --borders-radius-default: var(--borders-radius-none);
+    --borders-radius-secondary: var(--borders-radius-50);
+    --borders-radius-full: 9999px;
+
+    --borders-width-none: 0px;
+    --borders-width-25: 0.6600000262260437px;
+    --borders-width-50: 1px;
+    --borders-width-100: 2px;
+
+    --border-none: var(--borders-width-none);
+    --border-decorative: var(--borders-width-25);
+    --border-standard: var(--borders-width-50);
+    --border-focus: var(--borders-width-100);
+
+    --border-color-white: var(--color-neutrals-0);
+    --border-color-light: var(--color-neutrals-100);
+    --border-color-medium: var(--color-neutrals-400);
+    --border-color-dark: var(--color-neutrals-700);
+    --border-color-black: var(--color-neutrals-1000);
+    --border-color-brand: var(--color-napa-orange-400);
+    --border-color-brand-inverse: var(--color-napa-orange-300);
+    --border-color-error: var(--color-red-400);
+    --border-color-error-inverse: var(--color-red-200);
+    --border-color-disabled: var(--color-neutrals-300);
+    --border-color-disabled-inverse: var(--color-neutrals-600);
+
+    /* -------------------- Dividers -------------------- */
+
+    --ui-elements-dividers-primary: var(--borders-color-black);
+    --ui-elements-dividers-secondary: var(--borders-color-medium);
+    --ui-elements-dividers-dark: var(--borders-color-black);
+    --ui-elements-dividers-inverse: var(--borders-color-white);
+
+    /* -------------------- Messy Overwrites for Style Guide -------------------- */
+
+    --ui-elements-navigation-promo-bar-dark: #000000;
+    --schemes-accent-500: #000000;
+
+    --buttons-secondary-background: transparent
+
+    --buttons-tertiary-background: rgba(255, 240, 234, 0.55);
+    --buttons-tertiary-border: var(--color-napa-orange-100);
+
+    --typography-color-hover-active: var(--color-napa-orange-100);
+    --borders-radius-default: 0;
+    --ui-elements-controls-brand: #000000;
+    --ui-elements-forms-focus: #000000;
+    --color-primary-dirtyblue-400: #000000;
+  }
+
+  .filter-chips__clear-all:hover,
+  .filter-chips__clear-all:focus,
+  a:not(.button):hover, a:not(.button):focus,
+  .interactive-link-list__link:hover,
+  .header__nav-link:hover {
+    color: var(--color-napa-orange-400) !important;
+  }
+
+  .image-with-text .image-with-text__inner {
+    background: color-mix(in srgb, var(--color-napa-orange-400) 60%, transparent) !important;
+  }
+
+  .price-slider__input::-webkit-slider-thumb {
+    border-radius: 2px !important;
+  }
+
+  /* -------------------- Buttons -------------------- */
+
+  .button,
+  a.button,
+  .button--primary {
+    /* shared button styles */
+    min-width: 228px;
+    color: var(--color-neutrals-0);
+    background: var(--color-neutrals-1000);
+    font-family: var(--typography-styles-font-family-headings);
+    font-size: var(--typography-styles-sizing-heading-medium);
+    font-style: normal;
+    font-weight: var(--type-fontweight-bold);
+    text-decoration: none;
+    letter-spacing: var(--type-letterspacing-100);
+    line-height: var(--spacing-650);
+    height: 52px;
+    border-radius: var(--borders-radius-default);
+    padding: var(--spacing-400) var(--spacing-700);
+    border: none !important;
+    transform: translateY(0);
+    transition: transform 0.4s;
+
+    &:disabled,
+    &[aria-disabled='true'],
+    &.disabled {
+      color: var(--buttons-disabled-text);
+      background: var(--buttons-disabled-background);
+    }
+
+    /* We need the after element to provide the border effect without flickering */
+    &:after {
+      display: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
+      background: var(--color-neutrals-800);
+
+      @media (min-width: 481px) {
+        transform: translateY(-4px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      height: 48px;
+      padding: var(--spacing-300) var(--spacing-700);
+    }
+
+    /* variant specific styles */
+    &.button--secondary {
+      color: var(--color-neutrals-1000);
+      background: var(--buttons-secondary-background);
+      backdrop-filter: var(--buttons-secondary-backdrop-filter);
+      position: relative;
+
+      &:after {
+        display: block;
+        border: var(--borders-width-50) solid var(--color-neutrals-1000);
+      }
+
+      &:hover:not(:disabled),
+      &:active:not(:disabled) {
+        background: var(--buttons-secondary-background);
+
+        &:after {
+          border: var(--borders-width-100) solid var(--color-neutrals-1000);;
+        }
+      }
+    }
+
+    &.button--tertiary {
+      color: var(--buttons-tertiary-text);
+      background-color: color-mix(in srgb, var(--color-napa-orange-100) 55%, transparent);
+      backdrop-filter: var(--buttons-tertiary-backdrop-filter);
+
+      &:after {
+        display: block;
+        border: var(--borders-width-50) solid var(--color-napa-orange-400);
+      }
+
+      &:hover:not(:disabled),
+      &:active:not(:disabled) {
+        background-color: color-mix(in srgb, var(--color-napa-orange-100) 80%, transparent);
+
+        &:after {
+          border: var(--borders-width-100) solid var(--color-napa-orange-400);;
+        }
+      }
+    }
+
+    /* tiny button variant, which can be combined with any of the above variants */
+    &.button--tiny {
+      font-size: var(--typography-styles-sizing-body-medium);
+      line-height: var(--typography-styles-line-height-body-medium);
+      height: 44px;
+      padding: 10px var(--spacing-200);
+
+      &:hover:not(:disabled),
+      &:active:not(:disabled) {
+        transition: transform, 0.4s;
+
+        @media (min-width: 480px) {
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .button__icon {
+    height: 16px;
+    width: 16px;
+    & svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .button-unstyled {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+
+</style>
+<!-- End Style guide -->

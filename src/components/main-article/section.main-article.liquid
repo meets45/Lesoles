@@ -1,0 +1,106 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Section: Main Article
+  - Used as the main content section in article template
+------------------------------------------------------------------------------
+{% endcomment %}
+
+{%- liquid
+  # Get blog metafields
+  assign product_variants = article.metafields.custom.article_related_products.value
+  assign sidebar_title = article.metafields.custom.article_related_products_title.value
+  assign article_mobile_image = article.metafields.custom.article_mobile_image.value
+
+  assign article_class = 'article__one-column'
+  if product_variants != blank
+    assign article_class = 'article__two-column'
+  endif
+
+  if article_mobile_image != blank
+    assign mobile_image = article_mobile_image
+  else
+    assign mobile_image = article.image
+  endif
+
+-%}
+
+<article data-component="main-article" class="article">
+  {% if article.image %}
+    <div class="article-banner__image article-banner__image--desktop">
+      {{ article.image | image_url: width: 2000 | image_tag:
+        loading: 'lazy',
+        sizes: '100vw'
+      }}
+    </div>
+
+    <div class="article-banner__image article-banner__image--mobile">
+      {{ mobile_image | image_url: width: 1440 | image_tag:
+        sizes: '100vw'
+      }}
+    </div>
+  {% endif %}
+
+  <div class="{{ article_class }}">
+    <div class="article__content">
+      <header class="article__header">
+        {% render 'blog-badges', tags: article.tags %}
+
+        <h1 class="article__title display-small">
+          {{ article.title }}
+        </h1>
+
+        <div class="article__meta">
+          {% if article.author %}
+            <span class="article__author body-small">
+              {{ article.author }}
+            </span>
+            <span class="article__meta--seperator body-small">•</span>
+          {% endif %}
+
+          <time
+            class="article__date body-small"
+            datetime="{{ article.published_at | date: '%Y-%m-%d' }}"
+          >
+            {{ article.published_at | date: '%B %d, %Y' }}
+          </time>
+        </div>
+      </header>
+
+      <hr class="article__divider">
+
+      <div class="article__body rte">
+        {% render 'formatting-helper', location: 'article', content: article.content %}
+      </div>
+    </div>
+
+    {% if product_variants != blank %}
+      <div class="article__aside">
+        <div class="article__products">
+          <h2 class="article__products-title heading-small">{{ sidebar_title }}</h2>
+
+          <ul class="article__products-list">
+            {% for variant in product_variants limit: 3 %}
+              <li class="article__product">
+                {% render 'product-card',
+                  product: variant.product,
+                  variant: variant,
+                  is_variant: true
+                %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": [ ],
+  "enabled_on": {
+    "templates": ["article"]
+  }
+}
+{% endschema %}

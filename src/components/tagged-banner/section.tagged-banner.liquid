@@ -1,0 +1,181 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    --desktop-ratio: {{ section.settings.desktop_ratio }};
+    --mobile-ratio: {{ section.settings.mobile_ratio }};
+  }
+</style>
+
+<tagged-banner data-component="tagged-banner">
+  <div class="tagged-banner">
+    {%- if section.settings.image != blank -%}
+      <div class="tagged-banner__media-container">
+        {%- liquid
+          assign desktop_image = section.settings.image
+          assign mobile_image = section.settings.mobile_image | default: section.settings.image
+        -%}
+
+        <div class="tagged-banner__media tagged-banner__media--desktop">
+          {{
+            desktop_image
+            | image_url: width: 3000
+            | image_tag:
+              loading: 'lazy',
+              sizes: '100vw',
+              widths: '375, 550, 750, 1100, 1500, 2200, 3000'
+          }}
+        </div>
+
+        <div class="tagged-banner__media tagged-banner__media--mobile">
+          {{
+            mobile_image
+            | image_url: width: 1100
+            | image_tag: loading: 'lazy', sizes: '100vw', widths: '375, 550, 750, 1100'
+          }}
+        </div>
+
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product != blank -%}
+            {%- assign product = block.settings.product -%}
+            <button
+              class="tagged-banner__tag"
+              data-tag-button
+              type="button"
+              aria-label="View product details"
+              style="
+                --desktop-left: {{ block.settings.desktop_position_x }}%;
+                --desktop-top: {{ block.settings.desktop_position_y }}%;
+                --mobile-left: {{ block.settings.mobile_position_x }}%;
+                --mobile-top: {{ block.settings.mobile_position_y }}%;
+              "
+            >
+              <span class="tagged-banner__tag-icon">
+                {%- render 'icon-arrow-upper-right' -%}
+              </span>
+            </button>
+
+            <div class="tagged-banner__product-card" data-product-card hidden>
+              {%- render 'product-card', product: product -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</tagged-banner>
+
+{% schema %}
+{
+  "name": "Tagged Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image",
+      "info": "Defaults to desktop image if not set"
+    },
+    {
+      "type": "select",
+      "id": "desktop_ratio",
+      "label": "Desktop Aspect Ratio",
+      "options": [
+        {
+          "value": "32/9",
+          "label": "32:9"
+        },
+        {
+          "value": "8/3",
+          "label": "8:3"
+        },
+        {
+          "value": "16/9",
+          "label": "16:9"
+        }
+      ],
+      "default": "32/9"
+    },
+    {
+      "type": "select",
+      "id": "mobile_ratio",
+      "label": "Mobile Aspect Ratio",
+      "options": [
+        {
+          "value": "4/3",
+          "label": "4:3"
+        },
+        {
+          "value": "1/1",
+          "label": "1:1"
+        },
+        {
+          "value": "3/4",
+          "label": "3:4"
+        }
+      ],
+      "default": "4/3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_tag",
+      "name": "Product Tag",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "desktop_position_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Desktop Horizontal Position",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "desktop_position_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Desktop Vertical Position",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "mobile_position_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Mobile Horizontal Position",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "mobile_position_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Mobile Vertical Position",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tagged Banner"
+    }
+  ]
+}
+{% endschema %}

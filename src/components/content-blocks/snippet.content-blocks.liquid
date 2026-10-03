@@ -1,0 +1,134 @@
+{% liquid
+  assign is_rte_section = false
+  if section.settings.highlight_section == true
+    assign is_rte_section = true
+  endif
+
+  if layout == 'row'
+    assign layout_class = 'content-blocks--row'
+  else
+  endif
+%}
+
+<div
+  data-component="content-blocks"
+  class="
+    content-blocks
+    {{ layout_class }}
+    {% case section_settings.text_alignment_desktop %}
+      {% when 'center' %}
+        content-blocks--center--desktop
+      {% when 'right' %}
+        content-blocks--right--desktop
+    {% endcase %}
+    {% case section_settings.text_alignment_mobile %}
+      {% when 'center' %}
+        content-blocks--center--mobile
+      {% when 'right' %}
+        content-blocks--right--mobile
+    {% endcase %}
+  "
+>
+
+  {% if layout == 'row' %}
+  <div class="content-blocks__content">
+  {% endif %}
+
+  {% for block in blocks %}
+    {% case block.type %}
+      {% when 'eyebrow' %}
+        <div class="content-blocks__eyebrow subheading-xsmall">{{ block.settings.text }}</div>
+
+      {% when 'heading' %}
+        {% if block.settings.heading_level == 'h1' %}
+          <h1 class="content-blocks__heading display-medium">{{ block.settings.text }}</h1>
+        {% elsif block.settings.heading_level == 'h2' %}
+          <h2 class="content-blocks__heading display-medium">{{ block.settings.text }}</h2>
+        {% else %}
+          <h3 class="content-blocks__heading display-small">{{ block.settings.text }}</h3>
+        {% endif %}
+
+      {% when 'subheading' %}
+        <div class="content-blocks__subheading subheading-small">{{ block.settings.text }}</div>
+
+      {% when 'body' %}
+          <div
+            class="
+              content-blocks__body
+              {% if is_rte_section %}
+                {{ block.settings.paragraph_size }}
+              {% endif %}
+            "
+          >
+          {{ block.settings.text }}
+        </div>
+
+      {% when 'text_link' %}
+        {% liquid
+          assign icon = false
+          if is_rte_section
+            assign icon_select = block.settings.icon
+
+            capture icon
+              case icon_select
+                when 'chat'
+                  render 'icon-chat'
+                when 'email'
+                  render 'icon-email'
+                when 'phone'
+                  render 'icon-mobile-phone'
+                when 'map'
+                  render 'icon-map'
+              endcase
+            endcapture
+          endif
+        %}
+        {% render 'text-link',
+          as: 'a',
+          class: 'content-blocks__text-link',
+          label: block.settings.label,
+          href: block.settings.url,
+          icon: icon
+        %}
+
+      {% when 'divider' %}
+        <hr class="content-blocks__divider">
+
+      {% else %}
+
+    {% endcase %}
+  {% endfor %}
+
+  {% if layout == 'row' %}
+  </div>
+  {% endif %}
+
+  {% for block in blocks %}
+    {% if block.type == 'button' %}
+      <div class="content-blocks__buttons">
+        {% for block in blocks %}
+          {% if block.type == 'button' %}
+            {% comment %} SheerID buttons require an ID {% endcomment %}
+            {% if sheer_id %}
+              {% render 'button',
+                as: 'a',
+                label: block.settings.label,
+                href: block.settings.url,
+                id: block.id,
+                variant: block.settings.variant
+              %}
+            {% else %}
+              {% render 'button',
+                as: 'a',
+                label: block.settings.label,
+                href: block.settings.url,
+                variant: block.settings.variant
+              %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% break %}
+    {% endif %}
+  {% endfor %}
+</div>

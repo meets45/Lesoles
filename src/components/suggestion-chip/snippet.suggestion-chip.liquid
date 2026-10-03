@@ -1,0 +1,12 @@
+<suggestion-chip data-component="suggestion-chip">
+  <button
+    class="suggestion-chip body-medium"
+    data-suggestion
+    data-aria-label-template="{{ 'general.search.suggestion_label' | t }}"
+    data-term="{{ term | escape }}"
+    aria-label="{{ 'general.search.suggestion_label' | t }} {{ term }}"
+    {{ attr }}
+  >
+    {{ term }}
+  </button>
+</suggestion-chip>

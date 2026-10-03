@@ -1,0 +1,61 @@
+{% liquid
+  if heading_class != blank
+    assign heading_class = heading_class
+  else
+    assign heading_class = 'heading-medium'
+  endif
+%}
+
+<article class="blog-card">
+  <div class="blog-card__image">
+    {% if article.image %}
+      {{ article.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+
+  <div class="blog-card__content">
+    {% render 'blog-badges', tags: article.tags %}
+
+    <h3 class="blog-card__title {{ heading_class }}">
+      {{ article.title }}
+    </h3>
+
+    <div class="blog-card__meta body-small">
+      {% if article.author %}
+        <span>{{ article.author }}</span>
+        •
+      {% endif %}
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+        {{ article.published_at | date: format: 'abbreviated_date' }}
+      </time>
+    </div>
+
+    <div class="blog-card__excerpt body-medium">
+      {{ article.excerpt_or_content | strip_html | truncate: 120 }}
+    </div>
+
+
+    {% if button == true %}
+      {% if featured == true %}
+        {% assign read_more = 'blogs.article.featured_read_post' | t %}
+      {% else %}
+        {% assign read_more = 'blogs.article.read_post' | t %}
+      {% endif %}
+      {% render 'button',
+        as: 'a'
+        label: read_more,
+        variant: 'secondary',
+        href: article.url
+      %}
+    {% else %}
+      <a href="{{ article.url }}" class="blog-card__link text-link">
+        {{ 'blogs.article.read_post' | t }}
+        <span class="blog-card__link-icon">
+          {% render 'icon-arrow-right' %}
+        </span>
+      </a>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,49 @@
+.icon-button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: var(--color-neutrals-50);
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0.2;
+      @media (hover: none) {
+        opacity: 0;
+      }
+    }
+  }
+
+  &:active {
+    &::before {
+      opacity: 1;
+      @media (hover: none) {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.icon-button__icon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+
+  & > svg {
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "logo": "shopify://shop_images/napapijri.svg",
+    "favicon": "shopify://shop_images/favicon.png",
+    "font_size_display_large_desktop": 96,
+    "line_height_display_medium_desktop": 72,
+    "line_height_display_medium_mobile": 64,
+    "line_height_display_small_desktop": 44,
+    "font_size_display_small_mobile": 28,
+    "line_height_display_small_mobile": 32,
+    "line_height_heading_xlarge_desktop": 64,
+    "line_height_heading_xlarge_mobile": 56,
+    "line_height_heading_large_desktop": 56,
+    "line_height_heading_large_mobile": 48,
+    "line_height_heading_medium": 40,
+    "line_height_heading_small": 28,
+    "line_height_heading_xsmall": 20,
+    "line_height_subheading_xlarge_desktop": 72,
+    "font_size_subheading_xlarge_mobile": 48,
+    "line_height_subheading_xlarge_mobile": 64,
+    "line_height_subheading_large_desktop": 64,
+    "line_height_subheading_large_mobile": 56,
+    "line_height_subheading_medium": 44,
+    "line_height_subheading_xsmall": 24,
+    "line_height_body_large": 24,
+    "line_height_body_medium": 20,
+    "line_height_body_small": 16,
+    "line_height_body_xsmall": 16,
+    "borders_radius_default": "4px",
+    "borders_radius_secondary": "8px",
+    "borders_width_decorative": "0.66px",
+    "logo_width": 130,
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "menu_item_DfK7R9": {
+            "type": "menu_item",
+            "settings": {
+              "text": "Men",
+              "link": "shopify://collections/men",
+              "mega_menu": "men",
+              "overflow": false
+            }
+          },
+          "menu_item_77eAtn": {
+            "type": "menu_item",
+            "settings": {
+              "text": "Women",
+              "link": "",
+              "mega_menu": "women",
+              "overflow": false
+            }
+          },
+          "menu_item_HACmPV": {
+            "type": "menu_item",
+            "settings": {
+              "text": "Kids",
+              "link": "shopify://collections/perfect-backpack-finder",
+              "mega_menu": "kids",
+              "overflow": false
+            }
+          },
+          "menu_item_C7G6Ai": {
+            "type": "menu_item",
+            "settings": {
+              "text": "The Brand",
+              "link": "shopify://pages/the-brand",
+              "mega_menu": "about-us",
+              "overflow": false
+            }
+          }
+        },
+        "block_order": [
+          "menu_item_DfK7R9",
+          "menu_item_77eAtn",
+          "menu_item_HACmPV",
+          "menu_item_C7G6Ai"
+        ],
+        "settings": {
+          "mobile_mega_menu": "mobile-menu",
+          "search_drawer": "search-drawer"
+        }
+      },
+      "promo-bar": {
+        "type": "promo-bar",
+        "blocks": {
+          "promo_bJpdxE": {
+            "type": "promo",
+            "settings": {
+              "text": "Free shipping on orders above 70 GBP",
+              "link": "shopify://collections"
+            }
+          },
+          "promo_EQAHwt": {
+            "type": "promo",
+            "settings": {
+              "text": "Free returns for 30 days",
+              "link": ""
+            }
+          },
+          "promo_QKmeXa": {
+            "type": "promo",
+            "settings": {
+              "text": "Promotion text goes here",
+              "link": ""
+            }
+          },
+          "promo_3zpJQj": {
+            "type": "promo",
+            "settings": {
+              "text": "Super long promotion text that will probably break to a second line",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "promo_bJpdxE",
+          "promo_EQAHwt",
+          "promo_QKmeXa",
+          "promo_3zpJQj"
+        ],
+        "settings": {
+          "color_mode": "dark",
+          "autoplay": true
+        }
+      },
+      "slideout-cart": {
+        "type": "slideout-cart",
+        "settings": {}
+      },
+      "slideout-variant-editor": {
+        "type": "slideout-variant-editor",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "surface_primary": "#f9f9f8",
+          "typography_color": "#000000",
+          "typography_color_secondary": "#565656",
+          "typography_color_hover_active": "#235768",
+          "buttons_primary_text": "#ffffff",
+          "buttons_primary_background": "#000000",
+          "buttons_primary_hover": "#235768",
+          "buttons_secondary_text": "#111111",
+          "buttons_secondary_background": "rgba(0,0,0,0)",
+          "buttons_secondary_hover": "#ebf2f4",
+          "buttons_secondary_border": "#111111",
+          "buttons_tertiary_text": "#111111",
+          "buttons_tertiary_background": "#ffffff",
+          "buttons_tertiary_hover": "#eabdaa",
+          "buttons_tertiary_border": "#81391b",
+          "buttons_disabled_text": "#838382",
+          "buttons_disabled_background": "#b2b2b2"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "surface_primary": "#111111",
+          "typography_color": "#ffffff",
+          "typography_color_secondary": "#dcdcdc",
+          "typography_color_hover_active": "#235768",
+          "buttons_primary_text": "#ffffff",
+          "buttons_primary_background": "#327c95",
+          "buttons_primary_hover": "#235768",
+          "buttons_secondary_text": "#ffffff",
+          "buttons_secondary_background": "rgba(0,0,0,0)",
+          "buttons_secondary_hover": "rgba(0,0,0,0)",
+          "buttons_secondary_border": "#ffffff",
+          "buttons_tertiary_text": "#81391b",
+          "buttons_tertiary_background": "#81391b",
+          "buttons_tertiary_hover": "#eabdaa",
+          "buttons_tertiary_border": "#ffffff",
+          "buttons_disabled_text": "#b2b2b2",
+          "buttons_disabled_background": "#3f3f3f"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "surface_primary": "#c2d8df",
+          "typography_color": "#111111",
+          "typography_color_secondary": "#565656",
+          "typography_color_hover_active": "#235768",
+          "buttons_primary_text": "#ffffff",
+          "buttons_primary_background": "#000000",
+          "buttons_primary_hover": "#235768",
+          "buttons_secondary_text": "#15343e",
+          "buttons_secondary_background": "#15343e",
+          "buttons_secondary_hover": "#ebf2f4",
+          "buttons_secondary_border": "#ffffff",
+          "buttons_tertiary_text": "#81391b",
+          "buttons_tertiary_background": "#81391b",
+          "buttons_tertiary_hover": "#eabdaa",
+          "buttons_tertiary_border": "#ffffff",
+          "buttons_disabled_text": "#b2b2b2",
+          "buttons_disabled_background": "#3f3f3f"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "surface_primary": "#eabdaa",
+          "typography_color": "#111111",
+          "typography_color_secondary": "#565656",
+          "typography_color_hover_active": "#235768",
+          "buttons_primary_text": "#ffffff",
+          "buttons_primary_background": "#327c95",
+          "buttons_primary_hover": "#235768",
+          "buttons_secondary_text": "#15343e",
+          "buttons_secondary_background": "#15343e",
+          "buttons_secondary_hover": "#ebf2f4",
+          "buttons_secondary_border": "#ffffff",
+          "buttons_tertiary_text": "#81391b",
+          "buttons_tertiary_background": "#81391b",
+          "buttons_tertiary_hover": "#eabdaa",
+          "buttons_tertiary_border": "#ffffff",
+          "buttons_disabled_text": "#b2b2b2",
+          "buttons_disabled_background": "#3f3f3f"
+        }
+      },
+      "scheme-7f02a25c-c4fc-405a-b11c-ce9e69da3575": {
+        "settings": {
+          "surface_primary": "#f9f9f8",
+          "typography_color": "#000000",
+          "typography_color_secondary": "#565656",
+          "typography_color_hover_active": "#235768",
+          "buttons_primary_text": "#ffffff",
+          "buttons_primary_background": "#000000",
+          "buttons_primary_hover": "#235768",
+          "buttons_secondary_text": "#111111",
+          "buttons_secondary_background": "rgba(0,0,0,0)",
+          "buttons_secondary_hover": "#ebf2f4",
+          "buttons_secondary_border": "#111111",
+          "buttons_tertiary_text": "#111111",
+          "buttons_tertiary_background": "#ffffff",
+          "buttons_tertiary_hover": "#eabdaa",
+          "buttons_tertiary_border": "#81391b",
+          "buttons_disabled_text": "#838382",
+          "buttons_disabled_background": "#b2b2b2"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "logo": "shopify://shop_images/Clip_path_group.png",
+      "logo_width": 130,
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {}
+        }
+      },
+      "content_for_index": []
+    }
+  }
+}

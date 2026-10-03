@@ -1,0 +1,48 @@
+<div
+  data-component="color-swatch"
+  class="color-swatch">
+  <label class="color-swatch__label">
+    <input
+      type="{{ type | default: 'radio' }}"
+      id="{{ id }}"
+      name="{{ name }}"
+      value="{{ value }}"
+      class="sr-only"
+      {% if checked %}
+        checked
+      {% endif %}
+      {% if disabled %}
+        disabled
+      {% endif %}
+      {{ attrs }}
+    >
+
+    <div
+      class="color-swatch__dot"
+      {% if background_color != blank %}
+        style="background-color: {{ background_color }}"
+      {% endif %}
+    >
+      {% if image != blank %}
+        {{
+          image
+          | image_url: width: 112
+          | image_tag:
+            class: 'color-swatch__image',
+            loading: 'lazy',
+            widths: '56, 112',
+            sizes: '56px'
+        }}
+      {% endif %}
+    </div>
+
+    {% if title %}
+      <span class="color-swatch__info body-xsmall">
+        {{- title -}}
+        {% if count %}
+          <span class="color-swatch__count">({{ count }})</span>
+        {% endif %}
+      </span>
+    {% endif %}
+  </label>
+</div>

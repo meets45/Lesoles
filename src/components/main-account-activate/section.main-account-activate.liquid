@@ -1,0 +1,25 @@
+<div>
+  <h1>{{ 'customer.activate_account.title' | t }}</h1>
+
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+
+    <div>
+      <label for="password">{{ 'customer.activate_account.password' | t }}</label>
+      <input type="password" name="customer[password]">
+    </div>
+
+    <div>
+      <label for="password_confirmation">
+        {{- 'customer.activate_account.password_confirm' | t -}}
+      </label>
+      <input type="password" name="customer[password_confirmation]">
+    </div>
+
+    <div>
+      <button type="submit">
+        {{ 'customer.activate_account.submit' | t }}
+      </button>
+    </div>
+  {% endform %}
+</div>

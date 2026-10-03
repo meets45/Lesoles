@@ -1,0 +1,49 @@
+<ul data-component="footer-social-icons" class="footer-social-icons">
+  {% if settings.social_tiktok_link != blank %}
+    <li>
+      <a href="{{ settings.social_tiktok_link }}" target="_blank">
+        {% render 'icon-tiktok' %}
+      </a>
+    </li>
+  {% endif %}
+
+  {% if settings.social_instagram_link != blank %}
+    <li>
+      <a href="{{ settings.social_instagram_link }}" target="_blank">
+        {% render 'icon-instagram' %}
+      </a>
+    </li>
+  {% endif %}
+
+  {% if settings.social_youtube_link != blank %}
+    <li>
+      <a href="{{ settings.social_youtube_link }}" target="_blank">
+        {% render 'icon-youtube' %}
+      </a>
+    </li>
+  {% endif %}
+
+  {% if settings.social_x_link != blank %}
+    <li>
+      <a href="{{ settings.social_x_link }}" target="_blank">
+        {% render 'icon-twitter' %}
+      </a>
+    </li>
+  {% endif %}
+
+  {% if settings.social_facebook_link != blank %}
+    <li>
+      <a href="{{ settings.social_facebook_link }}" target="_blank">
+        {% render 'icon-facebook' %}
+      </a>
+    </li>
+  {% endif %}
+
+  {% if settings.social_pinterest_link != blank %}
+    <li>
+      <a href="{{ settings.social_pinterest_link }}" target="_blank">
+        {% render 'icon-pinterest' %}
+      </a>
+    </li>
+  {% endif %}
+</ul>

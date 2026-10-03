@@ -1,0 +1,95 @@
+{% assign filters = collection.filters | default: search.filters %}
+{% assign search_products_count = search.results | where: 'object_type', 'product' | size %}
+{% assign is_no_results = false %}
+{% if collection and collection.products_count == 0 %}
+  {% assign is_no_results = true %}
+{% endif %}
+{% if search and search_products_count == 0 %}
+  {% assign is_no_results = true %}
+{% endif %}
+
+{% comment %} Desktop filters {% endcomment %}
+<filters-facets
+  data-component="filters-facets"
+  data-filters-facets
+>
+  {% unless is_no_results %}
+    <div class="filter-container">
+      {% if collection %}
+        <div class="filter-container__breadcrumbs">
+          {% render 'breadcrumbs' %}
+        </div>
+      {% endif %}
+      <div class="filter-container__sticky" data-sticky>
+        <div class="filter-container__inner">
+          <div class="filter-container__header">
+            <div class="filter-container__header-inner">
+              {% if collection %}
+                <div class="filter-container__title">
+                  <h1 class="subheading-small">
+                    {{ collection.title }}
+                  </h1>
+                </div>
+              {% endif %}
+              <span class="filter-container__count body-xsmall">
+                {% render 'products-count' %}
+              </span>
+            </div>
+
+            <button
+              class="filter-container__mobile-trigger button-unstyled"
+              data-filter-drawer-trigger
+            >
+              <div class="icon-l">
+                {% render 'icon-filter' %}
+              </div>
+            </button>
+          </div>
+
+          <div class="filter-container__filters">
+            <div class="filter-container__dropdowns">
+              <div class="filter-container__dropdowns-inner filter-container__dropdowns-inner--left">
+                <button
+                  class="filter-dropdown__header filter-dropdown__all"
+                  data-filter-drawer-trigger
+                >
+                  {{ 'products.facets.all_filters' | t }}
+                  <span class="icon-s">
+                    {% render 'icon-filter' %}
+                  </span>
+                </button>
+
+                {% comment %} Filter Dropdowns - Horizontal {% endcomment %}
+                {% for filter in filters %}
+                  <div class="filter-group">
+                    {% capture content_for_filter %}
+                  <div class="filter-group__wrapper filter-group__{{ filter.label | downcase }}">
+                  {% render 'filter-inputs', filter: filter, id: 'filter-main' %}
+                  </div>
+                {% endcapture %}
+                    {% render 'filter-dropdown', filter: filter, content: content_for_filter %}
+                  </div>
+                {% endfor %}
+              </div>
+
+              <div class="filter-container__dropdowns-inner filter-container__dropdowns-inner--right">
+                {% comment %} Sort By {% endcomment %}
+                <div class="filter-group">
+                  {% render 'sort-by-select' %}
+                </div>
+                <div class="product-count-vertical light" role="status">
+                  <p class="product-count__text text-body" data-product-count>
+                    {% render 'products-count' %}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {% render 'filter-chips' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endunless %}
+</filters-facets>
+
+{% render 'filter-drawer' %}

@@ -1,0 +1,53 @@
+{
+  "name": "lesoles",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Meet Shah",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=24.21.0 <25"
+  },
+  "scripts": {
+    "start": "run-p -sr shopify:dev dev",
+    "dev": "vite serve",
+    "build": "NODE_OPTIONS=--trace-deprecation vite build",
+    "vite:debug": "vite --debug",
+    "shopify:logout": "shopify auth logout",
+    "shopify:dev": "source .env && shopify theme dev -s $STORE_DOMAIN --path=shopify",
+    "shopify:push": "source .env && shopify theme push -s $STORE_DOMAIN -n --path=shopify",
+    "lighthouse": "lhci autorun",
+    "deploy": "run-s build shopify:push",
+    "deploy:new": "source .env && run-s build && shopify theme push -s $STORE_DOMAIN -n -u --path=shopify",
+    "deploy:dev": "source .env && run-s build && shopify theme push -s $STORE_DOMAIN -n --path=shopify",
+    "deploy:prd": "source .env && run-s build && shopify theme push -s $STORE_DOMAIN -n -x \"(templates|sections|locales).*.json\" -x \"config/settings_data.json\" --path=shopify",
+    "pull:content": "source .env && shopify theme pull -n -o \"*.json\" -x \"config/settings_schema.json\" -s $STORE_DOMAIN --path=shopify",
+    "pull:templates": "source .env && shopify theme pull -n -o \"templates/*.json\" -s $STORE_DOMAIN --path=shopify",
+    "pull:groups": "source .env && shopify theme pull -n -o \"sections/*.json\" -s $STORE_DOMAIN --path=shopify",
+    "pull:config": "source .env && shopify theme pull -n -o \"config/settings_data.json\" $STORE_DOMAIN --path=shopify",
+    "pull:locales": "source .env && shopify theme pull -n -o \"locales/*.json\" -s $STORE_DOMAIN --path=shopify",
+    "pull:all": "source .env && shopify theme pull -n -s $STORE_DOMAIN --path=shopify",
+    "format:save": "prettier --write '**/*.{js,liquid,json,css}'",
+    "format:check": "prettier --check '**/*.{js,liquid,json,css}'"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.76.2",
+    "autoprefixer": "^10.4.18",
+    "chokidar": "^4.0.3",
+    "del": "^8.0.0",
+    "fs-extra": "^11.3.0",
+    "globby": "^14.0.2",
+    "is-plain-object": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.36",
+    "postcss-preset-env": "^9.5.2",
+    "prettier": "^3.4.1",
+    "sass": "^1.85.1",
+    "vite": "5.4.19",
+    "vite-plugin-shopify": "^3.0.1"
+  },
+  "dependencies": {
+    "focus-trap": "^7.6.4",
+    "swiper": "^11.2.5"
+  }
+}

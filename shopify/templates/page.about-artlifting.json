@@ -1,0 +1,226 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_mygmPQ": {
+      "type": "hero-banner",
+      "blocks": {
+        "eyebrow_fXCU7N": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Introducing"
+          }
+        },
+        "heading_GzBeLi": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Art Lifting"
+          }
+        },
+        "body_gXTgA9": {
+          "type": "body",
+          "settings": {
+            "text": "<p>In partnership with Artlifting, we're championing artists impacted by disabilities & housing insecurity</p>"
+          }
+        },
+        "button_QAHxrX": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Artlifing",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_fXCU7N",
+        "heading_GzBeLi",
+        "body_gXTgA9",
+        "button_QAHxrX"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_about_airlifting_hero_desktop_240503_v1.webp",
+        "scrim": 0,
+        "image_height": "large",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "block",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "image_with_text_7UakPw": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_KGmR4t": {
+          "type": "heading",
+          "settings": {
+            "text": "Sylvia Burnstein"
+          }
+        },
+        "body_kKqADe": {
+          "type": "body",
+          "settings": {
+            "text": "<p>For Sylvia, art is not only a hobby, but a way to express her inner thoughts and emotions with colors and advocate for the vast abilities of individuals living with autism.<br/><br/>Diagnosed with Autism Spectrum Disorder at the age of three, Sylvia was always creative but didn’t yet have an outlet to express it. Sylvia’s mom says, “When she can't communicate with us, she can draw images to help us understand her better.” Over time, art became her favorite language and way to focus.</p>"
+          }
+        },
+        "button_yXPKRV": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the Collection",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KGmR4t",
+        "body_kKqADe",
+        "button_yXPKRV"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_about_airlifting_sylvia_250503_v1.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_product_collection_r8Qmen": {
+      "type": "simple-product-collection",
+      "settings": {
+        "eyebrow": "",
+        "title": "Sylvia Burnstein's Collection",
+        "description": "",
+        "cta_text": "",
+        "collection": "all-bags",
+        "products_to_show": 16,
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_BRpCxt": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_B9LmYL": {
+          "type": "heading",
+          "settings": {
+            "text": "MJ Cooper"
+          }
+        },
+        "body_QJE638": {
+          "type": "body",
+          "settings": {
+            "text": "<p>As a child, MJ loved going to museums and practicing her creativity. However, creating art became essential to her well-being when she became ill with viral meningitis.<br/><br/>After experiencing a chronic vestibular migraine, MJ will often paint what she saw when she closed her eyes during the episode, inviting the viewer to feel what she felt, but also transforming that pain into beauty.</p>"
+          }
+        },
+        "button_y9JWyf": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the Collection",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_B9LmYL",
+        "body_QJE638",
+        "button_y9JWyf"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_about_airlifting_mj_250503_v1.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_product_collection_BTjGnC": {
+      "type": "simple-product-collection",
+      "settings": {
+        "eyebrow": "",
+        "title": "MJ Cooper's Collection",
+        "description": "",
+        "cta_text": "Shop Best Sellers",
+        "collection": "all-bags",
+        "products_to_show": 16,
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_rf7VVU": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zEtDHJ": {
+          "type": "heading",
+          "settings": {
+            "text": "Mia Brown"
+          }
+        },
+        "body_h7nC9w": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Mia Brown's abstract paintings are characterized by dynamic color combinations and varying textures, each alluding to the experimentation Mia allows in her process.<br/><br/>Mia’s cerebral palsy impacts the use of her hands and over time, she has developed a system that benefits her desire and dedication to create.</p>"
+          }
+        },
+        "button_ryjmhN": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the Collection",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zEtDHJ",
+        "body_h7nC9w",
+        "button_ryjmhN"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_about_airlifting_mia_250503_v1.webp",
+        "image_placement": "left",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_product_collection_iUKdTJ": {
+      "type": "simple-product-collection",
+      "settings": {
+        "eyebrow": "",
+        "title": "Mia Brown's Collection",
+        "description": "",
+        "cta_text": "",
+        "collection": "all-bags",
+        "products_to_show": 16,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_banner_mygmPQ",
+    "image_with_text_7UakPw",
+    "simple_product_collection_r8Qmen",
+    "image_with_text_BRpCxt",
+    "simple_product_collection_BTjGnC",
+    "image_with_text_rf7VVU",
+    "simple_product_collection_iUKdTJ"
+  ]
+}

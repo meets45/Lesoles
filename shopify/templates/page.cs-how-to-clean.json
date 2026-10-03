@@ -1,0 +1,344 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customer_service_banner_TWrUHd": {
+      "type": "customer-service-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_7.png",
+        "image_mobile": "shopify://shop_images/image_7.png"
+      }
+    },
+    "customer_service_menu_cDrigR": {
+      "type": "customer-service-menu",
+      "blocks": {
+        "link_EKNntL": {
+          "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "link_ghMfbr": {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        "link_FiL7bR": {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "link_9tqxiU": {
+          "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        "link_ypqYg3": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_PcDpMw": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        "link_x8hmeN": {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "link_RDdxmt": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        "link_Pmbq7f": {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      },
+      "block_order": [
+        "link_EKNntL",
+        "link_ghMfbr",
+        "link_FiL7bR",
+        "link_9tqxiU",
+        "link_ypqYg3",
+        "link_PcDpMw",
+        "link_x8hmeN",
+        "link_RDdxmt",
+        "link_Pmbq7f"
+      ],
+      "settings": {
+        "header": "Customer Service"
+      }
+    },
+    "image_with_text_ijHpBq": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_btEtH3": {
+          "type": "heading",
+          "settings": {
+            "text": "Step 1: Clean"
+          }
+        },
+        "body_ztpJHi": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Take everything out of each and every pocket. Turn the bag inside out or upside down and shake it over a garbage can to remove the little bits of dust and debris. Super committed? Use the hose attachment on your vacuum to get at the base and corners.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_btEtH3",
+        "body_ztpJHi"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/how_to_clean_icons-02.webp",
+        "image_mobile": "shopify://shop_images/how_to_clean_icons-02.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_qYrXRW": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_yDHkxG": {
+          "type": "heading",
+          "settings": {
+            "text": "Step 2: Clean"
+          }
+        },
+        "body_jrJYKp": {
+          "type": "body",
+          "settings": {
+            "text": "<p>First, back away from the washing machine. To maintain the shape and finish of your bag, we recommend cleaning by hand.</p><p>For our Cordura and 600D Polyester Fabrics (like the Right Pack, Big Student and SuperBreak), use cool water with a soft damp cloth to wipe down the interior and exterior of your pack, Never use bleach or harsh detergents on your bag. And remember to avoid any suede or leather trim on your pack as these areas could discolor if they get wet.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yDHkxG",
+        "body_jrJYKp"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/how_to_clean_icons-03.webp",
+        "image_mobile": "shopify://shop_images/how_to_clean_icons-03.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_GAjQp9": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ynwrL8": {
+          "type": "heading",
+          "settings": {
+            "text": "Step 3: Dry"
+          }
+        },
+        "body_fbGdGh": {
+          "type": "body",
+          "settings": {
+            "text": "<p>If you used water to wash your fabric pack, hang your pack to dry completely before putting it into action again.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ynwrL8",
+        "body_fbGdGh"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/how_to_clean_icons-04.webp",
+        "image_mobile": "shopify://shop_images/how_to_clean_icons-04.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_KdbHRg": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_HtyQc4": {
+          "type": "heading",
+          "settings": {
+            "text": "Step 4: Adventure On"
+          }
+        },
+        "body_gqMdeF": {
+          "type": "body",
+          "settings": {
+            "text": "<p>For ongoing maintenance, consider a monthly routine of a quick wipe-down or brushing. With proper care, your JanSport bag will be with you for a lifetime of exploration.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HtyQc4",
+        "body_gqMdeF"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/how_to_clean_icons-05.webp",
+        "image_mobile": "shopify://shop_images/how_to_clean_icons-05.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_8VUcfM": {
+      "type": "image-with-text",
+      "blocks": {
+        "body_RrPbzN": {
+          "type": "body",
+          "settings": {
+            "text": "<h3><strong>Backpack Stain Remover</strong></h3><h4>For use on 600 Denier polyester and Cordura® fabrics</h4><p><strong>Directions:</strong><br/>Step 1: Spray cleaner onto a wet cloth, sponge, or brush and scrub thoroughly<br/>Step 2: Wipe away excess moisture and dirt with a clean dry towel<br/>Step 3: Allow to dry completely before using</p>"
+          }
+        }
+      },
+      "block_order": [
+        "body_RrPbzN"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/backpack_stain_remover.webp",
+        "image_mobile": "shopify://shop_images/backpack_stain_remover.webp",
+        "image_placement": "right",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "rte_content_DeGW4t": {
+      "type": "rte-content",
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": true,
+        "margin_top": false,
+        "highlight_section": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    },
+    "rte_content_bdWGgh": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_cKRxVK": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "wanna talk?"
+          }
+        },
+        "text_link_L7WdDp": {
+          "type": "text_link",
+          "settings": {
+            "label": "Call Us",
+            "url": "",
+            "icon": "phone"
+          }
+        },
+        "text_link_JpFGUe": {
+          "type": "text_link",
+          "settings": {
+            "label": "Live Chat",
+            "url": "",
+            "icon": "chat"
+          }
+        },
+        "text_link_pwYxNN": {
+          "type": "text_link",
+          "settings": {
+            "label": "Email us",
+            "url": "",
+            "icon": "email"
+          }
+        },
+        "text_link_xpW3yL": {
+          "type": "text_link",
+          "settings": {
+            "label": "Int'l help",
+            "url": "",
+            "icon": "map"
+          }
+        },
+        "body_VRxxwE": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-small",
+            "text": "<p>JanSport Customer Service is here to help Monday through Friday 8am - 6:00pm (CT) (USA only).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cKRxVK",
+        "text_link_L7WdDp",
+        "text_link_JpFGUe",
+        "text_link_pwYxNN",
+        "text_link_xpW3yL",
+        "body_VRxxwE"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "margin_top": false,
+        "highlight_section": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    }
+  },
+  "order": [
+    "customer_service_banner_TWrUHd",
+    "customer_service_menu_cDrigR",
+    "image_with_text_ijHpBq",
+    "image_with_text_qYrXRW",
+    "image_with_text_GAjQp9",
+    "image_with_text_KdbHRg",
+    "image_with_text_8VUcfM",
+    "rte_content_DeGW4t",
+    "rte_content_bdWGgh"
+  ]
+}

@@ -1,0 +1,24 @@
+{% assign sizes = sizes | default: '100vw' %}
+{% if size == 'small' %}
+  <img
+    src="{{ 'no-image.png' | asset_img_url: '600x' }}"
+    class="{{ class }}"
+    height="auto"
+    width="auto"
+    srcset="
+      {{ 'no-image.png' | asset_img_url: '200x' }} 200w,
+      {{ 'no-image.png' | asset_img_url: '400x' }} 400w,
+      {{ 'no-image.png' | asset_img_url: '600x' }}, 600w,
+      {{ 'no-image.png' | asset_img_url: '800x'}}, 800w,
+      {{ 'no-image.png' | asset_img_url: '1000x' }}, 1000w,
+      {{ 'no-image.png' | asset_img_url: '1200x' }}, 1200w,
+      {{ 'no-image.png' | asset_img_url: '1400x' }} 1400w,
+      {{ 'no-image.png' | asset_img_url: '1600x' }} 1600w,
+      {{ 'no-image.png' | asset_img_url: '1800x' }}, 1800w,
+      {{ 'no-image.png' | asset_img_url: '1900x' }}, 1900w,
+      {{ 'no-image.png' | asset_img_url: '2000x' }}, 2000w
+    "
+    sizes="{{ sizes }}"
+    alt="Placeholder image"
+  >
+{% endif %}

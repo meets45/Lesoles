@@ -1,0 +1,67 @@
+<div
+  data-component="breadcrumbs"
+  class="breadcrumbs"
+  aria-label="breadcrumbs">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a href="{{ routes.root_url }}" class="breadcrumbs__link body-xsmall body-light">Home</a>
+    </li>
+
+    {% if template contains 'collection' and collection.handle %}
+      <li class="breadcrumbs__item">
+        {% if current_tags %}
+          <a href="{{ collection.url }}" class="breadcrumbs__link body-xsmall body-light">
+            {{- collection.title -}}
+          </a>
+        {% else %}
+          <span class="breadcrumbs__text body-xsmall body-light">
+            {{- collection.title -}}
+          </span>
+        {% endif %}
+      </li>
+    {% endif %}
+
+    {% if template contains 'product' %}
+      {% if collection.url %}
+        <li class="breadcrumbs__item">
+          <a href="{{ collection.url }}" class="breadcrumbs__link body-xsmall body-light">
+            {{- collection.title -}}
+          </a>
+        </li>
+      {% endif %}
+      <li class="breadcrumbs__item">
+        <span class="breadcrumbs__text body-xsmall body-light">{{ product.title }}</span>
+      </li>
+    {% endif %}
+
+    {% if template contains 'page' %}
+      <li class="breadcrumbs__item">
+        <span class="breadcrumbs__text body-xsmall body-light">{{ page.title }}</span>
+      </li>
+    {% endif %}
+
+    {% if template contains 'blog' %}
+      {% if current_tags %}
+        <li class="breadcrumbs__item">
+          <a href="{{ blog.url }}" class="breadcrumbs__link">{{ blog.title }}</a>
+        </li>
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__text body-xsmall body-light">{{ current_tags | first }}</span>
+        </li>
+      {% else %}
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__text body-xsmall body-light">{{ blog.title }}</span>
+        </li>
+      {% endif %}
+    {% endif %}
+
+    {% if template contains 'article' %}
+      <li class="breadcrumbs__item">
+        <a href="{{ blog.url }}" class="breadcrumbs__link body-xsmall body-light">{{ blog.title }}</a>
+      </li>
+      <li class="breadcrumbs__item">
+        <span class="breadcrumbs__text body-xsmall">{{ article.title }}</span>
+      </li>
+    {% endif %}
+  </ol>
+</div>

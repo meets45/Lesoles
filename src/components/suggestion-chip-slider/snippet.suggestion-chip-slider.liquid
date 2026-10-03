@@ -1,0 +1,42 @@
+<suggestion-chip-slider
+  data-component="suggestion-chip-slider"
+  data-suggestion-chip-slider
+  data-active="true"
+  data-dynamic-title="{{ dynamic_title }}"
+>
+  <div class="suggestion-chip-slider">
+    <h3
+      class="suggestion-chip-slider__heading body-xsmall"
+      data-title
+    >
+      {{ title }}
+    </h3>
+    <div class="swiper" data-swiper>
+      <div class="swiper-wrapper">
+        {% for suggested_term in suggested_terms %}
+          <div class="swiper-slide">
+            {% capture attr %}aria-controls="{{ input_id }}"{% endcapture %}
+            {% render 'suggestion-chip', term: suggested_term, attr: attr %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="suggestion-chip-slider__nav-container">
+      <button class="suggestion-chip-slider__prev" data-swiper-prev>
+        <div class="icon-s">
+          {% render 'icon-arrow-left' %}
+        </div>
+      </button>
+      <button class="suggestion-chip-slider__next" data-swiper-next>
+        <div class="icon-s">
+          {% render 'icon-arrow-right' %}
+        </div>
+      </button>
+    </div>
+  </div>
+
+  {% comment %} these templates are used by JS {% endcomment %}
+  <div class="template" data-suggestion-chip-template>
+    {% render 'suggestion-chip' %}
+  </div>
+</suggestion-chip-slider>

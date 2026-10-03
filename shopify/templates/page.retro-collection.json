@@ -1,0 +1,167 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_section_Ccz9GK": {
+      "type": "video-section",
+      "blocks": {
+        "video_M3dFTx": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/embed/jSTT3nm4rHA?si=Pvs4sLcyJ6ckMGrs",
+            "autoplay": true,
+            "loop": false
+          }
+        }
+      },
+      "block_order": [
+        "video_M3dFTx"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_content_collection_VMHnNH": {
+      "type": "simple-content-collection",
+      "blocks": {
+        "card_AWLtRg": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Seattle_Pack_Jelly_Kelly_v1_240927.webp",
+            "heading": "",
+            "description": "<p>Roomy, retro, and ready for the road ahead. Vintage-styled Seattle Pack is the roomiest with space for electronics, accessories, and two H2O bottles.</p>",
+            "link_text": "Shop Seattle Pack",
+            "link_url": "shopify://products/seattle-pack-js0a85vt"
+          }
+        },
+        "card_ALxQiU": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Small_Seattle_Pack_Jelly_Kelly_v1_240927.webp",
+            "heading": "",
+            "description": "<p>We stole style from our beloved 1967 Super Sack 1, then re-imagined a pack perfect for today. Meet Seattle Pack's sibling, a smaller version that still goes anywhere. Bring a laptop, water, and accessories.</p>",
+            "link_text": "Shop small Seattle pack",
+            "link_url": "shopify://products/small-seattle-pack-js0a85vu"
+          }
+        },
+        "card_yRqrbD": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Mini_Skip_Jelly_Kelly_v1_240927.webp",
+            "heading": "",
+            "description": "<p>Original '67 JanSport Tahoma design is the inspiration behind the Mini Skip Pack, combining our signature vintage vibe with modern upgrades like padded straps, a collapsible H2O bottle pocket, and an accessory compartment.</p>",
+            "link_text": "Shop mini skip pack",
+            "link_url": "shopify://products/mini-skip-pack-js0a85vs"
+          }
+        },
+        "card_UjwV3y": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Washington_Waistpack_Jelly_Kelly_v1_240927.webp",
+            "heading": "",
+            "description": "<p>Nostalgia goals. Classic JanSport branding graces the front of Washington Waistpack for a super vintage vibe. A main compartment and two pockets carry your small stuff.</p>",
+            "link_text": "Shop Washington Waistpack",
+            "link_url": "shopify://products/washington-waistpack-js0a85vr"
+          }
+        }
+      },
+      "block_order": [
+        "card_AWLtRg",
+        "card_ALxQiU",
+        "card_yRqrbD",
+        "card_UjwV3y"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "title": "",
+        "description": "",
+        "style": "standard",
+        "image_ratio": "4:5",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_7XPL8A": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_b9deXC": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "Heritage styles reimagined"
+          }
+        }
+      },
+      "block_order": [
+        "heading_b9deXC"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "color_scheme": "scheme-2",
+        "image_desktop": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Desktop_Banner_01_v1_240930.webp"
+      }
+    },
+    "rich_text_byi7qE": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow_mRYXei": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Our heritage is the inspiration, adventure is the destination. The spirit of  OG JanSport is alive in the Retro Series. Go far and wide with the collection  that *just gets* your love for vintage style and unbridled adventure."
+          }
+        },
+        "button_yC4A8k": {
+          "type": "button",
+          "settings": {
+            "label": "shop retro series",
+            "url": "shopify://products/seattle-pack-js0a85vt",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_mRYXei",
+        "button_yC4A8k"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "color_scheme": "scheme-2",
+        "image_desktop": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Desktop_Banner_02_v1_240927.webp"
+      }
+    },
+    "hero_banner_n6RVY8": {
+      "type": "hero-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_MKTG_24_RETRO_LP_Desktop_Banner_03_v1_240927.webp",
+        "scrim": 0,
+        "image_height": "small",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "video_section_Ccz9GK",
+    "simple_content_collection_VMHnNH",
+    "rich_text_7XPL8A",
+    "rich_text_byi7qE",
+    "hero_banner_n6RVY8"
+  ]
+}

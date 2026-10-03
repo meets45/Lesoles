@@ -1,0 +1,52 @@
+{% comment %}
+  -------------------------------------------
+  Blog Badges
+  Tags on blog articles.
+  Background colours taken from metaobject
+  -------------------------------------------
+{% endcomment %}
+
+{%- liquid
+  assign tag_colors = shop.metaobjects.blog_tag_colors.values
+  assign filtered_tags = ''
+
+  # Only include tags that have a color defined in metaobject
+  for tag in tags
+    for color in tag_colors
+      if color.tag == tag
+        assign filtered_tags = filtered_tags | append: tag | append: ','
+        break
+      endif
+    endfor
+  endfor
+
+  # Convert filtered_tags string to array
+  assign filtered_tags = filtered_tags | split: ','
+-%}
+
+{% if filtered_tags.size > 0 %}
+  <ul
+    class="article__badges"
+    role="list"
+    aria-label="{{ 'blogs.article.tags_aria_label' | t }}"
+  >
+    {% for tag in filtered_tags %}
+      {% assign tag_color = '' %}
+      {% for color in tag_colors %}
+        {% if color.tag == tag %}
+          {% assign tag_color = color.background_colour_variable %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      <li
+        class="article__badge body-xsmall"
+        style="background-color: {{ tag_color }};"
+      >
+        <span class="sr-only">
+          {{ 'blogs.article.tag_aria_label' | t }}
+        </span>
+        {{ tag }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

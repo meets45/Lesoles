@@ -1,0 +1,14 @@
+<div class="image-card">
+  {% if image %}
+    <div class="image-card__image">
+      {{ image | image_url: width: width | image_tag: sizes: sizes }}
+    </div>
+  {% endif %}
+  {% if heading %}
+    <div class="image-card__heading">
+      <div class="heading-xsmall">
+        {{ heading }}
+      </div>
+    </div>
+  {% endif %}
+</div>

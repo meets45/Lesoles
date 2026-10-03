@@ -1,0 +1,222 @@
+.hero-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* transparent mode layout is a straightforward banner */
+  &.hero-banner--layout-transparent {
+    /* this padding gets added in this layout only */
+    padding: var(--spacing-400) var(--screens-mobile-margin) var(--spacing-400);
+    @media (min-width: 769px) {
+      padding: var(--spacing-400) var(--screens-desktop-margin);
+    }
+
+    &.hero-banner--height-small {
+      min-height: 281px;
+      @media (min-width: 769px) {
+        min-height: 360px;
+      }
+    }
+
+    &.hero-banner--height-medium {
+      min-height: 375px;
+      @media (min-width: 769px) {
+        min-height: 480px;
+      }
+    }
+
+    &.hero-banner--height-large {
+      min-height: 500px;
+      @media (min-width: 769px) {
+        min-height: 720px;
+      }
+    }
+
+    &.hero-banner--height-full {
+      min-height: calc(100vh - var(--header-top-offset));
+    }
+  }
+
+  /* block mode layout is a two row layout on mobile, same layout as transparent on desktop */
+  &.hero-banner--layout-block {
+    /* this layout has no padding, because it needs to be full bleed */
+    @media (max-width: 768px) {
+      display: grid;
+    }
+
+    @media (min-width: 769px) {
+      padding: var(--spacing-400) var(--screens-desktop-margin);
+    }
+
+    &.hero-banner--height-small {
+      @media (min-width: 769px) {
+        min-height: 360px;
+      }
+    }
+
+    &.hero-banner--height-medium {
+      @media (min-width: 769px) {
+        min-height: 480px;
+      }
+    }
+
+    &.hero-banner--height-large {
+      @media (min-width: 769px) {
+        min-height: 720px;
+      }
+    }
+
+    &.hero-banner--height-full {
+      @media (min-width: 769px) {
+        min-height: calc(100vh - var(--header-top-offset));
+      }
+    }
+  }
+}
+
+.hero-banner.hero-banner--layout-block {
+  & .hero-banner__image {
+    @media (max-width: 768px) {
+      position: relative;
+    }
+
+    @media (min-width: 769px) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  /* set different aspect ratios for the mobile view */
+  @media (max-width: 768px) {
+    &.hero-banner--height-small .hero-banner__image {
+      padding-bottom: 66%;
+    }
+
+    &.hero-banner--height-medium .hero-banner__image {
+      padding-bottom: 100%;
+    }
+
+    &.hero-banner--height-large .hero-banner__image {
+      padding-bottom: calc(4 / 3 * 100%);
+    }
+  }
+}
+
+.hero-banner.hero-banner--layout-transparent {
+  & .hero-banner__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+/* hide images on mobile and desktop */
+.hero-banner__image {
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &.hero-banner__image--desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &.hero-banner__image--mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}
+
+.hero-banner__scrim {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* this is set via section settings */
+  background-color: var(--scrim);
+}
+
+/* hide the scrim on mobile for images in the block layout */
+.hero-banner.hero-banner--layout-block {
+  & .hero-banner__scrim {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+.hero-banner__content {
+  position: relative;
+  padding: var(--spacing-800);
+
+  /* on desktop, this becomes a card inset within the banner */
+  @media (min-width: 769px) {
+    max-width: 512px;
+  }
+}
+
+/* there's different padding for the content in different layouts */
+.hero-banner.hero-banner--layout-transparent .hero-banner__content {
+  @media (max-width: 768px) {
+    padding: var(--spacing-600);
+  }
+}
+
+.hero-banner.hero-banner--layout-block .hero-banner__content {
+  background-color: var(--surface-primary);
+  @media (max-width: 768px) {
+    padding: var(--spacing-700) var(--screens-mobile-margin);
+  }
+}
+
+/* add a little margin on top, so it's slightly below center */
+.hero-banner.hero-banner--layout-transparent {
+  &.hero-banner--height-small .hero-banner__content {
+    margin-top: var(--spacing-400);
+  }
+
+  &.hero-banner--height-medium .hero-banner__content {
+    margin-top: var(--spacing-800);
+  }
+
+  &.hero-banner--height-large .hero-banner__content {
+    margin-top: var(--spacing-1100);
+  }
+}
+
+/* on block layout, this only plays on desktop view */
+.hero-banner.hero-banner--layout-block {
+  &.hero-banner--height-small .hero-banner__content {
+    @media (min-width: 769px) {
+      margin-top: var(--spacing-400);
+    }
+  }
+
+  &.hero-banner--height-medium .hero-banner__content {
+    @media (min-width: 769px) {
+      margin-top: var(--spacing-800);
+    }
+  }
+
+  &.hero-banner--height-large .hero-banner__content {
+    @media (min-width: 769px) {
+      margin-top: var(--spacing-1100);
+    }
+  }
+}

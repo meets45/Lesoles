@@ -1,0 +1,27 @@
+<div>
+  {%- form 'reset_customer_password' -%}
+    {{ form.errors | default_errors }}
+
+    <div>
+      <input
+        type="password"
+        name="customer[password]"
+        id="password"
+      >
+      <label for="password">{{ 'customer.reset_password.password' | t }}</label>
+    </div>
+
+    <div>
+      <input
+        type="password"
+        name="customer[password_confirmation]"
+        id="password_confirmation"
+      >
+      <label for="password_confirmation">
+        {{- 'customer.reset_password.password_confirm' | t -}}
+      </label>
+    </div>
+
+    <button type="submit">{{ 'customer.reset_password.submit' | t }}</button>
+  {%- endform -%}
+</div>

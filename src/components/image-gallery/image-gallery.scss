@@ -1,0 +1,83 @@
+.image-gallery {
+  display: block;
+  margin: 0 auto;
+  padding: var(--spacing-800) 0;
+  max-width: var(--screens-desktop-width);
+}
+
+.image-gallery--full-screen {
+  max-width: none;
+  padding: var(--spacing-800) 0;
+}
+
+.image-gallery__content {
+  background-color: var(--surface-primary);
+}
+
+.image-gallery__content-wrapper {
+  margin-bottom: var(--spacing-800);
+  padding-left: var(--screens-mobile-margin);
+  padding-right: var(--screens-mobile-margin);
+}
+
+.image-gallery__image-wrapper {
+  aspect-ratio: 16/9;
+}
+
+.image-gallery__images {
+  display: grid;
+  gap: var(--spacing-200);
+}
+
+.image-gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 769px) {
+  .image-gallery {
+    padding: var(--spacing-700) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-800);
+  }
+
+  .image-gallery__content-wrapper {
+    margin-bottom: 0;
+  }
+
+  /* Default layout for 4 images */
+  .image-gallery__images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: var(--spacing-200);
+  }
+
+  /* Single image layout */
+  .image-gallery__images:not(:has(.image-gallery__image-wrapper:nth-child(2))) {
+    grid-template-columns: 1fr;
+  }
+
+  /* Layout for 2 images */
+  .image-gallery__images:has(.image-gallery__image-wrapper:nth-child(2)):not(:has(.image-gallery__image-wrapper:nth-child(3))) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  /* Layout for 3 images */
+  .image-gallery__images:has(.image-gallery__image-wrapper:nth-child(3)):not(:has(.image-gallery__image-wrapper:nth-child(4))) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+
+    & .image-gallery__image-wrapper:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Layout for 4 images */
+  .image-gallery__images:has(.image-gallery__image-wrapper:nth-child(4)) .image-gallery__image-wrapper:first-child {
+    grid-column: 1 / -1;
+  }
+}

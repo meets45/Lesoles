@@ -1,0 +1,4 @@
+{% paginate search.results by 6 %}
+  {% assign products = search.results | where: 'object_type', 'product' %}
+  {% render 'product-search-card-slider', products: products %}
+{% endpaginate %}

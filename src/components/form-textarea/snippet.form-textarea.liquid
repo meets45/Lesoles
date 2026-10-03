@@ -1,0 +1,33 @@
+{% comment %}
+ Textarea
+  id: Used for textarea ID and label for
+  placeholder: Placeholder text
+  state: disabled / required
+  label: Label text
+  help_text: Helper text under label
+{% endcomment %}
+
+<form-textarea
+  data-component="form-textarea"
+  {% if help_text %}data-has-help{% endif %}
+>
+  <div class="field field-textarea">
+    <textarea
+      id="{{ id }}"
+      name="{{ name | default: id }}"
+      class="field__input body-medium"
+      placeholder="{{ placeholder }}"
+      {{ state }}
+      data-textarea-field
+    ></textarea>
+    <label class="field__label" for="{{ id }}" data-textarea-label>
+      {{ label }}{% if required %}*{% endif %}
+    </label>
+  </div>
+
+  {% if help_text %}
+    <span class="field--help" data-textarea-help>
+      {{ help_text }}
+    </span>
+  {% endif %}
+</form-textarea>

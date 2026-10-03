@@ -1,0 +1,29 @@
+{% capture title_id %}mega-menu-list-title-{{ list.title | handle }}{% endcapture %}
+
+<div
+  data-component="mega-menu-list"
+  class="
+    mega-menu-list
+    {% if columns == 2 %}
+    mega-menu-list--double
+    {% endif %}
+  "
+>
+  {% if list.links.size > 0 %}
+    <h2 id="{{ title_id }}" class="heading-small">
+      {{ list.title }}
+    </h2>
+
+    <ul class="mega-menu-list__list" aria-describedby="{{ title_id }}">
+      {% for item in list.links %}
+        <li class="mega-menu-list__list-item" role="menuitem">
+          <a href="{{ item.url }}">{{ item.title }}</a>
+
+          {% if item.object.metafields.custom.navigation_badge != blank %}
+            {% render 'badge', label: item.object.metafields.custom.navigation_badge.value.label %}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

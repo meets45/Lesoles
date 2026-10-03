@@ -1,0 +1,162 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_FVfDXP": {
+          "type": "title",
+          "settings": {}
+        },
+        "subtitle_YCLmGm": {
+          "type": "subtitle",
+          "settings": {}
+        },
+        "social_proof_hddi3q": {
+          "type": "social-proof",
+          "settings": {}
+        },
+        "review_summary_KdcJWW": {
+          "type": "review-summary",
+          "settings": {}
+        },
+        "price_CgrWTb": {
+          "type": "price",
+          "settings": {}
+        },
+        "show_variants_kRF7yz": {
+          "type": "show-variants",
+          "settings": {}
+        },
+        "quantity_input_68fUep": {
+          "type": "quantity-input",
+          "settings": {}
+        },
+        "above_selector_content_NKQRYV": {
+          "type": "above-selector-content",
+          "settings": {}
+        },
+        "buy_buttons_ximxbh": {
+          "type": "buy-buttons",
+          "settings": {}
+        },
+        "promo_text_AEKaU9": {
+          "type": "promo-text",
+          "settings": {}
+        },
+        "upsell_products_QnEeDM": {
+          "type": "upsell-products",
+          "settings": {}
+        },
+        "low_inventory_qHWce6": {
+          "type": "low-inventory",
+          "settings": {}
+        },
+        "klarna_text_WNL8wK": {
+          "type": "klarna-text",
+          "settings": {}
+        },
+        "cross_promotion_product_AdjCbp": {
+          "type": "cross-promotion-product",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_FVfDXP",
+        "subtitle_YCLmGm",
+        "social_proof_hddi3q",
+        "review_summary_KdcJWW",
+        "price_CgrWTb",
+        "show_variants_kRF7yz",
+        "quantity_input_68fUep",
+        "above_selector_content_NKQRYV",
+        "buy_buttons_ximxbh",
+        "promo_text_AEKaU9",
+        "upsell_products_QnEeDM",
+        "low_inventory_qHWce6",
+        "klarna_text_WNL8wK",
+        "cross_promotion_product_AdjCbp"
+      ],
+      "settings": {
+        "show_eyebrow": true,
+        "show_breadcrumbs": true
+      }
+    },
+    "mp_accordion_reviews_dHnxyY": {
+      "type": "mp-accordion-reviews",
+      "settings": {}
+    },
+    "ugc_slider_DFhrhQ": {
+      "type": "ugc-slider",
+      "settings": {
+      }
+    },
+    "hero_banner_E3x7rf": {
+      "type": "hero-banner",
+      "blocks": {
+        "eyebrow_DQjhC7": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_47Ygem": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Heading Text"
+          }
+        },
+        "button_L8zFQH": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_DQjhC7",
+        "heading_47Ygem",
+        "button_L8zFQH"
+      ],
+      "settings": {
+        "scrim": 0,
+        "image_height": "small",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "simple_product_collection_ki78Vg": {
+      "type": "simple-product-collection",
+      "settings": {
+        "eyebrow": "",
+        "title": "Our Best Sellers",
+        "description": "",
+        "cta_text": "Shop Best Sellers",
+        "collection": "best-sellers",
+        "products_to_show": 16,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "mp_accordion_reviews_dHnxyY",
+    "ugc_slider_DFhrhQ",
+    "hero_banner_E3x7rf",
+    "simple_product_collection_ki78Vg"
+  ]
+}

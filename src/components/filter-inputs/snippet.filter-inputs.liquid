@@ -1,0 +1,85 @@
+{% case filter.type %}
+{% when 'boolean' %}
+  {% liquid
+    assign sanitized_value = filter.true_value.value
+    if filter.true_value.count == 0 and filter.true_value.active == false
+      assign filter_state = 'disabled'
+    endif
+  %}
+  {% capture filter_id %}{{id}}-{{filter.param_name | handleize}}{% endcapture %}
+  <div data-filter-input>
+    {% render 'checkbox',
+      id: filter_id,
+      name: filter.param_name,
+      value: sanitized_value,
+      label: filter.true_value.label,
+      state: filter_state,
+      checked: filter.true_value.active,
+      data_attributes: 'data-filter-input="true"',
+      count: filter.true_value.count
+    %}
+  </div>
+{% when 'list' %}
+  {% if filter.presentation == 'swatch' %}
+    <div class="filter-inputs__color-swatch-grid">
+      {% for filter_value in filter.values %}
+        {% liquid
+          assign sanitized_value = filter_value.value
+          if filter_value.active
+            assign disabled = false
+          elsif filter_value.count == 0 and filter_value.active == false
+            assign disabled = true
+          endif
+        %}
+
+        {% capture filter_id %}{{id}}-{{filter.param_name | handleize}}-{{forloop.index0}}{% endcapture %}
+        <div data-filter-input>
+          {% render 'color-swatch',
+            id: filter_id,
+            name: filter_value.param_name,
+            type: 'checkbox',
+            title: filter_value.label,
+            image: filter_value.swatch.image,
+            value: sanitized_value,
+            disabled: disabled,
+            checked: filter_value.active
+          %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for filter_value in filter.values %}
+      {% liquid
+        assign sanitized_value = filter_value.value
+        if filter_value.active
+          assign filter_state = 'checked'
+        elsif filter_value.count == 0 and filter_value.active == false
+          assign filter_state = 'disabled'
+        endif
+      %}
+      {% capture filter_id %}{{id}}-{{filter.param_name | handleize}}-{{forloop.index0}}{% endcapture %}
+      <div data-filter-input>
+        {% render 'checkbox',
+          id: filter_id,
+          name: filter_value.param_name,
+          value: sanitized_value,
+          label: filter_value.label,
+          state: filter_state,
+          checked: filter_value.active,
+          data_attributes: 'data-filter-input',
+          count: filter_value.count
+        %}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+{% when 'price_range' %}
+  <div data-filter-input>
+    {% render 'price-slider',
+      min_value: filter.range_min,
+      max_value: filter.range_max,
+      current_min: filter.min_value.value,
+      current_max: filter.max_value.value
+    %}
+  </div>
+{% endcase %}

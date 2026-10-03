@@ -1,0 +1,64 @@
+{% capture title_id %}mega-menu-panel-title-{{ parent.title | handle }}{% endcapture %}
+
+<mobile-mega-menu-panel
+  data-component="mobile-mega-menu-panel"
+  style="display:none;"
+  data-mobile-mega-menu-panel="mobile-{{ parent.title | handle }}-{{ level }}"
+  data-active="false"
+  aria-modal="true"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="mobile-mega-menu-panel">
+    <div class="mobile-mega-menu-panel__header">
+      <button
+        class="mobile-mega-menu-panel__close click-area"
+        aria-label=" {{ 'general.navigation.back_to_menu' | t: title: parent.title  }}"
+        data-mobile-mega-menu-panel-close
+      >
+        <div class="icon-s">
+          {% render 'icon-chevron-left' %}
+        </div>
+      </button>
+
+      <h3 id="{{ title_id }}" class="mobile-mega-menu-panel__header-title heading-xsmall">
+        {{ parent.title }}
+      </h3>
+    </div>
+
+    <ul class="mobile-mega-menu-panel__list" aria-describedby="{{ title_id }}" role="menu">
+      {% for item in parent.links %}
+        <li class="mobile-mega-menu-panel__list-item body-large" role="menuitem">
+          {% if item.links.size == 0 %}
+            <a href="{{ item.url }}">
+              {{ item.title }}
+            </a>
+          {% endif %}
+
+          {% if item.links.size > 0 %}
+            <button
+              class="mobile-mega-menu-panel__list-item-button"
+              data-mobile-mega-menu-panel-trigger="mobile-{{ item.title | handle }}-{{ level | plus: 1 }}"
+              aria-expanded="false"
+              aria-label="{{ 'general.navigation.open_menu' | t: title: item.title }}"
+            >
+              <span>
+                {{ item.title }}
+              </span>
+
+              <div class="icon-m">
+                {% render 'icon-chevron-right' %}
+              </div>
+            </button>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if utility_items %}
+      <div class="mobile-mega-menu-panel__utility-menu">
+        {% render 'mobile-mega-menu-utility-menu', utility_items: utility_items %}
+      </div>
+    {% endif %}
+  </div>
+</mobile-mega-menu-panel>

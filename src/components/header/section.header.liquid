@@ -1,0 +1,266 @@
+{% liquid
+  assign blocks_data = ''
+  assign blocks_images = ''
+  assign layout_blocks = section.blocks | where: 'type', 'menu_item'
+  assign layout_image_blocks = section.blocks | where: 'type', 'menu_image'
+
+  for block in layout_blocks
+    assign menu_id = block.settings.menu_id | handle
+    assign blocks_data = blocks_data | append: '|||' | append: menu_id | append: ':' | append: block.settings.menu_type | append: ':' | append: block.settings.link_text | append: ':' | append: block.settings.link_url | append: ':' | append: block.settings.columns | append: '|||'
+  endfor
+%}
+
+<site-header
+  data-component="header"
+  data-scrolled="false"
+  data-is-top="true"
+  data-enable-sticky="{{ section.settings.enable_sticky_header }}">
+  {% render 'mobile-header' %}
+
+  <div class="header {% if section.settings.enable_full_width %} header--full-width{% endif %}">
+    <div class="header__bar">
+      <div class="header__inner">
+        <div class="header__left">
+          <a href="{{ routes.root_url }}" class="header__logo">
+            <span class="sr-only">
+              {{- 'general.navigation.home' | t: store_name: shop.name, domain: shop.domain -}}
+            </span>
+            {% if settings.logo != blank %}
+              {{ settings.logo | image_url: width: 200 | image_tag }}
+            {% endif %}
+          </a>
+        </div>
+        <div class="header__center">
+          <nav>
+            <ul class="header__nav-list">
+              {% for link in section.settings.desktop_menu.links %}
+                <li
+                  class="
+                    header__nav-list-item
+                    {% if block.settings.overflow %}
+                      header__nav-list-item--overflow
+                    {% endif %}
+                  "
+
+                  {% if link.links.size > 0 %}
+                    data-mega-menu-hover="mega-menu-{{ link.title | handle }}-{{ forloop.index }}"
+                  {% endif %}
+                >
+                  <a
+                    href="{{ link.url }}"
+                    class="header__nav-link"
+                  >
+                    {{ link.title }}
+                  </a>
+
+                  {% if link.links.size > 0 %}
+                    <button
+                      class="header__mega-menu-trigger"
+                      data-mega-menu-trigger="mega-menu-{{ link.title | handle }}-{{ forloop.index }}"
+                      aria-expanded="false"
+                    >
+                      <div class="icon-s">
+                        {% render 'icon-chevron-down' %}
+                      </div>
+                    </button>
+
+                    {% render 'mega-menu', mega_menu: link, blocks_data: blocks_data, layout_image_blocks: layout_image_blocks, index: forloop.index %}
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+        <div class="header__right">
+          <ul class="header__action-list">
+            <li>
+              {%- capture icon_search -%}{% render 'icon-search' %}{%- endcapture -%}
+              {%- capture label_search -%}{{'general.navigation.search' | t }} {%- endcapture -%}
+              {% render 'icon-button',
+                as: 'button',
+                icon: icon_search,
+                label: label_search,
+                attr: 'data-search-drawer-trigger aria-expanded="false"'
+              %}
+            </li>
+
+            {%- capture icon_account -%}{% render 'icon-account' %}{%- endcapture -%}
+            {%- capture label_account -%}{{'general.navigation.account' | t }} {%- endcapture -%}
+            <li>
+              {%- capture href_account -%}{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.storefront_login_url }}{%- endif -%}{%- endcapture -%}
+              {% render 'icon-button',
+                as: 'link',
+                icon: icon_account,
+                label: label_account,
+                href: href_account
+              %}
+            </li>
+            {%- capture icon_cart -%}{% render 'icon-cart' %}{%- endcapture -%}
+            {%- capture label_cart -%}{{'general.navigation.cart' | t}}{%- endcapture -%}
+            <li>
+              {% render 'icon-button',
+                as: 'button',
+                icon: icon_cart,
+                label: label_cart,
+                attr: 'data-cart-toggle-button'
+              %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {% render 'search-drawer', search_drawer: section.settings.search_drawer %}
+    {% render 'mobile-floating-header' %}
+    {% render 'mobile-mega-menu', section: section %}
+  </div>
+</site-header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header options"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "label": "Enable sticky header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "desktop_menu",
+      "label": "Menu (desktop)"
+    },
+    {
+      "type": "link_list",
+      "id": "mobile_menu",
+      "label": "Menu (mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Utility Menu",
+      "info": "The utility menu is only for mobile."
+    },
+    {
+      "type": "link_list",
+      "id": "utility_menu",
+      "label": "Utility menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_item",
+      "name": "Menu Setup",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_id",
+          "label": "Mega menu ID"
+        },
+        {
+          "type": "select",
+          "id": "menu_type",
+          "label": "Menu type",
+          "options": [
+            {
+              "value": "list",
+              "label": "Menu List"
+            },
+            {
+              "value": "enhanced-list",
+              "label": "Menu Enhanced List"
+            }
+          ],
+          "default": "list"
+        },
+        {
+          "type": "select",
+          "id": "columns",
+          "label": "Select columns",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+          "default": "1",
+          "info": "For the type List, the possible options are only 1 or 2."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "menu_image",
+      "name": "Menu Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_id",
+          "label": "Mega menu ID"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "info": "It is optional."
+        },
+        {
+          "type": "textarea",
+          "id": "excerpt",
+          "label": "Excerpt"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

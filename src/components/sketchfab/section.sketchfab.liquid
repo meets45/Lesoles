@@ -1,0 +1,245 @@
+<sketchfab-model
+  data-component="sketchfab"
+  data-section-id="{{ section.id }}"
+>
+  {% if product.selected_or_first_available_variant.metafields.attributes.sketchfab_url.value
+      != blank
+  %}
+    <div
+      class="
+        sketchfab
+        {% if section.settings.model_placement == 'left' %}
+           sketchfab--left
+        {% endif %}
+        {% if section.settings.model_placement == 'right' %}
+           sketchfab--right
+        {% endif %}
+        {% case section.settings.image_height %}
+          {% when 'small' %}
+            sketchfab--height-small
+          {% when 'medium' %}
+            sketchfab--height-medium
+          {% when 'large' %}
+            sketchfab--height-large
+        {% endcase %}
+        {% case section.settings.image_width %}
+          {% when 'small' %}
+            sketchfab--width-small
+          {% when 'medium' %}
+            sketchfab--width-medium
+          {% when 'large' %}
+            sketchfab--width-large
+        {% endcase %}
+        {% if section.settings.full_bleed %}
+           sketchfab--full-bleed
+        {% endif %}
+      "
+      style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+    >
+      <div class="sketchfab__inner">
+        <div
+          class="sketchfab__left"
+        >
+          {% if section.settings.model_placement == 'left' %}
+            <div class="sketchfab__model sketchfab__model--desktop">
+              <iframe
+                src="{{ product.selected_or_first_available_variant.metafields.attributes.sketchfab_url.value }}"
+              ></iframe>
+            </div>
+
+          {% else %}
+            <div class="sketchfab__content">
+              {% render 'content-blocks',
+                section_settings: section.settings,
+                blocks: section.blocks
+              %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="sketchfab__right">
+          {% if section.settings.model_placement == 'right' %}
+            <div class="sketchfab__model sketchfab__model--desktop">
+              <iframe
+                src="{{ product.selected_or_first_available_variant.metafields.attributes.sketchfab_url.value }}"
+              ></iframe>
+            </div>
+          {% endif %}
+
+          <div class="sketchfab__model sketchfab__model--mobile">
+            <iframe
+              src="{{ product.selected_or_first_available_variant.metafields.attributes.sketchfab_url.value }}"
+            ></iframe>
+          </div>
+          <div class="sketchfab__content">
+            {% render 'content-blocks',
+              section_settings: section.settings,
+              blocks: section.blocks
+            %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</sketchfab-model>
+
+{% schema %}
+{
+  "name": "Sketchfab Model",
+  "settings": [
+    {
+      "type": "select",
+      "id": "model_placement",
+      "label": "Model Placement",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_bleed",
+      "label": "Full Bleed",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "color_scheme_1",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Sketchfab Model",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "button" },
+        { "type": "button", "settings": { "variant": "secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

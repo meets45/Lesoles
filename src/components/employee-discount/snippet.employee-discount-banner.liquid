@@ -1,0 +1,28 @@
+{% comment %}
+  Employee Discount Banner
+  - current_spend: The total spent by employee using the Employee Discount so far
+  - total_spend: The total allowed amount (threshold)
+  - store: The store the employee is currently signed in
+{% endcomment %}
+
+{% liquid
+  assign available_balance = customer.metafields.custom.employee_spend
+  assign total_spend = settings.discount_threshold
+  assign store = shop.name
+
+  # Calculate current spend amount
+  assign current_spend = total_spend | minus: available_balance | times: 100 | money
+  assign total_spend = total_spend | times: 100 | money
+%}
+
+{% if customer and customer.tags contains 'customer-employee' %}
+  <div class="employee-discount-banner" data-employee-discount-banner>
+    <p class="employee-discount-banner__text body-m">
+      {{ 'employee_discount.banner.default_text' | t:
+        current_spend: current_spend,
+        total_spend: total_spend,
+        store: store
+      }}
+    </p>
+  </div>
+{% endif %}

@@ -1,0 +1,9 @@
+{% if collection %}
+  {% assign count = collection.products_count %}
+{% endif %}
+
+{% if search %}
+  {% assign count = search.results | where: 'object_type', 'product' | size %}
+{% endif %}
+
+{{ 'products.facets.product_count' | t: count: count }}

@@ -1,0 +1,18 @@
+<product-grid
+  data-component="product-grid"
+  data-section-id="{{ section.id }}"
+>
+  {% render 'filters-facets' %}
+
+  <div class="product-grid" data-product-grid>
+    {% if products.size > 0 %}
+      {% for product in products %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+
+    {% else %}
+      {% render 'product-no-results' %}
+    {% endif %}
+  </div>
+
+</product-grid>

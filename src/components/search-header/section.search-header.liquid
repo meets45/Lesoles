@@ -1,0 +1,23 @@
+{% assign input_id = 'search-input' | append: section.id %}
+
+<div
+  data-component="search-header"
+  data-search-header
+>
+  <div class="search-header">
+    <div class="search-header__search">
+      {% if search.terms != blank %}
+        <h1 class="sr-only">
+          {{ 'general.search.search_results_heading' | t: terms: search.terms }}
+        </h1>
+      {% else %}
+        <h1 class="sr-only">
+          {{ 'general.search.search_results_heading' | t: terms: search.terms }}
+        </h1>
+      {% endif %}
+      <form action="/search">
+        {% render 'search-input', id: input_id %}
+      </form>
+    </div>
+  </div>
+</div>

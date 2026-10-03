@@ -1,0 +1,58 @@
+<product-price data-component="product-price">
+  <div class="product-price__price">
+    <p class="product-price__price-current body-large font-weight-bold" data-price>
+      {% if product %}
+        {{ product.selected_or_first_available_variant.price | money }}
+      {% endif %}
+      {% if line_item %}
+        {{ line_item.final_line_price | money }}
+      {% endif %}
+    </p>
+    <p
+      class="product-price__price-compare body-large "
+      data-compare-at-price
+      {% if line_item.original_line_price > line_item.final_line_price
+        or product.selected_or_first_available_variant.compare_at_price != null
+        and product.selected_or_first_available_variant.compare_at_price
+          > product.selected_or_first_available_variant.price
+      %}
+        data-active="true"
+      {% else %}
+        data-active="false"
+      {% endif %}
+    >
+      {% if product %}
+        {{ product.selected_or_first_available_variant.compare_at_price | money }}
+      {% endif %}
+      {% if line_item %}
+        {{ line_item.original_line_price | money }}
+      {% endif %}
+    </p>
+
+    <div class="product-price__price-savings">
+      <p
+        class="product-price__price-savings-text body-medium"
+        data-savings
+        {% if product.selected_or_first_available_variant.compare_at_price != null
+          and product.selected_or_first_available_variant.compare_at_price
+            > product.selected_or_first_available_variant.price
+        %}
+          data-active="true"
+        {% else %}
+          data-active="false"
+        {% endif %}
+      >
+        {%- if product %}
+          {{-
+            product.selected_or_first_available_variant.compare_at_price
+            | minus: product.selected_or_first_available_variant.price
+            | times: 100.0
+            | divided_by: product.selected_or_first_available_variant.compare_at_price
+            | round
+          -}}
+        {% endif -%}
+        % off
+      </p>
+    </div>
+  </div>
+</product-price>

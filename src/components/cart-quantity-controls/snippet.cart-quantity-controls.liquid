@@ -1,0 +1,40 @@
+<div class="cart__item-quantity-controls">
+  <button class="quantity-button" data-action="decrease">
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M6.40021 16H25.6002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <input
+    type="number"
+    value="{{ line_item.quantity }}"
+    min="1"
+    aria-label="Quantity"
+  >
+  <button class="quantity-button" data-action="increase">
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M4.79993 16.0003L15.9999 16.0003M15.9999 16.0003H27.1999M15.9999 16.0003L15.9999 4.80029M15.9999 16.0003L15.9999 27.2003" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+<div class="cart__item-remove-container">
+  <button class="cart__item-remove" aria-label="Remove item">
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M22.4001 7.99971V4.27399C22.4001 3.68068 21.9191 3.19971 21.3258 3.19971H10.6744C10.081 3.19971 9.60007 3.68068 9.60007 4.27399V7.99971M22.4001 7.99971H9.60007M22.4001 7.99971H25.6001M28.8001 7.99971H25.6001M9.60007 7.99971H6.40007M3.20007 7.99971H6.40007M6.40007 7.99971V27.7254C6.40007 28.3187 6.88105 28.7997 7.47436 28.7997H24.5258C25.1191 28.7997 25.6001 28.3187 25.6001 27.7254V7.99971M12.7874 14.3997V22.3997M19.2001 14.3997V22.3997" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>

@@ -1,0 +1,5 @@
+import './hero-banner.scss';
+
+export default () => {
+  // needed to load styles
+};

@@ -1,0 +1,31 @@
+<mega-menu-dropdown
+  data-component="mega-menu-dropdown"
+  data-mega-menu-dropdown
+  data-active="false"
+>
+  <div class="mega-menu-dropdown">
+    <button
+      class="mega-menu-dropdown__trigger"
+      data-mega-menu-dropdown-trigger
+      aria-expanded="false"
+    >
+      <span>{{ 'general.navigation.overflow_label' | t }}</span>
+      <div class="icon-s">
+        {% render 'icon-chevron-down' %}
+      </div>
+    </button>
+    <ul
+      class="mega-menu-dropdown__list"
+      role="menu"
+      data-mega-menu-dropdown-list
+    >
+      {% for block in blocks %}
+        {% if block.settings.overflow == true %}
+          <li class="mega-menu-dropdown__list-item" role="menuitem">
+            <a href="{{ block.settings.link }}">{{ block.settings.text }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</mega-menu-dropdown>

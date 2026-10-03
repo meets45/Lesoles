@@ -1,0 +1,193 @@
+<simple-product-collection data-component="simple-product-collection">
+  <div
+    class="simple-product-collection"
+    style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+  >
+    {% render 'section-bg-image', section_settings: section.settings %}
+
+    <div class="simple-product-collection__inner">
+      <div class="simple-product-collection__content">
+        {% render 'content-blocks',
+          section_settings: section.settings,
+          blocks: section.blocks,
+          layout: 'row'
+        %}
+      </div>
+      <div class="simple-product-collection__slider" data-slider>
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {% for product in section.settings.collection.products
+              limit: section.settings.products_to_show
+            %}
+              <div class="swiper-slide">
+                {% render 'product-card', product: product %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="simple-product-collection__scrollbar" data-scrollbar>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</simple-product-collection>
+
+{% schema %}
+{
+  "name": "Simple Product Collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Optional"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 48,
+      "step": 1,
+      "default": 16,
+      "label": "Products to show"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "color_scheme_1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Product Collection",
+      "settings": {},
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "button", "settings": { "variant": "secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

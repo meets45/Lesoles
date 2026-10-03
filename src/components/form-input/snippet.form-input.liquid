@@ -1,0 +1,35 @@
+{% comment %}
+ Input
+  type: Type of input field
+  id: Used for input ID and label for
+  input_placeholder: Placeholder text for input
+  state: disabled / required
+  label: Label text
+  help_text: Helper text under label
+{% endcomment %}
+
+<form-input
+  data-component="form-input"
+  {% if help_text %}data-has-help{% endif %}
+>
+  <div class="field">
+    <input
+      id="{{ id }}"
+      type="{{ type }}"
+      name="{{ name | default: id }}"
+      class="field__input body-medium"
+      placeholder="{{ input_placeholder }}"
+      {{ state }}
+      data-input-field
+    >
+    <label class="field__label" for="{{ id }}" data-input-label>
+      {{ label }}{% if required %}*{% endif %}
+    </label>
+  </div>
+
+  {% if help_text %}
+    <span class="field--help" data-input-help>
+      {{ help_text }}
+    </span>
+  {% endif %}
+</form-input>

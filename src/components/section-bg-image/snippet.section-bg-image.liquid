@@ -1,0 +1,30 @@
+{% comment %}
+ Section Background Image
+ - Used across many sections
+ - The following styling needs to be added to the section:
+ The section wrapping class needs to be position: relative;
+{% endcomment %}
+<section-bg-image data-component="section-bg-image">
+</section-bg-image>
+
+{% if section_settings.image_desktop != blank %}
+  <div class="section-bg-image__image section-bg-image__image--desktop">
+    {% if section_settings.image_desktop != blank %}
+      {{ section_settings.image_desktop | image_url: width: 2000 | image_tag: sizes: '100vw' }}
+    {% endif %}
+  </div>
+
+  <div class="section-bg-image__image section-bg-image__image--mobile">
+    {% if section_settings.image_mobile != blank %}
+      {{ section_settings.image_mobile | image_url: width: 1440 | image_tag: sizes: '100vw' }}
+    {% else %}
+      {{ section_settings.image_desktop | image_url: width: 1440 | image_tag: sizes: '100vw' }}
+    {% endif %}
+  </div>
+
+  <div
+    class="section-bg-image__scrim"
+    role="presentation"
+    style="--scrim: rgba(0,0,0, {{ section_settings.scrim | times: 0.01 }})"
+  ></div>
+{% endif %}

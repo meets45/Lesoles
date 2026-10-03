@@ -1,0 +1,67 @@
+{% assign product = product %}
+{% assign above_selector_content = above_selector_content %}
+{% assign is_card = is_card | default: false %}
+{% assign variant = variant | default: product.selected_or_first_available_variant %}
+{% assign is_main_form = is_main_form | default: false %}
+
+<product-form
+  data-main="{{ is_main_form }}"
+  data-product="{{ product | json | escape }}"
+  data-component="product-form"
+>
+  {% form 'product', product %}
+    <input type="hidden" name="id" value="{{ variant.id }}">
+
+    {% render 'product-form-options', product: product, is_card: is_card %}
+
+    {% render 'quantity-input' %}
+
+    {% if above_selector_content != blank %}
+      <div class="product-form__above-selector-content">
+        {{ above_selector_content }}
+      </div>
+    {% endif %}
+    {% assign available = variant.available %}
+    <button
+      id="add-to-cart"
+      class="{% if is_card %}quick-add-button{% else %}button{% endif %}"
+      type="submit"
+      data-submit
+      {% if available == false %}
+        disabled
+      {% endif %}
+      {% if product.tags contains 'bluecore-notify-me' %}
+        data-bluecore-notify-me
+      {% endif %}
+    >
+      {% if is_card %}
+        {% render 'icon-cart-plus-icon' %}
+      {% else %}
+        {% if available %}
+          {{ 'products.product.add_to_cart' | t }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      {% endif %}
+    </button>
+
+    {% unless is_card %}
+      <apple-pay-button class="product-form__apple-pay">
+        <button class="shopify-payment-button__button shopify-payment-button__button--apple-pay button">
+          {% render 'icon-apple-pay' %}
+        </button>
+      </apple-pay-button>
+    {% endunless %}
+
+    {% unless is_card %}
+      {% render 'pdp-sticky-atc', product: product, variant: variant %}
+    {% endunless %}
+
+    {% comment %}
+      <div data-error data-active="false" aria-live="polite" role="alert">
+        {{ 'sections.cart.cart_error' | t }}
+      </div>
+    {% endcomment %}
+  {% endform %}
+</product-form>
+

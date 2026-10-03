@@ -1,0 +1,18 @@
+[data-search-drawer-link-list][data-active="false"] {
+  display: none;
+}
+
+search-drawer-link-list {
+  display: block;
+}
+
+.search-drawer-link-list {
+  & > * + * {
+    margin-top: var(--spacing-elements-group-gap-interactive);
+  }
+}
+
+.search-drawer-link-list__heading {
+  color: var(--typography-color-secondary);
+  font-weight: var(--type-fontweight-light);
+}

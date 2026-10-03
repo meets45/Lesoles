@@ -1,0 +1,29 @@
+<div data-component="product-no-results" class="product-no-results" data-no-results>
+  {% if search.terms != blank %}
+    <div class="product-no-results__header">
+      {{ 'general.search.no_search_results_description' | t: terms: search.terms }}
+    </div>
+  {% endif %}
+
+  <div class="product-no-results__sliders">
+    {% if section.settings.search_drawer %}
+      {% if section.settings.search_drawer.suggested_terms.value %}
+        {% assign title = 'general.search.suggestion_title' | t %}
+        {% render 'suggestion-chip-slider',
+          input_id: input_id,
+          title: title,
+          suggested_terms: section.settings.search_drawer.suggested_terms.value
+        %}
+      {% endif %}
+
+      {% if section.settings.search_drawer.collection.value.products %}
+        {% assign dynamic_title = 'general.search.product_results_dynamic_title' | t %}
+        {% render 'product-search-card-slider',
+          title: section.settings.search_drawer.collection.value.title,
+          dynamic_title: dynamic_title,
+          products: section.settings.search_drawer.collection.value.products
+        %}
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

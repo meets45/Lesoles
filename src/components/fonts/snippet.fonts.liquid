@@ -1,0 +1,126 @@
+{{
+  'Akkurat-Pro-Bold-Italic.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Bold.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Italic.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Regular.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Light-Italic.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Light.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Mono.woff'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff', crossorigin: 'anonymous'
+}}
+
+{{
+  'Akkurat-Pro-Bold-Italic.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Bold.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Italic.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Regular.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Light-Italic.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Light.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+{{
+  'Akkurat-Pro-Mono.woff2'
+  | asset_url
+  | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous'
+}}
+
+
+<style>
+  @font-face {
+    font-family: 'Akkurat Pro';
+    src: url("{{ 'Akkurat-Pro-Bold.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Bold.woff' | asset_url }}") format('woff');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro';
+    src: url("{{ 'Akkurat-Pro-Bold-Italic.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Bold-Italic.woff' | asset_url }}") format('woff');
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro Mono';
+    src: url("{{ 'Akkurat-Pro-Mono.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Mono.woff' | asset_url }}") format('woff');
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro';
+    src: url("{{ 'Akkurat-Pro-Italic.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Italic.woff' | asset_url }}") format('woff');
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro';
+    src: url("{{ 'Akkurat-Pro-Regular.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Regular.woff' | asset_url }}") format('woff');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro';
+    src: url("{{ 'Akkurat-Pro-Light-Italic.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Light-Italic.woff' | asset_url }}") format('woff');
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Akkurat Pro';
+    src: url("{{ 'Akkurat-Pro-Light.woff2' | asset_url }}") format('woff2'),
+         url("{{ 'Akkurat-Pro-Light.woff' | asset_url }}") format('woff');
+    font-weight: 300;
+  }
+</style>

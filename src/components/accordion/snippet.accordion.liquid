@@ -1,0 +1,95 @@
+{% assign active = active | default: false %}
+{% assign title_class = title_class | default: 'heading-xsmall' %}
+{% assign aria_open_label = 'general.accordion.open' | t %}
+{% assign aria_close_label = 'general.accordion.close' | t %}
+{% if active %}
+  {% assign aria_label = aria_close_label %}
+{% else %}
+  {% assign aria_label = aria_open_label %}
+{% endif %}
+
+{% capture accordion_icon %}
+  {% if icon == 'chevron' %}
+    <div class="accordion__icon-chevron icon-s">
+      {% render 'icon-chevron-down' %}
+    </div>
+  {% else %}
+    <div class="accordion__icon-vertical">
+      {% render 'icon-vertical' %}
+    </div>
+    <div class="accordion__icon-horizontal">
+      {% render 'icon-horizontal' %}
+    </div>
+  {% endif %}
+{% endcapture %}
+
+<accordion-panel
+  data-component="accordion"
+  data-accordion
+  data-active="{{ active }}"
+  data-open-label="{{ aria_open_label }}"
+  data-close-label="{{ aria_close_label }}"
+>
+  <div
+    class="
+      accordion
+      {% if hidden_divider %}
+        accordion--hidden-divider
+      {% endif %}
+    "
+  >
+    <div class="accordion__header">
+      <div class="accordion__header-inner">
+        <span class="{{ title_class }}">
+          {{ title }}
+        </span>
+        {% if preview != true %}
+          <button
+            class="accordion__button click-fill"
+            aria-expanded="false"
+            data-accordion-toggle
+            aria-label="{{ aria_label }}"
+          >
+            <div class="accordion__icon">
+              {{ accordion_icon }}
+            </div>
+          </button>
+        {% endif %}
+      </div>
+    </div>
+    {% if preview and content_preview != blank %}
+      <div class="accordion__content-preview">
+        {{ content_preview }}
+      </div>
+    {% endif %}
+    <div class="accordion__content" data-accordion-content>
+      {{ content }}
+    </div>
+    {% if preview == true %}
+      <div class="accordion__footer">
+        <button
+          class="accordion__footer-button button-unstyled"
+          aria-expanded="false"
+          data-accordion-toggle
+        >
+          <div class="accordion__footer-label body-medium" data-accordion-open>
+            <span>
+              {{ preview_show_label }}
+            </span>
+            <div class="icon-m">
+              {% render 'icon-chevron-down' %}
+            </div>
+          </div>
+          <div class="accordion__footer-label body-medium" data-accordion-close>
+            <span>
+              {{ preview_hide_label }}
+            </span>
+            <div class="icon-m">
+              {% render 'icon-chevron-up' %}
+            </div>
+          </div>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</accordion-panel>

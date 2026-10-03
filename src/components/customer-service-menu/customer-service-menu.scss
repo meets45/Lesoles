@@ -1,0 +1,62 @@
+.customer-service-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-400);
+  width: 100%;
+}
+
+.customer-service-menu__heading,
+.customer-service-menu__list {
+  display: none;
+}
+
+.customer-service-menu__list {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-200);
+  padding: 0;
+}
+
+.customer-service-menu__item {
+  list-style: none;
+}
+
+.customer-service-menu .header__nav-link {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-bottom: 1px solid var(--typography-color-hover-active);
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover,
+  &[aria-current="page"] {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &[aria-current="page"] {
+    color: var(--typography-color-hover-active);
+  }
+}
+
+@media (min-width: 769px) {
+  .customer-service-menu__heading,
+  .customer-service-menu__list {
+    display: flex;
+  }
+
+  .customer-service-menu .styled-select {
+    display: none;
+  }
+}

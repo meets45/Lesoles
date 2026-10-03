@@ -1,0 +1,370 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_mygmPQ": {
+      "type": "hero-banner",
+      "blocks": {
+        "heading_gmp9YL": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "New, Polished, Practical"
+          }
+        },
+        "body_z6YzNL": {
+          "type": "body",
+          "settings": {
+            "text": "<p>A bag for any journey. Choose from the brand-new Station Pack or three original styles in a refreshed color palette</p>"
+          }
+        },
+        "button_4bYC6B": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Liminal Series",
+            "url": "shopify://collections/all-bags",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gmp9YL",
+        "body_z6YzNL",
+        "button_4bYC6B"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/LiminalUpdateDesktop.webp",
+        "image_mobile": "shopify://shop_images/LiminalUpdateMobile.webp",
+        "scrim": 0,
+        "image_height": "large",
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "block",
+        "color_scheme": ""
+      }
+    },
+    "simple_content_collection_bQxd4w": {
+      "type": "simple-content-collection",
+      "blocks": {
+        "card_gdqqXP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/JS_Liminal_LP_Triptych_Section_Station_240501_v1.webp",
+            "heading": "Station pack",
+            "description": "<p>With a handy laptop side pocket, lofted organizer pocket, and vertical front pocket. EVA shoulder straps and a padded top handle give extra comfort.</p>",
+            "link_text": "Shop Station Pack",
+            "link_url": "shopify://products/station-pack-js0a85nx"
+          }
+        },
+        "card_FhpUHM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/TRIPTYCH-SECTION-Inbound-11012023-v1.webp",
+            "heading": "Inbound Pack",
+            "description": "<p>Go about your business with this practical-professional day pack. Perfect for commutes, comfort, and minimalism.</p>",
+            "link_text": "Shop inbound pack",
+            "link_url": "shopify://products/inbound-pack-js0a83lk"
+          }
+        },
+        "card_cpMWWR": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/liminal_journey2b_tile.webp",
+            "heading": "Journey Pack",
+            "description": "<p>Journey efficiently on multi-activity days. Grab this backpack designed for maximum space featuring overflow utility straps.</p>",
+            "link_text": "Shop Journey Pack",
+            "link_url": "shopify://products/journey-pack-js0a7zo1"
+          }
+        },
+        "card_hynwDz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/TRIPTYCH-SECTION-Landings-11012023-v1.webp",
+            "heading": "Landing Pack",
+            "description": "<p>The pack that’s geared-up for all destinations. Travel with ultimate comfort, featuring cushiony shoulder straps and a trolly slip for jet setting.</p>",
+            "link_text": "Shop Landings Pack",
+            "link_url": "shopify://products/landings-pack-js0a83ll"
+          }
+        }
+      },
+      "block_order": [
+        "card_gdqqXP",
+        "card_FhpUHM",
+        "card_cpMWWR",
+        "card_hynwDz"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "title": "",
+        "description": "",
+        "style": "standard",
+        "image_ratio": "4:3",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_yeDFDN": {
+      "type": "rich-text",
+      "blocks": {
+        "eyebrow_jjU7dx": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_JAnXYy": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Heading Text"
+          }
+        },
+        "body_dwLkQ9": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_6QqYdJ": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_jjU7dx",
+        "heading_JAnXYy",
+        "body_dwLkQ9",
+        "button_6QqYdJ"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_C79NwN": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_tCpqcC": {
+          "type": "heading",
+          "settings": {
+            "text": "Landings Pack"
+          }
+        },
+        "body_zcJaBt": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li>Trolly Slip for Luggage Attachment</li><li>100% Recycled Fabric with Heavy Duty Bottom</li><li>Internal Organization Panel with Mesh Pocket</li></ul>"
+          }
+        },
+        "button_8V9nBP": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/landings-pack-js0a83ll",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tCpqcC",
+        "body_zcJaBt",
+        "button_8V9nBP"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_Liminal_LP_Landings_v1_241203.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_M8CpaC": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_CUyWX6": {
+          "type": "heading",
+          "settings": {
+            "text": "Journey Pack"
+          }
+        },
+        "body_Rir3pP": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li>Internal Organization Panel with Mesh Pocket</li><li>Bottom Compression Storage Straps</li><li>Plush Lined 15\" Laptop Sleeve</li></ul>"
+          }
+        },
+        "button_qcTYpg": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/journey-pack-js0a7zo1",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CUyWX6",
+        "body_Rir3pP",
+        "button_qcTYpg"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_Journey_LP_BLACK_V2_fin.webp",
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_Rw8mc3": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_BBMigK": {
+          "type": "heading",
+          "settings": {
+            "text": "Inbound Pack"
+          }
+        },
+        "body_PXMewd": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li>Dual Stretch Water Bottle Pockets</li><li>Internal Organization Panel with Mesh Pocket</li><li>Ballistic Boot for Increased Durability</li></ul>"
+          }
+        },
+        "button_FiqPFn": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/inbound-pack-js0a83lk",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BBMigK",
+        "body_PXMewd",
+        "button_FiqPFn"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_Liminal_LP_Inbound_v1_241203.webp",
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_NJBE9d": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VBfwq3": {
+          "type": "heading",
+          "settings": {
+            "text": "Station Pack"
+          }
+        },
+        "body_jeLXff": {
+          "type": "body",
+          "settings": {
+            "text": "<ul><li>Side Access Dedicated Padded Laptop Sleeve</li><li>Zippered Vertical Front Pocket</li><li>Dual Side Water Bottle Pockets</li></ul>"
+          }
+        },
+        "button_cfWzX8": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://products/station-pack-js0a85nx",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VBfwq3",
+        "body_jeLXff",
+        "button_cfWzX8"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_Liminal_LP_Station_Pack_Details_240501_v1.webp",
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "rich_text_dfy78T": {
+      "type": "rich-text",
+      "blocks": {
+        "body_cVdnNT": {
+          "type": "body",
+          "settings": {
+            "text": "<p>No more digging around for essentials. Our Liminal Backpack Series has pockets and compartments galore. Gear up for your most organized adventure yet.</p>"
+          }
+        },
+        "button_7U43CY": {
+          "type": "button",
+          "settings": {
+            "label": "Shop all Liminal Packs",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "body_cVdnNT",
+        "button_7U43CY"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "color_scheme": "scheme-2",
+        "image_desktop": "shopify://shop_images/Shop-all-top-banner-Desktop-11012023-v2.webp",
+        "image_mobile": "shopify://shop_images/Shop-all-top-banner-mobile-11012023-v1.webp"
+      }
+    },
+    "rich_text_T3qK3Y": {
+      "type": "rich-text",
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "color_scheme": "",
+        "image_desktop": "shopify://shop_images/JS_Liminal_LP_Shop_All_Banner_Desktop_240501_v1.webp"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_mygmPQ",
+    "simple_content_collection_bQxd4w",
+    "rich_text_yeDFDN",
+    "image_with_text_C79NwN",
+    "image_with_text_M8CpaC",
+    "image_with_text_Rw8mc3",
+    "image_with_text_NJBE9d",
+    "rich_text_dfy78T",
+    "rich_text_T3qK3Y"
+  ]
+}

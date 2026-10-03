@@ -1,0 +1,262 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "customer_service_banner_B3GXaf": {
+      "type": "customer-service-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_7.png",
+        "image_mobile": "shopify://shop_images/image_7.png"
+      }
+    },
+    "customer_service_menu_FAqLXR": {
+      "type": "customer-service-menu",
+      "blocks": {
+        "link_7Bw89g": {
+          "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "link_7famgd": {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        "link_mjdNEQ": {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "link_QPd77q": {
+          "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        "link_txw6jE": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_chyWp7": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        "link_ziyfYL": {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "link_7a6hjL": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        "link_b7kKH8": {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      },
+      "block_order": [
+        "link_7Bw89g",
+        "link_7famgd",
+        "link_mjdNEQ",
+        "link_QPd77q",
+        "link_txw6jE",
+        "link_chyWp7",
+        "link_ziyfYL",
+        "link_7a6hjL",
+        "link_b7kKH8"
+      ],
+      "settings": {
+        "header": "Customer Service"
+      }
+    },
+    "rte_content_DUWU7H": {
+      "type": "rte-content",
+      "blocks": {
+        "body_3w8YR8": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "body_3w8YR8"
+      ],
+      "settings": {
+        "show_page_title": true,
+        "show_page_content": true,
+        "highlight_section": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left"
+      }
+    },
+    "rte_content_CMmj4c": {
+      "type": "rte-content",
+      "blocks": {
+        "body_hFEEU7": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": "<h4>JanSport Customer Service (U.S only)</h4><p>1-855-818-5966<br/>Hours: Monday-Friday: 8am - 6pm (CT)<br/>js_customer_services@vfc.com<br/><br/>Chat Hours:<br/>Monday-Friday: 8am-6pm(CT)</p>"
+          }
+        },
+        "body_HTbUV9": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": "<h4>Warranty Department (U.S. Only)</h4><p>1-800-426-9227<br/>JanSport Warranty Service<br/>510 Crystal City Hwy. 83 South / Suite 9<br/>Uvalde, TX 78801</p><p>Hours: Monday – Friday: 8am-4:30pm (CT)<br/>jansport_warranty_service@vfc.com</p>"
+          }
+        },
+        "body_nB6Fnk": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-medium",
+            "text": "<h4>INTERNATIONAL CUSTOMER SERVICE AND WARRANTY<br/>(outside of U.S. and Canada)</h4><p>Please contact the regional point of purchase directly for customer service and warranty related questions.</p><h4>JanSport Corporate Headquarters</h4><p>1551 Wewatta St.<br/>Denver, CO 80202</p><h4>Press Requests</h4><p>jansport_pr@vfc.com<br/>1551 Wewatta St.<br/>Denver, CO 80202</p><h4>Donations</h4><p>jansportdonations@vfc.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "body_hFEEU7",
+        "body_HTbUV9",
+        "body_nB6Fnk"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left"
+      }
+    },
+    "rich_text_PywrMf": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_QReVpd": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "Contact Us"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QReVpd"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "1740597541ffd0cf27": {
+      "type": "apps",
+      "settings": {}
+    },
+    "rte_content_DUePde": {
+      "type": "rte-content",
+      "blocks": {
+        "heading_cGgGA8": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h3",
+            "text": "wanna talk?"
+          }
+        },
+        "text_link_T9Jb4V": {
+          "type": "text_link",
+          "settings": {
+            "label": "Call Us",
+            "url": "",
+            "icon": "phone"
+          }
+        },
+        "text_link_hqcFxh": {
+          "type": "text_link",
+          "settings": {
+            "label": "Live Chat",
+            "url": "",
+            "icon": "chat"
+          }
+        },
+        "text_link_Cq9rHM": {
+          "type": "text_link",
+          "settings": {
+            "label": "Email Us",
+            "url": "",
+            "icon": "email"
+          }
+        },
+        "text_link_hdJgAe": {
+          "type": "text_link",
+          "settings": {
+            "label": "Int'l help",
+            "url": "",
+            "icon": "map"
+          }
+        },
+        "body_QiezXW": {
+          "type": "body",
+          "settings": {
+            "paragraph_size": "body-small",
+            "text": "<p>JanSport Customer Service is here to help Monday through Friday 8am - 6:00pm (CT) (USA only).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cGgGA8",
+        "text_link_T9Jb4V",
+        "text_link_hqcFxh",
+        "text_link_Cq9rHM",
+        "text_link_hdJgAe",
+        "body_QiezXW"
+      ],
+      "settings": {
+        "show_page_title": false,
+        "show_page_content": false,
+        "highlight_section": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center"
+      }
+    }
+  },
+  "order": [
+    "customer_service_banner_B3GXaf",
+    "customer_service_menu_FAqLXR",
+    "rte_content_DUWU7H",
+    "rte_content_CMmj4c",
+    "rich_text_PywrMf",
+    "1740597541ffd0cf27",
+    "rte_content_DUePde"
+  ]
+}

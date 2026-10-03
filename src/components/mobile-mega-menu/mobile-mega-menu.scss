@@ -1,0 +1,107 @@
+.mobile-mega-menu {
+  background: var(--ui-elements-overlays-default);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  /* padding: var(--screens-mobile-page-top) var(--screens-mobile-margin)
+    var(--screens-mobile-content-bottom); */
+  overflow: auto;
+  transition: transform 0.2s ease-in-out;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+[data-mobile-mega-menu][data-active="false"] {
+  & .mobile-mega-menu {
+    transform: translateX(100%);
+  }
+
+  & [data-close] {
+    display: none;
+  }
+}
+
+.mobile-mega-menu__content {
+  & > * + * {
+    margin-top: var(--spacing-800);
+  }
+}
+
+.mobile-mega-menu__list {
+  display: grid;
+  gap: var(--spacing-elements-group-gap-interactive);
+  padding: var(--screens-mobile-page-top) var(--screens-mobile-margin) 0;
+}
+
+.mobile-mega-menu__list-item {
+  list-style: none;
+  padding: var(--spacing-200) 0;
+
+  & a {
+    text-decoration: none;
+  }
+}
+
+.mobile-mega-menu__list-item-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: 0;
+}
+
+.mobile-mega-menu-panel__divider {
+  height: 1px;
+  width: 100%;
+  border-bottom: 1px solid var(--ui-elements-dividers-primary);
+  width: calc(100% - 2 * var(--screens-mobile-margin));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobile-mega-menu__utility-menu {
+  padding: 0 var(--screens-mobile-margin) var(--screens-mobile-content-bottom);
+}
+
+.mobile-mega-menu__close {
+  position: fixed;
+  bottom: var(--spacing-400);
+  right: var(--spacing-400);
+  z-index: 110;
+  background-color: var(--ui-elements-controls-brand);
+  height: 56px;
+  width: 56px;
+  border-radius: var(--borders-radius-full);
+  border: none;
+}
+
+.mobile-mega-menu__close-icon {
+  color: var(--icons-default-inverse);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.mobile-mega-menu__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 101;
+  background: var(--ui-elements-overlays-default);
+}
+
+[data-mobile-mega-menu-panel][data-active="false"] {
+  transform: translateX(100%);
+}

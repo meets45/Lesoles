@@ -1,0 +1,60 @@
+[data-suggestion-chip-slider][data-active="false"] {
+  display: none;
+}
+
+suggestion-chip-slider {
+  display: block;
+  position: relative;
+}
+
+.suggestion-chip-slider {
+  & .swiper-slide {
+    width: auto;
+  }
+
+  & .swiper {
+    @media (max-width: 768px) {
+      padding: 0 var(--screens-mobile-margin);
+    }
+  }
+
+  & > * + * {
+    margin-top: var(--spacing-400);
+  }
+}
+
+.suggestion-chip-slider__heading {
+  color: var(--typography-color-secondary);
+  font-weight: var(--type-fontweight-light);
+
+  @media (max-width: 768px) {
+    padding: 0 var(--screens-mobile-margin);
+  }
+}
+
+.suggestion-chip-slider__nav-container {
+  display: flex;
+  gap: var(--spacing-200);
+  margin-top: var(--spacing-600);
+  @media (max-width: 768px) {
+    padding: 0 var(--screens-mobile-margin);
+  }
+}
+
+.suggestion-chip-slider__prev,
+.suggestion-chip-slider__next {
+  background-color: transparent;
+  border: none;
+  transform: translateY(-50%);
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestion-chip-slider__prev {
+  left: var(--spacing-200);
+}
+
+.suggestion-chip-slider__next {
+  right: var(--spacing-200);
+}

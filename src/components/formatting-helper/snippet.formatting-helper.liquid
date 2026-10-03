@@ -1,0 +1,62 @@
+{% comment %}
+ -------------------------------------------
+ A helper to format RTE text
+ - Used on PLP, Blog and in RTE Section for pages
+-------------------------------------------
+{% endcomment %}
+
+{% liquid
+  assign raw_content = content
+  # Remove image wrapping <p> tags
+  assign formatted_content = raw_content | replace: '<p><img', '<img' | replace: 'alt></p>', 'alt>' | replace: '"></p>', '">'
+  # Remove meta tags
+  assign formatted_content = formatted_content | replace: '<meta charset="utf-8">', ''
+  # Remove formatting
+  assign formatted_content = formatted_content | replace: '<b>', '' | replace: '</b>', ''
+  # Add link classes
+  assign formatted_content = formatted_content | replace: '<a', '<a class="rte-text-link"'
+%}
+
+{% case location %}
+  {% when 'plp' %}
+    {% liquid
+      # Add text classes
+      assign formatted_content = formatted_content | replace: '<p', '<p class="body-medium"' | replace: '<strong', '<strong class="body-medium body-bold"'
+      # Add heading classes
+      assign formatted_content = formatted_content | replace: '<h1', '<h1 class="subheading-small"' | replace: '<h2', '<h2 class="subheading-small"' | replace: '<h3', '<h3 class="subheading-small"' | replace: '<h4', '<h4 class="subheading-small"' | replace: '<h5', '<h5 class="subheading-small"' | replace: '<h6', '<h6 class="subheading-small"'
+
+      echo formatted_content
+    %}
+
+  {% when 'article' %}
+    {% liquid
+      # Remove empty span tags
+      assign formatted_content = formatted_content | replace: '<span></span>', ''
+      # Add heading classes
+      assign formatted_content = formatted_content | replace: '<h1', '<h1 class="heading-xlarge"' | replace: '<h2', '<h2 class="heading-large"' | replace: '<h3', '<h3 class="heading-medium"' | replace: '<h4', '<h4 class="heading-small"' | replace: '<h5', '<h5 class="heading-xsmall"' | replace: '<h6', '<h6 class="subheading-xsmall"'
+      # Add table classes
+      assign formatted_content = formatted_content | replace: '<th', '<th class="text-body-s-regular"' | replace: '<td', '<td class="text-body-s-regular"'
+      # Remove formatting
+      assign formatted_content = formatted_content | replace: '<b>', '<strong class="body-medium body-bold"' | replace: '</b>', '</strong>'
+      # Add text classes
+      assign formatted_content = formatted_content | replace: '<p', '<p class="body-medium"' | replace: '<strong', '<strong class="body-medium body-bold"'
+
+      echo formatted_content
+    %}
+
+  {% when 'rte-section' %}
+    {% liquid
+      # Add text classes
+      assign formatted_content = formatted_content | replace: '<p', '<p class="body-regular"' | replace: '<strong', '<strong class="body-regular body-bold"'
+      # Add heading classes
+      assign formatted_content = formatted_content | replace: '<h1', '<h1 class="heading-large"' | replace: '<h2', '<h2 class="heading-medium"' | replace: '<h3', '<h3 class="heading-small"' | replace: '<h4', '<h4 class="heading-xsmall"' | replace: '<h5', '<h5 class="subheading-small"' | replace: '<h6', '<h6 class="subheading-xsmall"'
+      # Add link classes
+      assign formatted_content = formatted_content | replace: '<a', '<a class="rte-text-link"'
+      # Add table classes
+      assign formatted_content = formatted_content | replace: '<th', '<th class="text-body-s-regular"' | replace: '<td', '<td class="text-body-s-regular"'
+      # Remove formatting
+      assign formatted_content = formatted_content | replace: '<b>', '' | replace: '</b>', ''
+
+      echo formatted_content
+    %}
+  {% endcase %}

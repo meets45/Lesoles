@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rte_content_yat4Vi": {
+      "type": "rte-content",
+      "settings": {
+        "show_page_title": true,
+        "show_page_content": true,
+        "highlight_section": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left"
+      }
+    }
+  },
+  "order": [
+    "rte_content_yat4Vi"
+  ]
+}

@@ -1,0 +1,294 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "napajiri",
+    "theme_version": "1.0.0",
+    "theme_author": "Astound Digital",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/",
+  },
+  {
+    "name": "t:settings_schema.logo.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:settings_schema.logo.settings.logo_image.label",
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings_schema.logo.settings.favicon.label",
+        "info": "t:settings_schema.logo.settings.favicon.info",
+      },
+    ],
+  },
+  {
+    "name": "Social Icons",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok",
+        "info": "Enter your TikTok profile URL"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "Enter your Instagram profile URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "Enter your YouTube channel URL"
+      },
+      {
+        "type": "text",
+        "id": "social_x_link",
+        "label": "X (Twitter)",
+        "info": "Enter your X (Twitter) profile URL"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "Enter your Facebook page URL"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "Enter your Pinterest profile URL"
+      }
+    ]
+  },
+  {
+    "name": "Employee Discount",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Modal",
+      },
+      {
+        "type": "text",
+        "id": "employee_modal_title",
+        "label": "Modal Title",
+        "default": "VF Associate Discount Policy"
+      },
+      {
+        "type": "richtext",
+        "id": "employee_modal_content",
+        "label": "Modal Content",
+        "default": "<p>I hereby acknowledge that I have read and understand the <a href=\"\/pages\/employee-discount\">VF Associate Discount Policy</a>. I understand that it is my continuing responsibility to read and know its contents and abide by it when making purchases both online and in store. I further understand that violation of this policy may lead to disciplinary action, up to and including termination. Acceptance of the VF Employee Discount policy is required to receive the discount on your purchases. If you do not accept the policy, the employee discount will not be applied to purchases at this time; however you will be prompted to review and accept the VF Employee Discount policy upon your next sign in to this website.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Banner",
+      },
+      {
+        "type": "text",
+        "id": "discount_threshold",
+        "label": "Employee discount threshold",
+        "default": "10000.00",
+        "info": "This should match the amount assigned in the customer metafield `custom.employee_spend`"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.colors.name",
+    "settings": [
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "header",
+            "content": "Surfaces",
+          },
+          {
+            "type": "color",
+            "id": "surface_primary",
+            "label": "Surface Primary",
+            "default": "#ffffff",
+          },
+          {
+            "type": "header",
+            "content": "Typography",
+          },
+          {
+            "type": "color",
+            "id": "typography_color",
+            "label": "Typography Color",
+            "default": "#111111",
+          },
+          {
+            "type": "color",
+            "id": "typography_color_secondary",
+            "label": "Typography Color Secondary",
+            "default": "#565656",
+          },
+          {
+            "type": "color",
+            "id": "typography_color_hover_active",
+            "label": "Typography Color Hover Active",
+            "default": "#235768",
+          },
+          {
+            "type": "header",
+            "content": "Buttons",
+          },
+          {
+            "type": "color",
+            "id": "buttons_primary_text",
+            "label": "Buttons Primary Text",
+            "default": "#ffffff",
+          },
+          {
+            "type": "color",
+            "id": "buttons_primary_background",
+            "label": "Buttons Primary Background",
+            "default": "#327c95",
+          },
+          {
+            "type": "color",
+            "id": "buttons_primary_hover",
+            "label": "Buttons Primary Hover",
+            "default": "#235768",
+          },
+          {
+            "type": "color",
+            "id": "buttons_secondary_text",
+            "label": "Buttons Secondary Text",
+            "default": "#15343e",
+          },
+          {
+            "type": "color",
+            "id": "buttons_secondary_background",
+            "label": "Buttons Secondary Background",
+            "default": "#15343e",
+          },
+          {
+            "type": "color",
+            "id": "buttons_secondary_hover",
+            "label": "Buttons Secondary Hover",
+            "default": "#ebf2f4",
+          },
+          {
+            "type": "color",
+            "id": "buttons_secondary_border",
+            "label": "Buttons Secondary Border",
+            "default": "#ffffff",
+          },
+          {
+            "type": "color",
+            "id": "buttons_tertiary_text",
+            "label": "Buttons Teriary Text",
+            "default": "#81391b",
+          },
+          {
+            "type": "color",
+            "id": "buttons_tertiary_background",
+            "label": "Buttons Teriary Background",
+            "default": "#81391b",
+          },
+          {
+            "type": "color",
+            "id": "buttons_tertiary_hover",
+            "label": "Buttons Teriary Hover",
+            "default": "#eabdaa",
+          },
+          {
+            "type": "color",
+            "id": "buttons_tertiary_border",
+            "label": "Buttons Teritary Border",
+            "default": "#ffffff",
+          },
+          {
+            "type": "color",
+            "id": "buttons_disabled_text",
+            "label": "Buttons Disabled Text",
+            "default": "#b2b2b2",
+          },
+          {
+            "type": "color",
+            "id": "buttons_disabled_background",
+            "label": "Buttons Disabled Background",
+            "default": "#3f3f3f",
+          },
+        ],
+        "role": {
+          "text": "typography_color",
+          "background": {
+            "solid": "surface_primary",
+            "gradient": "",
+          },
+          "links": "typography_color",
+          "icons": "typography_color",
+          "primary_button": "buttons_primary_background",
+          "on_primary_button": "buttons_primary_hover",
+          "primary_button_border": "buttons_primary_background",
+          "secondary_button": "buttons_secondary_background",
+          "on_secondary_button": "buttons_secondary_hover",
+          "secondary_button_border": "buttons_secondary_border",
+        },
+      },
+    ],
+  },
+  {
+    "name": "SFSC Chat Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Settings"
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_brand",
+        "label": "Brand",
+        "default": "JS"
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_chat_origin",
+        "label": "Chat Origin",
+        "default": "en-US"
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_current_bot_language",
+        "label": "Current Bot Language",
+        "default": "en"
+      },
+      {
+        "type": "header",
+        "content": "Embedded Service Configs",
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_psml_id",
+        "label": "PSML Id",
+        "default": "00DV9000000psmL"
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_miaw_id",
+        "label": "MIAW Id",
+        "default": "MIAWJansport"
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_url",
+        "label": "SFSC chat url",
+        "default": "https://vfconsumercareorg2--norachat.sandbox.my.site.com/ESWMIAWJansport1737488722559"
+      },
+      {
+        "type": "text",
+        "id": "sfsc_chat_scrt2_url",
+        "label": "scrt2URL",
+        "default": "https://vfconsumercareorg2--norachat.sandbox.my.salesforce-scrt.com"
+      }
+    ]
+  }
+]

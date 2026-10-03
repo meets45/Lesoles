@@ -1,0 +1,113 @@
+{% unless cart.items.size == 0 %}
+  <main-cart class="cart" data-component="main-cart">
+    {% render 'employee-discount-banner' %}
+
+    <div class="cart__title">
+      <h1 class="heading-large">{{ 'sections.cart.title' | t }}</h1>
+      <div class="cart__continue-shopping">
+        <a href="/collections/all" class="body-medium">{{ 'sections.cart.continue_shopping' | t }}</a>
+      </div>
+    </div>
+
+    <div class="cart__table-mobile-header">
+      <ul>
+        <li class="body-medium">{{ 'sections.cart.headings.product' | t }}</li>
+        <li class="body-medium">/</li>
+        <li class="body-medium">{{ 'sections.cart.headings.quantity' | t }}</li>
+        <li class="body-medium">/</li>
+        <li class="body-medium">{{ 'sections.cart.headings.total' | t }}</li>
+      </ul>
+    </div>
+    <table class="cart__table">
+      <tbody class="cart__items" data-line-items>
+        <tr class="cart__header">
+          <th class="cart__header-cell">{{ 'sections.cart.headings.product' | t }}</th>
+          <th class="cart__header-cell">{{ 'sections.cart.headings.quantity' | t }}</th>
+          <th class="cart__header-cell">{{ 'sections.cart.headings.price' | t }}</th>
+        </tr>
+        {% for line_item in cart.items %}
+          <tr
+            class="cart__item"
+            data-line-item
+            data-line-item-key="{{ line_item.key }}"
+          >
+            <td class="cart__item-product">
+              <div class="cart__item-product-image">
+                {{ line_item.image | image_url: width: 220 | image_tag }}
+              </div>
+              <div class="cart__item-product-details">
+                <div class="cart__item-title heading-xsmall bold">{{ line_item.title }}</div>
+                {% for option in line_item.options_with_values %}
+                  <div class="cart__item-variant body-medium">
+                    <span>{{ option.name }}:</span> {{ option.value }}
+                  </div>
+                {% endfor %}
+
+                <div class="cart__item-edit-container">
+                  <button
+                    aria-label="Edit item"
+                    data-product-handle="{{ line_item.product.handle }}"
+                    data-variant-id="{{ line_item.variant_id }}"
+                    data-item-key="{{ line_item.key }}"
+                  >
+                    {{ 'sections.cart.edit_selection' | t }}
+                  </button>
+                </div>
+
+                <div class="mobile-only">
+                  <div class="cart__item-quantity-controls-container--mobile">
+                    {% render 'cart-quantity-controls', line_item: line_item %}
+                  </div>
+                  <div class="cart__item-final-price body-large">
+                    {{ line_item.final_line_price | money }}
+                  </div>
+                  {% if line_item.original_line_price > line_item.final_line_price %}
+                    <div class="cart__item-original-price body-large">
+                      {{ line_item.original_line_price | money }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </td>
+            <td class="cart__item-quantity-controls-container">
+              <div class="cart__item-quantity">
+                {% render 'cart-quantity-controls', line_item: line_item %}
+              </div>
+            </td>
+
+            <td class="cart__item-price-container">
+              <div class="cart__item-final-price body-large">
+                {{ line_item.final_line_price | money }}
+              </div>
+              {% if line_item.original_line_price > line_item.final_line_price %}
+                <div class="cart__item-original-price body-large">
+                  {{ line_item.original_line_price | money }}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="cart__summary" data-summary>
+      <div class="cart__subtotal-label">{{ 'sections.cart.headings.subtotal' | t }}</div>
+      <div class="cart__subtotal-amount">
+        {{ cart.items_subtotal_price | money }}
+      </div>
+    </div>
+    <div class="checkout-cta">
+      <a href="/checkout" class="button">
+        {{- 'sections.cart.checkout' | t -}}
+      </a>
+    </div>
+  </main-cart>
+{% else %}
+  <div class="cart__empty">
+    <p>{{ 'sections.cart.empty' | t }}</p>
+  </div>
+{% endunless %}
+
+<div class="cart__empty hidden" data-empty-cart>
+  <p>{{ 'sections.cart.empty' | t }}</p>
+</div>

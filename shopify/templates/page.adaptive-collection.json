@@ -1,0 +1,162 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_section_i4XLex": {
+      "type": "video-section",
+      "blocks": {
+        "heading_trFPpU": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h2",
+            "text": "Made for Every Body"
+          }
+        },
+        "body_FNjmmY": {
+          "type": "body",
+          "settings": {
+            "text": "<p>The Adaptive Collection upgrades classic JanSport styling with features that make everyday things easier</p>"
+          }
+        },
+        "button_bPmzkK": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Adaptive",
+            "url": "",
+            "variant": "primary"
+          }
+        },
+        "video_QtTkCj": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/embed/dX_4VrO26FE?si=2YfD_P3Mdf-ejxu5",
+            "autoplay": true,
+            "loop": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_trFPpU",
+        "body_FNjmmY",
+        "button_bPmzkK",
+        "video_QtTkCj"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "hero_banner_yXKiA8": {
+      "type": "hero-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_Adaptive_LP_ScrollTrig_DT_FNL_1-v3.webp",
+        "scrim": 0,
+        "image_height": "large",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "video_section_MdFybb": {
+      "type": "video-section",
+      "blocks": {
+        "subheading_YNkp7D": {
+          "type": "subheading",
+          "settings": {
+            "text": "The Adaptive Collection brings together the style you know and love from JanSport with the function of device specific pack. We’ve been working with and listening to people with disabilities to find out what they wanted from their JanSport. The result: the JanSport Adaptive Backpack and Adaptive Crossbody."
+          }
+        },
+        "video_UH6mNw": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/embed/fw5BtIzCUf0?si=poorlTuc5reDLjSh",
+            "autoplay": false,
+            "loop": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_YNkp7D",
+        "video_UH6mNw"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_product_collection_GQeghT": {
+      "type": "simple-product-collection",
+      "settings": {
+        "eyebrow": "",
+        "title": "Adaptive Collection",
+        "description": "",
+        "cta_text": "Shop now",
+        "collection": "all-bags",
+        "products_to_show": 16,
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_9AP7Yb": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_XrAEH8": {
+          "type": "heading",
+          "settings": {
+            "text": "WE WANT YOUR FEEDBACK"
+          }
+        },
+        "body_JUeTPd": {
+          "type": "body",
+          "settings": {
+            "text": "<p>We’ve been working with the community for years developing the Adaptive Collection, but there’s always room for improvement. If any updates or edits come to you, we want to hear about it.</p>"
+          }
+        },
+        "button_3tYWRe": {
+          "type": "button",
+          "settings": {
+            "label": "Contact Us",
+            "url": "shopify://pages/contact",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XrAEH8",
+        "body_JUeTPd",
+        "button_3tYWRe"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/JS_Adaptive_Feedback_LS_Image-v2.webp",
+        "image_placement": "right",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": true,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": "scheme-3"
+      }
+    }
+  },
+  "order": [
+    "video_section_i4XLex",
+    "hero_banner_yXKiA8",
+    "video_section_MdFybb",
+    "simple_product_collection_GQeghT",
+    "image_with_text_9AP7Yb"
+  ]
+}

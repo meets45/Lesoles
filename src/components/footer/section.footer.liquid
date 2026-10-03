@@ -1,0 +1,180 @@
+<footer data-component="footer" class="footer">
+  <div class="container primary-footer-navigation">
+    <div class="row">
+      {% comment %} Email CTA {% endcomment %}
+      <div class="footer-col__email-cta">
+        <div class="footer-col__email-cta-content">
+          <h3 class="heading-small">{{ section.settings.email_cta_title }}</h3>
+          <p class="body-medium">{{ section.settings.email_cta_caption }}</p>
+
+          {% render 'newsletter-form' %}
+          <div class="footer__social-icons-list">
+            <h3 class="heading-small">{{ section.settings.footer_social_menu_title }}</h3>
+            {% render 'footer-social-icons' %}
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Footer Blocks {% endcomment %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'large_link_list' %}
+            <div class="footer-col__large-link-list">
+              <ul>
+                {% for link in block.settings.menu.links %}
+                  <li>
+                    <a class="heading-small" href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% when 'standard_link_list' %}
+            <div class="footer-col__standard-link-list">
+              <p class="footer-col__standard-link-list-heading heading-small">
+                {{ block.settings.heading }}
+              </p>
+              <ul>
+                {% for link in block.settings.menu.links %}
+                  <li>
+                    <a class="body-medium" href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="footer-col__copyright">
+        <div class="brand-callout">
+          {%- unless section.settings.brand_logo == blank -%}
+            <img
+              src="{{ section.settings.brand_logo | image_url: width: 100 }}"
+              alt="{{ section.settings.brand_logo.alt }}"
+            >
+          {%- endunless -%}
+          {% if section.settings.brand_statement != blank %}
+            <p class="body-xsmall">
+              &copy; {{ 'now' | date: '%Y' }}
+              {{ section.settings.brand_statement }}
+            </p>
+          {% endif %}
+        </div>
+        {% if section.settings.copyright_menu != blank %}
+          <div class="copyright-menu">
+            <ul>
+              {% for link in section.settings.copyright_menu.links %}
+                <li>
+                  <a class="body-xsmall" href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "email_cta_title",
+      "label": "Email CTA Title",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "email_cta_caption",
+      "label": "Email CTA Caption",
+      "default": "Sign up for exclusive updates and offers"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email CTA Form Placeholder Text",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "footer_social_menu_title",
+      "label": "Footer Social Menu Title",
+      "default": "Join the conversation"
+    },
+    {
+      "type": "link_list",
+      "id": "copyright_menu",
+      "label": "Copyright Linklist",
+      "info": "Links for copyright section (privacy policy, terms, etc.)"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Brand Logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_statement",
+      "label": "Brand Statement",
+      "default": "BRAND, a VF Company"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "large_link_list",
+      "name": "Large Link List",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "standard_link_list",
+      "name": "Standard Link List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "List Heading",
+          "default": "Quick links"
+        },
+        {
+          "type": "url",
+          "id": "heading_url",
+          "label": "List Heading URL"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {
+          "type": "large_link_list"
+        },
+        {
+          "type": "standard_link_list"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["footer"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "enhanced_filtering_collection_K7dCJq": {
+      "type": "enhanced-filtering-collection",
+      "blocks": {
+        "heading_zRRBLn": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Pick Your Feature"
+          }
+        },
+        "filter_NUnpPN": {
+          "type": "filter",
+          "settings": {
+            "title": "Water Bottle Pocket",
+            "image": "shopify:\/\/shop_images\/Placeholders_1.png",
+            "filter_param": "filter.p.m.filters.features",
+            "filter_value": "Water Bottle Pocket"
+          }
+        },
+        "filter_akmCHY": {
+          "type": "filter",
+          "settings": {
+            "title": "Laptop Sleeve",
+            "image": "shopify:\/\/shop_images\/Placeholders_2.png",
+            "filter_param": "filter.p.m.filters.features",
+            "filter_value": "Laptop Sleeve"
+          }
+        },
+        "filter_Q4zepG": {
+          "type": "filter",
+          "settings": {
+            "title": "Large Packs",
+            "image": "shopify:\/\/shop_images\/Placeholders_3.png",
+            "filter_param": "filter.p.m.attributes.capacity_family",
+            "filter_value": "Large (32L and up)"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zRRBLn",
+        "filter_NUnpPN",
+        "filter_akmCHY",
+        "filter_Q4zepG"
+      ],
+      "settings": {
+        "color_scheme": ""
+      }
+    },
+    "main": {
+      "type": "main-product-grid",
+      "settings": {
+        "search_drawer": ""
+      }
+    }
+  },
+  "order": [
+    "enhanced_filtering_collection_K7dCJq",
+    "main"
+  ]
+}

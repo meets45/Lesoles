@@ -1,0 +1,105 @@
+{% if section.blocks.size > 0 %}
+  <promo-bar data-component="promo-bar" data-autoplay="{{ section.settings.autoplay }}">
+    <div
+      class="
+          promo-bar
+        {% case section.settings.color_mode %}
+          {% when 'brand' %}
+            promo-bar--brand
+          {% when 'dark' %}
+            promo-bar--dark
+          {% when 'light' %}
+            promo-bar--light
+        {% endcase %}
+      "
+    >
+      <!-- Slider main container -->
+      <div class="swiper" data-swiper>
+        {% if section.blocks.size > 0 %}
+          <button class="promo-bar__prev click-area" data-swiper-prev>
+            <div class="icon-xs">
+              {% render 'icon-chevron-left' %}
+            </div>
+          </button>
+        {% endif %}
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          {% for block in section.blocks %}
+            <div class="promo-bar__slide swiper-slide">
+              {% if block.settings.link %}
+                <a class="body-xsmall" href="{{ block.settings.link }}">
+                  {{- block.settings.text -}}
+                </a>
+              {% else %}
+                <div class="body-xsmall">
+                  {{ block.settings.text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        {% if section.blocks.size > 0 %}
+          <button class="promo-bar__next click-area" data-swiper-next>
+            <div class="icon-xs">
+              {% render 'icon-chevron-right' %}
+            </div>
+          </button>
+        {% endif %}
+      </div>
+    </div>
+  </promo-bar>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Promo Bar",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_mode",
+      "label": "Color",
+      "options": [
+        {
+          "value": "brand",
+          "label": "Brand"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        },
+        {
+          "value": "light",
+          "label": "Light"
+        }
+      ],
+      "default": "brand"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo",
+      "name": "Promo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Promotion text goes here"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

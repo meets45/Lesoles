@@ -1,0 +1,150 @@
+.sketchfab {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 769px) {
+    padding: var(--spacing-700) var(--screens-desktop-margin);
+  }
+}
+
+.sketchfab.sketchfab--full-bleed {
+  padding: 0;
+}
+
+.sketchfab__inner {
+  display: grid;
+  align-items: center;
+  background-color: var(--surface-primary);
+
+  @media (min-width: 769px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.sketchfab__left {
+  @media (min-width: 769px) {
+    height: 100%;
+  }
+}
+
+/* left column layouts */
+.sketchfab--left {
+  & .sketchfab--width-small .sketchfab__inner {
+    @media (min-width: 769px) {
+      grid-template-columns: 40% 1fr;
+    }
+  }
+
+  & .sketchfab--width-medium .sketchfab__inner {
+    @media (min-width: 769px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  & .sketchfab--width-large .sketchfab__inner {
+    @media (min-width: 769px) {
+      grid-template-columns: 60% 1fr;
+    }
+  }
+
+  & .sketchfab__left {
+    .sketchfab__content {
+      display: none;
+    }
+  }
+}
+
+/* invert column layouts */
+.sketchfab--right {
+  &.sketchfab--width-small .sketchfab__inner {
+    @media (min-width: 769px) {
+      grid-template-columns: 1fr 40%;
+    }
+  }
+
+  & .sketchfab--width-medium .sketchfab__inner {
+    @media (min-width: 769px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &.sketchfab--width-large .sketchfab__inner {
+    @media (min-width: 769px) {
+      grid-template-columns: 1fr 60%;
+    }
+  }
+
+  & .sketchfab__right {
+    .sketchfab__content {
+      display: none;
+    }
+  }
+}
+
+/* mobile styles to show image on top, text on bottom regardless of image placement */
+.sketchfab--left,
+.sketchfab--right {
+  & .sketchfab__left .sketchfab__content {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  & .sketchfab__right .sketchfab__content {
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+}
+
+.sketchfab__model {
+  position: relative;
+  padding-bottom: 75%;
+  height: 100%;
+  & iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+  }
+
+  &.sketchfab__model--desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &.sketchfab__model--mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}
+
+.sketchfab--height-small .sketchfab__model {
+  padding-bottom: 75%;
+}
+
+.sketchfab--height-medium .sketchfab__model {
+  padding-bottom: 100%;
+}
+
+.sketchfab--height-large .sketchfab__model {
+  padding-bottom: 120%;
+}
+
+.sketchfab__content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: var(--spacing-700) var(--screens-mobile-margin);
+
+  @media (min-width: 769px) {
+    padding: var(--screens-desktop-margin);
+  }
+}

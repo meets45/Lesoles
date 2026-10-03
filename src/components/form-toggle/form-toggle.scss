@@ -1,0 +1,130 @@
+/* Toggle Switch */
+.toggle-wrapper {
+  display: inline-block;
+}
+
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: var(--spacing-300);
+  position: relative;
+  justify-content: flex-end;
+}
+
+.toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle__switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  background-color: var(--color-neutrals-0);
+  border: 1px solid var(--ui-elements-forms-default);
+  border-radius: var(--spacing-300);
+  transition: all 0.2s ease;
+}
+
+/* Switch handle */
+.toggle__switch:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-50);
+  width: 14px;
+  height: 14px;
+  background-color: var(--ui-elements-forms-default);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  transform: translateY(-50%);
+}
+
+/* Checkmark in handle */
+.toggle__switch:before {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  left: var(--spacing-100);
+  top: 50%;
+  width: 6px;
+  height: 9px;
+  border: solid var(--ui-elements-forms-focus);
+  border-width: 0 1px 1px 0;
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* Checked state */
+.toggle input:checked ~ .toggle__switch {
+  background-color: var(--ui-elements-forms-focus);
+  border-color: var(--ui-elements-forms-focus);
+}
+
+.toggle input:checked ~ .toggle__switch:after {
+  transform: translateY(-50%) translateX(20px);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-neutrals-0);
+  left: -1px;
+}
+
+.toggle input:checked ~ .toggle__switch:before {
+  opacity: 1;
+  left: calc(100% - 14px);
+}
+
+/* Hover state - removed border change */
+.toggle:hover input:not([disabled]):checked ~ .toggle__switch {
+  background-color: var(--ui-elements-forms-focus);
+}
+
+/* Focus state */
+.toggle input:focus-visible ~ .toggle__switch {
+  outline: 2px solid var(--ui-elements-forms-focus);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.toggle input:disabled ~ .toggle__switch {
+  background-color: var(--color-neutrals-200);
+  border-color: var(--color-neutrals-300);
+  cursor: not-allowed;
+}
+
+/* Disabled and checked state */
+.toggle input:disabled:checked ~ .toggle__switch {
+  background-color: #c6c6c4;
+  border-color: #c6c6c4;
+}
+
+.toggle input:disabled:checked ~ .toggle__switch:after {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.toggle input:disabled ~ .toggle__label {
+  color: var(--typography-color-disabled);
+  cursor: not-allowed;
+}
+
+/* Invalid state */
+form-toggle[data-invalid] .toggle__switch {
+  outline: 2px solid var(--typography-color-error-sale);
+}
+
+form-toggle[data-invalid] .toggle__label {
+  color: var(--typography-color-error-sale);
+}
+
+/* Help text */
+.toggle__help {
+  display: block;
+  margin-top: var(--spacing-50);
+  color: var(--typography-color-secondary);
+}

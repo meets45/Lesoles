@@ -1,0 +1,79 @@
+<style>
+  :root {
+    /* default color scheme */
+    {%- assign default_color_scheme = settings.color_schemes | first %}
+    --surface-primary: {{ default_color_scheme.settings.surface_primary }};
+    --surface-secondary: {{ default_color_scheme.settings.surface_secondary }};
+    --typography-color-default: {{ default_color_scheme.settings.typography_color_default }};
+    --typography-color-secondary: {{  default_color_scheme.settings.typography_color_secondary }};
+    --typography-color-brand: {{  default_color_scheme.settings.typography_color_brand }};
+    --typography-color-hover-active: {{  default_color_scheme.settings.typography_color_hover_active }};
+    --typography-color-disabled: {{  default_color_scheme.settings.typography_color_disabled }};
+    --typography-color-error-sale: {{  default_color_scheme.settings.typography_color_error_sale }};
+    --typography-color-success: {{  default_color_scheme.settings.typography_color_success }};
+    --typography-color-warning: {{  default_color_scheme.settings.typography_color_warning }};
+    --typography-color-inverse: {{  default_color_scheme.settings.typography_color_inverse }};
+    --typography-color-secondary-inverse: {{  default_color_scheme.settings.typography_color_secondary_inverse }};
+    --typography-color-brand-inverse: {{  default_color_scheme.settings.typography_color_brand_inverse }};
+    --typography-color-hover-active-inverse: {{  default_color_scheme.settings.typography_color_hover_active_inverse }};
+    --typography-color-disabled-inverse: {{  default_color_scheme.settings.typography_color_disabled_inverse }};
+    --typography-color-error-sale-inverse: {{  default_color_scheme.settings.typography_color_error_sale_inverse }};
+    --typography-color-success-inverse: {{  default_color_scheme.settings.typography_color_success_inverse }};
+    --typography-color-warning-inverse: {{  default_color_scheme.settings.typography_color_warning_inverse }};
+    --typography-color-default2: var(--color-neutrals-900);
+
+    --buttons-primary-text: {{ default_color_scheme.settings.buttons_primary_text }};
+    --buttons-primary-background: {{ default_color_scheme.settings.buttons_primary_background }};
+    --buttons-primary-hover: {{ default_color_scheme.settings.buttons_primary_hover }};
+    --buttons-primary-inverse: {{ default_color_scheme.settings.buttons_primary_inverse }};
+    --buttons-primary-hover-inverse: {{ default_color_scheme.settings.buttons_primary_hover_inverse }};
+
+    --buttons-secondary-text: {{ default_color_scheme.settings.buttons_secondary_text }};
+       /* special override for blurred backgrounds */
+    {%- if default_color_scheme.settings.buttons_secondary_background == 'rgba(0,0,0,0)' -%}
+      --buttons-secondary-background: 'rgba(255,255,255,0.45)';
+      --buttons-secondary-backdrop-filter: var(--background-blur);
+      {% else %}
+        --buttons-secondary-background: {{ default_color_scheme.settings.buttons_secondary_background }};
+        --buttons-secondary-backdrop-filter: none;
+    {%- endif -%}
+    --buttons-secondary-border: {{ default_color_scheme.settings.buttons_secondary_border }};
+    {% if default_color_scheme.settings.button_secondary_hover == 'rgba(0,0,0,0)' %}
+        --buttons-secondary-hover: rgba(255, 255, 255, 0.60);
+      {% else %}
+        --buttons-secondary-hover: {{ default_color_scheme.settings.buttons_secondary_hover }};
+    {% endif %}
+
+    --buttons-tertiary-text: {{ default_color_scheme.settings.buttons_tertiary_text }};
+    /* special override for blurred backgrounds */
+    {%- if default_color_scheme.settings.buttons_tertiary_background == 'rgba(0,0,0,0)' -%}
+      --buttons-tertiary-background: 'rgba(255,255,255,0.45)';
+      --buttons-tertiary-backdrop-filter: var(--background-blur);
+      {% else %}
+        --buttons-tertiary-background: {{ default_color_scheme.settings.buttons_tertiary_background }};
+        --buttons-tertiary-backdrop-filter: none;
+    {%- endif -%}
+    --buttons-tertiary-border: {{ default_color_scheme.settings.buttons_tertiary_border }};
+    {% if default_color_scheme.settings.button_tertiary_hover == 'rgba(0,0,0,0)' %}
+      --buttons-tertiary-hover: rgba(255, 255, 255, 0.60);
+    {% else %}
+      --buttons-tertiary-hover: {{ default_color_scheme.settings.buttons_secondary_hover }};
+  {% endif %}
+
+
+    --buttons-disabled-text: {{ default_color_scheme.settings.buttons_disabled_text }};
+    --buttons-disabled-background: {{ default_color_scheme.settings.buttons_disabled_background }};
+
+    --borders-color-lightest: {{ default_color_scheme.settings.borders_color_lightest }};
+    --borders-color-light-decorative: {{ default_color_scheme.settings.borders_color_light_decorative }};
+    --borders-color-medium-default: {{ default_color_scheme.settings.borders_color_medium_default }};
+    --borders-color-dark: {{ default_color_scheme.settings.borders_color_dark }};
+    --borders-color-darkest: {{ default_color_scheme.settings.borders_color_darkest }};
+    --borders-color-brand: {{ default_color_scheme.settings.borders_color_brand }};
+    --borders-color-brand-inverse: {{ default_color_scheme.settings.borders_color_brand_inverse }};
+    --borders-color-error: {{ default_color_scheme.settings.borders_color_error }};
+    --borders-color-error-inverse: {{ default_color_scheme.settings.borders_color_error_inverse }};
+    --borders-color-disabled: {{ default_color_scheme.settings.borders_color_disabled }};
+    --borders-color-disabled-inverse: {{ default_color_scheme.settings.borders_color_disabled_inverse }};
+  }
+</style>

@@ -1,0 +1,81 @@
+{% case type %}
+{% when 'load-more' %}
+  <nav data-component="pagination" class="pagination" aria-label="{{ 'general.pagination.label' | t }}">
+    <div id="load-more-container" class="pagination__inner">
+      {% if collection.all_products_count > 0 %}
+        {% assign progress_percentage = collection.products.size | times: 100.0 | divided_by: collection.products_count %}
+
+        <p class="pagination__count body-medium" aria-live="polite">
+          {{ 'general.pagination.viewed_html' | t: count: collection.products.size }}
+          <span data-products_count="{{ paginate.items | json }}">
+            {{ 'general.pagination.count_html' | t: count: collection.products_count }}
+          </span>
+        </p>
+
+        <div class="pagination-progress-bar">
+          <div
+            class="pagination-progress-bar__fill"
+            style="width: {{ progress_percentage }}%"
+            role="progressbar"
+            aria-valuenow="{{ progress_percentage | round }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-label="{{ 'general.pagination.progress' | t: count: collection.products.size, total: collection.products_count }}"
+          ></div>
+        </div>
+      {% endif %}
+
+      {% if paginate.next %}
+        <button
+          id="load-more"
+          class="button button--primary"
+          data-next-page="{{ paginate.next.url }}"
+          data-load-more
+          aria-label="{{ 'general.pagination.load_more_label' | t: remaining: paginate.items | minus: collection.products.size }}"
+        >
+          {{ 'general.pagination.load_more' | t }}
+        </button>
+      {% endif %}
+    </div>
+  </nav>
+{% when 'page' %}
+  <nav data-component="pagination" class="pagination pagination-page" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+    <ul class="pagination__list" role="list">
+      <li>
+        {%- if paginate.previous -%}
+          <a
+            href="{{ paginate.previous.url }}"
+            class="pagination__item pagination__item--next body-small"
+            aria-label="{{ 'general.pagination.previous' | t }}"
+          >
+            <span class="icon-s">
+              {% render 'icon-arrow-left' %}
+            </span>
+            {{ 'general.pagination.previous' | t }}
+          </a>
+        {%- endif -%}
+      </li>
+
+      <li class="pagination__item pagination__count">
+        <span class="body-small">
+          {{  'general.pagination.page_total' | t: number: paginate.current_page, count: paginate.pages }}
+        </span>
+      </li>
+
+      <li>
+        {%- if paginate.next -%}
+          <a
+            href="{{ paginate.next.url }}"
+            class="pagination__item pagination__item--prev  body-small"
+            aria-label="{{ 'general.pagination.next' | t }}"
+          >
+            {{ 'general.pagination.next' | t }}
+            <span class="icon-s">
+              {% render 'icon-arrow-right' %}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    </ul>
+  </nav>
+{% endcase %}

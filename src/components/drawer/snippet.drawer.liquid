@@ -1,0 +1,33 @@
+<div
+  data-component="drawer"
+  id="{{ id }}"
+  {% if hidden %}
+    hidden
+  {% endif %}
+>
+  <div class="drawer {{ additional_class }}" id="{{ id }}" aria-hidden="true" data-drawer>
+    <div class="drawer__overlay" tabindex="-1" data-drawer-close>
+      <div
+        class="drawer__container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="{{ id }}-title"
+        data-drawer-container
+      >
+        <header class="drawer__header">
+          <h2 class="drawer__title" id="{{ id }}-title">{{ title }}</h2>
+          <button
+            class="drawer__close"
+            aria-label="Close drawer"
+            data-drawer-close
+          >
+            {% render 'icon-close' %}
+          </button>
+        </header>
+        <div class="drawer__content" id="{{ id }}-content">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,153 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Section: Customer Service Menu
+  - Used to display links to customer service pages.
+------------------------------------------------------------------------------
+{% endcomment %}
+
+<div
+  data-component="customer-service-menu"
+  class="customer-service-menu">
+  <h3 class="heading-small customer-service-menu__heading">
+    {{ section.settings.header }}
+  </h3>
+
+  {% render 'styled-select',
+    id: 'customer-service',
+    name: 'customer-service',
+    label: section.settings.header,
+    required: false,
+    link_select: true,
+    options: section.blocks
+  %}
+
+  <ul class="customer-service-menu__list">
+    {% for block in section.blocks %}
+      <li class="customer-service-menu__item">
+        <a
+          class="header__nav-link body-medium"
+          href="{{ block.settings.link }}"
+          {% if request.path == block.settings.link %}
+            aria-current="page"
+          {% endif %}
+        >
+          {{ block.settings.text }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Service Menu",
+  "class": "customer-service__sidebar",
+  "tag": "aside",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header",
+    },
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header",
+      "default": "Customer Service",
+    },
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Customer Service Menu",
+      "settings": {
+        "header": "Customer Service",
+      },
+      "blocks": [
+        {
+        "type": "link",
+          "settings": {
+            "text": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Limited Lifetime Warranty",
+            "link": "shopify://pages/warranty"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        {
+        "type": "link",
+          "settings": {
+            "text": "How to Clean a JanSport",
+            "link": "shopify://pages/how-to-clean-a-jansport"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Use",
+            "link": "shopify://pages/terms-and-conditions"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Returns",
+            "link": "shopify://pages/returns"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Shipping and Billing",
+            "link": "shopify://pages/shipping-and-billing"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Promotion Terms",
+            "link": "shopify://pages/promotion-terms"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"],
+  }
+}
+{% endschema %}

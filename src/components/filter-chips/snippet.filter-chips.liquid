@@ -1,0 +1,45 @@
+{% assign filters = collection.filters | default: search.filters %}
+
+{% assign active = false %}
+{% for filter in filters %}
+  {% if filter.active_values.size > 0 or filter.min_value.value or filter.max_value.value %}
+    {% assign active = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Filter chips {% endcomment %}
+<filter-chips
+  data-component="filter-chips"
+  data-filter-chips
+  data-active="{{ active }}"
+>
+  {% for filter in filters %}
+    {% if filter.active_values.size > 0 or filter.min_value.value or filter.max_value.value %}
+      <div class="filter-chips" data-filter-chips>
+        {%- comment -%}Chips will be rendered here{%- endcomment -%}
+        {% for filter in filters %}
+          {% case filter.type %}
+            {% when 'list' %}
+              {% for active_value in filter.active_values %}
+                {% render 'filter-chip', type: filter.type, filter_value: active_value %}
+              {% endfor %}
+            {% when 'price_range' %}
+              {% if filter.min_value.value or filter.max_value.value %}
+                {% render 'filter-chip',
+                  type: filter.type,
+                  min_value: filter.min_value,
+                  max_value: filter.max_value
+                %}
+              {% endif %}
+            {% else %}
+
+          {% endcase %}
+        {% endfor %}
+
+        <button class="filter-chips__clear-all" data-clear-all>Clear All</button>
+      </div>
+      {% break %}
+    {% endif %}
+  {% endfor %}
+</filter-chips>

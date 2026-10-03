@@ -1,0 +1,77 @@
+/*
+  Styling for RTE content
+  - used predominantly on the customer service pages
+*/
+
+.rte-content:not(.rte-content__highlight) {
+  h1, h2, h3, h4, h5 h6 {
+    margin-bottom: var(--spacing-600);
+  }
+
+  p:not(:last-child), ul, ol {
+    margin-bottom: var(--spacing-500);
+  }
+
+  p:has(.body-bold) {
+    margin-bottom: var(--spacing-400);
+  }
+
+  img {
+    height: auto;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .rte-text-link {
+    color: var(--typography-color-brand);
+    text-decoration: underline;
+  }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid var(--borders-color-light);
+    border-radius: var(--borders-radius-default);
+    margin-bottom: var(--spacing-600);
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: var(--spacing-400);
+    border-right: 1px solid var(--borders-color-light);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  th, tr:first-child {
+    font-weight: var(--typography-styles-weight-bold);
+  }
+}
+
+.rte-content__title {
+  margin-bottom: var(--spacing-800);
+}
+
+.rte-content__highlight {
+  background-color: var(--schemes-accent-50);
+  padding: var(--spacing-800);
+  margin-bottom: var(--spacing-800);
+}
+
+.rte-content__highlight .content-blocks {
+  & > * + * {
+    margin-top: var(--spacing-400);
+  }
+}
+
+.rte-content__margin {
+  margin-top: var(--spacing-600);
+
+  @media (min-width: 1024px) {
+    margin-top: var(--spacing-1300);
+  }
+}

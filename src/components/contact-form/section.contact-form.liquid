@@ -1,0 +1,94 @@
+{% comment %}
+  --------------------------------------
+   Contact form
+  --------------------------------------
+{% endcomment %}
+<div class="section-contact-form">
+  {% form 'contact' %}
+    {%- if form.errors -%}
+      <div class="field-error">
+        <h3>{{ 'general.form.error_title' | t }}</h3>
+        {{ form.errors | default_errors }}
+      </div>
+    {%- endif -%}
+
+    <div class="field-container">
+      {% render 'form-input',
+        type: 'text',
+        id: 'first-name',
+        name: 'contact[first_name]',
+        label: 'First name',
+        input_placeholder: 'First Name',
+        required: true
+      %}
+
+      {% render 'form-input',
+        type: 'text',
+        id: 'last-name',
+        name: 'contact[last_name]',
+        label: 'Last name',
+        input_placeholder: 'Last Name',
+        required: true
+      %}
+    </div>
+
+    {%
+      render 'form-input',
+      type: 'email',
+      id: 'email',
+      name: 'contact[email]',
+      label: 'Email',
+      input_placeholder: 'Email',
+      required: true,
+      state: form.errors contains 'email' ? 'aria-invalid="true" aria-describedby="email-error"' : ''
+    %}
+
+    {%- if form.errors contains 'email' -%}
+      <div class="field-error">
+        <span class="field-error__message body-xsmall">
+          <div class="icon-m">
+            {% render 'icon-error', class: 'icon-s' %}
+          </div>
+          {{- form.errors.translated_fields.email | capitalize }}
+          {{ form.errors.messages.email -}}
+        </span>
+      </div>
+    {%- endif -%}
+
+    {% render 'form-textarea',
+      id: 'message',
+      name: 'contact[body]',
+      label: 'Message',
+      placeholder: 'Message',
+      required: true
+    %}
+
+    {% render 'checkbox',
+      id: 'terms',
+      name: 'contact[accepts_terms]',
+      label: 'I accept the terms and conditions',
+      help_text: 'Please read our terms before accepting',
+      required: true
+    %}
+
+    {% render 'button', label: 'Submit', type: 'submit' %}
+  {% endform %}
+</div>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show Page Title",
+      "default": true,
+      "info": "Display the default page title. Use in the first block on the page."
+    },
+  ],
+  "enabled_on": {
+    "templates": ["page"],
+  }
+}
+{% endschema %}

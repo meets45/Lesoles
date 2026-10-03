@@ -1,0 +1,44 @@
+{% comment %}
+   -------------------------------------------
+   Radio
+    id: Used for input ID and label for
+    label: Label text
+    help_text: Helper text under label
+    state: disabled / required
+  -------------------------------------------
+{% endcomment %}
+
+<radio-button
+  data-component="radio"
+  {% if help_text %}
+    data-field-wrapper
+  {% endif %}
+  {% if checked %}
+    data-checked
+  {% endif %}
+>
+  <label class="radio-label body-medium" for="{{ id }}">
+    <input
+      id="{{ id }}"
+      type="radio"
+      name="{{ name }}"
+      value="{{ value }}"
+      {% if help_text %}
+        aria-describedby="{{ id }}-help"
+      {% endif %}
+      {{ state }}
+      {{ data_attributes }}
+      data-radio-input
+      {% if checked %}
+        checked
+      {% endif %}
+    >
+    <span data-radio-label>{{ label }}</span>
+  </label>
+
+  {% if help_text %}
+    <span id="{{ id }}-help" class="radio__help body-xsmall" data-radio-help>
+      {{ help_text }}
+    </span>
+  {% endif %}
+</radio-button>

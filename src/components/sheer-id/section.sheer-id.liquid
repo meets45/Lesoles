@@ -1,0 +1,221 @@
+{% comment %}
+
+ SheerID - Education Discount for Students and Teachers
+ Installation based on SheerID Docs
+ https://developer.sheerid.com/tutorials/verifications/embedded#install-script
+
+{% endcomment %}
+
+<div
+  data-component="sheer-id"
+  class="sheer-id"
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  <div class="sheer-id__content">
+    {% render 'content-blocks', section_settings: section.settings, blocks: section.blocks, sheer_id: true %}
+
+    <script type="module">
+      import sheerId from "https://cdn.jsdelivr.net/npm/@sheerid/jslib@2/sheerid-install.js"
+
+      const buttons = [
+        {% for block in section.blocks %}
+          {% if block.type == 'button' %}
+            {
+              id: "{{ block.id }}",
+              url: {{ block.settings.url | json }}
+            },
+          {% endif %}
+        {% endfor %}
+      ]
+
+      buttons.forEach(button => {
+        const element = document.getElementById(button.id)
+        if (!element) return
+
+        element.addEventListener("click", (e) => {
+          e.preventDefault()
+          sheerId.loadInModal(button.url, {
+            mobileRedirect: false,
+          })
+        })
+      })
+    </script>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SheerID",
+  "settings": [
+        {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Text Alignment - Mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Text Alignment - Desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "color_scheme_1",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading Level",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
+          ],
+          "default": "h1",
+          "info": "This does not affect font size, only SEO and accessibility"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "SheerID",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "eyebrow" },
+        { "type": "button" },
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"],
+  }
+}
+{% endschema %}

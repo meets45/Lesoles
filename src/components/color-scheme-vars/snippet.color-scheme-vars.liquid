@@ -1,0 +1,27 @@
+{% capture vars -%}
+  --surface-primary: {{ color_scheme.settings.surface_primary }};
+
+  --typography-color: {{ color_scheme.settings.typography_color }};
+  --typography-color-secondary: {{ color_scheme.settings.typography_color_secondary }};
+  --typography-color-hover-active: {{ color_scheme.settings.typography_color_hover_active }};
+
+  {% comment %} --buttons-primary-text: {{ color_scheme.settings.buttons_primary_text }};
+  --buttons-primary-background: {{ color_scheme.settings.buttons_primary_background }};
+  --buttons-primary-hover: {{ color_scheme.settings.buttons_primary_hover }};
+
+  --buttons-secondary-text: {{ color_scheme.settings.buttons_secondary_text }};
+  --buttons-secondary-background: {{ color_scheme.settings.buttons_secondary_background }};
+  --buttons-secondary-hover: {{ color_scheme.settings.buttons_secondary_hover }};
+  --buttons-secondary-border: {{ color_scheme.settings.buttons_secondary_border }};
+
+  --buttons-tertiary-text: {{ color_scheme.settings.buttons_tertiary_text }};
+  --buttons-tertiary-background: {{ color_scheme.settings.buttons_tertiary_background }};
+  --buttons-tertiary-hover: {{ color_scheme.settings.buttons_tertiary_hover }};
+  --buttons-tertiary-border: {{ color_scheme.settings.buttons_tertiary_border }}; {% endcomment %}
+
+  --buttons-disabled-text: {{ color_scheme.settings.buttons_disabled_text }};
+  --buttons-disabled-background: {{ color_scheme.settings.buttons_disabled_background }};
+
+{%- endcapture %}
+
+{{ vars }}

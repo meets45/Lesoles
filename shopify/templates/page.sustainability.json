@@ -1,0 +1,211 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_tT464Q": {
+      "type": "hero-banner",
+      "blocks": {
+        "heading_g7dR7N": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Our commitment for a better tomorrow"
+          }
+        },
+        "eyebrow_kjKPWY": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Follow our sustainability journey"
+          }
+        }
+      },
+      "block_order": [
+        "heading_g7dR7N",
+        "eyebrow_kjKPWY"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/jansport_sustainability_update_240327_v1_hero.webp",
+        "image_mobile": "shopify://shop_images/Jansport_SustainabilityLandingPage_Mobile_2024_HERO.webp",
+        "scrim": 0,
+        "image_height": "large",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "transparent",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "rich_text_DtcpJN": {
+      "type": "rich-text",
+      "blocks": {
+        "body_K6jMYd": {
+          "type": "body",
+          "settings": {
+            "text": "<p>For decades, JanSport has reshaped how you carry your essentials.<br/><br/>Our mission is to be your lifelong partner in protecting the things<br/>you carry—and our planet.<br/><br/>We're constantly evaluating how we adopt sustainable product<br/>practices without compromising durability, innovation, and accessibility.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "body_K6jMYd"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_product_collection_CKniCB": {
+      "type": "simple-product-collection",
+      "settings": {
+        "title": "Here's Some Backpacks",
+        "cta_text": "Shop Backpacks",
+        "collection": "sustainable-backpacks",
+        "products_to_show": 10,
+        "color_scheme": ""
+      }
+    },
+    "simple_content_collection_WqWb4x": {
+      "type": "simple-content-collection",
+      "blocks": {
+        "card_kD6PMM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-2019.webp",
+            "heading": "2019",
+            "description": "<p>We kept 13 million water bottles from landfills by using partially recycled main body fabric in our 600D packs</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_RxAkdm": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-2020.webp",
+            "heading": "2020",
+            "description": "<p>We introduced the Recycled SuperBreak® - each pack containing the equivalent of 20 water bottles.</p><p>*Our Surplus Collection was first released, which rescued excess materials before they could hit the factory floor and go to waste.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_f99YFT": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-2021.webp",
+            "heading": "2021",
+            "description": "<p>We introduced our first Undyed collection consisting of the Undyed Recycled SuperBreak® and theUndyed Recycled Waist pack</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_Why69H": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/sustainability-2022.webp",
+            "heading": "2022",
+            "description": "<p>Over 80% of our styles are made with 100% recycled main body fabric.*</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_kD6PMM",
+        "card_RxAkdm",
+        "card_f99YFT",
+        "card_Why69H"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "title": "Where We Started. Where We're Headed.",
+        "description": "",
+        "style": "standard",
+        "image_ratio": "1:1",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "rich_text_43JTcP": {
+      "type": "rich-text",
+      "blocks": {
+        "body_Wk3mzd": {
+          "type": "body",
+          "settings": {
+            "text": "<p>*Calculated based on a 16floz, 9.89gm plastic bottle.<br/>*100% recycled content refers to face fabric and excludes coatings.<br/>** These results were calculated using the Higg Materials Sustainability Index V3.3 developed by the Sustainable Apparel Coalition at msi.higg.org. Calculated by VF Corp, not 3rd party verified.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "body_Wk3mzd"
+      ],
+      "settings": {
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "simple_content_collection_hWT4cX": {
+      "type": "simple-content-collection",
+      "blocks": {
+        "card_HRaUey": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/bts2050-footer-button-1-v2.webp",
+            "heading": "Shop Sustainable",
+            "description": "",
+            "link_text": "Shop now",
+            "link_url": "shopify://collections/sustainable-backpacks"
+          }
+        },
+        "card_Dmf9BM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/bts2050-footer-button-2-v2.webp",
+            "heading": "Back'd by Jansport",
+            "description": "",
+            "link_text": "Learn More",
+            "link_url": "shopify://pages/backed-by-jansport"
+          }
+        },
+        "card_7AQeEB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/bts2050-footer-button-3-v2.webp",
+            "heading": "VF Corporate Responsibility",
+            "description": "",
+            "link_text": "Learn More",
+            "link_url": "https://www.vfc.com/responsibility/planet"
+          }
+        }
+      },
+      "block_order": [
+        "card_HRaUey",
+        "card_Dmf9BM",
+        "card_7AQeEB"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "title": "",
+        "description": "",
+        "style": "standard",
+        "image_ratio": "1:1",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_tT464Q",
+    "rich_text_DtcpJN",
+    "simple_product_collection_CKniCB",
+    "simple_content_collection_WqWb4x",
+    "rich_text_43JTcP",
+    "simple_content_collection_hWT4cX"
+  ]
+}

@@ -1,0 +1,32 @@
+.product-no-results {
+  padding-bottom: var(--screens-desktop-content-bottom);
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  & > * + * {
+    margin-top: var(--spacing-800);
+  }
+}
+
+.product-no-results__header {
+  text-align: center;
+  padding: 0 var(--screens-mobile-margin);
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-no-results__sliders {
+  max-width: 852px;
+  margin-left: auto;
+  margin-right: auto;
+
+  & > * + * {
+    margin-top: var(--spacing-800);
+  }
+}
+
+.product-no-results .product-search-card {
+  width: 164px;
+}

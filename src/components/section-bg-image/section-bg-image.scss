@@ -1,0 +1,35 @@
+/* show/hide bg images on mobile and desktop */
+.section-bg-image__image {
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &.section-bg-image__image--desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &.section-bg-image__image--mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}
+
+.section-bg-image__scrim {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* this is set via section settings */
+  background-color: var(--scrim);
+}

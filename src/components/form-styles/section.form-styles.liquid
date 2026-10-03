@@ -1,0 +1,62 @@
+{% comment %}
+ Example Forms, inputs and checkboxes
+{% endcomment %}
+
+
+<div style="max-width: 1000px; margin: 0 auto; width: 100%; padding: 0 20px;">
+  <div style="margin: 20px 0;">
+    <h2>Checkbox</h2>
+    <form>
+      {% render 'checkbox', id: 'checkbox-1', label: 'A statement for a checkbox goes here.', help_text: 'Help text here', state: 'disabled' %}
+      {% render 'checkbox', id: 'checkbox-2', label: 'A statement for a checkbox goes here.' state: 'checked' %}
+      {% render 'checkbox', id: 'checkbox-3', label: 'A statement for a checkbox goes here.', help_text: 'Help text here' %}
+    </form>
+  </div>
+
+  <div style="margin: 20px 0;">
+    <h2>Radio</h2>
+    <form>
+      {% render 'radio', id: 'radio-1', name: 'group1', value: 'option1', label: 'A radio option goes here.', help_text: 'Help text here' %}
+      {% render 'radio', id: 'radio-2', name: 'group1', value: 'option2',  label: 'A radio option goes here.', help_text: 'Help text here' %}
+      {% render 'radio', id: 'radio-3', name: 'group1', value: 'option3',  label: 'A radio option goes here.', help_text: 'Help text here' %}
+      {% render 'radio', id: 'radio-4', name: 'group1', value: 'option4',  label: 'A radio option goes here.', state: 'disabled' %}
+
+    </form>
+  </div>
+  <div style="margin: 20px 0;">
+    <h2>Toggle</h2>
+    {% render 'form-toggle',
+      id: 'notifications',
+      name: 'settings[notifications]',
+      label: 'Enable notifications',
+      help_text: 'Receive updates about your account',
+      required: false
+    %}
+  </div>
+  <div style="margin: 20px 0;">
+    <h2>Select</h2>
+    {% render 'styled-select',
+      id: 'example-select',
+      name: 'example',
+      label: 'Select an option',
+      help_text: 'Help text goes here.',
+      required: true,
+      options: ''
+    %}
+  </div>
+  <div style="margin: 20px 0;">
+    <h2>Modal</h2>
+    <button data-modal-trigger="site-modal">Trigger modal</button>
+    {% render 'modal' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Form Styles",
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["*"]
+  }
+}
+{% endschema %}

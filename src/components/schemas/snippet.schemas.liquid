@@ -1,0 +1,90 @@
+{%- if template == 'index' -%}
+  <script type="application/ld+json" data-schema>
+    {
+      "@context": "https://schema.org",
+      "@type": "OnlineStore",
+      "name": "{{ shop.name }}",
+      "description": "{{ shop.description }}",
+      "logo": "{{ 'logo.png' | asset_img_url }}",
+      "url": "{{ shop.url }}"
+    }
+  </script>
+{%- elsif template contains 'collection' %}
+  <script type="application/ld+json" data-schema>
+    [
+    {{ product | structured_data }}{%- if collection -%},{%- endif -%}
+    {% if collection %}
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Collections",
+          "item": "{{shop.url}}/collections"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ collection.title | escape }}",
+          "item": "{{ shop.url }}/collections/{{ collection.handle }}"
+        }]
+      }
+    {% endif %}
+    ]
+  </script>
+{%- elsif template contains 'product' %}
+  <script type="application/ld+json" data-schema>
+    [
+    {{ product | structured_data }}{%- if collection -%},{%- endif -%}
+    {% if collection %}
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Collections",
+          "item": "{{shop.url}}/collections"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ collection.title | escape }}",
+          "item": "{{ shop.url }}/collections/{{ collection.handle }}"
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ product.title | escape }}"
+        }]
+      }
+    {% endif %}
+    ]
+  </script>
+{%- elsif template contains 'article' %}
+  <script type="application/ld+json" data-schema>
+    [
+    {{ article | structured_data }},
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "{{ blog.title | escape }}",
+        "item": "{{ shop.url }}/blogs/{{ blog.handle }}"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ article.title | escape }}",
+        "item": "{{ shop.url }}/blogs/{{ blog.handle }}/{{ article.handle }}"
+      }]
+    }
+    ]
+  </script>
+{% elsif template contains 'search' %}
+  <script type="application/ld+json" data-schema>
+    { "@context": "https://schema.org", "@type": "WebSite", "url": "{{ shop.url }}",
+    "potentialAction": { "@type": "SearchAction", "target": { "@type": "EntryPoint", "urlTemplate": "
+    {{- shop.url -}}
+    /search?q={search_term_string}" }, "query-input": "required name=search_term_string" } }
+  </script>
+{%- endif %}

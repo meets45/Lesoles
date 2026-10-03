@@ -1,0 +1,52 @@
+.plp-banner {
+  position: relative;
+  width: 100%;
+  /* TODO: Update so brand can choose colour scheme */
+  color: var(--typography-color-inverse);
+}
+
+.plp-banner__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  max-height: 280px;
+
+  @media (min-width: 769px) {
+    aspect-ratio: 8/3;
+    max-height: 360px;
+  }
+
+  & img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &.plp-banner__image--desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &.plp-banner__image--mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}
+
+.plp-banner .content-blocks {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: var(--spacing-600);
+
+  @media (min-width: 769px) {
+    padding: var(--spacing-800);
+  }
+}

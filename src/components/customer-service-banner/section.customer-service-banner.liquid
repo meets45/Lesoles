@@ -1,0 +1,44 @@
+<div
+  data-component="customer-service-banner"
+  class="hero-banner customer-service-banner"
+>
+  <div class="hero-banner__image hero-banner__image--desktop">
+    {% if section.settings.image_desktop %}
+      {{ section.settings.image_desktop | image_url: width: 2000 | image_tag: sizes: '100vw' }}
+    {% endif %}
+  </div>
+
+  <div class="hero-banner__image hero-banner__image--mobile">
+    {% if section.settings.image_mobile %}
+      {{ section.settings.image_mobile | image_url: width: 1440 | image_tag: sizes: '100vw' }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Service Banner",
+  "class": "customer-service__banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+  ],
+
+  "presets": [
+    {
+      "name": "Customer Service Banner",
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"],
+  }
+}
+{% endschema %}

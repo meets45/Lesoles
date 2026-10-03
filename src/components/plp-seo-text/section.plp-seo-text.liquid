@@ -1,0 +1,25 @@
+{% if collection.metafields.custom.collection_seo_text != blank %}
+  <section
+    data-component="plp-seo-text"
+    class="plp-seo-text"
+    aria-label="{{ 'collection.seo.label' | t }}"
+  >
+    {% assign seo_content = collection.metafields.custom.collection_seo_text | metafield_tag %}
+    {% render 'formatting-helper', location: 'plp', content: seo_content %}
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "SEO Text",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SEO Text"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["collection"],
+  }
+}
+{% endschema %}

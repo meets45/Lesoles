@@ -1,0 +1,93 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Section: Accordions
+  - Display a list of accordions with customizable content
+------------------------------------------------------------------------------
+{% endcomment %}
+{% if section.settings.show_page_title %}
+  <div class="rte-content">
+    <h1 class="rte-content__title display-medium">
+      {{ page.title }}
+    </h1>
+  </div>
+{% endif %}
+
+<div
+  data-component="section-accordions"
+  class="section-accordions">
+  {% if section.settings.title != blank %}
+    <h3 class="heading-small">
+      {{ section.settings.title }}
+    </h3>
+  {% endif %}
+
+  {% for block in section.blocks %}
+    {% render 'accordion',
+      title: block.settings.title,
+      content: block.settings.content,
+      block: block
+    %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Accordions",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show Page Title",
+      "default": false,
+      "info": "Display the default page title. Use in the first block on the page."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Accordion Section Title",
+      "default": "FAQs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Accordion Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Add your content here. Select the text to change formatting or add links.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordions",
+      "blocks": [
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Accordion Title",
+            "content": "<p>Add your content here. Select the text to change formatting or add links.</p>"
+          }
+        },
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Accordion Title",
+            "content": "<p>Add your content here. Select the text to change formatting or add links.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

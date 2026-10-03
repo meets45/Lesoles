@@ -1,0 +1,50 @@
+{
+  "name": "Footer Group",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "large_link_list",
+          "settings": {
+            "menu": "footer-col-1"
+          }
+        },
+        "footer-1": {
+          "type": "standard_link_list",
+          "settings": {
+            "heading": "Customer Services",
+            "heading_url": "shopify://pages/contact",
+            "menu": "footer-col-2"
+          }
+        },
+        "standard_link_list_iQfgUX": {
+          "type": "standard_link_list",
+          "settings": {
+            "heading": "Company",
+            "heading_url": "shopify://collections/frontpage",
+            "menu": "footer-col-3"
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "footer-1",
+        "standard_link_list_iQfgUX"
+      ],
+      "settings": {
+        "email_cta_title": "Your VIP Pass!",
+        "email_cta_caption": "Subscribe to our weekly newsletter for exclusive access to events and promotions.",
+        "email_placeholder": "Enter your email",
+        "footer_social_menu_title": "Join the conversation",
+        "copyright_menu": "copyright-menu",
+        "brand_logo": "shopify://shop_images/Brand_Logo.png",
+        "brand_statement": "BRAND, a VF Company"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

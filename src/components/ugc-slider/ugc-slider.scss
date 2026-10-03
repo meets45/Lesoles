@@ -1,0 +1,8 @@
+.ugc-slider {
+  display: block;
+  padding: var(--spacing-700) var(--screens-mobile-margin);
+
+  @media (min-width: 769px) {
+    padding: var(--spacing-700) var(--screens-desktop-margin);
+  }
+}

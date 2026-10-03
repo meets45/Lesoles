@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_3xr9ii": {
+      "type": "hero-banner",
+      "blocks": {
+        "heading_npEUgz": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Stock Your Bag with Our Spring 2025 Collection"
+          }
+        },
+        "body_e38ELq": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Check out the newest Spring 2025 collection.</p>"
+          }
+        },
+        "button_gxyRm3": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "shopify://collections/men",
+            "variant": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_npEUgz",
+        "body_e38ELq",
+        "button_gxyRm3"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/test-lifestyle-15.png",
+        "scrim": 0,
+        "image_height": "medium",
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "layout_style": "transparent",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "simple_product_collection_HrQPFh": {
+      "type": "simple-product-collection",
+      "settings": {
+        "eyebrow": "",
+        "title": "Shop Men's Jackets",
+        "description": "<p>Need a jacket for that last skip trip before the mountain closes for the season? Shop our available 2024 jackets before they sell out!</p>",
+        "cta_text": "Shop Jackets",
+        "collection": "mens-jackets",
+        "products_to_show": 16,
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_TnYR7J": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_WUThLa": {
+          "type": "heading",
+          "settings": {
+            "text": "Napajiri is Committed to Sustainability"
+          }
+        },
+        "body_a3xQKW": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Find out more about Napajiri's commitment to sustainability efforts.</p>"
+          }
+        },
+        "button_FGekrc": {
+          "type": "button",
+          "settings": {
+            "label": "Read More",
+            "url": "shopify://pages/the-brand",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_WUThLa",
+        "body_a3xQKW",
+        "button_FGekrc"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/test-lifestyle-5.png",
+        "image_placement": "left",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": false,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_banner_3xr9ii",
+    "simple_product_collection_HrQPFh",
+    "image_with_text_TnYR7J"
+  ]
+}

@@ -1,0 +1,16 @@
+.suggestion-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--type-fontweight-bold);
+  border-radius: var(--borders-radius-default);
+  background: var(--ui-elements-chips-default);
+  padding: var(--spacing-200) var(--spacing-400);
+  border: none;
+
+  @media (min-width: 769px) {
+    &:hover {
+      background: var(--ui-elements-chips-hover,);
+    }
+  }
+}

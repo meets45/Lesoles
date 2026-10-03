@@ -1,0 +1,17 @@
+.section-accordions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--spacing-700) var(--screens-desktop-margin);
+
+  [data-accordion] {
+    border-top: 1px solid var(--ui-elements-dividers-primary);
+  }
+
+  [data-accordion]:last-child {
+    padding-bottom: var(--screens-mobile-margin);
+  }
+}

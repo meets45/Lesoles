@@ -1,0 +1,146 @@
+.mobile-floating-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-100);
+  position: fixed;
+  z-index: 10;
+  right: var(--spacing-400);
+  bottom: var(--spacing-400);
+  left: var(--spacing-400);
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+/* handles tablet max width */
+[data-mode="alternate"] .mobile-floating-header {
+  @media (min-width: 481px) {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+.mobile-floating-header__primary {
+  border-radius: var(--borders-radius-default, 2px);
+  border: var(--ui-elements-navigation-header-desktop-border-width) solid
+    var(--ui-elements-navigation-header-desktop-border);
+  background: var(--ui-elements-navigation-header-mobile-background);
+  color: var(--ui-elements-navigation-header-mobile-icons);
+  box-shadow: var(--overlay);
+  height: 56px;
+  padding: var(--spacing-100);
+  transition: width 0.3s;
+
+  & .icon-button {
+    color: var(--ui-elements-navigation-header-mobile-icons);
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+}
+
+[data-mode="default"] .mobile-floating-header__primary {
+  @media (min-width: 481px) {
+    padding: var(--spacing-100) var(--spacing-600);
+  }
+}
+
+.mobile-floating-header__primary-inner {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  overflow: hidden;
+}
+
+.mobile-floating-header__primary-actions-list {
+  padding: 0;
+  display: grid;
+  justify-content: center;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  grid-gap: var(--spacing-200);
+
+  & li {
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 481px) {
+    grid-gap: var(--spacing-600);
+  }
+}
+
+.mobile-floating-header__secondary {
+  color: var(--buttons-primary-text);
+  background-color: var(--buttons-primary-background);
+  border-radius: var(--borders-radius-default);
+  height: 56px;
+  transition: width 0.3s;
+
+  & .icon-button {
+    color: var(--colors-primary-text);
+  }
+}
+
+.mobile-floating-header__secondary-inner {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+
+  & .button {
+    width: 100%;
+    height: 56px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.mobile-floating-header__expand-secondary {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  align-items: center;
+}
+
+/* the animation is tricky and relies on parent elements with overflow settings having their widths animated */
+[data-mobile-floating-header][data-mode="alternate"][data-expanded="primary"] {
+  & [data-secondary-actions] {
+    display: none;
+  }
+
+  & .mobile-floating-header__primary-expand {
+    display: none;
+  }
+
+  & .mobile-floating-header__primary {
+    width: calc(100% - 52px);
+  }
+
+  & .mobile-floating-header__secondary {
+    width: 52px;
+  }
+}
+
+[data-mobile-floating-header][data-mode="alternate"][data-expanded="secondary"] {
+  & [data-primary-actions] {
+    display: none;
+  }
+
+  & .mobile-floating-header__primary {
+    width: 52px;
+  }
+
+  & .mobile-floating-header__secondary {
+    width: calc(100% - 52px);
+  }
+
+  & .mobile-floating-header__expand-secondary {
+    display: none;
+  }
+}

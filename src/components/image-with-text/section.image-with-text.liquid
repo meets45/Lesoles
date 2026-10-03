@@ -1,0 +1,337 @@
+<div
+  data-component="image-with-text"
+  class="
+    image-with-text
+    {% if section.settings.image_placement == 'left' %}
+       image-with-text--left
+    {% endif %}
+    {% if section.settings.image_placement == 'right' %}
+       image-with-text--right
+    {% endif %}
+    {% case section.settings.image_height %}
+      {% when 'small' %}
+        image-with-text--height-small
+      {% when 'medium' %}
+        image-with-text--height-medium
+      {% when 'large' %}
+        image-with-text--height-large
+    {% endcase %}
+    {% case section.settings.image_width %}
+      {% when 'small' %}
+        image-with-text--width-small
+      {% when 'medium' %}
+        image-with-text--width-medium
+      {% when 'large' %}
+        image-with-text--width-large
+    {% endcase %}
+    {% if section.settings.full_bleed %}
+       image-with-text--full-bleed
+    {% endif %}
+    {% if section.settings.contain_image %}
+      image-with-text--contain-image
+    {% endif %}
+  "
+  style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+>
+  {% render 'section-bg-image', section_settings: section.settings %}
+
+  <div class="image-with-text__inner">
+    <div
+      class="image-with-text__left"
+    >
+      <div class="image-with-text__image image-with-text__image--mobile">
+        {% if section.settings.content_image_mobile %}
+          {{
+            section.settings.content_image_mobile
+            | image_url: width: 800
+            | image_tag: sizes: '100vw', loading: 'lazy'
+          }}
+        {% else %}
+          {{
+            section.settings.content_image_desktop
+            | image_url: width: 800
+            | image_tag: sizes: '100vw', loading: 'lazy'
+          }}
+        {% endif %}
+      </div>
+
+      {% if section.settings.image_placement == 'left' %}
+        {% if section.settings.content_image_desktop %}
+          <div class="image-with-text__image image-with-text__image--desktop">
+            {{
+              section.settings.content_image_desktop
+              | image_url: width: 800
+              | image_tag: sizes: '(min-width: 767px) 50vw, 100vw', loading: 'lazy'
+            }}
+          </div>
+        {% endif %}
+
+      {% else %}
+        <div class="image-with-text__content">
+          {% render 'content-blocks', section_settings: section.settings, blocks: section.blocks %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="image-with-text__right">
+      {% if section.settings.image_placement == 'right' %}
+        {% if section.settings.content_image_desktop %}
+          <div class="image-with-text__image image-with-text__image--desktop">
+            {{
+              section.settings.content_image_desktop
+              | image_url: width: 800
+              | image_tag: sizes: '(min-width: 767px) 50vw, 100vw', loading: 'lazy'
+            }}
+          </div>
+        {% endif %}
+      {% endif %}
+      <div class="image-with-text__content">
+        {% render 'content-blocks', section_settings: section.settings, blocks: section.blocks %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image With Text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Image",
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Optional"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Image Overlay",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Content",
+    },
+    {
+      "type": "image_picker",
+      "id": "content_image_desktop",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "content_image_mobile",
+      "label": "Mobile Image (optional)"
+    },
+    {
+      "type": "select",
+      "id": "image_placement",
+      "label": "Image Placement",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "Image Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "Image Width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain_image",
+      "label": "Maintain the images original aspect ratio",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_bleed",
+      "label": "Full Bleed",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "color_scheme_1",
+      "label": "Color scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading Text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow Text"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image With Text",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "body" },
+        { "type": "button" },
+        { "type": "button", "settings": { "variant": "secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

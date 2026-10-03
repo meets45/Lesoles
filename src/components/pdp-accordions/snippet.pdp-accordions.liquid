@@ -1,0 +1,42 @@
+<div data-component="pdp-accordions" class="pdp-accordions">
+  {% render 'accordion', title: 'Details', content: product.description, icon: 'icon-vertical' %}
+
+  {% capture benefits_content %}
+    <ul class="feature-list">
+      {% for benefit in product.metafields.attributes.benefits.value %}
+          {% render 'feature-list-item', image: benefit.image.value, content: benefit.title.value %}
+      {% endfor %}
+    </ul>
+  {% endcapture %}
+  {% render 'accordion', title: 'Benefits', content: benefits_content, icon: 'icon-vertical' %}
+
+  {% capture features_content %}
+    <ul>
+      {% for feature in product.metafields.attributes.features_text.value %}
+        <li>
+          {{ feature }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endcapture %}
+  {% render 'accordion', title: 'Features', content: features_content, icon: 'icon-vertical' %}
+
+  {% capture specifications_content %}
+      {% render 'specifications-table', specifications: product.metafields.attributes.specifications.value %}
+  {% endcapture %}
+  {% render 'accordion',
+    title: 'Specifications',
+    content: specifications_content,
+    icon: 'icon-vertical'
+  %}
+
+  {% for block in blocks %}
+    {% if block.type == 'accordion' %}
+      {% render 'accordion',
+        title: block.settings.title,
+        content: block.settings.content,
+        icon: 'icon-vertical'
+      %}
+    {% endif %}
+  {% endfor %}
+</div>

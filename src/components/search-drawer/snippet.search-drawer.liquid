@@ -1,0 +1,67 @@
+{% assign input_id = 'search-drawer-input' %}
+
+{% capture links_content %}
+  {% if search_drawer.links.value %}
+    {% render 'search-drawer-link-list', links: search_drawer.links.value %}
+  {% endif %}
+{% endcapture %}
+
+<search-drawer
+  data-component="search-drawer"
+  data-search-drawer
+  data-active="false"
+  style="display:none;"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="search-drawer">
+    <div class="search-drawer__links search-drawer__links--desktop">
+      <div class="search-drawer__links-header">
+        <h2 id="search-drawer-heading" class="heading-xsmall">
+          {{ 'general.search.heading' | t: shop_name: shop.name }}
+        </h2>
+      </div>
+      <div class="search-drawer__links-inner">
+        {{ links_content }}
+      </div>
+    </div>
+    <div class="search-drawer__main" aria-describedby="search-drawer-heading">
+      <div class="search-drawer__search">
+        <form action="/search">
+          {% render 'search-input', id: input_id %}
+        </form>
+      </div>
+      <div class="search-drawer__terms" aria-live="polite">
+        {% assign title = 'general.search.suggestion_title' | t %}
+        {% render 'suggestion-chip-slider',
+          input_id: input_id,
+          title: title,
+          suggested_terms: search_drawer.suggested_terms.value
+        %}
+      </div>
+
+      <div class="search-drawer__results" aria-live="polite">
+        {% assign dynamic_title = 'general.search.product_results_dynamic_title' | t %}
+        {% render 'product-search-card-slider',
+          title: search_drawer.collection.value.title,
+          dynamic_title: dynamic_title,
+          products: search_drawer.collection.value.products
+        %}
+      </div>
+
+      <div class="search-drawer__links search-drawer__links--mobile">
+        {{ links_content }}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} this is a load bearing div, required for focus trapping {% endcomment %}
+  <div class="search-drawer__close-wrapper">
+    <button class="search-drawer__close" data-close>
+      <span class="sr-only">{{ 'general.search.close' | t }}</span>
+      <div class="search-drawer__close-icon">
+        {% render 'icon-close' %}
+      </div>
+    </button>
+  </div>
+</search-drawer>

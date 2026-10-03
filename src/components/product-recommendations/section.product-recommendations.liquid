@@ -1,0 +1,87 @@
+{%- if product -%}
+  <product-recommendations
+    data-component="product-recommendations"
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+  >
+    <div
+      class="simple-product-collection"
+      style="{% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}"
+    >
+      <div class="simple-product-collection__inner">
+        <div class="simple-product-collection__content">
+          <div class="simple-product-collection__header">
+            {% if section.settings.eyebrow != blank %}
+              <p class="simple-product-collection__eyebrow subheading-xsmall">
+                {{ section.settings.eyebrow }}
+              </p>
+            {% endif %}
+
+            {% if section.settings.title != blank %}
+              <h2 class="simple-product-collection__title display-medium">
+                {{ section.settings.title }}
+              </h2>
+            {% endif %}
+
+            {% if section.settings.description != blank %}
+              <div class="simple-product-collection__description body-medium">
+                {{ section.settings.description }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="simple-product-collection__slider" data-slider>
+          <div class="swiper" data-swiper>
+            <div class="swiper-wrapper">
+              {%- for recommendation in recommendations.products -%}
+                <div class="swiper-slide">
+                  {% render 'product-card', product: recommendation %}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </product-recommendations>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "You May Also Like"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "color_scheme_1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recommendations",
+      "settings": {
+        "title": "You May Also Like"
+      }
+    }
+  ]
+}
+{% endschema %}

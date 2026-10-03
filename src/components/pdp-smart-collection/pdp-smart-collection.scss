@@ -1,0 +1,13 @@
+.pdp-smart-collection {
+  display: block;
+}
+
+.pdp-smart-collection__collection-inner {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.pdp-smart-collection__collection-inner > product-card {
+  flex: 0 0 25%;
+}

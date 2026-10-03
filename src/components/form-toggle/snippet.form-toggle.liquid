@@ -1,0 +1,39 @@
+{% comment %}
+ -------------------------------------------
+ Toggle Switch
+  id: Used for input ID and label for
+  name: Input name
+  label: Label text
+  help_text: Helper text under label
+  state: disabled / required
+  required: true/false
+-------------------------------------------
+{% endcomment %}
+
+<form-toggle
+  data-component="form-toggle"
+  class="toggle-wrapper"
+  {% if help_text %}data-has-help{% endif %}
+  {% if required %}data-required{% endif %}
+>
+  <label class="toggle body-medium" for="{{ id }}">
+    <input
+      id="{{ id }}"
+      name="{{ name | default: id }}"
+      type="checkbox"
+      {{ state }}
+      {% if required %}required{% endif %}
+      data-toggle-input
+    />
+    <span class="toggle__switch"></span>
+    <span class="toggle__label" data-toggle-label>
+      {{ label }}{% if required %}*{% endif %}
+    </span>
+  </label>
+
+  {% if help_text %}
+    <span class="toggle__help body-xsmall" data-toggle-help>
+      {{ help_text }}
+    </span>
+  {% endif %}
+</form-toggle>

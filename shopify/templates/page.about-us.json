@@ -1,0 +1,132 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_gyABDh": {
+      "type": "rich-text",
+      "blocks": {
+        "body_yLgmMU": {
+          "type": "body",
+          "settings": {
+            "text": "<p> </p>"
+          }
+        }
+      },
+      "block_order": [
+        "body_yLgmMU"
+      ],
+      "settings": {
+        "full_screen": true,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_zfpUBm": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_nLcCzw": {
+          "type": "heading",
+          "settings": {
+            "text": "Napajiri Universe"
+          }
+        },
+        "body_GFGLLU": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Napapijri's journey from makers of travel bags to an authentic lifestyle brand spans almost four decades. From the meaning of its name, to the iconic Norwegian flag, Napapijri's original inspiration came from the timeless appeal of polar expeditions.To this day, collection after collection, the brand strives to capture the essence of exploration as a cultural and aesthetic experience through a distinct style applied to functional apparel.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nLcCzw",
+        "body_GFGLLU"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/wk51-hp-update-banner1-d.webp",
+        "image_placement": "right",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": false,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_kBKGxk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VENXLw": {
+          "type": "heading",
+          "settings": {
+            "text": "1987"
+          }
+        },
+        "body_4RJyFR": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Named after the Finnish term for the Arctic Circle, Napapijri tracks its origins in the late 1980s in Aosta as a family-run, pioneering brand specialising in technical backpacks and bags designed for discerning travelers. Drawing inspiration from polar explorers, Napapijri utilised waxed cotton canvas, known for its durability and weather resistance. This choice of fabric set the tone for the brand's future in material research.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VENXLw",
+        "body_4RJyFR"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/napa-brandhub-ourstory-d-img-1.webp",
+        "image_placement": "left",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": false,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_g97k9w": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_EpPyzM": {
+          "type": "heading",
+          "settings": {
+            "text": "1990"
+          }
+        },
+        "body_xPEQGz": {
+          "type": "body",
+          "settings": {
+            "text": "<p>As the new decade dawned, Napapijri's innovative spirit led to an expansion into apparel. The brand applied its technical expertise while introducing its distinctive style that set it apart from conventional sports brands.</p><p><br/>This year marked the birth of the iconic Skidoo Anorak. With its unique blend of patches, colours, and the emblematic Norwegian flag, it quickly catapulted Napapijri into urban fashion circles.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EpPyzM",
+        "body_xPEQGz"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/napa-brandhub-ourstory-d-img-2.webp",
+        "image_placement": "right",
+        "image_height": "medium",
+        "image_width": "medium",
+        "contain_image": false,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "rich_text_gyABDh",
+    "image_with_text_zfpUBm",
+    "image_with_text_kBKGxk",
+    "image_with_text_g97k9w"
+  ]
+}
