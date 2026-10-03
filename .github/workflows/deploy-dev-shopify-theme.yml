@@ -54,6 +54,8 @@ jobs:
           --theme "$SHOPIFY_THEME_ID"
           --password "$SHOPIFY_CLI_THEME_TOKEN"
           --nodelete
-          --ignore "(templates|sections|locales).*.json"
+          --ignore "templates/*.json"
+          --ignore "sections/*.json"
+          --ignore "locales/*.json"
           --ignore "config/settings_data.json"
           --path=shopify

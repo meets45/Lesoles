@@ -1,0 +1,67 @@
+name: Sync Production Theme Content
+
+on:
+  schedule:
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-production-theme-content
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Pull production content into a review PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out develop
+        uses: actions/checkout@v5
+        with:
+          ref: develop
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install Yarn
+        run: npm install --global yarn@1.22.22
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Pull merchant-managed content from production
+        env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        run: >
+          yarn run shopify theme pull
+          --store "$SHOPIFY_STORE"
+          --theme "$SHOPIFY_THEME_ID"
+          --password "$SHOPIFY_CLI_THEME_TOKEN"
+          --nodelete
+          --only "templates/*.json"
+          --only "sections/*.json"
+          --only "locales/*.json"
+          --only "config/settings_data.json"
+          --path=shopify
+
+      - name: Create or update content sync pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/sync-production-theme-content
+          base: shopify-development
+          delete-branch: true
+          commit-message: 'chore: sync production theme content'
+          title: 'chore: sync production theme content'
+          body: |
+            Automated two-hour pull of merchant-managed JSON from the production theme.
+
+            Review and merge this PR to update shopify-development's content baseline.
