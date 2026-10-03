@@ -116,10 +116,13 @@ Edit component source files in `src/components`. Vite copies sections, snippets,
 ```bash
 npm run shopify:dev
 npm run shopify:push
+npm run pull:content
 npm run pull:all
 npm run deploy:dev
 npm run deploy:prd
 ```
+
+Routine push and deploy commands preserve Theme Editor-managed content: `templates/*.json`, `sections/*.json`, `locales/*.json`, and `config/settings_data.json`. Use `push:content` only for an intentional, reviewed content migration to the theme selected by Shopify CLI. `shopify:dev` uses Theme Editor sync so editor changes on an existing development theme are retained while working locally.
 
 Use `deploy:prd` only after confirming the target store, theme, content, and production settings.
 
@@ -140,6 +143,14 @@ All three workflows use the same store and Theme Access password. Configure thes
 | Development | `SHOPIFY_DEV_THEME_ID` |
 
 Shared secrets: `SHOPIFY_STORE` must be a permanent `*.myshopify.com` store domain, and `SHOPIFY_CLI_THEME_TOKEN` must be the Theme Access password. Theme IDs must be numeric.
+
+## Theme Content Sync
+
+`Sync Production Theme Content` runs every two hours and can also be started manually. It pulls only merchant-managed JSON from the production theme and creates or updates the `chore/sync-production-theme-content` pull request against `develop`.
+
+Merging that PR updates `develop`'s content baseline. Routine deployment intentionally does not upload these files to the development theme, so a code push cannot overwrite content changed in Shopify. Use `push:content` only when the content baseline must be intentionally applied to a selected theme.
+
+GitHub runs scheduled workflows from the repository's default branch. Keep this workflow on `main` so the schedule can run, even though the automated content PR targets `develop`. Create `develop` on GitHub before enabling the workflow.
 
 ## Windows Notes
 
