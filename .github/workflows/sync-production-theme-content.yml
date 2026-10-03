@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out develop
+      - name: Check out lesoles-development
         uses: actions/checkout@v5
         with:
-          ref: develop
+          ref: lesoles-development
 
       - name: Set up Node.js
         uses: actions/setup-node@v5
@@ -57,11 +57,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: chore/sync-production-theme-content
-          base: shopify-development
+          base: lesoles-development
           delete-branch: true
           commit-message: 'chore: sync production theme content'
           title: 'chore: sync production theme content'
           body: |
             Automated two-hour pull of merchant-managed JSON from the production theme.
 
-            Review and merge this PR to update shopify-development's content baseline.
+            Review and merge this PR to update lesoles-development's content baseline.

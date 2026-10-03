@@ -3,7 +3,7 @@ name: Deploy Development Shopify Theme
 on:
   push:
     branches:
-      - main
+      - lesoles-development
 
 permissions:
   contents: read

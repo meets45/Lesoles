@@ -1,0 +1,60 @@
+name: Promote Theme Code
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Environment to promote code into
+        required: true
+        type: choice
+        options:
+          - preprod
+          - production
+
+permissions:
+  contents: read
+
+concurrency:
+  group: theme-code-promotion-${{ inputs.target }}
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    name: Promote theme code
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target == 'production' && 'production' || 'preproduction' }}
+
+    steps:
+      - name: Choose source and destination branches
+        id: branches
+        shell: bash
+        run: |
+          if [[ "${{ inputs.target }}" == "preprod" ]]; then
+            echo "source=lesoles-development" >> "$GITHUB_OUTPUT"
+            echo "destination=lesoles-preprod" >> "$GITHUB_OUTPUT"
+          else
+            echo "source=lesoles-preprod" >> "$GITHUB_OUTPUT"
+            echo "destination=lesoles-prod" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out source branch
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ steps.branches.outputs.source }}
+          fetch-depth: 0
+          token: ${{ secrets.PROMOTION_TOKEN }}
+
+      - name: Fast-forward destination branch
+        env:
+          SOURCE_BRANCH: ${{ steps.branches.outputs.source }}
+          DESTINATION_BRANCH: ${{ steps.branches.outputs.destination }}
+        shell: bash
+        run: |
+          git fetch origin "$SOURCE_BRANCH" "$DESTINATION_BRANCH"
+
+          if ! git merge-base --is-ancestor "origin/$DESTINATION_BRANCH" "origin/$SOURCE_BRANCH"; then
+            echo "Promotion stopped: $DESTINATION_BRANCH has commits that are not in $SOURCE_BRANCH. Resolve the branch divergence with a PR."
+            exit 1
+          fi
+
+          git push origin "origin/$SOURCE_BRANCH:refs/heads/$DESTINATION_BRANCH"
