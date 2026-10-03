@@ -1,6 +1,9 @@
 name: Deploy Preproduction Shopify Theme
 
 on:
+  push:
+    branches:
+      - lesoles-preprod
   workflow_dispatch:
 
 permissions:

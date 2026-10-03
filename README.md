@@ -128,11 +128,13 @@ Use `deploy:prd` only after confirming the target store, theme, content, and pro
 
 ## GitHub Actions Deployment
 
-The repository has three Shopify deployment workflows:
+The repository has three environment branches and matching Shopify deployment workflows:
 
-- `Deploy Development Shopify Theme` deploys automatically after every push to `main`.
-- `Deploy Preproduction Shopify Theme` runs only when started manually from GitHub Actions.
-- `Deploy Production Shopify Theme` runs only when started manually from GitHub Actions and can update the live theme.
+- `lesoles-development` deploys to the Development theme after every push.
+- `lesoles-preprod` deploys to the Preproduction theme after every push.
+- `lesoles-prod` deploys to the Production theme after every push and can update the live theme.
+
+Create feature branches from `lesoles-development` and merge completed work back into it. Promote validated code by creating a PR from `lesoles-development` to `lesoles-preprod`, then from `lesoles-preprod` to `lesoles-prod`, or run `Promote Theme Code` in GitHub Actions.
 
 All three workflows use the same store and Theme Access password. Configure these repository Actions secrets before running a workflow:
 
@@ -146,11 +148,17 @@ Shared secrets: `SHOPIFY_STORE` must be a permanent `*.myshopify.com` store doma
 
 ## Theme Content Sync
 
-`Sync Production Theme Content` runs every two hours and can also be started manually. It pulls only merchant-managed JSON from the production theme and creates or updates the `chore/sync-production-theme-content` pull request against `develop`.
+`Sync Production Theme Content` runs every two hours and can also be started manually. It pulls only merchant-managed JSON from the production theme and creates or updates the `chore/sync-production-theme-content` pull request against `lesoles-development`.
 
-Merging that PR updates `develop`'s content baseline. Routine deployment intentionally does not upload these files to the development theme, so a code push cannot overwrite content changed in Shopify. Use `push:content` only when the content baseline must be intentionally applied to a selected theme.
+Merging that PR updates `lesoles-development`'s content baseline. Routine deployment intentionally does not upload these files to the development theme, so a code push cannot overwrite content changed in Shopify. Use `push:content` only when the content baseline must be intentionally applied to a selected theme.
 
-GitHub runs scheduled workflows from the repository's default branch. Keep this workflow on `main` so the schedule can run, even though the automated content PR targets `develop`. Create `develop` on GitHub before enabling the workflow.
+GitHub runs scheduled workflows from the repository's default branch. Keep this workflow on that branch so the schedule can run, even though the automated content PR targets `lesoles-development`. Create all three environment branches on GitHub before enabling the workflows.
+
+## Code Promotion
+
+`Promote Theme Code` lets an authorized user promote `lesoles-development` to `lesoles-preprod` or `lesoles-preprod` to `lesoles-prod` without creating a PR. It allows fast-forward promotions only; a diverged destination branch must be resolved through a PR.
+
+Add a repository secret named `PROMOTION_TOKEN` before using this workflow. It must be a fine-grained personal access token or GitHub App token with read and write access to repository contents. Configure a required-review environment named `production` before enabling production promotion.
 
 ## Windows Notes
 

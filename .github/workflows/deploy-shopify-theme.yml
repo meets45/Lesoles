@@ -1,6 +1,9 @@
 name: Deploy Production Shopify Theme
 
 on:
+  push:
+    branches:
+      - lesoles-prod
   workflow_dispatch:
 
 permissions:
