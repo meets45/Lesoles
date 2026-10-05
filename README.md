@@ -1,6 +1,6 @@
 # Lesoles Shopify Theme
 
-Lesoles is a Shopify theme developed with Liquid, Vite, and the Shopify CLI.
+Lesoles is a Shopify theme developed with Liquid and the Shopify CLI.
 
 ## Requirements
 
@@ -66,10 +66,10 @@ npm start
 
 This starts:
 
-- Vite for frontend assets, normally on `http://localhost:5173`
-- Shopify Theme Dev for the actual storefront preview, normally on `http://127.0.0.1:9292`
+- the local theme watcher, which compiles CSS and JavaScript and copies source Liquid and assets into `shopify/`
+- Shopify Theme Dev for the storefront preview, normally on `http://127.0.0.1:9292`
 
-Open the **Shopify preview URL printed in the terminal**, or press `t` in the Shopify CLI terminal. Do not use the production domain for local development.
+Open the **Shopify preview URL printed in the terminal**, or press `t` in the Shopify CLI terminal. Do not use the production domain for local development. Saving CSS, JavaScript, Liquid, or source assets updates the `shopify/` theme and refreshes the preview automatically.
 
 The VS Code workspace includes a `Lesoles Git Bash` terminal profile that automatically runs `nvs use node/24.21.0/x64` when NVS is installed.
 
@@ -99,7 +99,7 @@ npm run format:check
 ```text
 src/
   components/       Reusable Liquid, JavaScript, and SCSS components
-  entrypoints/      Vite CSS and JavaScript entry points
+  entrypoints/      CSS and JavaScript entry points
   assets/           Source assets copied into the Shopify theme
 shopify/
   config/           Theme settings and saved settings data
@@ -109,7 +109,7 @@ shopify/
   templates/        Shopify JSON and Liquid templates
 ```
 
-Edit component source files in `src/components`. Vite copies sections, snippets, and assets into `shopify/` during development and build.
+Edit component source files in `src/components`. The local theme watcher copies sections, snippets, and assets into `shopify/` during development and build.
 
 ## Shopify Commands
 
