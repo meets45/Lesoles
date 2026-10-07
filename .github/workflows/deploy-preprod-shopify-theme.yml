@@ -38,8 +38,8 @@ jobs:
 
       - name: Verify generated theme assets
         run: |
-          test -f shopify/snippets/vite-tag.liquid
-          find shopify/assets -maxdepth 1 -name '*.css' -print -quit | grep -q .
+          test -f shopify/assets/main.min.js
+          test -f shopify/assets/style.min.css
 
       - name: Check Shopify theme
         run: yarn run shopify theme check --config=.theme-check.yml --path=shopify
