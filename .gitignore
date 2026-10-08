@@ -57,6 +57,10 @@ shopify/assets/
 shopify/sections/
 shopify/snippets/
 
+# Open-licensed font source assets copied to Shopify during the theme build.
+!src/assets/fredoka-latin-wght-normal.woff2
+!src/assets/fredoka-latin-ext-wght-normal.woff2
+
 # Environment files
 .env
 .env.**
