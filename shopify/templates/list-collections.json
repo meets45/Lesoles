@@ -105,9 +105,6 @@
         "card_CFHp9m"
       ],
       "settings": {
-        "eyebrow": "Eyebrow Text (optional)",
-        "title": "Heading Text",
-        "description": "",
         "style": "standard",
         "image_ratio": "4:5",
         "color_scheme": ""
@@ -153,9 +150,6 @@
         "card_pBdBVz"
       ],
       "settings": {
-        "eyebrow": "Eyebrow Text (optional)",
-        "title": "Heading Text",
-        "description": "",
         "style": "standard",
         "image_ratio": "4:5",
         "color_scheme": ""

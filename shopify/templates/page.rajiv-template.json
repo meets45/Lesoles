@@ -1,0 +1,186 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_mygmPQ": {
+      "type": "hero-banner",
+      "blocks": {
+        "eyebrow_fXCU7N": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_GzBeLi": {
+          "type": "heading",
+          "settings": {
+            "heading_level": "h1",
+            "text": "Heading Text"
+          }
+        },
+        "body_gXTgA9": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_QAHxrX": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "primary"
+          }
+        },
+        "button_KiK3gL": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_fXCU7N",
+        "heading_GzBeLi",
+        "body_gXTgA9",
+        "button_QAHxrX",
+        "button_KiK3gL"
+      ],
+      "settings": {
+        "scrim": 13,
+        "image_height": "large",
+        "full_screen": false,
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "layout_style": "transparent",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_7UakPw": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_Ubbm8d": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_KGmR4t": {
+          "type": "heading",
+          "settings": {
+            "text": "Hello World!"
+          }
+        },
+        "body_kKqADe": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_yXPKRV": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "primary"
+          }
+        },
+        "button_P7hPam": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_Ubbm8d",
+        "heading_KGmR4t",
+        "body_kKqADe",
+        "button_yXPKRV",
+        "button_P7hPam"
+      ],
+      "settings": {
+        "scrim": 0,
+        "image_placement": "left",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": false,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    },
+    "image_with_text_BRpCxt": {
+      "type": "image-with-text",
+      "blocks": {
+        "eyebrow_UGjyG6": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Eyebrow Text"
+          }
+        },
+        "heading_B9LmYL": {
+          "type": "heading",
+          "settings": {
+            "text": "Heading Text"
+          }
+        },
+        "body_QJE638": {
+          "type": "body",
+          "settings": {
+            "text": "<p>Body text is optional. Velit adipiscing viverra tempus feugiat.  Nisl dui libero turpis dolor egestas ipsum nam.  Duis aute irure dolor in reprehenderit.</p>"
+          }
+        },
+        "button_y9JWyf": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "primary"
+          }
+        },
+        "button_NrNE8H": {
+          "type": "button",
+          "settings": {
+            "label": "Button",
+            "url": "",
+            "variant": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_UGjyG6",
+        "heading_B9LmYL",
+        "body_QJE638",
+        "button_y9JWyf",
+        "button_NrNE8H"
+      ],
+      "settings": {
+        "scrim": 0,
+        "image_placement": "right",
+        "image_height": "small",
+        "image_width": "small",
+        "contain_image": false,
+        "full_bleed": false,
+        "text_alignment": "left",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "hero_banner_mygmPQ",
+    "image_with_text_7UakPw",
+    "image_with_text_BRpCxt"
+  ]
+}
