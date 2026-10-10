@@ -40,7 +40,6 @@
         "button_gxyRm3"
       ],
       "settings": {
-        "image_desktop": "shopify://shop_images/test-lifestyle-15.png",
         "scrim": 0,
         "image_height": "medium",
         "full_screen": true,
@@ -53,11 +52,8 @@
     "simple_product_collection_HrQPFh": {
       "type": "simple-product-collection",
       "settings": {
-        "eyebrow": "",
-        "title": "Shop Men's Jackets",
-        "description": "<p>Need a jacket for that last skip trip before the mountain closes for the season? Shop our available 2024 jackets before they sell out!</p>",
-        "cta_text": "Shop Jackets",
-        "collection": "mens-jackets",
+        "scrim": 0,
+        "collection": "frontpage",
         "products_to_show": 16,
         "color_scheme": ""
       }
@@ -92,7 +88,7 @@
         "button_FGekrc"
       ],
       "settings": {
-        "image_desktop": "shopify://shop_images/test-lifestyle-5.png",
+        "scrim": 0,
         "image_placement": "left",
         "image_height": "medium",
         "image_width": "medium",

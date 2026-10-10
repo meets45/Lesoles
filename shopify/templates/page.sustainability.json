@@ -65,8 +65,6 @@
     "simple_product_collection_CKniCB": {
       "type": "simple-product-collection",
       "settings": {
-        "title": "Here's Some Backpacks",
-        "cta_text": "Shop Backpacks",
         "collection": "sustainable-backpacks",
         "products_to_show": 10,
         "color_scheme": ""
@@ -123,9 +121,6 @@
         "card_Why69H"
       ],
       "settings": {
-        "eyebrow": "",
-        "title": "Where We Started. Where We're Headed.",
-        "description": "",
         "style": "standard",
         "image_ratio": "1:1",
         "color_scheme": "scheme-1"
@@ -191,9 +186,6 @@
         "card_7AQeEB"
       ],
       "settings": {
-        "eyebrow": "",
-        "title": "",
-        "description": "",
         "style": "standard",
         "image_ratio": "1:1",
         "color_scheme": "scheme-1"

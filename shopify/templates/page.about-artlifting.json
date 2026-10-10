@@ -100,10 +100,6 @@
     "simple_product_collection_r8Qmen": {
       "type": "simple-product-collection",
       "settings": {
-        "eyebrow": "",
-        "title": "Sylvia Burnstein's Collection",
-        "description": "",
-        "cta_text": "",
         "collection": "all-bags",
         "products_to_show": 16,
         "color_scheme": ""
@@ -152,10 +148,6 @@
     "simple_product_collection_BTjGnC": {
       "type": "simple-product-collection",
       "settings": {
-        "eyebrow": "",
-        "title": "MJ Cooper's Collection",
-        "description": "",
-        "cta_text": "Shop Best Sellers",
         "collection": "all-bags",
         "products_to_show": 16,
         "color_scheme": ""
@@ -204,10 +196,6 @@
     "simple_product_collection_iUKdTJ": {
       "type": "simple-product-collection",
       "settings": {
-        "eyebrow": "",
-        "title": "Mia Brown's Collection",
-        "description": "",
-        "cta_text": "",
         "collection": "all-bags",
         "products_to_show": 16,
         "color_scheme": ""

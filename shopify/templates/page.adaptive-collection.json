@@ -102,10 +102,6 @@
     "simple_product_collection_GQeghT": {
       "type": "simple-product-collection",
       "settings": {
-        "eyebrow": "",
-        "title": "Adaptive Collection",
-        "description": "",
-        "cta_text": "Shop now",
         "collection": "all-bags",
         "products_to_show": 16,
         "color_scheme": ""
