@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" role="img" aria-label="Temporary lifestyle illustration">
+  <defs>
+    <linearGradient id="sky" x2=".2" y2="1"><stop stop-color="#9fae9a"/><stop offset="1" stop-color="#d4cab4"/></linearGradient>
+    <linearGradient id="jeans" x2="1" y2="1"><stop stop-color="#b2bfd0"/><stop offset="1" stop-color="#809cb6"/></linearGradient>
+  </defs>
+  <rect width="800" height="1100" fill="url(#sky)"/>
+  <path d="M0 227 800 69v245L0 476Z" fill="#657b5f" opacity=".46"/>
+  <path d="M0 811 800 598v502H0Z" fill="#8b806e"/>
+  <path d="M0 930 800 732v121L0 1070Z" fill="#b6a48a"/>
+  <ellipse cx="449" cy="322" rx="123" ry="164" fill="#4b3b32"/>
+  <circle cx="452" cy="303" r="93" fill="#d9a980"/>
+  <path d="M353 271c28-120 141-153 208-40-37 7-87 6-126-19-20 39-50 63-82 59Z" fill="#3c302a"/>
+  <path d="M354 300q95 43 189-5" fill="none" stroke="#333a35" stroke-width="22" stroke-linecap="round"/>
+  <path d="M430 341q42 26 67-3" fill="none" stroke="#934f47" stroke-width="7" stroke-linecap="round"/>
+  <path d="M259 570c-28-126 13-200 124-215l143 11c112 22 145 91 129 223l-41 174-306 4Z" fill="#9aa68d"/>
+  <path d="M318 454 168 622l83 75 165-158M604 443l145 150-79 83-177-154" fill="none" stroke="#9aa68d" stroke-width="78" stroke-linecap="round"/>
+  <path d="M265 730c-37 91-47 213-42 310h177l71-232 47 231h177c-11-119-27-223-62-321Z" fill="url(#jeans)"/>
+  <path d="M197 1000h230l-24 63H162c-11-26 2-51 35-63Zm292 0h220l34 63H497c-23-15-27-43-8-63Z" fill="#d7c9b4" stroke="#b5a58f" stroke-width="7"/>
+</svg>

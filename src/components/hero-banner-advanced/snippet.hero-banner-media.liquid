@@ -1,0 +1,247 @@
+{% liquid
+  assign is_video = false
+  if block.settings.media_type == 'video'
+    assign is_video = true
+  endif
+  assign desktop_image = block.settings.image_desktop
+  assign tablet_image = block.settings.image_tablet | default: desktop_image
+  assign mobile_image = block.settings.image_mobile | default: tablet_image
+  if is_video
+    assign desktop_image = block.settings.poster_desktop | default: block.settings.image_desktop
+    if desktop_image == blank and block.settings.video_source_desktop == 'shopify'
+      assign desktop_image = block.settings.video_desktop.preview_image
+    endif
+    assign tablet_image = block.settings.poster_tablet
+    if tablet_image == blank and block.settings.video_source_tablet == 'shopify'
+      assign tablet_image = block.settings.video_tablet.preview_image
+    endif
+    assign tablet_image = tablet_image | default: desktop_image
+    assign mobile_image = block.settings.poster_mobile
+    if mobile_image == blank and block.settings.video_source_mobile == 'shopify'
+      assign mobile_image = block.settings.video_mobile.preview_image
+    endif
+    assign mobile_image = mobile_image | default: tablet_image
+  endif
+  assign has_overlay = false
+  if kind == 'secondary' and block.settings.overlay_enabled
+    if block.settings.overlay_heading != blank or block.settings.overlay_description != blank or block.settings.overlay_caption != blank
+      assign has_overlay = true
+    endif
+    if block.settings.overlay_cta_url != blank
+      if block.settings.overlay_cta_label != blank or block.settings.overlay_cta_arrow
+        assign has_overlay = true
+      endif
+    endif
+  endif
+  assign has_explicit_cta = false
+  if block.settings.overlay_enabled and block.settings.overlay_cta_url != blank
+    if block.settings.overlay_cta_label != blank or block.settings.overlay_cta_arrow
+      assign has_explicit_cta = true
+    endif
+  endif
+  assign whole_card_link = false
+  if kind == 'secondary' and is_video == false and block.settings.card_url != blank and has_explicit_cta == false
+    assign whole_card_link = true
+  endif
+  assign aspect = 'auto'
+  case block.settings.aspect_ratio
+    when 'square'
+      assign aspect = '1 / 1'
+    when 'landscape'
+      assign aspect = '4 / 3'
+    when 'wide'
+      assign aspect = '16 / 9'
+    when 'portrait'
+      assign aspect = '3 / 4'
+    when 'custom'
+      assign aspect = block.settings.ratio_width | append: ' / ' | append: block.settings.ratio_height
+  endcase
+  if is_video and aspect == 'auto'
+    assign aspect = '16 / 9'
+  endif
+  assign alt_text = block.settings.alt | default: desktop_image.alt
+  if block.settings.decorative or block.settings.placement == 'background' or is_video
+    assign alt_text = ''
+  endif
+  assign demo_asset = 'hero-demo-product.svg'
+  if kind == 'secondary'
+    assign demo_asset = 'hero-demo-lifestyle.svg'
+  endif
+  assign transparent_pixel = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
+  assign devices = 'desktop,tablet,mobile' | split: ','
+  assign available_desktop = false
+  assign available_tablet = false
+  assign available_mobile = false
+  assign desktop_source_ready = false
+  if is_video
+    case block.settings.video_source_desktop
+      when 'shopify'
+        if block.settings.video_desktop != blank
+          assign desktop_source_ready = true
+        endif
+      when 'youtube'
+        if block.settings.youtube_desktop != blank
+          assign desktop_source_ready = true
+        endif
+      when 'vimeo'
+        if block.settings.vimeo_desktop != blank
+          assign desktop_source_ready = true
+        endif
+    endcase
+  endif
+  if block.settings.demo_media or has_overlay
+    assign available_desktop = true
+    assign available_tablet = true
+    assign available_mobile = true
+  elsif is_video
+    assign tablet_source_ready = desktop_source_ready
+    case block.settings.video_source_tablet
+      when 'shopify'
+        assign tablet_source_ready = false
+        if block.settings.video_tablet != blank
+          assign tablet_source_ready = true
+        endif
+      when 'youtube'
+        assign tablet_source_ready = false
+        if block.settings.youtube_tablet != blank
+          assign tablet_source_ready = true
+        endif
+      when 'vimeo'
+        assign tablet_source_ready = false
+        if block.settings.vimeo_tablet != blank
+          assign tablet_source_ready = true
+        endif
+    endcase
+    assign mobile_source_ready = tablet_source_ready
+    case block.settings.video_source_mobile
+      when 'shopify'
+        assign mobile_source_ready = false
+        if block.settings.video_mobile != blank
+          assign mobile_source_ready = true
+        endif
+      when 'youtube'
+        assign mobile_source_ready = false
+        if block.settings.youtube_mobile != blank
+          assign mobile_source_ready = true
+        endif
+      when 'vimeo'
+        assign mobile_source_ready = false
+        if block.settings.vimeo_mobile != blank
+          assign mobile_source_ready = true
+        endif
+    endcase
+    if desktop_image != blank or desktop_source_ready
+      assign available_desktop = true
+    endif
+    if tablet_image != blank or tablet_source_ready
+      assign available_tablet = true
+    endif
+    if mobile_image != blank or mobile_source_ready
+      assign available_mobile = true
+    endif
+  else
+    if desktop_image != blank
+      assign available_desktop = true
+    endif
+    if tablet_image != blank
+      assign available_tablet = true
+    endif
+    if mobile_image != blank
+      assign available_mobile = true
+    endif
+  endif
+%}
+<div
+  id="HeroBlock-{{ block.id }}"
+  class="hb__media hb__media--{{ kind }} hb__media--{{ block.settings.placement | default: 'foreground' }} hb__media--{{ block.settings.fit | default: 'contain' }} {% unless block.settings.show_desktop %}hb-hide-desktop{% endunless %} {% unless block.settings.show_tablet %}hb-hide-tablet{% endunless %} {% unless block.settings.show_mobile %}hb-hide-mobile{% endunless %} {% unless request.design_mode %}{% unless available_desktop %}hb-empty-desktop{% endunless %} {% unless available_tablet %}hb-empty-tablet{% endunless %} {% unless available_mobile %}hb-empty-mobile{% endunless %}{% endunless %} {% if kind == 'secondary' and has_overlay %}hb__media--has-overlay{% endif %} {% if is_video %}hb__media--video{% elsif block.settings.demo_media == false %}{% if desktop_image == blank %}hb-no-visual-desktop{% endif %} {% if tablet_image == blank %}hb-no-visual-tablet{% endif %} {% if mobile_image == blank %}hb-no-visual-mobile{% endif %}{% endif %}"
+  data-media
+  data-kind="{{ kind }}"
+  data-type="{{ block.settings.media_type }}"
+  data-arrangement-desktop="{{ block.settings.foreground_arrangement_desktop }}"
+  data-arrangement-tablet="{{ block.settings.foreground_arrangement_tablet }}"
+  data-arrangement-mobile="{{ block.settings.foreground_arrangement_mobile }}"
+  data-media-vertical-desktop="{{ block.settings.media_vertical_desktop }}"
+  data-media-vertical-tablet="{{ block.settings.media_vertical_tablet }}"
+  data-media-vertical-mobile="{{ block.settings.media_vertical_mobile }}"
+  data-override-tablet="{{ block.settings.override_tablet }}"
+  data-override-mobile="{{ block.settings.override_mobile }}"
+  data-source-desktop="{{ block.settings.video_source_desktop }}"
+  data-source-tablet="{{ block.settings.video_source_tablet }}"
+  data-source-mobile="{{ block.settings.video_source_mobile }}"
+  data-autoplay-desktop="{{ block.settings.autoplay_desktop }}"
+  data-autoplay-tablet="{{ block.settings.autoplay_tablet }}"
+  data-autoplay-mobile="{{ block.settings.autoplay_mobile }}"
+  data-playback-mode="{{ block.settings.playback_mode }}"
+  data-loop="{{ block.settings.loop }}"
+  data-controls="{{ block.settings.controls }}"
+  data-mute="{{ block.settings.mute }}"
+  data-modal="{{ block.settings.modal }}"
+  data-title="{{ block.settings.video_title | escape }}"
+  data-motion="{{ block.settings.motion }}"
+  style="--hb-aspect: {{ aspect }}; --hb-play-color: {{ block.settings.play_button_color | default: '#153a35' }};"
+  {{ block.shopify_attributes }}
+>
+  {% if whole_card_link %}<a class="hb__card-whole-link" href="{{ block.settings.card_url }}" aria-label="{{ block.settings.card_accessible_label | default: block.settings.overlay_caption | default: 'Open featured story' | escape }}" {% if block.settings.card_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>{% endif %}
+  <div class="hb__media-stage">
+    {% if desktop_image != blank or tablet_image != blank or mobile_image != blank or block.settings.demo_media %}
+      <picture class="hb__picture">
+        {% if section.settings.show_mobile and block.settings.show_mobile %}
+          {% if mobile_image != blank %}
+            <source media="(max-width: 749px)" srcset="{{ mobile_image | image_url: width: 400 }} 400w, {{ mobile_image | image_url: width: 800 }} 800w, {{ mobile_image | image_url: width: 1200 }} 1200w" sizes="100vw">
+          {% elsif block.settings.demo_media %}<source media="(max-width: 749px)" srcset="{{ demo_asset | asset_url }}">{% endif %}
+        {% else %}<source media="(max-width: 749px)" srcset="{{ transparent_pixel }}">{% endif %}
+        {% if section.settings.show_tablet and block.settings.show_tablet %}
+          {% if tablet_image != blank %}
+            <source media="(min-width: 750px) and (max-width: 989px)" srcset="{{ tablet_image | image_url: width: 600 }} 600w, {{ tablet_image | image_url: width: 1000 }} 1000w, {{ tablet_image | image_url: width: 1400 }} 1400w" sizes="100vw">
+          {% elsif block.settings.demo_media %}<source media="(min-width: 750px) and (max-width: 989px)" srcset="{{ demo_asset | asset_url }}">{% endif %}
+        {% else %}<source media="(min-width: 750px) and (max-width: 989px)" srcset="{{ transparent_pixel }}">{% endif %}
+        {% if section.settings.show_desktop and block.settings.show_desktop %}
+          {% if desktop_image != blank %}
+            <source media="(min-width: 990px)" srcset="{{ desktop_image | image_url: width: 800 }} 800w, {{ desktop_image | image_url: width: 1200 }} 1200w, {{ desktop_image | image_url: width: 1800 }} 1800w, {{ desktop_image | image_url: width: 2400 }} 2400w" sizes="{% if kind == 'secondary' %}(min-width: 1440px) 460px, 33vw{% else %}(min-width: 1440px) 940px, 67vw{% endif %}">
+          {% elsif block.settings.demo_media %}<source media="(min-width: 990px)" srcset="{{ demo_asset | asset_url }}">{% endif %}
+        {% else %}<source media="(min-width: 990px)" srcset="{{ transparent_pixel }}">{% endif %}
+        <img class="hb__image" src="{{ transparent_pixel }}" width="{{ desktop_image.width | default: 1200 }}" height="{{ desktop_image.height | default: 900 }}" alt="{{ alt_text | escape }}" {% if priority %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+      </picture>
+      <style>
+        #HeroBanner-{{ section.id }} #HeroBlock-{{ block.id }} .hb__image { object-position: {% if block.settings.focal_override_desktop %}{{ block.settings.focal_x_desktop }}% {{ block.settings.focal_y_desktop }}%{% else %}{{ desktop_image.presentation.focal | default: 'center center' }}{% endif %}; }
+        @media (min-width: 750px) and (max-width: 989px) { #HeroBanner-{{ section.id }} #HeroBlock-{{ block.id }} .hb__image { object-position: {% if block.settings.focal_override_tablet %}{{ block.settings.focal_x_tablet }}% {{ block.settings.focal_y_tablet }}%{% else %}{{ tablet_image.presentation.focal | default: 'center center' }}{% endif %}; } }
+        @media (max-width: 749px) { #HeroBanner-{{ section.id }} #HeroBlock-{{ block.id }} .hb__image { object-position: {% if block.settings.focal_override_mobile %}{{ block.settings.focal_x_mobile }}% {{ block.settings.focal_y_mobile }}%{% else %}{{ mobile_image.presentation.focal | default: 'center center' }}{% endif %}; } }
+      </style>
+    {% endif %}
+    {% if is_video %}
+      <div class="hb__player" data-player></div>
+      <button type="button" class="hb__play hb__play--{{ block.settings.play_button_style }}" data-video-play aria-label="Play {{ block.settings.video_title | default: 'video' | escape }}" style="--hb-play-bg: {{ block.settings.play_button_color | default: '#153a35' }};">{% render 'icon-play' %}</button>
+      <button type="button" class="hb__pause" data-video-pause aria-label="Pause {{ block.settings.video_title | default: 'video' | escape }}" hidden>Pause</button>
+      {% for device in devices %}
+        {% liquid
+          assign source_key = 'video_source_' | append: device
+          assign video_key = 'video_' | append: device
+          assign youtube_key = 'youtube_' | append: device
+          assign vimeo_key = 'vimeo_' | append: device
+          assign video_source = block.settings[source_key]
+        %}
+        {% unless video_source == 'inherit' %}
+          <template data-video-template data-device="{{ device }}" data-source="{{ video_source }}">
+            {% case video_source %}
+              {% when 'shopify' %}
+                {% if block.settings[video_key] != blank %}{{ block.settings[video_key] | video_tag: controls: true, autoplay: false, loop: false, muted: false, preload: 'none', playsinline: true }}{% endif %}
+              {% when 'youtube' %}
+                {% assign youtube_video = block.settings[youtube_key] %}
+                {% if youtube_video != blank %}<iframe data-src="https://www.youtube.com/embed/{{ youtube_video.id | escape }}" title="{{ block.settings.video_title | default: 'YouTube video' | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>{% endif %}
+              {% when 'vimeo' %}
+                {% assign vimeo_video = block.settings[vimeo_key] %}
+                {% if vimeo_video != blank %}<iframe data-src="https://player.vimeo.com/video/{{ vimeo_video.id | escape }}" title="{{ block.settings.video_title | default: 'Vimeo video' | escape }}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>{% endif %}
+            {% endcase %}
+          </template>
+        {% endunless %}
+      {% endfor %}
+      {% if block.settings.transcript_url != blank %}<a class="hb__transcript" href="{{ block.settings.transcript_url }}">{{ block.settings.transcript_label | default: 'Read video transcript' | escape }}</a>{% endif %}
+    {% endif %}
+  </div>
+  {% if kind == 'secondary' and has_overlay %}
+    {% render 'hero-banner-overlay', block: block %}
+  {% endif %}
+  {% if whole_card_link %}</a>{% endif %}
+  {% if request.design_mode and is_video and desktop_source_ready == false %}<p class="hb__editor-hint">Add a desktop video for the selected {{ block.settings.video_source_desktop }} source. Other source fields are ignored until selected.</p>{% endif %}
+  {% if request.design_mode and is_video == false and desktop_image == blank and tablet_image == blank and mobile_image == blank and block.settings.demo_media == false %}<p class="hb__editor-hint">Select an image or enable the temporary demo image.</p>{% endif %}
+</div>

@@ -1,0 +1,68 @@
+{% assign block_selector = '#HeroBanner-' | append: section_id | append: ' #HeroBlock-' | append: block.id %}
+{% assign responsive_fields = 'font_size:px,line_height:%,letter_spacing:px,max_width:px,align:,foreground_arrangement:,media_width:%,media_align:,media_vertical:,offset_x:px,offset_y:px,rotation:deg,aspect_ratio:,overlay_padding:px,overlay_width:px,overlay_heading_size:px,overlay_body_size:px,overlay_button_size:px,scroll_spacing:px' | split: ',' %}
+{{ block_selector }} {
+  {% for field_pair in responsive_fields %}
+    {% assign pieces = field_pair | split: ':' %}
+    {% assign setting_key = pieces[0] | append: '_desktop' %}
+    {% assign value = block.settings[setting_key] %}
+    {% if value != blank %}{% unless pieces[0] == 'aspect_ratio' and value == 'auto' %}--hb-{{ pieces[0] | replace: '_', '-' }}: {{ value }}{{ pieces[1] }};{% endunless %}{% endif %}
+  {% endfor %}
+  --hb-block-color: {{ block.settings.color | default: 'inherit' }};
+  --hb-block-weight: {{ block.settings.weight | default: 400 }};
+  --hb-block-transform: {{ block.settings.transform | default: 'none' }};
+  --hb-block-style: {{ block.settings.font_style | default: 'normal' }};
+  --hb-heading-font: {% if block.settings.heading_font == 'fredoka' %}'Fredoka', sans-serif{% else %}var(--typography-styles-font-family-headings){% endif %};
+  --hb-space-above: {{ block.settings.space_above | default: 0 }}px;
+  --hb-space-below: {{ block.settings.space_below | default: 0 }}px;
+  --hb-cta-text: {{ block.settings.text_color | default: 'inherit' }};
+  --hb-cta-bg: {{ block.settings.background_color | default: 'transparent' }};
+  --hb-cta-border: {{ block.settings.border_color | default: 'transparent' }};
+  --hb-cta-hover-text: {{ block.settings.hover_text_color | default: 'inherit' }};
+  --hb-cta-hover-bg: {{ block.settings.hover_background_color | default: 'transparent' }};
+  --hb-cta-radius: {{ block.settings.radius | default: 999 }}px;
+  --hb-media-radius: {{ block.settings.media_radius | default: 0 }}px;
+  --hb-media-border: {{ block.settings.media_border_width | default: 0 }}px solid {{ block.settings.media_border_color | default: 'transparent' }};
+  --hb-media-overlay-color: {{ block.settings.background_overlay_color | default: '#000000' }};
+  --hb-media-overlay-opacity: {{ block.settings.background_overlay_opacity | default: 0 }}%;
+  --hb-overlay-text: {{ block.settings.overlay_text_color | default: '#153a35' }};
+  --hb-overlay-panel: {{ block.settings.overlay_panel_color | default: '#ffffff' }};
+  --hb-overlay-panel-opacity: {{ block.settings.overlay_panel_opacity | default: 100 }}%;
+  --hb-overlay-panel-radius: {{ block.settings.overlay_panel_radius | default: 999 }}px;
+  --hb-overlay-panel-border: {{ block.settings.overlay_panel_border_width | default: 0 }}px solid {{ block.settings.overlay_panel_border_color | default: 'transparent' }};
+  --hb-overlay-button-bg: {{ block.settings.overlay_button_color | default: '#153a35' }};
+  --hb-overlay-button-text: {{ block.settings.overlay_button_text_color | default: '#ffffff' }};
+  --hb-progress-active: {{ block.settings.active_color | default: '#153a35' }};
+  --hb-progress-inactive: {{ block.settings.inactive_color | default: '#6d7770' }};
+}
+@media (min-width: 750px) and (max-width: 989px) {
+  {{ block_selector }} {
+    {% if block.settings.override_tablet %}
+      {% for field_pair in responsive_fields %}
+        {% assign pieces = field_pair | split: ':' %}
+        {% assign setting_key = pieces[0] | append: '_tablet' %}
+        {% assign value = block.settings[setting_key] %}
+        {% if value != blank %}{% unless pieces[0] == 'aspect_ratio' and value == 'auto' %}--hb-{{ pieces[0] | replace: '_', '-' }}: {{ value }}{{ pieces[1] }};{% endunless %}{% endif %}
+      {% endfor %}
+    {% endif %}
+  }
+}
+@media (max-width: 749px) {
+  {{ block_selector }} {
+    {% if block.settings.override_tablet %}
+      {% for field_pair in responsive_fields %}
+        {% assign pieces = field_pair | split: ':' %}
+        {% assign setting_key = pieces[0] | append: '_tablet' %}
+        {% assign value = block.settings[setting_key] %}
+        {% if value != blank %}{% unless pieces[0] == 'aspect_ratio' and value == 'auto' %}--hb-{{ pieces[0] | replace: '_', '-' }}: {{ value }}{{ pieces[1] }};{% endunless %}{% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if block.settings.override_mobile %}
+      {% for field_pair in responsive_fields %}
+        {% assign pieces = field_pair | split: ':' %}
+        {% assign setting_key = pieces[0] | append: '_mobile' %}
+        {% assign value = block.settings[setting_key] %}
+        {% if value != blank %}{% unless pieces[0] == 'aspect_ratio' and value == 'auto' %}--hb-{{ pieces[0] | replace: '_', '-' }}: {{ value }}{{ pieces[1] }};{% endunless %}{% endif %}
+      {% endfor %}
+    {% endif %}
+  }
+}

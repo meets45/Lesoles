@@ -1,0 +1,40 @@
+{% liquid
+  assign scroll_prompt = section.blocks | where: 'type', 'scroll_prompt' | first
+  assign progress_steps = section.blocks | where: 'type', 'progress_step'
+  assign has_progress = false
+  for step in progress_steps
+    if step.settings.label != blank
+      assign has_progress = true
+    endif
+  endfor
+  assign has_scroll = false
+  if scroll_prompt != blank and scroll_prompt.settings.label != blank
+    if scroll_prompt.settings.target == 'next' or scroll_prompt.settings.anchor != blank
+      assign has_scroll = true
+    endif
+  endif
+%}
+{% if has_scroll or has_progress %}
+  <div class="hb__footer">
+    {% if has_scroll %}
+      <button id="HeroBlock-{{ scroll_prompt.id }}" class="hb__scroll {% unless scroll_prompt.settings.show_desktop %}hb-hide-desktop{% endunless %} {% unless scroll_prompt.settings.show_tablet %}hb-hide-tablet{% endunless %} {% unless scroll_prompt.settings.show_mobile %}hb-hide-mobile{% endunless %}" type="button" data-scroll-prompt data-target="{{ scroll_prompt.settings.target }}" data-anchor="{{ scroll_prompt.settings.anchor | handleize | escape }}" hidden {{ scroll_prompt.shopify_attributes }}>
+        {{ scroll_prompt.settings.label | escape }}{% if scroll_prompt.settings.arrow %}<span aria-hidden="true">{% render 'icon-arrow-down' %}</span>{% endif %}
+      </button>
+    {% endif %}
+    {% if has_progress %}
+      <ol class="hb__progress {% unless section.settings.progress_show_desktop %}hb-hide-desktop{% endunless %} {% unless section.settings.progress_show_tablet %}hb-hide-tablet{% endunless %} {% unless section.settings.progress_show_mobile %}hb-hide-mobile{% endunless %}" data-progress data-divider="{{ section.settings.progress_divider_style }}">
+        {% assign shown_index = 0 %}
+        {% for step in progress_steps %}
+          {% if step.settings.label != blank %}
+            {% assign shown_index = shown_index | plus: 1 %}
+            <li id="HeroBlock-{{ step.id }}" class="hb__progress-step" data-progress-step {% if shown_index == 1 %}data-active{% endif %} {{ step.shopify_attributes }}>
+              <span class="hb__progress-number">{% if step.settings.number != blank %}{{ step.settings.number | escape }}{% else %}{{ shown_index | prepend: '0' | slice: -2, 2 }}{% endif %}</span>
+              <span class="hb__progress-label">{{ step.settings.label | escape }}</span>
+              {% if step.settings.supporting_text != blank %}<small>{{ step.settings.supporting_text | escape }}</small>{% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </div>
+{% endif %}

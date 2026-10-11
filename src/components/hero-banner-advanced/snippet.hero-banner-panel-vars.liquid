@@ -1,0 +1,72 @@
+{% liquid
+  assign suffix = '_' | append: device
+  assign key = 'arrangement' | append: suffix
+  assign arrangement = settings[key]
+  assign key = 'position' | append: suffix
+  assign position = settings[key]
+  assign key = 'ratio' | append: suffix
+  assign ratio = settings[key] | plus: 0
+  assign card_ratio = 100 | minus: ratio
+  assign key = 'gap' | append: suffix
+  assign gap = settings[key]
+  assign key = 'padding_top' | append: suffix
+  assign padding_top = settings[key]
+  assign key = 'padding_bottom' | append: suffix
+  assign padding_bottom = settings[key]
+  assign key = 'gutter' | append: suffix
+  assign gutter = settings[key]
+  assign key = 'main_padding' | append: suffix
+  assign main_padding = settings[key]
+  assign key = 'height_mode' | append: suffix
+  assign height_mode = settings[key]
+  assign key = 'main_height' | append: suffix
+  assign main_height = settings[key]
+  assign key = 'card_height' | append: suffix
+  assign card_height = settings[key]
+  assign key = 'main_viewport' | append: suffix
+  assign main_viewport = settings[key]
+  assign key = 'card_viewport' | append: suffix
+  assign card_viewport = settings[key]
+  assign key = 'content_align' | append: suffix
+  assign content_align = settings[key]
+  assign key = 'content_vertical' | append: suffix
+  assign content_vertical = settings[key]
+  assign key = 'content_width' | append: suffix
+  assign content_width = settings[key]
+  assign key = 'cta_arrangement' | append: suffix
+  assign cta_arrangement = settings[key]
+  assign key = 'cta_align' | append: suffix
+  assign cta_align = settings[key]
+  assign key = 'cta_gap' | append: suffix
+  assign cta_gap = settings[key]
+  assign key = 'cta_width' | append: suffix
+  assign cta_width = settings[key]
+  assign key = 'progress_align' | append: suffix
+  assign progress_align = settings[key]
+  assign key = 'progress_gap' | append: suffix
+  assign progress_gap = settings[key]
+%}
+--hb-arrangement: {{ arrangement }};
+--hb-position: {{ position }};
+--hb-main-fr: {{ ratio }}fr;
+--hb-card-fr: {{ card_ratio }}fr;
+--hb-layout-columns: {% if arrangement == 'stacked' %}minmax(0, 1fr){% else %}minmax(0, {{ ratio }}fr) minmax(0, {{ card_ratio }}fr){% endif %};
+--hb-layout-columns-reversed: {% if arrangement == 'stacked' %}minmax(0, 1fr){% else %}minmax(0, {{ card_ratio }}fr) minmax(0, {{ ratio }}fr){% endif %};
+--hb-gap: {{ gap }}px;
+--hb-padding-top: {{ padding_top }}px;
+--hb-padding-bottom: {{ padding_bottom }}px;
+--hb-gutter: {{ gutter }}px;
+--hb-main-padding: {{ main_padding }}px;
+--hb-main-min-height: {% case height_mode %}{% when 'minimum' %}{{ main_height }}px{% when 'fixed' %}{{ main_height }}px{% when 'viewport' %}max(0px, calc({{ main_viewport }}svh - var(--header-top-offset, 0px))){% else %}0px{% endcase %};
+--hb-card-min-height: {% case height_mode %}{% when 'minimum' %}{{ card_height }}px{% when 'fixed' %}{{ card_height }}px{% when 'viewport' %}max(0px, calc({{ card_viewport }}svh - var(--header-top-offset, 0px))){% else %}0px{% endcase %};
+--hb-content-align: {{ content_align }};
+--hb-content-vertical: {% case content_vertical %}{% when 'center' %}center{% when 'bottom' %}flex-end{% else %}flex-start{% endcase %};
+--hb-content-width: {{ content_width }}px;
+--hb-cta-direction: {% if cta_arrangement == 'stacked' %}column{% else %}row{% endif %};
+--hb-cta-align: {% case cta_align %}{% when 'center' %}center{% when 'end' %}flex-end{% else %}flex-start{% endcase %};
+--hb-cta-gap: {{ cta_gap }}px;
+--hb-cta-width: {{ cta_width }};
+--hb-cta-flex: {% case cta_width %}{% when 'equal' %}1 1 0{% when 'full' %}1 1 100%{% else %}0 0 auto{% endcase %};
+--hb-cta-button-width: {% if cta_width == 'full' %}100%{% else %}auto{% endif %};
+--hb-progress-align: {% case progress_align %}{% when 'center' %}center{% when 'end' %}flex-end{% else %}flex-start{% endcase %};
+--hb-progress-gap: {{ progress_gap }}px;
