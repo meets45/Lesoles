@@ -1,0 +1,31 @@
+{% liquid
+  assign overlay_position = 'bottom'
+  if block.settings.overlay_position contains 'top'
+    assign overlay_position = 'top'
+  elsif block.settings.overlay_position contains 'middle'
+    assign overlay_position = 'middle'
+  endif
+  assign overlay_position_mobile = 'bottom'
+  if block.settings.overlay_position_mobile contains 'top'
+    assign overlay_position_mobile = 'top'
+  elsif block.settings.overlay_position_mobile contains 'middle'
+    assign overlay_position_mobile = 'middle'
+  endif
+  assign cta_accessible_label = block.settings.overlay_cta_accessible_label | default: block.settings.overlay_cta_label | default: block.settings.overlay_caption | default: 'Open featured story'
+%}
+<div class="hb__overlay hb__overlay--{{ block.settings.overlay_style }}" data-overlay-position="{{ overlay_position }}" data-overlay-position-mobile="{{ overlay_position_mobile }}" data-overlay-style-desktop="{{ block.settings.overlay_style }}" data-overlay-style-mobile="{{ block.settings.overlay_style_mobile }}" style="text-align: {{ block.settings.overlay_text_align }};">
+  {% if block.settings.overlay_heading != blank or block.settings.overlay_description != blank or block.settings.overlay_caption != blank %}
+    <div class="hb__overlay-copy">
+      {% if block.settings.overlay_heading != blank %}<h3 class="hb__overlay-heading">{{ block.settings.overlay_heading | escape }}</h3>{% endif %}
+      {% if block.settings.overlay_description != blank %}<div class="hb__overlay-description">{{ block.settings.overlay_description }}</div>{% endif %}
+      {% if block.settings.overlay_caption != blank %}<p class="hb__overlay-caption">{{ block.settings.overlay_caption | escape }}</p>{% endif %}
+    </div>
+  {% endif %}
+  {% if block.settings.overlay_cta_url != blank %}
+    {% if block.settings.overlay_cta_label != blank or block.settings.overlay_cta_arrow %}
+      <a href="{{ block.settings.overlay_cta_url }}" class="hb__overlay-cta" aria-label="{{ cta_accessible_label | escape }}" {% if block.settings.overlay_cta_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+        {% if block.settings.overlay_cta_label != blank %}<span class="hb__overlay-cta-label">{{ block.settings.overlay_cta_label | escape }}</span>{% endif %}{% if block.settings.overlay_cta_arrow %}<span class="hb__overlay-cta-arrow" aria-hidden="true">{% render 'icon-arrow-right' %}</span>{% endif %}
+      </a>
+    {% endif %}
+  {% endif %}
+</div>

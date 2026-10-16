@@ -1,6 +1,10 @@
 import { waitForWindowObject } from '@/helpers/wait-for-window-object';
+import initHeroBannerAdvanced from '@/components/hero-banner-advanced/hero-banner-advanced.js';
 
-const $components = document.querySelectorAll('[data-component]');
+initHeroBannerAdvanced();
+
+// The new hero is a custom element and owns its Theme Editor lifecycle.
+const $components = document.querySelectorAll('[data-component]:not([data-component="hero-banner-advanced"])');
 const components = new Set(
   Array.from($components).map(($component) => {
     let {
@@ -22,7 +26,7 @@ const init = async () => {
       console.error(`Error loading component ${component}:`, err);
     }
   }
-  requestAnimationFrame(() => document.body.style.visibility = '');
+  requestAnimationFrame(() => (document.body.style.visibility = ''));
 
   const Shopify = await waitForWindowObject('Shopify');
 

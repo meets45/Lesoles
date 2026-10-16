@@ -10,43 +10,145 @@
 {
   "sections": {
     "hero_banner_3xr9ii": {
-      "type": "hero-banner",
+      "type": "hero-banner-advanced",
       "blocks": {
-        "heading_npEUgz": {
+        "heading_home": {
           "type": "heading",
           "settings": {
-            "heading_level": "h1",
-            "text": "Stock Your Bag with Our Spring 2025 Collection"
+            "level": "h1",
+            "text": "your day,|but softer.",
+            "breaks_desktop": "1",
+            "breaks_mobile": "1",
+            "font_size_desktop": 112,
+            "font_size_mobile": 52
           }
         },
-        "body_e38ELq": {
-          "type": "body",
+        "description_home": {
+          "type": "description",
           "settings": {
-            "text": "<p>Check out the newest Spring 2025 collection.</p>"
+            "text": "<p>Easy comfort. Good energy. Wherever you’re headed.</p>"
           }
         },
-        "button_gxyRm3": {
-          "type": "button",
+        "cta_pair": {
+          "type": "cta",
           "settings": {
-            "label": "Shop Now",
-            "url": "shopify://collections/men",
-            "variant": "primary"
+            "label": "Find your pair",
+            "url": "/collections/all",
+            "style": "primary",
+            "arrow": true,
+            "size": "large"
           }
+        },
+        "cta_fit": {
+          "type": "cta",
+          "settings": {
+            "label": "Find your fit",
+            "url": "/pages/fit-guide",
+            "style": "outline",
+            "size": "large",
+            "text_color": "#153a35",
+            "background_color": "#fff3a8",
+            "border_color": "#153a35",
+            "hover_text_color": "#153a35",
+            "hover_background_color": "#fff9d2"
+          }
+        },
+        "product_media": {
+          "type": "main_media",
+          "settings": {
+            "media_type": "image",
+            "demo_media": true,
+            "placement": "foreground",
+            "fit": "contain",
+            "decorative": true,
+            "foreground_arrangement_desktop": "below",
+            "foreground_arrangement_mobile": "below"
+          }
+        },
+        "lifestyle_media": {
+          "type": "secondary_media",
+          "settings": {
+            "media_type": "image",
+            "demo_media": true,
+            "fit": "cover",
+            "show_mobile": false,
+            "override_tablet": true,
+            "aspect_ratio_tablet": "16 / 9",
+            "overlay_enabled": true,
+            "overlay_style": "pill",
+            "overlay_position": "bottom",
+            "overlay_caption": "Meet your everyday pair.",
+            "overlay_cta_label": "Explore",
+            "overlay_cta_url": "/collections/all",
+            "overlay_cta_arrow": true
+          }
+        },
+        "scroll_home": {
+          "type": "scroll_prompt",
+          "settings": {
+            "label": "Scroll to explore",
+            "target": "next",
+            "arrow": true,
+            "font_size_desktop": 16
+          }
+        },
+        "step_form": {
+          "type": "progress_step",
+          "settings": { "label": "Form" }
+        },
+        "step_feel": {
+          "type": "progress_step",
+          "settings": { "label": "Feel" }
+        },
+        "step_move": {
+          "type": "progress_step",
+          "settings": { "label": "Move" }
         }
       },
       "block_order": [
-        "heading_npEUgz",
-        "body_e38ELq",
-        "button_gxyRm3"
+        "heading_home",
+        "description_home",
+        "cta_pair",
+        "cta_fit",
+        "product_media",
+        "lifestyle_media",
+        "scroll_home",
+        "step_form",
+        "step_feel",
+        "step_move"
       ],
       "settings": {
-        "scrim": 0,
-        "image_height": "medium",
-        "full_screen": true,
-        "text_alignment_desktop": "center",
-        "text_alignment_mobile": "center",
-        "layout_style": "transparent",
-        "color_scheme": "scheme-2"
+        "layout_mode": "split",
+        "width_mode": "full_bleed",
+        "section_background_mode": "solid",
+        "section_color": "transparent",
+        "main_background_mode": "solid",
+        "main_color": "#f9efa3",
+        "secondary_background": "#eee9df",
+        "main_radius": 20,
+        "card_radius": 20,
+        "equal_height": true,
+        "position_desktop": "right",
+        "ratio_desktop": "67",
+        "arrangement_desktop": "side_by_side",
+        "gap_desktop": 8,
+        "gutter_desktop": 0,
+        "main_padding_desktop": 32,
+        "height_mode_desktop": "minimum",
+        "main_height_desktop": 760,
+        "card_height_desktop": 760,
+        "progress_gap_desktop": 40,
+        "override_tablet": true,
+        "arrangement_tablet": "stacked",
+        "position_tablet": "below",
+        "override_mobile": true,
+        "arrangement_mobile": "stacked",
+        "position_mobile": "below",
+        "gutter_mobile": 0,
+        "main_padding_mobile": 16,
+        "height_mode_mobile": "content",
+        "cta_arrangement_mobile": "stacked",
+        "progress_show_mobile": true
       }
     },
     "simple_product_collection_HrQPFh": {
@@ -82,11 +184,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_WUThLa",
-        "body_a3xQKW",
-        "button_FGekrc"
-      ],
+      "block_order": ["heading_WUThLa", "body_a3xQKW", "button_FGekrc"],
       "settings": {
         "scrim": 0,
         "image_placement": "left",
@@ -99,9 +197,5 @@
       }
     }
   },
-  "order": [
-    "hero_banner_3xr9ii",
-    "simple_product_collection_HrQPFh",
-    "image_with_text_TnYR7J"
-  ]
+  "order": ["hero_banner_3xr9ii", "simple_product_collection_HrQPFh", "image_with_text_TnYR7J"]
 }

@@ -1,0 +1,55 @@
+{% liquid
+  assign ctas_rendered = false
+  assign has_valid_cta = false
+  for item in section.blocks
+    if item.type == 'cta' and item.settings.label != blank and item.settings.url != blank
+      assign has_valid_cta = true
+    endif
+  endfor
+%}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'eyebrow' %}
+      {% if block.settings.text != blank %}
+        <p id="HeroBlock-{{ block.id }}" class="hb__eyebrow {% unless block.settings.show_desktop %}hb-hide-desktop{% endunless %} {% unless block.settings.show_tablet %}hb-hide-tablet{% endunless %} {% unless block.settings.show_mobile %}hb-hide-mobile{% endunless %}" data-typography-style="{{ block.settings.typography_style }}" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+      {% endif %}
+    {% when 'heading' %}
+      {% if block.settings.text != blank %}
+        {% liquid
+          assign heading_tag = block.settings.level | default: 'h2'
+          assign heading_segments = block.settings.text | split: '|'
+          assign tablet_breaks = block.settings.breaks_tablet | default: block.settings.breaks_desktop
+          assign mobile_breaks = block.settings.breaks_mobile | default: tablet_breaks
+          assign desktop_break_list = ',' | append: block.settings.breaks_desktop | append: ','
+          assign tablet_break_list = ',' | append: tablet_breaks | append: ','
+          assign mobile_break_list = ',' | append: mobile_breaks | append: ','
+        %}
+        <{{ heading_tag }} id="HeroBlock-{{ block.id }}" class="hb__heading" {{ block.shopify_attributes }}>
+          {% for segment in heading_segments %}
+            {{ segment | strip | escape }}
+            {% unless forloop.last %}
+              {% assign break_token = ',' | append: forloop.index | append: ',' %}
+              <span class="hb__heading-break" {% if desktop_break_list contains break_token %}data-break-desktop{% endif %} {% if tablet_break_list contains break_token %}data-break-tablet{% endif %} {% if mobile_break_list contains break_token %}data-break-mobile{% endif %}> </span>
+            {% endunless %}
+          {% endfor %}
+        </{{ heading_tag }}>
+      {% endif %}
+    {% when 'description' %}
+      {% if block.settings.text != blank %}
+        <div id="HeroBlock-{{ block.id }}" class="hb__description rte {% unless block.settings.show_desktop %}hb-hide-desktop{% endunless %} {% unless block.settings.show_tablet %}hb-hide-tablet{% endunless %} {% unless block.settings.show_mobile %}hb-hide-mobile{% endunless %}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+      {% endif %}
+    {% when 'cta' %}
+      {% if has_valid_cta and ctas_rendered == false %}
+        {% assign ctas_rendered = true %}
+        <div class="hb__ctas" data-cta-group>
+          {% for cta in section.blocks %}
+            {% if cta.type == 'cta' and cta.settings.label != blank and cta.settings.url != blank %}
+              <a id="HeroBlock-{{ cta.id }}" href="{{ cta.settings.url }}" class="hb__cta button hb__cta--{{ cta.settings.style }} hb__cta--{{ cta.settings.size }} {% unless cta.settings.show_desktop %}hb-hide-desktop{% endunless %} {% unless cta.settings.show_tablet %}hb-hide-tablet{% endunless %} {% unless cta.settings.show_mobile %}hb-hide-mobile{% endunless %}" data-custom-colors="{{ cta.settings.custom_colors }}" {% if cta.settings.accessible_label != blank %}aria-label="{{ cta.settings.accessible_label | escape }}"{% endif %} {% if cta.settings.new_tab %}target="_blank" rel="noopener noreferrer"{% endif %} {{ cta.shopify_attributes }}>
+                <span>{{ cta.settings.label | escape }}</span>{% if cta.settings.arrow %}<span class="hb__cta-arrow" aria-hidden="true">{% render 'icon-arrow-upper-right' %}</span>{% endif %}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+  {% endcase %}
+{% endfor %}
