@@ -44,6 +44,9 @@
   if request.page_type == 'index' and section.index == 1
     assign homepage_hero = true
   endif
+  assign panel_image_desktop = section.settings.main_image_desktop | default: section.settings.main_image_tablet | default: section.settings.main_image_mobile
+  assign panel_image_tablet = section.settings.main_image_tablet | default: panel_image_desktop
+  assign panel_image_mobile = section.settings.main_image_mobile | default: panel_image_tablet
 %}
 
 <style>
@@ -55,6 +58,9 @@
     {% render 'color-scheme-vars', color_scheme: section.settings.section_color_scheme %}
     --hb-section-bg: {% case section.settings.section_background_mode %}{% when 'solid' %}{{ section.settings.section_color }}{% when 'gradient' %}{{ section.settings.section_gradient | default: section.settings.section_color }}{% else %}var(--surface-primary){% endcase %};
     --hb-main-bg: {% case section.settings.main_background_mode %}{% when 'solid' %}{{ section.settings.main_color }}{% when 'gradient' %}{{ section.settings.main_gradient | default: section.settings.main_color }}{% else %}{{ section.settings.main_color_scheme.settings.surface_primary | default: '#fff3a8' }}{% endcase %};
+    --hb-panel-image-focal: {{ panel_image_desktop.presentation.focal | default: 'center center' }};
+    --hb-panel-image-overlay-color: {{ section.settings.main_image_overlay_color }};
+    --hb-panel-image-overlay-opacity: {{ section.settings.main_image_overlay_opacity }}%;
     --hb-card-bg: {{ section.settings.secondary_background }};
     --hb-main-radius: {{ section.settings.main_radius }}px;
     --hb-card-radius: {{ section.settings.card_radius }}px;
@@ -67,12 +73,13 @@
     --hb-support-font: '{{ section.settings.support_font.family | default: 'Poppins' }}', sans-serif;
   }
   @media (min-width: 750px) and (max-width: 989px) {
-    #HeroBanner-{{ section.id }} { {% if section.settings.override_tablet %}{% render 'hero-banner-panel-vars', settings: section.settings, device: 'tablet' %}{% endif %} }
+    #HeroBanner-{{ section.id }} { {% if section.settings.override_tablet %}{% render 'hero-banner-panel-vars', settings: section.settings, device: 'tablet' %}{% endif %} --hb-panel-image-focal: {{ panel_image_tablet.presentation.focal | default: 'center center' }}; }
   }
   @media (max-width: 749px) {
     #HeroBanner-{{ section.id }} {
       {% if section.settings.override_tablet %}{% render 'hero-banner-panel-vars', settings: section.settings, device: 'tablet' %}{% endif %}
       {% if section.settings.override_mobile %}{% render 'hero-banner-panel-vars', settings: section.settings, device: 'mobile' %}{% endif %}
+      --hb-panel-image-focal: {{ panel_image_mobile.presentation.focal | default: 'center center' }};
     }
   }
   {% for block in section.blocks %}
@@ -102,7 +109,14 @@
       {% endif %}
     {% endcapture %}
     {% capture main_panel %}
-      <div class="hb__main" data-main-panel>
+      <div class="hb__main {% if show_main_media and main_media.settings.placement == 'background' %}hb__main--background-media{% endif %}" data-main-panel>
+        {% if section.settings.layout_mode != 'text_only' and panel_image_desktop != blank %}
+          <picture class="hb__panel-background" aria-hidden="true">
+            <source media="(max-width: 749px)" srcset="{{ panel_image_mobile | image_url: width: 400 }} 400w, {{ panel_image_mobile | image_url: width: 800 }} 800w, {{ panel_image_mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
+            <source media="(min-width: 750px) and (max-width: 989px)" srcset="{{ panel_image_tablet | image_url: width: 600 }} 600w, {{ panel_image_tablet | image_url: width: 1000 }} 1000w, {{ panel_image_tablet | image_url: width: 1400 }} 1400w" sizes="100vw">
+            <img src="{{ panel_image_desktop | image_url: width: 1600 }}" srcset="{{ panel_image_desktop | image_url: width: 800 }} 800w, {{ panel_image_desktop | image_url: width: 1200 }} 1200w, {{ panel_image_desktop | image_url: width: 1600 }} 1600w, {{ panel_image_desktop | image_url: width: 2400 }} 2400w" sizes="{% if section.settings.layout_mode == 'split' and show_card %}(min-width: 990px) 67vw, 100vw{% else %}100vw{% endif %}" width="{{ panel_image_desktop.width }}" height="{{ panel_image_desktop.height }}" alt="" {% if homepage_hero %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+          </picture>
+        {% endif %}
         <div class="hb__main-body" data-main-body {% if show_main_media and main_media.settings.placement != 'background' %}data-media-arrangement="{{ main_arrangement }}" data-media-vertical="{{ main_media.settings.media_vertical_desktop }}"{% endif %}>
           {% if main_media_first %}{{ main_media_panel }}{% endif %}
           <div class="hb__content" data-main-content>
@@ -304,6 +318,49 @@
       "id": "main_gradient",
       "label": "Main gradient",
       "visible_if": "{{ section.settings.main_background_mode == 'gradient' }}"
+    },
+    {
+      "type": "header",
+      "content": "Main panel image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image_desktop",
+      "label": "Desktop background image",
+      "info": "Fills the entire main panel. Use the Main media block for a foreground logo or product.",
+      "visible_if": "{{ section.settings.layout_mode != 'text_only' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image_tablet",
+      "label": "Tablet background image override",
+      "info": "Uses the desktop image when empty.",
+      "visible_if": "{{ section.settings.layout_mode != 'text_only' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image_mobile",
+      "label": "Mobile background image override",
+      "info": "Uses the tablet or desktop image when empty.",
+      "visible_if": "{{ section.settings.layout_mode != 'text_only' }}"
+    },
+    {
+      "type": "color",
+      "id": "main_image_overlay_color",
+      "label": "Background image overlay color",
+      "default": "#000000",
+      "visible_if": "{{ section.settings.layout_mode != 'text_only' }}"
+    },
+    {
+      "type": "range",
+      "id": "main_image_overlay_opacity",
+      "label": "Background image overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 0,
+      "unit": "%",
+      "visible_if": "{{ section.settings.layout_mode != 'text_only' }}"
     },
     {
       "type": "range",
