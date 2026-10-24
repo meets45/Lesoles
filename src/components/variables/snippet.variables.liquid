@@ -4,9 +4,16 @@
   assign heading_font = settings.font_heading
   assign subheading_font = settings.font_subheading
   assign body_font = settings.font_body
+  assign button_font = settings.button_font
+  assign button_font_semibold = button_font | font_modify: 'weight', '600'
 -%}
 
 <style>
+  {% if button_font != blank %}
+    {{ button_font | font_face: font_display: 'swap' }}
+    {{ button_font_semibold | font_face: font_display: 'swap' }}
+  {% endif %}
+
   :root {
     --surface-primary: {{ default_color_scheme.settings.surface_primary | default: '#ffffff' }};
     --surface-secondary: {{ default_color_scheme.settings.surface_secondary | default: '#f0efed' }};
@@ -143,13 +150,15 @@
     --buttons-padding-vertical-desktop: {{ settings.button_padding_vertical_desktop | default: 16 }}px;
     --buttons-padding-vertical-mobile: {{ settings.button_padding_vertical_mobile | default: 12 }}px;
     --buttons-padding-horizontal: {{ settings.button_padding_horizontal | default: 32 }}px;
-    --buttons-font-size-desktop: {{ settings.button_font_size_desktop | default: 18 }}px;
-    --buttons-font-size-mobile: {{ settings.button_font_size_mobile | default: 18 }}px;
-    --buttons-line-height: {{ settings.button_line_height | default: 28 }}px;
-    --buttons-font-weight: {{ settings.button_font_weight | default: 700 }};
+    --buttons-font-family: {{ button_font.family | default: 'Poppins' | json }}, {{ button_font.fallback_families | default: 'sans-serif' }};
+    --buttons-font-size-desktop: {{ settings.button_font_size_desktop | default: 16 }}px;
+    --buttons-font-size-mobile: {{ settings.button_font_size_mobile | default: 16 }}px;
+    --buttons-line-height: {{ settings.button_line_height | default: 21 }}px;
+    --buttons-font-weight: {{ settings.button_font_weight | default: 600 }};
     --buttons-letter-spacing: {{ settings.button_letter_spacing | default: 0 | divided_by: 100.0 }}em;
     --buttons-border-radius: {{ settings.button_border_radius | default: 4 }}px;
     --buttons-border-width: {{ settings.button_border_width | default: 2 }}px;
     --buttons-text-transform: {{ settings.button_text_transform | default: 'none' }};
+    --buttons-show-arrow: {{ settings.button_show_arrow | default: false }};
   }
 </style>

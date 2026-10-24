@@ -29,6 +29,11 @@
     {% endif %}
 
     {{ label }}
+    {% if settings.button_show_arrow %}
+      <span class="button__icon button__icon--arrow" aria-hidden="true">
+        {% render 'icon-arrow-upper-right' %}
+      </span>
+    {% endif %}
   </a>
 
 {%- when 'button' -%}
@@ -46,5 +51,20 @@
       </div>
     {% endif %}
     {{ label }}
+    {% if settings.button_show_arrow %}
+      <span class="button__icon button__icon--arrow" aria-hidden="true">
+        {% render 'icon-arrow-upper-right' %}
+      </span>
+    {% endif %}
   </button>
+
+{%- when 'span' -%}
+  <span class="{{- class -}}" {{ attr }}>
+    {{ label }}
+    {% if settings.button_show_arrow %}
+      <span class="button__icon button__icon--arrow" aria-hidden="true">
+        {% render 'icon-arrow-upper-right' %}
+      </span>
+    {% endif %}
+  </span>
 {%- endcase -%}
