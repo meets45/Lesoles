@@ -187,7 +187,7 @@ a.button,
   flex-shrink: 0;
   color: var(--buttons-primary-text);
   background: var(--buttons-primary-background);
-  font-family: var(--typography-styles-font-family-headings);
+  font-family: var(--buttons-font-family, var(--typography-styles-font-family-body));
   font-size: var(--buttons-font-size-desktop, var(--typography-styles-sizing-heading-xsmall));
   font-style: normal;
   font-weight: var(--buttons-font-weight, var(--typography-styles-weight-heading));

@@ -1,3 +1,9 @@
+{% liquid
+  assign link_presentation = link_presentation | default: 'link'
+  assign button_variant = button_variant | default: 'primary'
+  assign full_card_link_label = link_text | default: heading | default: 'View content card'
+%}
+
 <div
   data-component="content-card"
   class="
@@ -8,7 +14,13 @@
     {% endif %}
   "
 >
-  {% if link_url != blank and style == 'overlay' %}
+  {% if link_url != blank and link_entire_card %}
+    <a
+      href="{{ link_url }}"
+      class="content-card__link-wrapper content-card__link-wrapper--full-card"
+      aria-label="{{ full_card_link_label | escape }}"
+    ></a>
+  {% elsif link_url != blank and style == 'overlay' and link_presentation != 'button' %}
     <a href="{{ link_url }}" class="content-card__link-wrapper">
   {% endif %}
 
@@ -21,12 +33,25 @@
       {% endif %}
 
       {% if link_url != blank %}
-        <a href="{{ link_url }}" class="content-card__link">
-          <span class="text-link">{{ link_text }}</span>
-          <span class="content-card__link-icon">
-            {% render 'icon-arrow-right' %}
+        {% if link_entire_card and link_presentation == 'button' %}
+          {% render 'button', as: 'span', label: link_text, variant: button_variant, tiny: true, attr: 'aria-hidden="true"' %}
+        {% elsif link_entire_card %}
+          <span class="content-card__link" aria-hidden="true">
+            <span class="text-link">{{ link_text }}</span>
+            <span class="content-card__link-icon">
+              {% render 'icon-arrow-right' %}
+            </span>
           </span>
-        </a>
+        {% elsif link_presentation == 'button' %}
+          {% render 'button', as: 'a', label: link_text, href: link_url, variant: button_variant, tiny: true %}
+        {% else %}
+          <a href="{{ link_url }}" class="content-card__link">
+            <span class="text-link">{{ link_text }}</span>
+            <span class="content-card__link-icon">
+              {% render 'icon-arrow-right' %}
+            </span>
+          </a>
+        {% endif %}
       {% endif %}
     </div>
   {% endif %}
@@ -56,23 +81,42 @@
       {% endif %}
 
       {% if link_url != blank and style == 'standard' %}
-        <a href="{{ link_url }}" class="content-card__link">
-          <span class="text-link">{{ link_text }}</span>
-          <span class="content-card__link-icon">
-            {% render 'icon-arrow-right' %}
+        {% if link_entire_card and link_presentation == 'button' %}
+          {% render 'button', as: 'span', label: link_text, variant: button_variant, tiny: true, attr: 'aria-hidden="true"' %}
+        {% elsif link_entire_card %}
+          <span class="content-card__link" aria-hidden="true">
+            <span class="text-link">{{ link_text }}</span>
+            <span class="content-card__link-icon">
+              {% render 'icon-arrow-right' %}
+            </span>
           </span>
-        </a>
+        {% elsif link_presentation == 'button' %}
+          {% render 'button', as: 'a', label: link_text, href: link_url, variant: button_variant, tiny: true %}
+        {% else %}
+          <a href="{{ link_url }}" class="content-card__link">
+            <span class="text-link">{{ link_text }}</span>
+            <span class="content-card__link-icon">
+              {% render 'icon-arrow-right' %}
+            </span>
+          </a>
+        {% endif %}
       {% endif %}
 
       {% if style == 'overlay' %}
-        <div class="content-card__icon">
-          {% render 'icon-chevron-right' %}
-        </div>
+        {% if link_entire_card and link_presentation == 'button' and link_url != blank %}
+          {% render 'button', as: 'span', label: link_text, variant: button_variant, tiny: true, attr: 'aria-hidden="true"' %}
+        {% elsif link_presentation == 'button' and link_url != blank %}
+          {% render 'button', as: 'a', label: link_text, href: link_url, variant: button_variant, tiny: true %}
+        {% else %}
+          <div class="content-card__icon">
+            {% render 'icon-chevron-right' %}
+          </div>
+        {% endif %}
       {% endif %}
     </div>
   {% endif %}
 
-  {% if link_url != blank and style == 'overlay' %}
+  {% if link_url != blank and style == 'overlay' and link_presentation != 'button' and link_entire_card != true %}
     </a>
   {% endif %}
 </div>

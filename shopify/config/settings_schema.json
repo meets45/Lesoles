@@ -1106,6 +1106,12 @@
     "name": "Buttons",
     "settings": [
       {
+        "type": "font_picker",
+        "id": "button_font",
+        "label": "CTA font",
+        "default": "poppins_n4"
+      },
+      {
         "type": "range",
         "id": "button_height_desktop",
         "label": "Height - desktop",
@@ -1163,7 +1169,7 @@
         "max": 28,
         "step": 1,
         "unit": "px",
-        "default": 18
+        "default": 16
       },
       {
         "type": "range",
@@ -1173,7 +1179,7 @@
         "max": 24,
         "step": 1,
         "unit": "px",
-        "default": 18
+        "default": 16
       },
       {
         "type": "range",
@@ -1183,7 +1189,7 @@
         "max": 36,
         "step": 1,
         "unit": "px",
-        "default": 28
+        "default": 21
       },
       {
         "type": "range",
@@ -1192,7 +1198,7 @@
         "min": 300,
         "max": 900,
         "step": 100,
-        "default": 700
+        "default": 600
       },
       {
         "type": "range",
@@ -1209,7 +1215,7 @@
         "id": "button_border_radius",
         "label": "Border radius",
         "min": 0,
-        "max": 32,
+        "max": 50,
         "step": 1,
         "unit": "px",
         "default": 4
@@ -1233,6 +1239,13 @@
           { "value": "none", "label": "None" },
           { "value": "uppercase", "label": "Uppercase" }
         ]
+      },
+      {
+        "type": "checkbox",
+        "id": "button_show_arrow",
+        "label": "Show CTA arrow",
+        "info": "Adds the Hero Banner upper-right arrow to CTA buttons.",
+        "default": false
       }
     ]
   }
