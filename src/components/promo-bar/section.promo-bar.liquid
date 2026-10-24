@@ -1,5 +1,5 @@
 {% if section.blocks.size > 0 %}
-  <promo-bar data-component="promo-bar" data-autoplay="{{ section.settings.autoplay }}">
+  <promo-bar data-component="promo-bar" data-autoplay="{{ section.settings.autoplay }}" data-slide-count="{{ section.blocks.size }}">
     <div
       class="
           promo-bar
@@ -15,8 +15,8 @@
     >
       <!-- Slider main container -->
       <div class="swiper" data-swiper>
-        {% if section.blocks.size > 0 %}
-          <button class="promo-bar__prev click-area" data-swiper-prev>
+        {% if section.blocks.size > 1 %}
+          <button class="promo-bar__prev click-area" data-swiper-prev aria-label="Previous promotion">
             <div class="icon-xs">
               {% render 'icon-chevron-left' %}
             </div>
@@ -26,8 +26,8 @@
         <div class="swiper-wrapper">
           <!-- Slides -->
           {% for block in section.blocks %}
-            <div class="promo-bar__slide swiper-slide">
-              {% if block.settings.link %}
+            <div class="promo-bar__slide swiper-slide" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
                 <a class="body-xsmall" href="{{ block.settings.link }}">
                   {{- block.settings.text -}}
                 </a>
@@ -39,8 +39,8 @@
             </div>
           {% endfor %}
         </div>
-        {% if section.blocks.size > 0 %}
-          <button class="promo-bar__next click-area" data-swiper-next>
+        {% if section.blocks.size > 1 %}
+          <button class="promo-bar__next click-area" data-swiper-next aria-label="Next promotion">
             <div class="icon-xs">
               {% render 'icon-chevron-right' %}
             </div>

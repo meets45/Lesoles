@@ -1197,9 +1197,3 @@ a {
   --right-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.08);
   --background-blur: blur(4px);
 }
-
-#MainContent:not(:has(.plp-banner)) {
-  @media (min-width: 769px) {
-    padding-top: 100px;
-  }
-}

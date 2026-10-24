@@ -1,106 +1,143 @@
 {% liquid
-  assign mega_menu_title_handle = mega_menu.title | handle
-  assign mega_menu_title_anchor = mega_menu_title_handle | prepend: '|||' | append: ':'
-  assign image_blocks = ''
-  assign mega_menu_type = ''
-  assign mega_menu_link_text = ''
-  assign mega_menu_link_url = ''
-  assign mega_menu_columns = ''
+  assign menu_handle = mega_menu.title | handle
+  assign menu_type = 'list'
+  assign menu_columns = 2
+  assign footer_text = ''
+  assign footer_url = ''
 
-  if blocks_data contains mega_menu_title_anchor
-    assign mega_menu_type = blocks_data | split: mega_menu_title_anchor | last | split: ':' | first
-    assign mega_menu_link_text = blocks_data | split: mega_menu_title_anchor | last | split: ':'
-    assign mega_menu_link_text = mega_menu_link_text[1]
-    assign mega_menu_link_url = blocks_data | split: mega_menu_title_anchor | last | split: ':'
-    assign mega_menu_link_url = mega_menu_link_url[2]
-    assign mega_menu_columns = blocks_data | split: mega_menu_title_anchor | last | split: '|||' | first | split: ':' | last | plus: 0
-  endif
+  for block in section.blocks
+    if block.type == 'menu_item'
+      assign block_menu_handle = block.settings.menu_id | handle
+      if block_menu_handle == menu_handle
+        assign menu_type = block.settings.menu_type
+        assign menu_columns = block.settings.columns | plus: 0
+        assign footer_text = block.settings.link_text
+        assign footer_url = block.settings.link_url
+        break
+      endif
+    endif
+  endfor
 %}
-
-{% for block in layout_image_blocks %}
-  {% assign menu_id_handle = block.settings.menu_id | handle %}
-
-  {% unless menu_id_handle == mega_menu_title_handle %}
-    {% continue %}
-  {% endunless %}
-
-  {% capture image_blocks %}
-    {{ image_blocks }}
-
-    <li role="menuitem">
-      <div class="mega-menu-tile-list__card">
-        {% if block.settings.image != blank %}
-          <div class="mega-menu-tile-list__card-image">
-            {{
-              block.settings.image
-              | image_url: width: 556
-              | image_tag:
-                widths: '556,800',
-                sizes: '(max-width: 767px) 0vw, 556px',
-                loading: 'lazy'
-            }}
-          </div>
-        {% endif %}
-
-        <div class="mega-menu-tile-list__card-content">
-          {% if block.settings.heading != blank %}
-            <h4 class="mega-menu-tile-list__card-title">
-              {{ block.settings.heading }}
-            </h4>
-          {% endif %}
-
-          {% if block.settings.excerpt != blank %}
-            <div class="mega-menu-tile-list__card-description">
-              {{ block.settings.excerpt }}
-            </div>
-          {% endif %}
-
-          {% if block.settings.link_text != blank and block.settings.link_url != blank %}
-            <div class="mega-menu-tile-list__card-link">
-              {% render 'text-link',
-                label: block.settings.link_text,
-                href: block.settings.link_url,
-                arrow: true
-              %}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    </li>
-  {% endcapture %}
-{% endfor %}
 
 <mega-menu
   data-component="mega-menu"
-  id="mega-menu-{{ mega_menu.title | handle }}-{{ index }}"
-  data-mega-menu data-active="false">
-  <div class="mega-menu" role="menu">
-    <div class="mega-menu__columns">
-      {% for link in mega_menu.links %}
-        {% case mega_menu_type %}
-          {% when 'enhanced-list' %}
-            {% render 'mega-menu-enhanced-list', list: link, columns: mega_menu_columns %}
-          {% else %}
-            {% render 'mega-menu-list', list: link, columns: mega_menu_columns %}
-        {% endcase %}
-      {% endfor %}
+  id="mega-menu-{{ menu_handle }}-{{ index }}"
+  data-mega-menu
+  data-active="false"
+>
+  <div class="mega-menu">
+    <div class="mega-menu__topline">
+      <div class="mega-menu__topline-heading">
+        <button
+          type="button"
+          class="mega-menu__back"
+          data-mega-menu-back
+          aria-label="Back to {{ mega_menu.title | escape }}"
+          hidden
+        >
+          {% render 'icon-chevron-left' %}
+          <span>Back to {{ mega_menu.title }}</span>
+        </button>
+        <span class="mega-menu__topline-label" data-mega-menu-current-title tabindex="-1">{{ mega_menu.title }}</span>
+      </div>
+      <a href="{{ mega_menu.url }}" class="mega-menu__topline-link">Shop all {{ mega_menu.title }} <span aria-hidden="true">↗</span></a>
     </div>
 
-    {% if image_blocks != '' %}
-      <div data-component="mega-menu-tile-list" class="mega-menu-tile-list">
-        <ul class="mega-menu-tile-list__list" aria-describedby="{{ title_id }}">
-          {{ image_blocks }}
+    <div class="mega-menu__layout">
+      <div class="mega-menu__rail">
+        <p class="mega-menu__eyebrow">Browse by category</p>
+        <ul class="mega-menu__categories">
+          {% for link in mega_menu.links %}
+            {% liquid
+              assign link_handle = link.title | handle
+              assign has_category_content = false
+              for card in section.blocks
+                if card.type == 'menu_image' or card.type == 'menu_copy'
+                  assign card_menu_handle = card.settings.menu_id | handle
+                  assign card_parent_handle = card.settings.parent_menu | handle
+                  if card_menu_handle == menu_handle and card_parent_handle == link_handle
+                    assign has_category_content = true
+                    break
+                  endif
+                endif
+              endfor
+            %}
+            <li>
+              {% if link.links.size > 0 or has_category_content %}
+                <button
+                  type="button"
+                  class="mega-menu__category"
+                  data-mega-menu-panel-trigger="{{ forloop.index }}"
+                  aria-controls="mega-menu-{{ menu_handle }}-{{ index }}-panel-{{ forloop.index }}"
+                  aria-expanded="false"
+                >
+                  <span>{{ link.title }}</span>
+                  {% render 'icon-chevron-right' %}
+                </button>
+              {% else %}
+                <a href="{{ link.url }}" class="mega-menu__category">
+                  <span>{{ link.title }}</span>
+                  {% render 'icon-arrow-upper-right' %}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
         </ul>
       </div>
-    {% endif %}
 
-    {% if mega_menu_link_text != '' and mega_menu_link_url != '' %}
+      <div class="mega-menu__content">
+        <div class="mega-menu__panel" data-mega-menu-panel="overview" data-mega-menu-panel-title="{{ mega_menu.title | escape }}" data-active="true">
+          <div class="mega-menu__panel-copy">
+            {% render 'menu-panel-copy', section: section, menu_title: mega_menu.title, default_title: mega_menu.title, link_url: mega_menu.url, show_default: true %}
+          </div>
+          {% render 'menu-content-cards', section: section, menu_title: mega_menu.title %}
+        </div>
+
+        {% for link in mega_menu.links %}
+          {% liquid
+            assign link_handle = link.title | handle
+            assign has_category_content = false
+            for card in section.blocks
+              if card.type == 'menu_image' or card.type == 'menu_copy'
+                assign card_menu_handle = card.settings.menu_id | handle
+                assign card_parent_handle = card.settings.parent_menu | handle
+                if card_menu_handle == menu_handle and card_parent_handle == link_handle
+                  assign has_category_content = true
+                  break
+                endif
+              endif
+            endfor
+          %}
+          {% if link.links.size > 0 or has_category_content %}
+            <div
+              class="mega-menu__panel"
+              id="mega-menu-{{ menu_handle }}-{{ index }}-panel-{{ forloop.index }}"
+              data-mega-menu-panel="{{ forloop.index }}"
+              data-mega-menu-panel-title="{{ link.title | escape }}"
+              data-active="false"
+            >
+              <div class="mega-menu__panel-copy">
+                {% render 'menu-panel-copy', section: section, menu_title: mega_menu.title, parent_title: link.title, default_title: link.title, link_url: link.url, show_default: true %}
+                {% if link.links.size > 0 %}
+                  <div class="mega-menu__sub-list">
+                    {% if menu_type == 'enhanced-list' %}
+                      {% render 'mega-menu-enhanced-list', list: link, columns: menu_columns %}
+                    {% else %}
+                      {% render 'mega-menu-list', list: link, columns: menu_columns %}
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+              {% render 'menu-content-cards', section: section, menu_title: mega_menu.title, parent_title: link.title %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if footer_text != blank and footer_url != blank %}
       <div class="mega-menu__bottom-link">
-        {% render 'text-link',
-          label: mega_menu_link_text,
-          href: mega_menu_link_url,
-          arrow: true
-        %}
+        <a href="{{ footer_url }}">{{ footer_text }} <span aria-hidden="true">→</span></a>
       </div>
     {% endif %}
   </div>

@@ -1,0 +1,44 @@
+{% liquid
+  assign menu_handle = menu_title | handle
+  assign parent_handle = parent_title | handle
+  assign copy_block = nil
+
+  for block in section.blocks
+    if block.type == 'menu_copy'
+      assign block_menu_handle = block.settings.menu_id | handle
+      assign block_parent_handle = block.settings.parent_menu | handle
+      if block_menu_handle == menu_handle and block_parent_handle == parent_handle
+        assign copy_block = block
+        break
+      endif
+    endif
+  endfor
+
+  assign copy_link_url = copy_block.settings.link_url | default: link_url
+%}
+
+{% if copy_block != blank or show_default %}
+  <div class="menu-panel-copy{% if mobile %} menu-panel-copy--mobile{% endif %}" {% if copy_block != blank %}{{ copy_block.shopify_attributes }}{% endif %}>
+    {% if copy_block.settings.eyebrow != blank %}
+      <p class="mega-menu__eyebrow">{{ copy_block.settings.eyebrow | escape }}</p>
+    {% endif %}
+
+    {% if mobile %}
+      {% if copy_block.settings.heading != blank %}
+        <h3>{{ copy_block.settings.heading | escape }}</h3>
+      {% endif %}
+    {% else %}
+      <h2>{{ copy_block.settings.heading | default: default_title | escape }}</h2>
+    {% endif %}
+
+    {% if copy_block.settings.description != blank %}
+      <p class="menu-panel-copy__description">{{ copy_block.settings.description | escape | newline_to_br }}</p>
+    {% endif %}
+
+    {% if copy_block.settings.link_text != blank and copy_link_url != blank %}
+      <a class="mega-menu__all-link" href="{{ copy_link_url }}">{{ copy_block.settings.link_text | escape }} <span aria-hidden="true">→</span></a>
+    {% elsif show_default and parent_title != blank and link_url != blank %}
+      <a class="mega-menu__all-link" href="{{ link_url }}">{{ default_title | escape }} <span aria-hidden="true">→</span></a>
+    {% endif %}
+  </div>
+{% endif %}

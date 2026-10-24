@@ -855,12 +855,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .hb[data-homepage-first='true'] .hb__container {
-    padding-top: calc(var(--hb-padding-top) + var(--header-top-offset, 0px) + 52px);
-  }
-}
-
 @media (min-width: 990px) {
   .hb-hide-desktop,
   .hb-empty-desktop {

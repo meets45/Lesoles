@@ -1,0 +1,27 @@
+{% liquid
+  assign menu_handle = menu_title | handle
+  assign parent_handle = parent_title | handle
+  assign card_count = 0
+%}
+
+{% capture cards %}
+  {% for block in section.blocks %}
+    {% if block.type != 'menu_image' %}{% continue %}{% endif %}
+    {% assign block_menu_handle = block.settings.menu_id | handle %}
+    {% assign block_parent_handle = block.settings.parent_menu | handle %}
+    {% if block_menu_handle == menu_handle and block_parent_handle == parent_handle %}
+      {% assign card_count = card_count | plus: 1 %}
+      {% render 'menu-content-card', block: block %}
+    {% endif %}
+  {% endfor %}
+
+{% endcapture %}
+
+{% if card_count > 0 %}
+  <div class="menu-content-cards">
+    <p class="menu-content-cards__eyebrow">Worth a look</p>
+    <ul class="menu-content-cards__list">
+      {{ cards }}
+    </ul>
+  </div>
+{% endif %}

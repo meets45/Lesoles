@@ -1,64 +1,86 @@
-{% capture title_id %}mega-menu-panel-title-{{ parent.title | handle }}{% endcapture %}
-
 <mobile-mega-menu-panel
   data-component="mobile-mega-menu-panel"
-  style="display:none;"
-  data-mobile-mega-menu-panel="mobile-{{ parent.title | handle }}-{{ level }}"
+  data-mobile-mega-menu-panel="{{ panel_id }}"
   data-active="false"
-  aria-modal="true"
-  role="dialog"
+  role="region"
   aria-hidden="true"
+  aria-labelledby="mobile-panel-title-{{ panel_id }}"
+  style="display:none;"
 >
   <div class="mobile-mega-menu-panel">
     <div class="mobile-mega-menu-panel__header">
       <button
-        class="mobile-mega-menu-panel__close click-area"
-        aria-label=" {{ 'general.navigation.back_to_menu' | t: title: parent.title  }}"
+        type="button"
+        class="mobile-mega-menu-panel__back"
         data-mobile-mega-menu-panel-close
+        aria-label="{{ 'actions.back' | t }}"
       >
-        <div class="icon-s">
-          {% render 'icon-chevron-left' %}
-        </div>
+        {% render 'icon-chevron-left' %}
+        <span>{{ 'actions.back' | t }}</span>
       </button>
-
-      <h3 id="{{ title_id }}" class="mobile-mega-menu-panel__header-title heading-xsmall">
-        {{ parent.title }}
-      </h3>
+      <p class="mobile-mega-menu-panel__breadcrumb">
+        {% if level == 1 %}Menu{% else %}{{ menu_title }}{% endif %}
+        <span aria-hidden="true"> / </span>{{ parent.title }}
+      </p>
+      <h2 id="mobile-panel-title-{{ panel_id }}" class="mobile-mega-menu-panel__title">{{ parent.title }}</h2>
+      <a href="{{ parent.url }}" class="mobile-mega-menu-panel__shop-all">Shop all {{ parent.title }} <span aria-hidden="true">→</span></a>
     </div>
 
-    <ul class="mobile-mega-menu-panel__list" aria-describedby="{{ title_id }}" role="menu">
-      {% for item in parent.links %}
-        <li class="mobile-mega-menu-panel__list-item body-large" role="menuitem">
-          {% if item.links.size == 0 %}
-            <a href="{{ item.url }}">
-              {{ item.title }}
+    {% if parent.links.size > 0 %}
+      <ul class="mobile-mega-menu-panel__list">
+        {% for item in parent.links %}
+          {% liquid
+            assign menu_handle = menu_title | handle
+            assign item_handle = item.title | handle
+            assign has_category_content = false
+            if level == 1
+              for card in section.blocks
+                if card.type == 'menu_image' or card.type == 'menu_copy'
+                  assign card_menu_handle = card.settings.menu_id | handle
+                  assign card_parent_handle = card.settings.parent_menu | handle
+                  if card_menu_handle == menu_handle and card_parent_handle == item_handle
+                    assign has_category_content = true
+                    break
+                  endif
+                endif
+              endfor
+            endif
+          %}
+        <li class="mobile-mega-menu-panel__list-item">
+          {% if item.links.size > 0 or has_category_content %}
+            <button
+              type="button"
+              class="mobile-mega-menu-panel__list-item-button"
+              data-mobile-mega-menu-panel-trigger="{{ panel_id }}-{{ forloop.index }}"
+              aria-expanded="false"
+              aria-label="{{ 'accessibility.show_submenu' | t: title: item.title }}"
+            >
+              <span>{{ item.title }}</span>
+              {% render 'icon-chevron-right' %}
+            </button>
+          {% else %}
+            <a href="{{ item.url }}" class="mobile-mega-menu-panel__list-item-button">
+              <span>{{ item.title }}</span>
+              {% render 'icon-arrow-upper-right' %}
             </a>
           {% endif %}
-
-          {% if item.links.size > 0 %}
-            <button
-              class="mobile-mega-menu-panel__list-item-button"
-              data-mobile-mega-menu-panel-trigger="mobile-{{ item.title | handle }}-{{ level | plus: 1 }}"
-              aria-expanded="false"
-              aria-label="{{ 'general.navigation.open_menu' | t: title: item.title }}"
-            >
-              <span>
-                {{ item.title }}
-              </span>
-
-              <div class="icon-m">
-                {% render 'icon-chevron-right' %}
-              </div>
-            </button>
-          {% endif %}
         </li>
-      {% endfor %}
-    </ul>
-
-    {% if utility_items %}
-      <div class="mobile-mega-menu-panel__utility-menu">
-        {% render 'mobile-mega-menu-utility-menu', utility_items: utility_items %}
-      </div>
+        {% endfor %}
+      </ul>
     {% endif %}
+
+    {% if level == 1 %}
+      {% render 'menu-panel-copy', section: section, menu_title: menu_title, default_title: parent.title, link_url: parent.url, mobile: true %}
+    {% else %}
+      {% render 'menu-panel-copy', section: section, menu_title: menu_title, parent_title: parent.title, default_title: parent.title, link_url: parent.url, mobile: true %}
+    {% endif %}
+
+    <div class="mobile-mega-menu-panel__cards">
+      {% if level == 1 %}
+        {% render 'menu-content-cards', section: section, menu_title: menu_title %}
+      {% else %}
+        {% render 'menu-content-cards', section: section, menu_title: menu_title, parent_title: parent.title %}
+      {% endif %}
+    </div>
   </div>
 </mobile-mega-menu-panel>

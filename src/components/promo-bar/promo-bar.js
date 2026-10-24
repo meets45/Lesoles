@@ -1,34 +1,35 @@
 import SwiperSlider from '@/helpers/swiper-slider';
-import EVENTS from '@/helpers/events';
 import './promo-bar.scss';
 
 class PromoBar extends HTMLElement {
   constructor() {
     super();
-    this.setHeaderOffset();
-    this.slider = new SwiperSlider(this, {
-      loop: true,
-      autoplay: this.getAttribute('autoplay') === 'true' ? true : false,
-    });
+    this.resizeObserver = new ResizeObserver(() => this.setHeaderOffset());
   }
 
   connectedCallback() {
-    window.addEventListener('resize', this.setHeaderOffset.bind(this));
-    window.addEventListener(EVENTS.SHOPIFY_SECTION_LOAD, this.setHeaderOffset.bind(this));
+    this.resizeObserver.observe(this);
+    this.setHeaderOffset();
+
+    if (Number(this.dataset.slideCount) > 1) {
+      this.slider = new SwiperSlider(this, {
+        loop: true,
+        autoplay: this.dataset.autoplay === 'true',
+      });
+    }
   }
 
   disconnectedCallback() {
-    window.addEventListener('resize', this.setHeaderOffset.bind(this));
-    window.removeEventListener(EVENTS.SHOPIFY_SECTION_LOAD, this.setHeaderOffset.bind(this));
+    this.resizeObserver.disconnect();
+    this.slider?.swiper?.destroy();
+    document.documentElement.style.setProperty('--header-top-offset', '0px');
   }
 
   setHeaderOffset() {
-    const style = document.createElement('style');
-    style.innerHTML = `:root{ --header-top-offset: ${this.getBoundingClientRect()?.height}px }`;
-    document.head.appendChild(style);
+    document.documentElement.style.setProperty('--header-top-offset', `${this.getBoundingClientRect().height}px`);
   }
 }
 
 export default () => {
   customElements.get('promo-bar') || customElements.define('promo-bar', PromoBar);
-}
+};

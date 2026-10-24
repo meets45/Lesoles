@@ -1,81 +1,137 @@
 .mobile-mega-menu-panel {
-  display: flex;
-  flex-flow: column;
-  background-color: var(--ui-elements-overlays-default);
   position: fixed;
-  top: 0;
+  top: var(--mobile-menu-topbar-height);
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
-  padding: var(--screens-mobile-page-top) var(--screens-mobile-margin)
-    var(--screens-mobile-content-bottom) var(--screens-mobile-margin);
-  transition: transform 0.2s ease-in-out;
-  transform: translateX(0%);
+  z-index: 3;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 20px calc(36px + env(safe-area-inset-bottom));
+  background: #fffdf6;
+  color: #153a35;
+  transform: translateX(0);
+  transition: transform 220ms ease;
 }
 
-[data-mobile-mega-menu-panel][data-active="false"] .mobile-mega-menu-panel {
+[data-mobile-mega-menu-panel][data-active='false'] .mobile-mega-menu-panel {
   transform: translateX(100%);
 }
 
-/* when the main menu is closing, delay transition so that the panels aren't moving while the main menu is closing */
-[data-mobile-mega-menu][data-active="false"] .mobile-mega-menu-panel {
-  transition-delay: 0.4s;
-}
-
-.mobile-mega-menu-panel__header {
-  display: flex;
+.mobile-mega-menu-panel__back {
+  display: inline-flex;
   align-items: center;
-  grid-auto-flow: column;
-  grid-auto-columns: auto;
-  justify-content: start;
-  grid-gap: var(--spacing-200);
+  gap: 6px;
+  min-height: 40px;
+  margin: 0 0 17px -7px;
+  padding: 4px 7px;
+  border: 0;
+  background: transparent;
+  color: #153a35;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.mobile-mega-menu-panel__close {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  height: 36px;
-  width: 100%;
-
-  & > * + * {
-    margin-left: var(--spacing-400);
-  }
+.mobile-mega-menu-panel__back svg {
+  width: 17px;
+  height: 17px;
 }
 
-.mobile-mega-menu-panel__header-title {
-  position: absolute;
-  left: calc(36px + var(--spacing-200));
-  pointer-events: none;
+.mobile-mega-menu-panel__title {
+  margin: 0 0 12px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
-.mobile-mega-menu-panel__list {
-  padding: 0;
+.mobile-mega-menu-panel__shop-all {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #153a35;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .mobile-mega-menu-panel__list-item {
-  list-style: none;
-  padding: var(--spacing-200) 0;
-
-  & a {
-    text-decoration: none;
-  }
+  border-top: 1px solid #e6e6dc;
 }
 
 .mobile-mega-menu-panel__list-item-button {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: transparent;
-  border: none;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
-  padding: 0;
+  min-height: 57px;
+  padding: 8px 2px;
+  border: 0;
+  background: transparent;
+  color: #153a35;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.mobile-mega-menu-panel__utility-menu {
-  margin-top: auto;
+.menu-panel-copy--mobile {
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f5f3e9;
+}
+
+.menu-panel-copy--mobile h3 {
+  margin: 0 0 10px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.16;
+}
+
+.menu-panel-copy--mobile .menu-panel-copy__description {
+  margin-bottom: 12px;
+}
+
+.menu-panel-copy--mobile .mega-menu__all-link {
+  margin-bottom: 0;
+}
+
+.mobile-mega-menu-panel__cards {
+  margin-top: 30px;
+}
+
+.mobile-mega-menu-panel__cards .menu-content-cards__eyebrow {
+  margin-bottom: 12px;
+}
+
+.mobile-mega-menu-panel__cards .menu-content-cards__list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 20px 12px;
+  margin: 0 -20px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.mobile-mega-menu-panel__cards .menu-content-card {
+  flex: 0 0 min(68vw, 260px);
+  scroll-snap-align: start;
+}
+
+.mobile-mega-menu-panel__cards .menu-content-card__media {
+  aspect-ratio: 1.3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-mega-menu-panel {
+    transition: none;
+  }
 }
