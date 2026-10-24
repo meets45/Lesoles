@@ -1,3 +1,33 @@
+{%- liquid
+  assign display_font = settings.font_display
+  assign heading_font = settings.font_heading
+  assign subheading_font = settings.font_subheading
+  assign body_font = settings.font_body
+  assign display_font_key = display_font.family | append: '-' | append: display_font.weight | append: '-' | append: display_font.style
+  assign heading_font_key = heading_font.family | append: '-' | append: heading_font.weight | append: '-' | append: heading_font.style
+  assign subheading_font_key = subheading_font.family | append: '-' | append: subheading_font.weight | append: '-' | append: subheading_font.style
+  assign body_font_key = body_font.family | append: '-' | append: body_font.weight | append: '-' | append: body_font.style
+-%}
+
+{%- capture theme_font_faces -%}
+  {%- if display_font != blank -%}
+    {{ display_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if heading_font != blank and heading_font_key != display_font_key -%}
+    {{ heading_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if subheading_font != blank and subheading_font_key != display_font_key and subheading_font_key != heading_font_key -%}
+    {{ subheading_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if body_font != blank and body_font_key != display_font_key and body_font_key != heading_font_key and body_font_key != subheading_font_key -%}
+    {{ body_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if theme_font_faces != blank -%}
+  <style>{{ theme_font_faces }}</style>
+{%- endif -%}
+
 {{
   'fredoka-latin-wght-normal.woff2'
   | asset_url

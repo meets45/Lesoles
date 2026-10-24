@@ -1,79 +1,155 @@
+{%- liquid
+  assign default_color_scheme = settings.color_schemes | first
+  assign display_font = settings.font_display
+  assign heading_font = settings.font_heading
+  assign subheading_font = settings.font_subheading
+  assign body_font = settings.font_body
+-%}
+
 <style>
   :root {
-    /* default color scheme */
-    {%- assign default_color_scheme = settings.color_schemes | first %}
-    --surface-primary: {{ default_color_scheme.settings.surface_primary }};
-    --surface-secondary: {{ default_color_scheme.settings.surface_secondary }};
-    --typography-color-default: {{ default_color_scheme.settings.typography_color_default }};
-    --typography-color-secondary: {{  default_color_scheme.settings.typography_color_secondary }};
-    --typography-color-brand: {{  default_color_scheme.settings.typography_color_brand }};
-    --typography-color-hover-active: {{  default_color_scheme.settings.typography_color_hover_active }};
-    --typography-color-disabled: {{  default_color_scheme.settings.typography_color_disabled }};
-    --typography-color-error-sale: {{  default_color_scheme.settings.typography_color_error_sale }};
-    --typography-color-success: {{  default_color_scheme.settings.typography_color_success }};
-    --typography-color-warning: {{  default_color_scheme.settings.typography_color_warning }};
-    --typography-color-inverse: {{  default_color_scheme.settings.typography_color_inverse }};
-    --typography-color-secondary-inverse: {{  default_color_scheme.settings.typography_color_secondary_inverse }};
-    --typography-color-brand-inverse: {{  default_color_scheme.settings.typography_color_brand_inverse }};
-    --typography-color-hover-active-inverse: {{  default_color_scheme.settings.typography_color_hover_active_inverse }};
-    --typography-color-disabled-inverse: {{  default_color_scheme.settings.typography_color_disabled_inverse }};
-    --typography-color-error-sale-inverse: {{  default_color_scheme.settings.typography_color_error_sale_inverse }};
-    --typography-color-success-inverse: {{  default_color_scheme.settings.typography_color_success_inverse }};
-    --typography-color-warning-inverse: {{  default_color_scheme.settings.typography_color_warning_inverse }};
-    --typography-color-default2: var(--color-neutrals-900);
+    --surface-primary: {{ default_color_scheme.settings.surface_primary | default: '#ffffff' }};
+    --surface-secondary: {{ default_color_scheme.settings.surface_secondary | default: '#f0efed' }};
 
-    --buttons-primary-text: {{ default_color_scheme.settings.buttons_primary_text }};
-    --buttons-primary-background: {{ default_color_scheme.settings.buttons_primary_background }};
-    --buttons-primary-hover: {{ default_color_scheme.settings.buttons_primary_hover }};
-    --buttons-primary-inverse: {{ default_color_scheme.settings.buttons_primary_inverse }};
-    --buttons-primary-hover-inverse: {{ default_color_scheme.settings.buttons_primary_hover_inverse }};
+    --typography-color: {{ default_color_scheme.settings.typography_color | default: '#111111' }};
+    --typography-color-default: {{ default_color_scheme.settings.typography_color | default: '#111111' }};
+    --typography-color-secondary: {{ default_color_scheme.settings.typography_color_secondary | default: '#565656' }};
+    --typography-color-brand: {{ default_color_scheme.settings.typography_color_brand | default: '#327c95' }};
+    --typography-color-hover-active: {{ default_color_scheme.settings.typography_color_hover_active | default: '#235768' }};
+    --typography-color-disabled: {{ default_color_scheme.settings.typography_color_disabled | default: '#838382' }};
+    --typography-color-error-sale: {{ default_color_scheme.settings.typography_color_error_sale | default: '#b42318' }};
+    --typography-color-success: {{ default_color_scheme.settings.typography_color_success | default: '#008247' }};
+    --typography-color-warning: {{ default_color_scheme.settings.typography_color_warning | default: '#b54708' }};
+    --typography-color-inverse: {{ default_color_scheme.settings.typography_color_inverse | default: '#ffffff' }};
+    --typography-color-secondary-inverse: {{ default_color_scheme.settings.typography_color_secondary_inverse | default: '#c6c6c4' }};
+    --typography-color-brand-inverse: {{ default_color_scheme.settings.typography_color_brand_inverse | default: '#c2d8df' }};
+    --typography-color-hover-active-inverse: {{ default_color_scheme.settings.typography_color_hover_active_inverse | default: '#ebf2f4' }};
+    --typography-color-disabled-inverse: {{ default_color_scheme.settings.typography_color_disabled_inverse | default: '#838382' }};
+    --typography-color-error-sale-inverse: {{ default_color_scheme.settings.typography_color_error_sale_inverse | default: '#f04438' }};
+    --typography-color-success-inverse: {{ default_color_scheme.settings.typography_color_success_inverse | default: '#12b76a' }};
+    --typography-color-warning-inverse: {{ default_color_scheme.settings.typography_color_warning_inverse | default: '#f79009' }};
 
-    --buttons-secondary-text: {{ default_color_scheme.settings.buttons_secondary_text }};
-       /* special override for blurred backgrounds */
-    {%- if default_color_scheme.settings.buttons_secondary_background == 'rgba(0,0,0,0)' -%}
-      --buttons-secondary-background: 'rgba(255,255,255,0.45)';
-      --buttons-secondary-backdrop-filter: var(--background-blur);
-      {% else %}
-        --buttons-secondary-background: {{ default_color_scheme.settings.buttons_secondary_background }};
-        --buttons-secondary-backdrop-filter: none;
-    {%- endif -%}
-    --buttons-secondary-border: {{ default_color_scheme.settings.buttons_secondary_border }};
-    {% if default_color_scheme.settings.button_secondary_hover == 'rgba(0,0,0,0)' %}
-        --buttons-secondary-hover: rgba(255, 255, 255, 0.60);
-      {% else %}
-        --buttons-secondary-hover: {{ default_color_scheme.settings.buttons_secondary_hover }};
-    {% endif %}
+    --buttons-primary-text: {{ default_color_scheme.settings.buttons_primary_text | default: '#ffffff' }};
+    --buttons-primary-background: {{ default_color_scheme.settings.buttons_primary_background | default: '#327c95' }};
+    --buttons-primary-hover: {{ default_color_scheme.settings.buttons_primary_hover | default: '#235768' }};
+    --buttons-primary-inverse: {{ default_color_scheme.settings.buttons_primary_inverse | default: '#ffffff' }};
+    --buttons-primary-hover-inverse: {{ default_color_scheme.settings.buttons_primary_hover_inverse | default: '#e0e0e0' }};
+    --buttons-secondary-text: {{ default_color_scheme.settings.buttons_secondary_text | default: '#15343e' }};
+    --buttons-secondary-background: {{ default_color_scheme.settings.buttons_secondary_background | default: '#ffffff' }};
+    --buttons-secondary-hover: {{ default_color_scheme.settings.buttons_secondary_hover | default: '#ebf2f4' }};
+    --buttons-secondary-border: {{ default_color_scheme.settings.buttons_secondary_border | default: '#15343e' }};
+    --buttons-secondary-backdrop-filter: none;
+    --buttons-tertiary-text: {{ default_color_scheme.settings.buttons_tertiary_text | default: '#81391b' }};
+    --buttons-tertiary-background: {{ default_color_scheme.settings.buttons_tertiary_background | default: '#81391b' }};
+    --buttons-tertiary-hover: {{ default_color_scheme.settings.buttons_tertiary_hover | default: '#eabdaa' }};
+    --buttons-tertiary-border: {{ default_color_scheme.settings.buttons_tertiary_border | default: '#81391b' }};
+    --buttons-tertiary-backdrop-filter: none;
+    --buttons-disabled-text: {{ default_color_scheme.settings.buttons_disabled_text | default: '#b2b2b2' }};
+    --buttons-disabled-background: {{ default_color_scheme.settings.buttons_disabled_background | default: '#3f3f3f' }};
 
-    --buttons-tertiary-text: {{ default_color_scheme.settings.buttons_tertiary_text }};
-    /* special override for blurred backgrounds */
-    {%- if default_color_scheme.settings.buttons_tertiary_background == 'rgba(0,0,0,0)' -%}
-      --buttons-tertiary-background: 'rgba(255,255,255,0.45)';
-      --buttons-tertiary-backdrop-filter: var(--background-blur);
-      {% else %}
-        --buttons-tertiary-background: {{ default_color_scheme.settings.buttons_tertiary_background }};
-        --buttons-tertiary-backdrop-filter: none;
-    {%- endif -%}
-    --buttons-tertiary-border: {{ default_color_scheme.settings.buttons_tertiary_border }};
-    {% if default_color_scheme.settings.button_tertiary_hover == 'rgba(0,0,0,0)' %}
-      --buttons-tertiary-hover: rgba(255, 255, 255, 0.60);
-    {% else %}
-      --buttons-tertiary-hover: {{ default_color_scheme.settings.buttons_secondary_hover }};
-  {% endif %}
+    --borders-color-lightest: {{ default_color_scheme.settings.borders_color_lightest | default: '#f0efed' }};
+    --borders-color-light-decorative: {{ default_color_scheme.settings.borders_color_light_decorative | default: '#c6c6c4' }};
+    --borders-color-medium-default: {{ default_color_scheme.settings.borders_color_medium_default | default: '#838382' }};
+    --borders-color-dark: {{ default_color_scheme.settings.borders_color_dark | default: '#3f3f3f' }};
+    --borders-color-darkest: {{ default_color_scheme.settings.borders_color_darkest | default: '#000000' }};
+    --borders-color-brand: {{ default_color_scheme.settings.borders_color_brand | default: '#327c95' }};
+    --borders-color-brand-inverse: {{ default_color_scheme.settings.borders_color_brand_inverse | default: '#c2d8df' }};
+    --borders-color-error: {{ default_color_scheme.settings.borders_color_error | default: '#b42318' }};
+    --borders-color-error-inverse: {{ default_color_scheme.settings.borders_color_error_inverse | default: '#f04438' }};
+    --borders-color-disabled: {{ default_color_scheme.settings.borders_color_disabled | default: '#c6c6c4' }};
+    --borders-color-disabled-inverse: {{ default_color_scheme.settings.borders_color_disabled_inverse | default: '#565656' }};
+    --borders-color-white: {{ default_color_scheme.settings.surface_primary | default: '#ffffff' }};
+    --borders-color-light: {{ default_color_scheme.settings.borders_color_light_decorative | default: '#c6c6c4' }};
+    --borders-color-medium: {{ default_color_scheme.settings.borders_color_medium_default | default: '#838382' }};
+    --borders-color-black: {{ default_color_scheme.settings.borders_color_darkest | default: '#000000' }};
 
+    --font-family-display: {{ display_font.family | default: 'Fredoka' | json }}, {{ display_font.fallback_families | default: 'sans-serif' }};
+    --font-family-headings: {{ heading_font.family | default: 'Fredoka' | json }}, {{ heading_font.fallback_families | default: 'sans-serif' }};
+    --font-family-subheadings: {{ subheading_font.family | default: 'Fredoka' | json }}, {{ subheading_font.fallback_families | default: 'sans-serif' }};
+    --font-family-body: {{ body_font.family | default: 'Fredoka' | json }}, {{ body_font.fallback_families | default: 'sans-serif' }};
 
-    --buttons-disabled-text: {{ default_color_scheme.settings.buttons_disabled_text }};
-    --buttons-disabled-background: {{ default_color_scheme.settings.buttons_disabled_background }};
+    --typography-heading-wrap: {{ settings.typography_heading_wrap_mode | default: 'balance' }};
+    --typography-styles-weight-display: {{ settings.typography_display_weight | default: 700 }};
+    --typography-styles-weight-heading: {{ settings.typography_heading_weight | default: 700 }};
+    --typography-styles-weight-subheading: {{ settings.typography_subheading_weight | default: 500 }};
+    --typography-styles-weight-default: {{ settings.typography_body_weight | default: 400 }};
+    --typography-styles-tracking-display: {{ settings.typography_display_tracking | default: 0 | divided_by: 100.0 }}em;
+    --typography-styles-tracking-heading: {{ settings.typography_heading_tracking | default: 0 | divided_by: 100.0 }}em;
+    --typography-styles-tracking-subheading: {{ settings.typography_subheading_tracking | default: 0 | divided_by: 100.0 }}em;
+    --typography-styles-tracking-body: {{ settings.typography_body_tracking | default: 0 | divided_by: 100.0 }}em;
+    --typography-styles-transform-display: {{ settings.typography_display_transform | default: 'none' }};
+    --typography-styles-transform-heading: {{ settings.typography_heading_transform | default: 'none' }};
+    --typography-styles-transform-subheading: {{ settings.typography_subheading_transform | default: 'none' }};
 
-    --borders-color-lightest: {{ default_color_scheme.settings.borders_color_lightest }};
-    --borders-color-light-decorative: {{ default_color_scheme.settings.borders_color_light_decorative }};
-    --borders-color-medium-default: {{ default_color_scheme.settings.borders_color_medium_default }};
-    --borders-color-dark: {{ default_color_scheme.settings.borders_color_dark }};
-    --borders-color-darkest: {{ default_color_scheme.settings.borders_color_darkest }};
-    --borders-color-brand: {{ default_color_scheme.settings.borders_color_brand }};
-    --borders-color-brand-inverse: {{ default_color_scheme.settings.borders_color_brand_inverse }};
-    --borders-color-error: {{ default_color_scheme.settings.borders_color_error }};
-    --borders-color-error-inverse: {{ default_color_scheme.settings.borders_color_error_inverse }};
-    --borders-color-disabled: {{ default_color_scheme.settings.borders_color_disabled }};
-    --borders-color-disabled-inverse: {{ default_color_scheme.settings.borders_color_disabled_inverse }};
+    --typography-styles-sizing-display-large-desktop: {{ settings.typography_display_large_size_desktop | default: 96 }}px;
+    --typography-styles-line-height-display-large-desktop: {{ settings.typography_display_large_height_desktop | default: 104 }}px;
+    --typography-styles-sizing-display-large-mobile: {{ settings.typography_display_large_size_mobile | default: 72 }}px;
+    --typography-styles-line-height-display-large-mobile: {{ settings.typography_display_large_height_mobile | default: 72 }}px;
+    --typography-styles-sizing-display-medium-desktop: {{ settings.typography_display_medium_size_desktop | default: 64 }}px;
+    --typography-styles-line-height-display-medium-desktop: {{ settings.typography_display_medium_height_desktop | default: 72 }}px;
+    --typography-styles-sizing-display-medium-mobile: {{ settings.typography_display_medium_size_mobile | default: 56 }}px;
+    --typography-styles-line-height-display-medium-mobile: {{ settings.typography_display_medium_height_mobile | default: 64 }}px;
+    --typography-styles-sizing-display-small-desktop: {{ settings.typography_display_small_size_desktop | default: 40 }}px;
+    --typography-styles-line-height-display-small-desktop: {{ settings.typography_display_small_height_desktop | default: 44 }}px;
+    --typography-styles-sizing-display-small-mobile: {{ settings.typography_display_small_size_mobile | default: 28 }}px;
+    --typography-styles-line-height-display-small-mobile: {{ settings.typography_display_small_height_mobile | default: 40 }}px;
+
+    --typography-styles-sizing-heading-xlarge-desktop: {{ settings.typography_heading_xlarge_size_desktop | default: 56 }}px;
+    --typography-styles-line-height-heading-xlarge-desktop: {{ settings.typography_heading_xlarge_height_desktop | default: 64 }}px;
+    --typography-styles-sizing-heading-xlarge-mobile: {{ settings.typography_heading_xlarge_size_mobile | default: 48 }}px;
+    --typography-styles-line-height-heading-xlarge-mobile: {{ settings.typography_heading_xlarge_height_mobile | default: 56 }}px;
+    --typography-styles-sizing-heading-large-desktop: {{ settings.typography_heading_large_size_desktop | default: 48 }}px;
+    --typography-styles-line-height-heading-large-desktop: {{ settings.typography_heading_large_height_desktop | default: 56 }}px;
+    --typography-styles-sizing-heading-large-mobile: {{ settings.typography_heading_large_size_mobile | default: 40 }}px;
+    --typography-styles-line-height-heading-large-mobile: {{ settings.typography_heading_large_height_mobile | default: 48 }}px;
+    --typography-styles-sizing-heading-medium: {{ settings.typography_heading_medium_size | default: 32 }}px;
+    --typography-styles-line-height-heading-medium: {{ settings.typography_heading_medium_height | default: 40 }}px;
+    --typography-styles-sizing-heading-small: {{ settings.typography_heading_small_size | default: 24 }}px;
+    --typography-styles-line-height-heading-small: {{ settings.typography_heading_small_height | default: 28 }}px;
+    --typography-styles-sizing-heading-xsmall: {{ settings.typography_heading_xsmall_size | default: 18 }}px;
+    --typography-styles-line-height-heading-xsmall: {{ settings.typography_heading_xsmall_height | default: 20 }}px;
+
+    --typography-styles-sizing-subheading-xlarge-desktop: {{ settings.typography_subheading_xlarge_size_desktop | default: 56 }}px;
+    --typography-styles-line-height-subheading-xlarge-desktop: {{ settings.typography_subheading_xlarge_height_desktop | default: 72 }}px;
+    --typography-styles-sizing-subheading-xlarge-mobile: {{ settings.typography_subheading_xlarge_size_mobile | default: 48 }}px;
+    --typography-styles-line-height-subheading-xlarge-mobile: {{ settings.typography_subheading_xlarge_height_mobile | default: 64 }}px;
+    --typography-styles-sizing-subheading-large-desktop: {{ settings.typography_subheading_large_size_desktop | default: 48 }}px;
+    --typography-styles-line-height-subheading-large-desktop: {{ settings.typography_subheading_large_height_desktop | default: 64 }}px;
+    --typography-styles-sizing-subheading-large-mobile: {{ settings.typography_subheading_large_size_mobile | default: 40 }}px;
+    --typography-styles-line-height-subheading-large-mobile: {{ settings.typography_subheading_large_height_mobile | default: 56 }}px;
+    --typography-styles-sizing-subheading-medium: {{ settings.typography_subheading_medium_size | default: 32 }}px;
+    --typography-styles-line-height-subheading-medium: {{ settings.typography_subheading_medium_height | default: 44 }}px;
+    --typography-styles-sizing-subheading-small: {{ settings.typography_subheading_small_size | default: 24 }}px;
+    --typography-styles-line-height-subheading-small: {{ settings.typography_subheading_small_height | default: 32 }}px;
+    --typography-styles-sizing-subheading-xsmall: {{ settings.typography_subheading_xsmall_size | default: 18 }}px;
+    --typography-styles-line-height-subheading-xsmall: {{ settings.typography_subheading_xsmall_height | default: 24 }}px;
+
+    --typography-styles-sizing-body-large: {{ settings.typography_body_large_size | default: 20 }}px;
+    --typography-styles-line-height-body-large: {{ settings.typography_body_large_height | default: 28 }}px;
+    --typography-styles-sizing-body-medium: {{ settings.typography_body_medium_size | default: 16 }}px;
+    --typography-styles-line-height-body-medium: {{ settings.typography_body_medium_height | default: 24 }}px;
+    --typography-styles-sizing-body-small: {{ settings.typography_body_small_size | default: 14 }}px;
+    --typography-styles-line-height-body-small: {{ settings.typography_body_small_height | default: 18 }}px;
+    --typography-styles-sizing-body-xsmall: {{ settings.typography_body_xsmall_size | default: 12 }}px;
+    --typography-styles-line-height-body-xsmall: {{ settings.typography_body_xsmall_height | default: 16 }}px;
+
+    --layout-page-width: {{ settings.layout_page_width | default: 1400 }}px;
+    --screens-desktop-margin: {{ settings.layout_desktop_gutter | default: 16 }}px;
+    --screens-mobile-margin: {{ settings.layout_mobile_gutter | default: 16 }}px;
+    --borders-radius-default: {{ settings.layout_corner_radius | default: 4 }}px;
+
+    --buttons-height-desktop: {{ settings.button_height_desktop | default: 56 }}px;
+    --buttons-height-mobile: {{ settings.button_height_mobile | default: 48 }}px;
+    --buttons-padding-vertical-desktop: {{ settings.button_padding_vertical_desktop | default: 16 }}px;
+    --buttons-padding-vertical-mobile: {{ settings.button_padding_vertical_mobile | default: 12 }}px;
+    --buttons-padding-horizontal: {{ settings.button_padding_horizontal | default: 32 }}px;
+    --buttons-font-size-desktop: {{ settings.button_font_size_desktop | default: 18 }}px;
+    --buttons-font-size-mobile: {{ settings.button_font_size_mobile | default: 18 }}px;
+    --buttons-line-height: {{ settings.button_line_height | default: 28 }}px;
+    --buttons-font-weight: {{ settings.button_font_weight | default: 700 }};
+    --buttons-letter-spacing: {{ settings.button_letter_spacing | default: 0 | divided_by: 100.0 }}em;
+    --buttons-border-radius: {{ settings.button_border_radius | default: 4 }}px;
+    --buttons-border-width: {{ settings.button_border_width | default: 2 }}px;
+    --buttons-text-transform: {{ settings.button_text_transform | default: 'none' }};
   }
 </style>
