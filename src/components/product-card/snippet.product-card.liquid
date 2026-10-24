@@ -1,6 +1,7 @@
 {% liquid
   assign variant = variant
   assign variant_id = variant.id | default: product.selected_or_first_available_variant.id
+  assign quick_add_position = quick_add_position | default: 'image'
 
   assign product_href = product.url
   if collection
@@ -20,15 +21,20 @@
   >
     {% form 'product', product %}
       <input type="hidden" name="id" value="{{ variant_id }}">
-      <div class="product-card__inner">
+      {% capture quick_add_button %}
         <button
-          class="product-card__add-to-cart"
+          class="product-card__add-to-cart{% if quick_add_position == 'details' %} product-card__add-to-cart--details{% endif %}"
           type="submit"
           data-submit
           data-quick-add="true"
         >
           {% render 'icon-cart-plus-icon' %}
         </button>
+      {% endcapture %}
+      <div class="product-card__inner">
+        {% unless quick_add_position == 'details' %}
+          {{ quick_add_button }}
+        {% endunless %}
         <div class="product-card__media">
           {% if variant %}
             {% if variant.image %}
@@ -87,6 +93,9 @@
                   {% endif %}
                 </a>
               </h2>
+              {% if quick_add_position == 'details' %}
+                {{ quick_add_button }}
+              {% endif %}
             </div>
 
             {% render 'product-price', product: product, variant: variant %}
