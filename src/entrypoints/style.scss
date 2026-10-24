@@ -147,7 +147,7 @@ button {
 /* Standard container */
 .container {
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 var(--screens-mobile-margin, 16px);
 }
 
 /* 11. extensions */
@@ -156,9 +156,15 @@ com-1password-button {
   display: none !important;
 }
 
+@media (min-width: 481px) {
+  .container {
+    padding: 0 var(--screens-desktop-margin, 16px);
+  }
+}
+
 @media (min-width: 1440px) {
   .container {
-    max-width: 1400px;
+    max-width: var(--layout-page-width, 1400px);
   }
 }
 
@@ -182,28 +188,29 @@ a.button,
   color: var(--buttons-primary-text);
   background: var(--buttons-primary-background);
   font-family: var(--typography-styles-font-family-headings);
-  font-size: var(--typography-styles-sizing-heading-xsmall);
+  font-size: var(--buttons-font-size-desktop, var(--typography-styles-sizing-heading-xsmall));
   font-style: normal;
-  font-weight: var(--typography-styles-weight-heading);
+  font-weight: var(--buttons-font-weight, var(--typography-styles-weight-heading));
   text-decoration: none;
-  line-height: var(--typography-styles-line-height-heading-small);
-  letter-spacing: var(--typography-styles-tracking-heading);
-  height: 56px;
-  padding: var(--spacing-400) var(--spacing-700);
-  border-radius: var(--borders-radius-default);
-  border: var(--borders-width-focus) solid var(--buttons-primary-background);
+  text-transform: var(--buttons-text-transform, none);
+  line-height: var(--buttons-line-height, var(--typography-styles-line-height-heading-small));
+  letter-spacing: var(--buttons-letter-spacing, var(--typography-styles-tracking-heading));
+  height: var(--buttons-height-desktop, 56px);
+  padding: var(--buttons-padding-vertical-desktop, var(--spacing-400)) var(--buttons-padding-horizontal, var(--spacing-700));
+  border-radius: var(--buttons-border-radius, var(--borders-radius-default));
+  border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-primary-background);
 
   &:disabled,
   &[aria-disabled='true'],
   &.disabled {
     color: var(--buttons-disabled-text);
-    border: var(--borders-width-focus) solid var(--buttons-disabled-background);
+    border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-disabled-background);
     background: var(--buttons-disabled-background);
   }
 
   &:hover:not(:disabled),
   &:active:not(:disabled) {
-    border: var(--borders-width-focus) solid var(--buttons-primary-hover);
+    border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-primary-hover);
     background: var(--buttons-primary-hover);
     transition: transform, 0.4s;
 
@@ -213,20 +220,21 @@ a.button,
   }
 
   @media (max-width: 480px) {
-    height: 48px;
-    padding: var(--spacing-300) var(--spacing-700);
+    font-size: var(--buttons-font-size-mobile, var(--typography-styles-sizing-heading-xsmall));
+    height: var(--buttons-height-mobile, 48px);
+    padding: var(--buttons-padding-vertical-mobile, var(--spacing-300)) var(--buttons-padding-horizontal, var(--spacing-700));
   }
 
   /* variant specific styles */
   &.button--secondary {
     color: var(--buttons-secondary-text);
     background: var(--buttons-secondary-background);
-    border: var(--borders-width-focus) solid var(--buttons-secondary-border);
+    border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-secondary-border);
     backdrop-filter: var(--buttons-secondary-backdrop-filter);
 
     &:hover:not(:disabled),
     &:active:not(:disabled) {
-      border: var(--borders-width-focus) solid var(--buttons-secondary-border);
+      border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-secondary-border);
       background: var(--buttons-secondary-hover);
     }
   }
@@ -234,12 +242,12 @@ a.button,
   &.button--tertiary {
     color: var(--buttons-tertiary-text);
     background: var(--buttons-tertiary-background);
-    border: var(--borders-width-focus) solid var(--buttons-tertiary-border);
+    border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-tertiary-border);
     backdrop-filter: var(--buttons-tertiary-backdrop-filter);
 
     &:hover:not(:disabled),
     &:active:not(:disabled) {
-      border: var(--borders-width-focus) solid var(--buttons-tertiary-border);
+      border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-tertiary-border);
       background: var(--buttons-tertiary-hover);
     }
   }
@@ -509,7 +517,7 @@ body {
   font-family: var(--typography-styles-font-family-body);
   font-size: var(--typography-styles-sizing-body-medium);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--typography-styles-weight-default);
   line-height: var(--typography-styles-line-height-body-medium);
   letter-spacing: var(--typography-styles-tracking-body);
 }
@@ -522,6 +530,7 @@ h4,
 h5,
 h6 {
   line-height: 1.5;
+  text-wrap: var(--typography-heading-wrap, balance);
 }
 
 .display-large {
@@ -531,6 +540,7 @@ h6 {
   font-weight: var(--typography-styles-weight-display);
   line-height: var(--typography-styles-line-height-display-large-desktop);
   letter-spacing: var(--typography-styles-tracking-display);
+  text-transform: var(--typography-styles-transform-display, none);
 
   @media (max-width: 480px) {
     font-size: var(--typography-styles-sizing-display-large-mobile);
@@ -545,6 +555,7 @@ h6 {
   font-weight: var(--typography-styles-weight-display);
   line-height: var(--typography-styles-line-height-display-medium-desktop);
   letter-spacing: var(--typography-styles-tracking-display);
+  text-transform: var(--typography-styles-transform-display, none);
 
   @media (max-width: 480px) {
     font-size: var(--typography-styles-sizing-display-medium-mobile);
@@ -559,6 +570,7 @@ h6 {
   font-weight: var(--typography-styles-weight-display);
   line-height: var(--typography-styles-line-height-display-small-desktop);
   letter-spacing: var(--typography-styles-tracking-display);
+  text-transform: var(--typography-styles-transform-display, none);
 
   @media (max-width: 480px) {
     font-size: var(--typography-styles-sizing-display-small-mobile);
@@ -573,6 +585,7 @@ h6 {
   font-weight: var(--typography-styles-weight-heading);
   line-height: var(--typography-styles-line-height-heading-xlarge-desktop);
   letter-spacing: var(--typography-styles-tracking-heading);
+  text-transform: var(--typography-styles-transform-heading, none);
 
   @media (max-width: 480px) {
     font-size: var(--typography-styles-sizing-heading-xlarge-mobile);
@@ -587,6 +600,7 @@ h6 {
   font-weight: var(--typography-styles-weight-heading);
   line-height: var(--typography-styles-line-height-heading-large-desktop);
   letter-spacing: var(--typography-styles-tracking-heading);
+  text-transform: var(--typography-styles-transform-heading, none);
 
   @media (max-width: 480px) {
     font-size: var(--typography-styles-sizing-heading-large-mobile);
@@ -601,6 +615,7 @@ h6 {
   font-weight: var(--typography-styles-weight-heading);
   line-height: var(--typography-styles-line-height-heading-medium);
   letter-spacing: var(--typography-styles-tracking-heading);
+  text-transform: var(--typography-styles-transform-heading, none);
 }
 
 .heading-small {
@@ -610,6 +625,7 @@ h6 {
   font-weight: var(--typography-styles-weight-heading);
   line-height: var(--typography-styles-line-height-heading-small);
   letter-spacing: var(--typography-styles-tracking-heading);
+  text-transform: var(--typography-styles-transform-heading, none);
 }
 
 .heading-xsmall {
@@ -619,6 +635,7 @@ h6 {
   font-weight: var(--typography-styles-weight-heading);
   line-height: var(--typography-styles-line-height-heading-xsmall);
   letter-spacing: var(--typography-styles-tracking-heading);
+  text-transform: var(--typography-styles-transform-heading, none);
 }
 
 .subheading-xlarge {
@@ -627,11 +644,12 @@ h6 {
   font-style: normal;
   font-weight: var(--typography-styles-weight-subheading);
   line-height: var(--typography-styles-line-height-subheading-xlarge-desktop);
-  letter-spacing: var(--typography-styles-tracking-heading);
+  letter-spacing: var(--typography-styles-tracking-subheading);
+  text-transform: var(--typography-styles-transform-subheading, none);
 
   @media (max-width: 480px) {
-    font-size: var(--typography-styles-sizing-heading-xlarge-mobile);
-    line-height: var(--typography-styles-line-height-heading-xlarge-mobile);
+    font-size: var(--typography-styles-sizing-subheading-xlarge-mobile);
+    line-height: var(--typography-styles-line-height-subheading-xlarge-mobile);
   }
 }
 
@@ -641,11 +659,12 @@ h6 {
   font-style: normal;
   font-weight: var(--typography-styles-weight-subheading);
   line-height: var(--typography-styles-line-height-subheading-large-desktop);
-  letter-spacing: var(--typography-styles-tracking-heading);
+  letter-spacing: var(--typography-styles-tracking-subheading);
+  text-transform: var(--typography-styles-transform-subheading, none);
 
   @media (max-width: 480px) {
-    font-size: var(--typography-styles-sizing-heading-large-mobile);
-    line-height: var(--typography-styles-line-height-heading-large-mobile);
+    font-size: var(--typography-styles-sizing-subheading-large-mobile);
+    line-height: var(--typography-styles-line-height-subheading-large-mobile);
   }
 }
 
@@ -655,7 +674,8 @@ h6 {
   font-style: normal;
   font-weight: var(--typography-styles-weight-subheading);
   line-height: var(--typography-styles-line-height-subheading-medium);
-  letter-spacing: var(--typography-styles-tracking-heading);
+  letter-spacing: var(--typography-styles-tracking-subheading);
+  text-transform: var(--typography-styles-transform-subheading, none);
 }
 
 .subheading-small {
@@ -664,7 +684,8 @@ h6 {
   font-style: normal;
   font-weight: var(--typography-styles-weight-subheading);
   line-height: var(--typography-styles-line-height-subheading-small);
-  letter-spacing: var(--typography-styles-tracking-heading);
+  letter-spacing: var(--typography-styles-tracking-subheading);
+  text-transform: var(--typography-styles-transform-subheading, none);
 }
 
 .subheading-xsmall {
@@ -673,7 +694,8 @@ h6 {
   font-style: normal;
   font-weight: var(--typography-styles-weight-subheading);
   line-height: var(--typography-styles-line-height-subheading-xsmall);
-  letter-spacing: var(--typography-styles-tracking-heading);
+  letter-spacing: var(--typography-styles-tracking-subheading);
+  text-transform: var(--typography-styles-transform-subheading, none);
 }
 
 .body-large {

@@ -41,7 +41,6 @@
       </script>
 
       {% render 'fonts' %}
-      {% render 'variables' %}
 
       {{ 'style.min.css' | asset_url | stylesheet_tag }}
       {{ 'main.min.css' | asset_url | stylesheet_tag }}
@@ -56,6 +55,7 @@
         >
       {% endif %}
       {% render 'styleguide' %}
+      {% render 'variables' %}
     </head>
 
     <body>

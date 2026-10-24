@@ -1,27 +1,52 @@
 {% capture vars -%}
-  --surface-primary: {{ color_scheme.settings.surface_primary }};
+  --surface-primary: {{ color_scheme.settings.surface_primary | default: '#ffffff' }};
+  --surface-secondary: {{ color_scheme.settings.surface_secondary | default: '#f0efed' }};
 
-  --typography-color: {{ color_scheme.settings.typography_color }};
-  --typography-color-secondary: {{ color_scheme.settings.typography_color_secondary }};
-  --typography-color-hover-active: {{ color_scheme.settings.typography_color_hover_active }};
+  --typography-color: {{ color_scheme.settings.typography_color | default: '#111111' }};
+  --typography-color-default: {{ color_scheme.settings.typography_color | default: '#111111' }};
+  --typography-color-secondary: {{ color_scheme.settings.typography_color_secondary | default: '#565656' }};
+  --typography-color-brand: {{ color_scheme.settings.typography_color_brand | default: '#327c95' }};
+  --typography-color-hover-active: {{ color_scheme.settings.typography_color_hover_active | default: '#235768' }};
+  --typography-color-disabled: {{ color_scheme.settings.typography_color_disabled | default: '#838382' }};
+  --typography-color-error-sale: {{ color_scheme.settings.typography_color_error_sale | default: '#b42318' }};
+  --typography-color-success: {{ color_scheme.settings.typography_color_success | default: '#008247' }};
+  --typography-color-warning: {{ color_scheme.settings.typography_color_warning | default: '#b54708' }};
+  --typography-color-inverse: {{ color_scheme.settings.typography_color_inverse | default: '#ffffff' }};
+  --typography-color-secondary-inverse: {{ color_scheme.settings.typography_color_secondary_inverse | default: '#c6c6c4' }};
+  --typography-color-brand-inverse: {{ color_scheme.settings.typography_color_brand_inverse | default: '#c2d8df' }};
+  --typography-color-hover-active-inverse: {{ color_scheme.settings.typography_color_hover_active_inverse | default: '#ebf2f4' }};
+  --typography-color-disabled-inverse: {{ color_scheme.settings.typography_color_disabled_inverse | default: '#838382' }};
+  --typography-color-error-sale-inverse: {{ color_scheme.settings.typography_color_error_sale_inverse | default: '#f04438' }};
+  --typography-color-success-inverse: {{ color_scheme.settings.typography_color_success_inverse | default: '#12b76a' }};
+  --typography-color-warning-inverse: {{ color_scheme.settings.typography_color_warning_inverse | default: '#f79009' }};
 
-  {% comment %} --buttons-primary-text: {{ color_scheme.settings.buttons_primary_text }};
-  --buttons-primary-background: {{ color_scheme.settings.buttons_primary_background }};
-  --buttons-primary-hover: {{ color_scheme.settings.buttons_primary_hover }};
+  --buttons-primary-text: {{ color_scheme.settings.buttons_primary_text | default: '#ffffff' }};
+  --buttons-primary-background: {{ color_scheme.settings.buttons_primary_background | default: '#327c95' }};
+  --buttons-primary-hover: {{ color_scheme.settings.buttons_primary_hover | default: '#235768' }};
+  --buttons-primary-inverse: {{ color_scheme.settings.buttons_primary_inverse | default: '#ffffff' }};
+  --buttons-primary-hover-inverse: {{ color_scheme.settings.buttons_primary_hover_inverse | default: '#e0e0e0' }};
+  --buttons-secondary-text: {{ color_scheme.settings.buttons_secondary_text | default: '#15343e' }};
+  --buttons-secondary-background: {{ color_scheme.settings.buttons_secondary_background | default: '#ffffff' }};
+  --buttons-secondary-hover: {{ color_scheme.settings.buttons_secondary_hover | default: '#ebf2f4' }};
+  --buttons-secondary-border: {{ color_scheme.settings.buttons_secondary_border | default: '#15343e' }};
+  --buttons-tertiary-text: {{ color_scheme.settings.buttons_tertiary_text | default: '#81391b' }};
+  --buttons-tertiary-background: {{ color_scheme.settings.buttons_tertiary_background | default: '#81391b' }};
+  --buttons-tertiary-hover: {{ color_scheme.settings.buttons_tertiary_hover | default: '#eabdaa' }};
+  --buttons-tertiary-border: {{ color_scheme.settings.buttons_tertiary_border | default: '#81391b' }};
+  --buttons-disabled-text: {{ color_scheme.settings.buttons_disabled_text | default: '#b2b2b2' }};
+  --buttons-disabled-background: {{ color_scheme.settings.buttons_disabled_background | default: '#3f3f3f' }};
 
-  --buttons-secondary-text: {{ color_scheme.settings.buttons_secondary_text }};
-  --buttons-secondary-background: {{ color_scheme.settings.buttons_secondary_background }};
-  --buttons-secondary-hover: {{ color_scheme.settings.buttons_secondary_hover }};
-  --buttons-secondary-border: {{ color_scheme.settings.buttons_secondary_border }};
-
-  --buttons-tertiary-text: {{ color_scheme.settings.buttons_tertiary_text }};
-  --buttons-tertiary-background: {{ color_scheme.settings.buttons_tertiary_background }};
-  --buttons-tertiary-hover: {{ color_scheme.settings.buttons_tertiary_hover }};
-  --buttons-tertiary-border: {{ color_scheme.settings.buttons_tertiary_border }}; {% endcomment %}
-
-  --buttons-disabled-text: {{ color_scheme.settings.buttons_disabled_text }};
-  --buttons-disabled-background: {{ color_scheme.settings.buttons_disabled_background }};
-
+  --borders-color-lightest: {{ color_scheme.settings.borders_color_lightest | default: '#f0efed' }};
+  --borders-color-light-decorative: {{ color_scheme.settings.borders_color_light_decorative | default: '#c6c6c4' }};
+  --borders-color-medium-default: {{ color_scheme.settings.borders_color_medium_default | default: '#838382' }};
+  --borders-color-dark: {{ color_scheme.settings.borders_color_dark | default: '#3f3f3f' }};
+  --borders-color-darkest: {{ color_scheme.settings.borders_color_darkest | default: '#000000' }};
+  --borders-color-brand: {{ color_scheme.settings.borders_color_brand | default: '#327c95' }};
+  --borders-color-brand-inverse: {{ color_scheme.settings.borders_color_brand_inverse | default: '#c2d8df' }};
+  --borders-color-error: {{ color_scheme.settings.borders_color_error | default: '#b42318' }};
+  --borders-color-error-inverse: {{ color_scheme.settings.borders_color_error_inverse | default: '#f04438' }};
+  --borders-color-disabled: {{ color_scheme.settings.borders_color_disabled | default: '#c6c6c4' }};
+  --borders-color-disabled-inverse: {{ color_scheme.settings.borders_color_disabled_inverse | default: '#565656' }};
 {%- endcapture %}
 
 {{ vars }}
