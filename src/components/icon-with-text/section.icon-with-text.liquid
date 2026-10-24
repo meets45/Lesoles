@@ -1,0 +1,460 @@
+{% liquid
+  assign has_header = false
+  for block in section.blocks
+    if block.type != 'icon'
+      assign has_header = true
+      break
+    endif
+  endfor
+%}
+
+<icon-with-text
+  data-component="icon-with-text"
+  data-desktop-gap="{{ section.settings.desktop_gap }}"
+  data-disable-mobile-slider="{{ section.settings.disable_mobile_slider }}"
+  data-mobile-gap="{{ section.settings.mobile_gap }}"
+  data-slides-per-view-desktop="{{ section.settings.slides_per_view_desktop }}"
+  data-slides-per-view-mobile="{{ section.settings.slides_per_view_mobile }}"
+  class="
+    icon-with-text
+    {% if section.settings.full_width %}icon-with-text--full-width{% endif %}
+    {% if section.settings.link_underline %}icon-with-text--link-underline{% endif %}
+    {% if section.settings.disable_mobile_slider %}icon-with-text--mobile-slider-disabled{% endif %}
+  "
+  style="
+    {% render 'color-scheme-vars', color_scheme: section.settings.color_scheme %}
+    {% if section.settings.card_background_color != blank %}--icon-with-text-card-background: {{ section.settings.card_background_color }};{% endif %}
+    --icon-with-text-icon-size: {{ section.settings.icon_size }}px;
+    --icon-with-text-mobile-columns: {{ section.settings.mobile_cards_per_row }};
+    --icon-with-text-mobile-gap: {{ section.settings.mobile_gap }}px;
+  "
+>
+  {% render 'section-bg-image', section_settings: section.settings %}
+
+  <div class="icon-with-text__inner">
+    {% if has_header %}
+      <div class="icon-with-text__header">
+        {% render 'content-blocks',
+          blocks: section.blocks,
+          section_settings: section.settings,
+          layout: section.settings.content_layout
+        %}
+      </div>
+    {% endif %}
+
+    <div class="icon-with-text__slider" data-slider>
+      <div class="swiper" data-swiper role="region" aria-roledescription="carousel" aria-label="Icon cards">
+        <div class="swiper-wrapper" role="list">
+          {% for block in section.blocks %}
+            {% if block.type == 'icon' and block.settings.icon_image != blank %}
+              {% liquid
+                assign icon_alt = block.settings.icon_image.alt
+                if block.settings.label != blank
+                  assign icon_alt = ''
+                endif
+              %}
+
+              <div class="swiper-slide" role="group" aria-roledescription="slide" {{ block.shopify_attributes }}>
+                <div class="icon-with-text__card" role="listitem">
+                  {% if block.settings.url != blank %}
+                    <a class="icon-with-text__link" href="{{ block.settings.url }}">
+                  {% else %}
+                    <div class="icon-with-text__content">
+                  {% endif %}
+
+                  <div class="icon-with-text__icon">
+                    {{
+                      block.settings.icon_image
+                      | image_url: width: 240
+                      | image_tag:
+                        alt: icon_alt,
+                        loading: 'lazy',
+                        sizes: '(min-width: 769px) 160px, 120px',
+                        widths: '80, 120, 160, 240'
+                    }}
+                  </div>
+
+                  {% if block.settings.label != blank %}
+                    <p class="icon-with-text__label">{{ block.settings.label }}</p>
+                  {% endif %}
+
+                  {% if block.settings.url != blank %}
+                    </a>
+                  {% else %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      {% if section.settings.show_navigation %}
+        <div
+          class="icon-with-text__controls {% unless section.settings.show_arrows %}icon-with-text__controls--pagination-only{% endunless %}"
+          data-swiper-controls
+        >
+          {% if section.settings.show_pagination %}
+            <div class="icon-with-text__pagination" data-swiper-pagination></div>
+          {% endif %}
+
+          {% if section.settings.show_arrows %}
+            <div class="icon-with-text__arrows">
+              <button
+                type="button"
+                class="icon-with-text__nav-button button-unstyled"
+                data-swiper-prev
+                aria-label="Previous icon cards"
+              >
+                {% render 'carousel-arrow', direction: 'left' %}
+              </button>
+              <button
+                type="button"
+                class="icon-with-text__nav-button button-unstyled"
+                data-swiper-next
+                aria-label="Next icon cards"
+              >
+                {% render 'carousel-arrow', direction: 'right' %}
+              </button>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_scrollbar %}
+      <div class="icon-with-text__scrollbar" data-scrollbar></div>
+    {% endif %}
+  </div>
+</icon-with-text>
+
+{% schema %}
+{
+  "name": "Icon with text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Section color scheme",
+      "default": "color_scheme_1"
+    },
+    {
+      "type": "select",
+      "id": "content_layout",
+      "label": "Header layout",
+      "options": [
+        { "value": "default", "label": "Stacked" },
+        { "value": "row", "label": "Row" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "Header text alignment - desktop",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Header text alignment - mobile",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - optional"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image - optional"
+    },
+    {
+      "type": "range",
+      "id": "scrim",
+      "label": "Image overlay",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_desktop",
+      "label": "Cards per view - desktop",
+      "min": 1,
+      "max": 6,
+      "step": 0.1,
+      "default": 3.1
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "Cards per view - mobile",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1.1
+    },
+    {
+      "type": "range",
+      "id": "desktop_gap",
+      "label": "Cards gap - desktop",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Cards gap - mobile",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_mobile_slider",
+      "label": "Disable carousel on mobile",
+      "info": "Shows cards in a grid using the selected number of columns.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "mobile_cards_per_row",
+      "label": "Cards per row - mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2,
+      "visible_if": "{{ section.settings.disable_mobile_slider }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show carousel controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination dots on mobile",
+      "visible_if": "{{ section.settings.show_navigation }}",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "visible_if": "{{ section.settings.show_navigation }}",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scrollbar",
+      "label": "Show scrollbar on desktop",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Icon cards"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 20,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background color"
+    },
+    {
+      "type": "checkbox",
+      "id": "link_underline",
+      "label": "Underline card links",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Eyebrow text"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading level",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Icon with text"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading text"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "name": "Body",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Body text is optional.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "tertiary", "label": "Tertiary" }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Text link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "Icon card",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Text",
+          "default": "Icon label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon with text",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "icon" },
+        { "type": "icon" },
+        { "type": "icon" }
+      ]
+    }
+  ]
+}
+{% endschema %}
