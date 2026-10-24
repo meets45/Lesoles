@@ -17,6 +17,7 @@ class MobileMegaMenuPanel extends HTMLElement {
     this.menu = this.closest('mobile-mega-menu');
     this.openTrigger = this.menu?.querySelector(`[data-mobile-mega-menu-panel-trigger="${this.handle}"]`);
     this.closeTrigger = this.querySelector('[data-mobile-mega-menu-panel-close]');
+    this.cardsScroller = this.querySelector('.mobile-mega-menu-panel__cards .menu-content-cards__list');
     this.trap = createFocusTrap([this, this.menu.closeTrigger.parentElement], {
       escapeDeactivates: false,
     });
@@ -36,6 +37,7 @@ class MobileMegaMenuPanel extends HTMLElement {
     clearTimeout(this.hideTimer);
     this.active = true;
     this.style.display = 'block';
+    if (this.cardsScroller) this.cardsScroller.scrollLeft = 0;
     this.openTrigger?.setAttribute('aria-expanded', 'true');
     this.setAttribute('aria-hidden', 'false');
     requestAnimationFrame(() => {

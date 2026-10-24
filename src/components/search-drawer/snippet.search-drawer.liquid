@@ -1,67 +1,69 @@
-{% assign input_id = 'search-drawer-input' %}
-
-{% capture links_content %}
-  {% if search_drawer.links.value %}
-    {% render 'search-drawer-link-list', links: search_drawer.links.value %}
-  {% endif %}
-{% endcapture %}
-
 <search-drawer
   data-component="search-drawer"
   data-search-drawer
   data-active="false"
-  style="display:none;"
-  aria-modal="true"
+  data-empty-text="{{ 'content.no_results_found' | t | escape }}"
+  data-error-text="Search is unavailable. Please try again."
   role="dialog"
+  aria-modal="false"
+  aria-hidden="true"
+  aria-labelledby="search-drawer-heading"
+  style="display: none;"
 >
   <div class="search-drawer">
-    <div class="search-drawer__links search-drawer__links--desktop">
-      <div class="search-drawer__links-header">
-        <h2 id="search-drawer-heading" class="heading-xsmall">
-          {{ 'general.search.heading' | t: shop_name: shop.name }}
-        </h2>
+    <div class="search-drawer__inner">
+      <div class="search-drawer__header">
+        <div class="search-drawer__intro">
+          <p class="search-drawer__eyebrow">{{ 'content.search' | t }}</p>
+          <h2 id="search-drawer-heading">{{ section.settings.search_heading | default: 'Find your next pair.' | escape }}</h2>
+          {% if section.settings.search_description != blank %}
+            <p class="search-drawer__description">{{ section.settings.search_description | escape }}</p>
+          {% endif %}
+        </div>
+        <button type="button" class="search-drawer__close" data-close aria-label="{{ 'actions.close' | t }}">
+          {% render 'icon-close' %}
+        </button>
       </div>
-      <div class="search-drawer__links-inner">
-        {{ links_content }}
+
+      <form class="search-drawer__form{% if section.settings.show_search_cta %} search-drawer__form--with-cta{% endif %}" action="{{ routes.search_url }}" method="get" role="search">
+        {% render 'search-input', id: 'search-drawer-input' %}
+        {% if section.settings.show_search_cta %}
+          <button class="search-drawer__submit" type="submit">
+            {{ 'content.search' | t }} <span aria-hidden="true">→</span>
+          </button>
+        {% endif %}
+      </form>
+
+      {% if section.settings.search_links != blank %}
+        <nav class="search-drawer__quick-links" data-search-quick-links aria-label="{{ section.settings.search_links_heading | default: 'Popular categories' | escape }}">
+          <h3>{{ section.settings.search_links_heading | default: 'Popular categories' | escape }}</h3>
+          <ul>
+            {% for link in section.settings.search_links.links %}
+              <li><a href="{{ link.url }}">{{ link.title | escape }} <span aria-hidden="true">↗</span></a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      <p class="search-drawer__status" data-search-status role="status" aria-live="polite"></p>
+
+      <div class="search-drawer__results" data-search-results hidden>
+        <section class="search-drawer__result-group" data-search-suggestions hidden>
+          <h3>{{ 'content.search_results_resource_queries' | t }}</h3>
+          <ul class="search-drawer__suggestion-list" data-search-suggestion-list></ul>
+        </section>
+        <section class="search-drawer__result-group" data-search-products hidden>
+          <h3>{{ 'content.search_results_resource_products' | t }}</h3>
+          <ul class="search-drawer__product-list" data-search-product-list></ul>
+        </section>
+        <section class="search-drawer__result-group" data-search-links hidden>
+          <h3>{{ 'content.search_results' | t }}</h3>
+          <ul class="search-drawer__link-list" data-search-link-list></ul>
+        </section>
+        <a class="search-drawer__view-all" data-search-view-all href="{{ routes.search_url }}">
+          {{ 'content.search_results_view_all' | t }} <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
-    <div class="search-drawer__main" aria-describedby="search-drawer-heading">
-      <div class="search-drawer__search">
-        <form action="/search">
-          {% render 'search-input', id: input_id %}
-        </form>
-      </div>
-      <div class="search-drawer__terms" aria-live="polite">
-        {% assign title = 'general.search.suggestion_title' | t %}
-        {% render 'suggestion-chip-slider',
-          input_id: input_id,
-          title: title,
-          suggested_terms: search_drawer.suggested_terms.value
-        %}
-      </div>
-
-      <div class="search-drawer__results" aria-live="polite">
-        {% assign dynamic_title = 'general.search.product_results_dynamic_title' | t %}
-        {% render 'product-search-card-slider',
-          title: search_drawer.collection.value.title,
-          dynamic_title: dynamic_title,
-          products: search_drawer.collection.value.products
-        %}
-      </div>
-
-      <div class="search-drawer__links search-drawer__links--mobile">
-        {{ links_content }}
-      </div>
-    </div>
-  </div>
-
-  {% comment %} this is a load bearing div, required for focus trapping {% endcomment %}
-  <div class="search-drawer__close-wrapper">
-    <button class="search-drawer__close" data-close>
-      <span class="sr-only">{{ 'general.search.close' | t }}</span>
-      <div class="search-drawer__close-icon">
-        {% render 'icon-close' %}
-      </div>
-    </button>
   </div>
 </search-drawer>

@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    {% render 'search-drawer', search_drawer: section.settings.search_drawer %}
+    {% render 'search-drawer', section: section %}
     {% if product %}
       {% render 'mobile-floating-header' %}
     {% endif %}
@@ -97,7 +97,13 @@
     { "type": "header", "content": "Menus" },
     { "type": "link_list", "id": "desktop_menu", "label": "Menu (desktop)" },
     { "type": "link_list", "id": "mobile_menu", "label": "Menu (mobile)" },
-    { "type": "link_list", "id": "utility_menu", "label": "Utility menu (mobile)" }
+    { "type": "link_list", "id": "utility_menu", "label": "Utility menu (mobile)" },
+    { "type": "header", "content": "Search" },
+    { "type": "checkbox", "id": "show_search_cta", "label": "Show search button", "default": false },
+    { "type": "text", "id": "search_heading", "label": "Search heading", "default": "Find your next pair." },
+    { "type": "text", "id": "search_description", "label": "Search description", "default": "Search styles, sizes and more." },
+    { "type": "link_list", "id": "search_links", "label": "Search quick links" },
+    { "type": "text", "id": "search_links_heading", "label": "Quick links heading", "default": "Popular categories" }
   ],
   "blocks": [
     {

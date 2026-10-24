@@ -1,82 +1,160 @@
-<footer data-component="footer" class="footer">
-  <div class="container primary-footer-navigation">
-    <div class="row">
-      {% comment %} Email CTA {% endcomment %}
-      <div class="footer-col__email-cta">
-        <div class="footer-col__email-cta-content">
-          <h3 class="heading-small">{{ section.settings.email_cta_title }}</h3>
-          <p class="body-medium">{{ section.settings.email_cta_caption }}</p>
+{% liquid
+  assign desktop_logo = section.settings.brand_logo | default: settings.logo
+  assign mobile_logo = section.settings.mobile_brand_logo
+  assign has_social_links = false
+  if section.settings.show_social_links
+    if settings.social_instagram_link != blank or settings.social_facebook_link != blank or settings.social_youtube_link != blank or settings.social_pinterest_link != blank or settings.social_tiktok_link != blank or settings.social_x_link != blank
+      assign has_social_links = true
+    endif
+  endif
+%}
 
-          {% render 'newsletter-form' %}
-          <div class="footer__social-icons-list">
-            <h3 class="heading-small">{{ section.settings.footer_social_menu_title }}</h3>
-            {% render 'footer-social-icons' %}
-          </div>
-        </div>
-      </div>
-
-      {% comment %} Footer Blocks {% endcomment %}
-      {% for block in section.blocks %}
-        {% case block.type %}
-          {% when 'large_link_list' %}
-            <div class="footer-col__large-link-list">
-              <ul>
-                {% for link in block.settings.menu.links %}
-                  <li>
-                    <a class="heading-small" href="{{ link.url }}">{{ link.title }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% when 'standard_link_list' %}
-            <div class="footer-col__standard-link-list">
-              <p class="footer-col__standard-link-list-heading heading-small">
-                {{ block.settings.heading }}
-              </p>
-              <ul>
-                {% for link in block.settings.menu.links %}
-                  <li>
-                    <a class="body-medium" href="{{ link.url }}">{{ link.title }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-        {% endcase %}
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="footer-col__copyright">
-        <div class="brand-callout">
-          {%- unless section.settings.brand_logo == blank -%}
-            <img
-              src="{{ section.settings.brand_logo | image_url: width: 100 }}"
-              alt="{{ section.settings.brand_logo.alt }}"
-              width="{{ section.settings.brand_logo.width }}"
-              height="{{ section.settings.brand_logo.height }}"
-            >
-          {%- endunless -%}
-          {% if section.settings.brand_statement != blank %}
-            <p class="body-xsmall">
-              &copy; {{ 'now' | date: '%Y' }}
-              {{ section.settings.brand_statement }}
-            </p>
-          {% endif %}
-        </div>
-        {% if section.settings.copyright_menu != blank %}
-          <div class="copyright-menu">
-            <ul>
-              {% for link in section.settings.copyright_menu.links %}
-                <li>
-                  <a class="body-xsmall" href="{{ link.url }}">{{ link.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
+<footer
+  data-component="footer"
+  class="footer"
+  data-footer-ready="false"
+  style="--footer-background: {{ section.settings.footer_background_color | default: '#123a35' | escape }}; --footer-foreground: {{ section.settings.footer_text_color | default: '#f7f8f4' | escape }}; --footer-divider: {{ section.settings.footer_divider_color | default: '#55756e' | escape }};"
+>
+  <div class="footer__inner">
+    <div class="footer__main">
+      <div class="footer__brand">
+        {% if section.settings.show_brand_logo %}
+          <a
+            class="footer__logo{% if section.settings.footer_logo_color == 'white' %} footer__logo--white{% endif %}"
+            href="{{ routes.root_url }}"
+            aria-label="{{ 'accessibility.home_logo_alt' | t: store_name: shop.name }}"
+          >
+            <picture>
+              {% if mobile_logo != blank %}
+                <source media="(max-width: 767px)" srcset="{{ mobile_logo | image_url: width: 440 }}">
+              {% endif %}
+              {% if desktop_logo != blank %}
+                {{ desktop_logo | image_url: width: 640 | image_tag: widths: '240, 360, 480, 640', loading: 'lazy', alt: shop.name }}
+              {% else %}
+                <img src="{{ 'lesoles-logo.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="303" height="70" loading="lazy">
+              {% endif %}
+            </picture>
+          </a>
+        {% endif %}
+        {% if section.settings.show_brand_tagline and section.settings.brand_tagline != blank %}
+          <p class="footer__tagline">{{ section.settings.brand_tagline | escape }}</p>
+        {% endif %}
+        {% if has_social_links %}
+          <div class="footer__brand-social">
+            {% render 'footer-social-icons', mode: 'brand' %}
           </div>
         {% endif %}
       </div>
+
+      <nav class="footer__menus" aria-label="Footer navigation">
+        {% for block in section.blocks %}
+          {% if block.type == 'standard_link_list' %}
+            {% liquid
+              assign menu_heading = block.settings.heading | default: block.settings.menu.title | default: 'Links'
+            %}
+            <div class="footer__menu-group" data-footer-menu-group data-open="false" {{ block.shopify_attributes }}>
+              <h2 class="footer__menu-heading">{{ menu_heading | escape }}</h2>
+              <button
+                class="footer__menu-toggle"
+                type="button"
+                data-footer-menu-toggle
+                aria-expanded="false"
+                aria-controls="FooterMenu-{{ section.id }}-{{ block.id }}"
+              >
+                <span>{{ menu_heading | escape }}</span>
+                <span class="footer__menu-toggle-icon" aria-hidden="true"></span>
+              </button>
+              <div class="footer__menu-content" id="FooterMenu-{{ section.id }}-{{ block.id }}">
+                <ul class="footer__menu-links">
+                  {% for link in block.settings.menu.links %}
+                    <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% if section.settings.show_social_links %}
+          <div class="footer__menu-group footer__menu-group--social" data-footer-menu-group data-open="false">
+            <h2 class="footer__menu-heading">{{ section.settings.footer_social_menu_title | escape }}</h2>
+            <button
+              class="footer__menu-toggle"
+              type="button"
+              data-footer-menu-toggle
+              aria-expanded="false"
+              aria-controls="FooterMenu-{{ section.id }}-social"
+            >
+              <span>{{ section.settings.footer_social_menu_title | escape }}</span>
+              <span class="footer__menu-toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="footer__menu-content" id="FooterMenu-{{ section.id }}-social">
+              {% render 'footer-social-icons', mode: 'text' %}
+            </div>
+          </div>
+        {% endif %}
+      </nav>
+    </div>
+
+    {% if has_social_links %}
+      <div class="footer__mobile-social">
+        {% render 'footer-social-icons', mode: 'mobile' %}
+      </div>
+    {% endif %}
+
+    <div class="footer__bottom">
+      {% if section.settings.show_copyright %}
+        <p class="footer__copyright">
+          &copy; {{ 'now' | date: '%Y' }} {{ section.settings.brand_statement | default: shop.name | escape }}{% if section.settings.copyright_suffix != blank %}. {{ section.settings.copyright_suffix | escape }}{% endif %}
+        </p>
+      {% endif %}
+
+      {% if section.settings.show_policy_links %}
+        {% if section.settings.copyright_menu != blank or shop.privacy_policy != blank or shop.terms_of_service != blank %}
+          <div class="footer__policy-links">
+            {% if section.settings.copyright_menu != blank %}
+              {% for link in section.settings.copyright_menu.links %}
+                <a href="{{ link.url }}">{{ link.title | escape }}</a>
+              {% endfor %}
+            {% else %}
+              {% if shop.privacy_policy != blank %}
+                <a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a>
+              {% endif %}
+              {% if shop.terms_of_service != blank %}
+                <a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title | escape }}</a>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {% if section.settings.show_country_selector and localization.country != blank %}
+        <div class="footer__localization">
+          {% if localization.available_countries.size > 1 %}
+            {% form 'localization', class: 'footer__country-form' %}
+              <label class="sr-only" for="FooterCountry-{{ section.id }}">{{ 'accessibility.country_region' | t }}</label>
+              <select id="FooterCountry-{{ section.id }}" name="country_code" data-footer-country-select>
+                {% for country in localization.available_countries %}
+                  <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+                    {% render 'footer-country-label', country: country, format: section.settings.country_display_format %}
+                  </option>
+                {% endfor %}
+              </select>
+            {% endform %}
+          {% else %}
+            <span>{% render 'footer-country-label', country: localization.country, format: section.settings.country_display_format %}</span>
+          {% endif %}
+          <span class="footer__localization-caret" aria-hidden="true">⌄</span>
+        </div>
+      {% endif %}
+
+      {% if section.settings.show_payment_methods and shop.enabled_payment_types.size > 0 %}
+        <div class="footer__payments" role="list" aria-label="{{ section.settings.payment_methods_label | escape }}">
+          {% for payment_type in shop.enabled_payment_types %}
+            <span class="footer__payment" role="listitem">{{ payment_type | payment_type_svg_tag: class: 'footer__payment-icon' }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </footer>
@@ -85,80 +163,58 @@
 {
   "name": "Footer",
   "settings": [
+    { "type": "header", "content": "Brand" },
+    { "type": "checkbox", "id": "show_brand_logo", "label": "Show footer logo", "default": true },
+    { "type": "image_picker", "id": "brand_logo", "label": "Desktop footer logo", "info": "Uses the global logo or Lésoles logo when blank." },
+    { "type": "image_picker", "id": "mobile_brand_logo", "label": "Mobile footer logo", "info": "Uses the desktop logo when blank." },
     {
-      "type": "text",
-      "id": "email_cta_title",
-      "label": "Email CTA Title",
-      "default": "Subscribe to our newsletter"
+      "type": "select",
+      "id": "footer_logo_color",
+      "label": "Logo appearance",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "original", "label": "Original image colors" }
+      ],
+      "default": "white"
     },
+    { "type": "checkbox", "id": "show_brand_tagline", "label": "Show tagline", "default": true },
+    { "type": "text", "id": "brand_tagline", "label": "Tagline", "default": "Comfort that moves you." },
+    { "type": "text", "id": "brand_statement", "label": "Copyright brand name", "default": "Lésoles" },
+    { "type": "header", "content": "Layout and colors" },
+    { "type": "color", "id": "footer_background_color", "label": "Background", "default": "#123a35" },
+    { "type": "color", "id": "footer_text_color", "label": "Text and icon color", "default": "#f7f8f4" },
+    { "type": "color", "id": "footer_divider_color", "label": "Divider color", "default": "#55756e" },
+    { "type": "header", "content": "Menus and social links" },
+    { "type": "checkbox", "id": "show_social_links", "label": "Show social links", "default": true },
+    { "type": "text", "id": "footer_social_menu_title", "label": "Social heading", "default": "Follow us" },
+    { "type": "header", "content": "Footer details" },
+    { "type": "checkbox", "id": "show_copyright", "label": "Show copyright", "default": true },
+    { "type": "text", "id": "copyright_suffix", "label": "Copyright note", "info": "Shown after the brand name. A period is added before this text.", "default": "All rights reserved" },
+    { "type": "checkbox", "id": "show_policy_links", "label": "Show policy links", "default": true },
+    { "type": "link_list", "id": "copyright_menu", "label": "Policy links", "info": "These links are used first; Shopify policies are used when this menu is empty." },
+    { "type": "checkbox", "id": "show_country_selector", "label": "Show country and currency", "default": true },
     {
-      "type": "text",
-      "id": "email_cta_caption",
-      "label": "Email CTA Caption",
-      "default": "Sign up for exclusive updates and offers"
+      "type": "select",
+      "id": "country_display_format",
+      "label": "Country and currency format",
+      "options": [
+        { "value": "country_currency_symbol", "label": "Country, currency code and symbol" },
+        { "value": "country_currency", "label": "Country and currency code" },
+        { "value": "currency_symbol", "label": "Currency code and symbol" },
+        { "value": "country", "label": "Country only" }
+      ],
+      "default": "country_currency_symbol"
     },
-    {
-      "type": "text",
-      "id": "email_placeholder",
-      "label": "Email CTA Form Placeholder Text",
-      "default": "Enter your email"
-    },
-    {
-      "type": "text",
-      "id": "footer_social_menu_title",
-      "label": "Footer Social Menu Title",
-      "default": "Join the conversation"
-    },
-    {
-      "type": "link_list",
-      "id": "copyright_menu",
-      "label": "Copyright Linklist",
-      "info": "Links for copyright section (privacy policy, terms, etc.)"
-    },
-    {
-      "type": "image_picker",
-      "id": "brand_logo",
-      "label": "Brand Logo"
-    },
-    {
-      "type": "text",
-      "id": "brand_statement",
-      "label": "Brand Statement",
-      "default": "Lesoles"
-    }
+    { "type": "checkbox", "id": "show_payment_methods", "label": "Show accepted payment methods", "default": true },
+    { "type": "text", "id": "payment_methods_label", "label": "Payment methods accessibility label", "default": "Accepted payment methods" }
   ],
   "blocks": [
     {
-      "type": "large_link_list",
-      "name": "Large Link List",
-      "settings": [
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu"
-        }
-      ]
-    },
-    {
       "type": "standard_link_list",
-      "name": "Standard Link List",
+      "name": "Footer menu",
       "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "List Heading",
-          "default": "Quick links"
-        },
-        {
-          "type": "url",
-          "id": "heading_url",
-          "label": "List Heading URL"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu"
-        }
+        { "type": "text", "id": "heading", "label": "Heading", "info": "Leave blank to use the selected menu’s title." },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
       ]
     }
   ],
@@ -166,17 +222,12 @@
     {
       "name": "Footer",
       "blocks": [
-        {
-          "type": "large_link_list"
-        },
-        {
-          "type": "standard_link_list"
-        }
+        { "type": "standard_link_list" },
+        { "type": "standard_link_list" },
+        { "type": "standard_link_list" }
       ]
     }
   ],
-  "enabled_on": {
-    "groups": ["footer"]
-  }
+  "enabled_on": { "groups": ["footer"] }
 }
 {% endschema %}

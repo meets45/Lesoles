@@ -1,48 +1,49 @@
-<ul data-component="footer-social-icons" class="footer-social-icons">
-  {% if settings.social_tiktok_link != blank %}
-    <li>
-      <a href="{{ settings.social_tiktok_link }}" target="_blank">
-        {% render 'icon-tiktok' %}
-      </a>
-    </li>
-  {% endif %}
-
+<ul data-component="footer-social-icons" class="footer-social-icons{% if mode == 'text' %} footer-social-icons--text{% endif %}">
   {% if settings.social_instagram_link != blank %}
     <li>
-      <a href="{{ settings.social_instagram_link }}" target="_blank">
-        {% render 'icon-instagram' %}
+      <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <span class="footer-social-icons__icon" aria-hidden="true">{% render 'icon-instagram' %}</span>
+        <span class="footer-social-icons__label">Instagram</span>
       </a>
     </li>
   {% endif %}
-
+  {% if mode != 'text' and settings.social_facebook_link != blank %}
+    <li>
+      <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <span class="footer-social-icons__icon" aria-hidden="true">{% render 'icon-facebook' %}</span>
+        <span class="footer-social-icons__label">Facebook</span>
+      </a>
+    </li>
+  {% endif %}
   {% if settings.social_youtube_link != blank %}
     <li>
-      <a href="{{ settings.social_youtube_link }}" target="_blank">
-        {% render 'icon-youtube' %}
+      <a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <span class="footer-social-icons__icon" aria-hidden="true">{% render 'icon-youtube' %}</span>
+        <span class="footer-social-icons__label">YouTube</span>
       </a>
     </li>
   {% endif %}
-
-  {% if settings.social_x_link != blank %}
+  {% if mode != 'brand' and settings.social_pinterest_link != blank %}
     <li>
-      <a href="{{ settings.social_x_link }}" target="_blank">
-        {% render 'icon-twitter' %}
+      <a href="{{ settings.social_pinterest_link }}" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+        <span class="footer-social-icons__icon" aria-hidden="true">{% render 'icon-pinterest' %}</span>
+        <span class="footer-social-icons__label">Pinterest</span>
       </a>
     </li>
   {% endif %}
-
-  {% if settings.social_facebook_link != blank %}
+  {% if mode != 'brand' and settings.social_tiktok_link != blank %}
     <li>
-      <a href="{{ settings.social_facebook_link }}" target="_blank">
-        {% render 'icon-facebook' %}
+      <a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <span class="footer-social-icons__icon" aria-hidden="true">{% render 'icon-tiktok' %}</span>
+        <span class="footer-social-icons__label">TikTok</span>
       </a>
     </li>
   {% endif %}
-
-  {% if settings.social_pinterest_link != blank %}
+  {% if mode != 'brand' and settings.social_x_link != blank %}
     <li>
-      <a href="{{ settings.social_pinterest_link }}" target="_blank">
-        {% render 'icon-pinterest' %}
+      <a href="{{ settings.social_x_link }}" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <span class="footer-social-icons__icon" aria-hidden="true">{% render 'icon-twitter' %}</span>
+        <span class="footer-social-icons__label">X</span>
       </a>
     </li>
   {% endif %}
