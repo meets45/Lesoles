@@ -2,6 +2,27 @@
   assign variant = variant
   assign variant_id = variant.id | default: product.selected_or_first_available_variant.id
   assign quick_add_position = quick_add_position | default: 'image'
+  assign quick_add_style = quick_add_style | default: 'icon'
+
+  if quick_add_position != 'details'
+    assign quick_add_style = 'icon'
+  endif
+
+  assign has_color_options = false
+  unless variant
+    for product_option in product.options_with_values
+      for option_value in product_option.values
+        if option_value.swatch != blank
+          assign has_color_options = true
+          break
+        endif
+      endfor
+
+      if has_color_options
+        break
+      endif
+    endfor
+  endunless
 
   assign product_href = product.url
   if collection
@@ -23,12 +44,17 @@
       <input type="hidden" name="id" value="{{ variant_id }}">
       {% capture quick_add_button %}
         <button
-          class="product-card__add-to-cart{% if quick_add_position == 'details' %} product-card__add-to-cart--details{% endif %}"
+          class="product-card__add-to-cart{% if quick_add_position == 'details' %} product-card__add-to-cart--details{% endif %}{% if quick_add_style == 'cta' %} product-card__add-to-cart--cta{% endif %}"
           type="submit"
           data-submit
           data-quick-add="true"
         >
-          {% render 'icon-cart-plus-icon' %}
+          {% if quick_add_style == 'cta' %}
+            <span>Quick add</span>
+            {% render 'icon-plus' %}
+          {% else %}
+            {% render 'icon-cart-plus-icon' %}
+          {% endif %}
         </button>
       {% endcapture %}
       <div class="product-card__inner">
@@ -61,22 +87,25 @@
               product: product,
               mode: 'compact',
               is_card: true,
-              product_href: product_href
+              product_href: product_href,
+              show_pagination: show_product_slider_indicators
             %}
           {% endif %}
         </div>
 
         <div class="product-card__content">
           <div class="product-card__content-inner">
-            <div class="product-card__options">
-              {% unless variant %}
-                {% render 'product-form-options',
-                  product: product,
-                  is_card: true,
-                  product_href: product_href
-                %}
-              {% endunless %}
-            </div>
+            {% unless quick_add_position == 'details' and quick_add_style == 'cta' %}
+              <div class="product-card__options">
+                {% unless variant %}
+                  {% render 'product-form-options',
+                    product: product,
+                    is_card: true,
+                    product_href: product_href
+                  %}
+                {% endunless %}
+              </div>
+            {% endunless %}
             <div class="product-card__content-inner-header">
               <div class="product-card__eyebrow">
                 <p class="body-medium">Eyebrow</p>
@@ -93,13 +122,28 @@
                   {% endif %}
                 </a>
               </h2>
-              {% if quick_add_position == 'details' %}
+              {% if quick_add_position == 'details' and quick_add_style != 'cta' %}
                 {{ quick_add_button }}
               {% endif %}
             </div>
 
             {% render 'product-price', product: product, variant: variant %}
             {% render 'powerreviews-plp-snippet' with product as product %}
+            {% if quick_add_position == 'details' and quick_add_style == 'cta' %}
+              <div class="product-card__quick-add-row{% unless has_color_options %} product-card__quick-add-row--without-options{% endunless %}">
+                {% if has_color_options %}
+                  <div class="product-card__options">
+                    {% render 'product-form-options',
+                      product: product,
+                      is_card: true,
+                      product_href: product_href,
+                      card_swatch_limit: 3
+                    %}
+                  </div>
+                {% endif %}
+                {{ quick_add_button }}
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>

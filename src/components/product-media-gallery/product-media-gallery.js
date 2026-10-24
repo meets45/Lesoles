@@ -236,8 +236,33 @@ class ProductMediaGallery extends HTMLElement {
     }
   }
 
+  updateCardVariantImage(slide, product, variant) {
+    const featuredImage = variant?.featured_image;
+    const imageSource = featuredImage?.src || variant?.featured_media?.preview_image?.src;
+    const image = slide?.querySelector('img');
+
+    if (!imageSource || !image) return;
+
+    const imageUrl = new URL(imageSource, window.location.origin);
+    imageUrl.searchParams.set('width', '1200');
+    image.src = imageUrl.toString();
+    image.removeAttribute('srcset');
+    image.removeAttribute('sizes');
+    image.alt = featuredImage?.alt || variant?.featured_media?.preview_image?.alt || product.title;
+
+    const link = image.closest('a');
+    if (link) link.href = `/products/${product.handle}?variant=${variant.id}`;
+  }
+
   async handleProductVariantUpdate(e) {
     const { product, variant } = e.detail;
+    if (!variant) return;
+
+    if (this.isCard) {
+      this.requestedVariantId = String(variant.id);
+      this.swiper?.slideTo(0, 0);
+      this.updateCardVariantImage(this.swiperContainer?.querySelector('[data-swiper-slide]'), product, variant);
+    }
 
     // Check if this event is meant for this gallery
     const productId = this.getAttribute('data-product-id');
@@ -250,6 +275,8 @@ class ProductMediaGallery extends HTMLElement {
       `${window.location.origin}/products/${product.handle}?variant=${variant.id}`,
     );
     const text = await SectionsAPIService.fetch(url, 'product-media-gallery');
+
+    if (this.isCard && this.requestedVariantId !== String(variant.id)) return;
 
     // get the slides from this gallery
     const slides = parseHTML(text, '[data-swiper-slide]', true);
@@ -295,10 +322,13 @@ class ProductMediaGallery extends HTMLElement {
       }
     }
 
+    if (this.isCard) this.updateCardVariantImage(slides[0], product, variant);
+
     if (this.swiper) {
       // remove slides from the current swiper
       this.swiper.removeAllSlides();
       this.swiper.appendSlide(slides);
+      this.swiper.slideTo(0, 0);
     } else {
       this.swiperContainer.replaceChildren(...slides);
     }
