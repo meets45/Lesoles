@@ -46,9 +46,7 @@ class ProductForm extends HTMLElement {
     this.option3Label = this.querySelector('[data-option-3-label]');
     this.submit = this.querySelector('[data-submit]');
     this.error = this.querySelector('[data-error]');
-    this.gallery =
-      this.querySelector('product-media-gallery') ||
-      document.querySelector('product-media-gallery');
+    this.gallery = this.querySelector('product-media-gallery') || document.querySelector('product-media-gallery');
     this.variantImage = this.querySelector('variant-image');
     this.isProductCard = this.closest('product-card') ? true : false;
     this.isMinicartVariantEditor = this.closest('minicart-variant-editor') ? true : false;
@@ -60,15 +58,13 @@ class ProductForm extends HTMLElement {
   connectedCallback() {
     this.form.addEventListener('submit', this.handleSubmit.bind(this));
     this.form.addEventListener('change', this.handleChange.bind(this));
-    if (this.isMainForm)
-      document.addEventListener(EVENTS.ADD_TO_CART, () => this.form.requestSubmit());
+    if (this.isMainForm) document.addEventListener(EVENTS.ADD_TO_CART, () => this.form.requestSubmit());
   }
 
   disconnectedCallback() {
     this.form.removeEventListener('submit', this.handleSubmit.bind(this));
     this.form.removeEventListener('change', this.handleChange.bind(this));
-    if (this.isMainForm)
-      document.removeEventListener(EVENTS.ADD_TO_CART, () => this.form.requestSubmit());
+    if (this.isMainForm) document.removeEventListener(EVENTS.ADD_TO_CART, () => this.form.requestSubmit());
   }
 
   /**
@@ -76,20 +72,33 @@ class ProductForm extends HTMLElement {
    * @param {Array} selectedOptions - Array containing the currently selected values.
    * @returns {Object|undefined} - The matching variant object or undefined if no match is found.
    */
-  getCurrentVariant() {
+  getCurrentVariant(changedOption) {
     const formData = new FormData(this.form);
-    const option1 = formData.get('option-1');
-    const option2 = formData.get('option-2');
-    const option3 = formData.get('option-3');
-    return this.product.variants.find((variant) => {
-      if (
-        variant.option1 === option1 &&
-        variant.option2 === option2 &&
-        variant.option3 === option3
-      ) {
-        return variant;
-      }
-    });
+    const selectedOptions = [formData.get('option-1'), formData.get('option-2'), formData.get('option-3')];
+    const matchesSelection = (variant) =>
+      selectedOptions.every((option, index) => variant[`option${index + 1}`] === option);
+    const exactVariant = this.product.variants.find(matchesSelection);
+
+    if (exactVariant?.available || !this.isProductCard || !changedOption) {
+      return exactVariant;
+    }
+
+    const optionPosition = Number(changedOption.name.match(/^option-(\d+)$/)?.[1]);
+    if (!optionPosition) return exactVariant;
+
+    const optionKey = `option${optionPosition}`;
+    const matchingOptionVariants = this.product.variants.filter(
+      (variant) => variant[optionKey] === changedOption.value,
+    );
+    const matchingAvailableVariant = matchingOptionVariants.find(
+      (variant) =>
+        variant.available &&
+        selectedOptions.every((option, index) => {
+          return index + 1 === optionPosition || variant[`option${index + 1}`] === option;
+        }),
+    );
+
+    return matchingAvailableVariant || matchingOptionVariants.find((variant) => variant.available) || exactVariant;
   }
 
   setError() {
@@ -128,7 +137,7 @@ class ProductForm extends HTMLElement {
   handleChange(e) {
     if (e.target.closest('[data-product-option]')) {
       this.clearError();
-      this.currentVariant = this.getCurrentVariant();
+      this.currentVariant = this.getCurrentVariant(e.target);
 
       const event = new CustomEvent(EVENTS.PRODUCT_VARIANT_UPDATE, {
         detail: {
@@ -174,6 +183,14 @@ class ProductForm extends HTMLElement {
     if (this.currentVariant) {
       this.idInput.value = this.currentVariant.id;
       this.setPrices();
+
+      this.form.querySelectorAll('[data-product-option]').forEach((input) => {
+        const optionPosition = Number(input.name.match(/^option-(\d+)$/)?.[1]);
+        if (optionPosition) {
+          input.checked = input.value === this.currentVariant[`option${optionPosition}`];
+        }
+      });
+
       if (this?.option1Label) this.option1Label.innerText = this.currentVariant.option1;
       if (this?.option2Label) this.option2Label.innerText = this.currentVariant.option2;
       if (this?.option3Label) this.option3Label.innerText = this.currentVariant.option3;
@@ -200,6 +217,7 @@ class ProductForm extends HTMLElement {
       console.log('isProductCard', this.isProductCard);
       if (this.isProductCard) {
         const card = this.closest('product-card');
+        card.setAttribute('data-current-variant-id', this.currentVariant.id);
 
         card.querySelectorAll('a').forEach((link) => {
           link.href = `/products/${this.product.handle}?variant=${this.currentVariant.id}`;
@@ -251,8 +269,6 @@ class ProductForm extends HTMLElement {
 export { ProductForm };
 
 export default () => {
-  customElements.get('apple-pay-button') ||
-    customElements.define('apple-pay-button', ApplePayButton);
-  customElements.get('product-form') ||
-    customElements.define('product-form', ProductForm);
+  customElements.get('apple-pay-button') || customElements.define('apple-pay-button', ApplePayButton);
+  customElements.get('product-form') || customElements.define('product-form', ProductForm);
 };

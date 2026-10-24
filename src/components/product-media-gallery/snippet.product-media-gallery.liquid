@@ -101,7 +101,9 @@
             {% endfor %}
           {% endif %}
         </div>
-        <div class="swiper-pagination" data-swiper-pagination></div>
+        {% unless show_pagination == false %}
+          <div class="swiper-pagination" data-swiper-pagination></div>
+        {% endunless %}
       </div>
     </div>
   </div>

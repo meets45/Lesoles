@@ -17,10 +17,11 @@
       simple-product-collection
       {% if section.settings.full_width %}simple-product-collection--full-width{% endif %}
       {% if section.settings.hide_eyebrow %}simple-product-collection--hide-eyebrow{% endif %}
-      {% if section.settings.hide_options %}simple-product-collection--hide-options{% endif %}
+      {% unless section.settings.show_color_swatches %}simple-product-collection--hide-options{% endunless %}
       {% if section.settings.uniform_image_size %}simple-product-collection--uniform-images{% endif %}
       {% if section.settings.product_slider_bullets_full_width %}simple-product-collection--full-width-product-slider-bullets{% endif %}
-      {% if section.settings.quick_add_position == 'details' %}simple-product-collection--quick-add-in-details{% endif %}
+      {% if section.settings.quick_add_position == 'details' and section.settings.quick_add_style != 'cta' %}simple-product-collection--quick-add-in-details{% endif %}
+      {% if section.settings.quick_add_position == 'details' and section.settings.quick_add_style == 'cta' %}simple-product-collection--quick-add-cta{% endif %}
       {% if section.settings.disable_mobile_slider %}simple-product-collection--mobile-slider-disabled{% endif %}
       {% unless section.settings.show_quick_add %}simple-product-collection--hide-quick-add{% endunless %}
     "
@@ -73,7 +74,9 @@
               <div class="swiper-slide">
                 {% render 'product-card',
                   product: product,
-                  quick_add_position: section.settings.quick_add_position
+                  quick_add_position: section.settings.quick_add_position,
+                  quick_add_style: section.settings.quick_add_style,
+                  show_product_slider_indicators: section.settings.show_product_slider_indicators
                 %}
               </div>
               {%- assign rendered_count = rendered_count | plus: 1 -%}
@@ -344,9 +347,10 @@
     },
     {
       "type": "checkbox",
-      "id": "hide_options",
-      "label": "Hide product options",
-      "default": false
+      "id": "show_color_swatches",
+      "label": "Show color swatches",
+      "info": "Color swatches use the colors or images configured on each product's Color option.",
+      "default": true
     },
     {
       "type": "checkbox",
@@ -365,6 +369,17 @@
       "default": "image"
     },
     {
+      "type": "select",
+      "id": "quick_add_style",
+      "label": "Quick add style",
+      "options": [
+        { "value": "icon", "label": "Icon button" },
+        { "value": "cta", "label": "Full-width CTA" }
+      ],
+      "default": "icon",
+      "visible_if": "{{ section.settings.quick_add_position == 'details' }}"
+    },
+    {
       "type": "checkbox",
       "id": "uniform_image_size",
       "label": "Keep product images the same size",
@@ -378,6 +393,12 @@
       "default": "#f0efed"
     },
     {
+      "type": "checkbox",
+      "id": "show_product_slider_indicators",
+      "label": "Show product image slider indicators",
+      "default": true
+    },
+    {
       "type": "range",
       "id": "product_slider_bullet_width",
       "min": 8,
@@ -385,7 +406,8 @@
       "step": 1,
       "unit": "px",
       "label": "Product image slider indicator width",
-      "default": 24
+      "default": 24,
+      "visible_if": "{{ section.settings.show_product_slider_indicators }}"
     },
     {
       "type": "range",
@@ -395,13 +417,15 @@
       "step": 1,
       "unit": "px",
       "label": "Product image slider indicator height",
-      "default": 4
+      "default": 4,
+      "visible_if": "{{ section.settings.show_product_slider_indicators }}"
     },
     {
       "type": "checkbox",
       "id": "product_slider_bullets_full_width",
       "label": "Make product image slider indicators full width",
-      "default": false
+      "default": false,
+      "visible_if": "{{ section.settings.show_product_slider_indicators }}"
     },
     {
       "type": "select",

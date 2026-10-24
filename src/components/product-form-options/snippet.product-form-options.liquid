@@ -8,6 +8,13 @@
   {% for option in product.options_with_values %}
     {% assign option_index = forloop.index0 %}
     {% assign correct_value = selected_variant.options[option_index] %}
+    {% if card_swatch_limit != blank %}
+      {% assign max_card_swatches = card_swatch_limit %}
+      {% assign card_swatches_remaining = option.values.size | minus: max_card_swatches %}
+    {% else %}
+      {% assign max_card_swatches = option.values.size %}
+      {% assign card_swatches_remaining = option.values.size %}
+    {% endif %}
 
     {% assign is_color_option = false %}
     {% for value in option.values %}
@@ -27,7 +34,7 @@
 
       <ul class="product-form-options__list {% if is_color_option %}product-form-options__list--color{% endif %}">
         {% if is_color_option %}
-          {% for value in option.values %}
+          {% for value in option.values limit: max_card_swatches %}
             <li class="product-form-options__list-item">
               {%- capture id -%}{{ section.id }}-{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}{%- endcapture -%}
               {% capture name %}option-{{ option.position }}{% endcapture %}
@@ -36,15 +43,16 @@
               {% endcapture %}
 
               {% assign disabled = false %}
-
-              {% if value.available == false %}
-                {% assign disabled = true %}
-              {% endif %}
+              {% unless is_card %}
+                {% if value.available == false %}
+                  {% assign disabled = true %}
+                {% endif %}
+              {% endunless %}
 
               {% liquid
                 assign is_checked = false
 
-                if value == correct_value
+                if value.name == correct_value
                   assign is_checked = true
                 endif
               %}
@@ -53,18 +61,23 @@
                 id: id,
                 name: name,
                 type: 'radio',
+                background_color: value.swatch.color,
                 image: value.swatch.image,
-                value: value,
+                value: value.name,
                 checked: is_checked,
                 attrs: attrs,
                 disabled: disabled
               %}
             </li>
           {% endfor %}
-          {% if is_card %}
+          {% if is_card and card_swatches_remaining > 0 %}
             <li class="product-form-options__list-item product-form-options__list-item--more">
-              <a href="{{ product_href }}" class="product-form-options__more body-small">
-                +{{ option.values.size }}
+              <a
+                href="{{ product_href }}"
+                class="product-form-options__more body-small"
+                aria-label="View all {{ option.values.size }} color options"
+              >
+                +{{ card_swatches_remaining }}
               </a>
             </li>
           {% endif %}
