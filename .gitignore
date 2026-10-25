@@ -62,6 +62,7 @@ shopify/snippets/
 !src/assets/fredoka-latin-ext-wght-normal.woff2
 !src/assets/hero-demo-product.svg
 !src/assets/hero-demo-lifestyle.svg
+!src/assets/lesoles-logo.svg
 
 # Environment files
 .env

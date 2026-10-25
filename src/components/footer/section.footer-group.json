@@ -6,45 +6,51 @@
       "type": "footer",
       "blocks": {
         "footer-0": {
-          "type": "large_link_list",
+          "type": "standard_link_list",
           "settings": {
+            "heading": "Shop",
             "menu": "footer-col-1"
           }
         },
         "footer-1": {
           "type": "standard_link_list",
           "settings": {
-            "heading": "Customer Services",
-            "heading_url": "shopify://pages/contact",
+            "heading": "Help",
             "menu": "footer-col-2"
           }
         },
         "standard_link_list_iQfgUX": {
           "type": "standard_link_list",
           "settings": {
-            "heading": "Company",
-            "heading_url": "shopify://collections/frontpage",
+            "heading": "About",
             "menu": "footer-col-3"
           }
         }
       },
-      "block_order": [
-        "footer-0",
-        "footer-1",
-        "standard_link_list_iQfgUX"
-      ],
+      "block_order": ["footer-0", "footer-1", "standard_link_list_iQfgUX"],
       "settings": {
-        "email_cta_title": "Your VIP Pass!",
-        "email_cta_caption": "Subscribe to our weekly newsletter for exclusive access to events and promotions.",
-        "email_placeholder": "Enter your email",
-        "footer_social_menu_title": "Join the conversation",
+        "show_brand_logo": true,
+        "footer_social_menu_title": "Follow us",
+        "show_brand_tagline": true,
+        "footer_logo_color": "white",
+        "footer_background_color": "#123a35",
+        "footer_text_color": "#f7f8f4",
+        "footer_divider_color": "#55756e",
+        "show_social_links": true,
+        "show_copyright": true,
+        "copyright_suffix": "All rights reserved",
+        "show_policy_links": true,
         "copyright_menu": "copyright-menu",
         "brand_logo": "shopify://shop_images/Brand_Logo.png",
-        "brand_statement": "Lesoles"
+        "mobile_brand_logo": "",
+        "brand_tagline": "Comfort that moves you.",
+        "brand_statement": "Lésoles",
+        "show_country_selector": true,
+        "country_display_format": "country_currency_symbol",
+        "show_payment_methods": true,
+        "payment_methods_label": "Accepted payment methods"
       }
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer"]
 }

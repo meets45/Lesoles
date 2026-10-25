@@ -1,0 +1,6 @@
+{%- case format -%}
+  {%- when 'country' -%}{{ country.name }}
+  {%- when 'country_currency' -%}{{ country.name }} · {{ country.currency.iso_code }}
+  {%- when 'currency_symbol' -%}{{ country.currency.iso_code }} {{ country.currency.symbol }}
+  {%- else -%}{{ country.name }} · {{ country.currency.iso_code }} {{ country.currency.symbol }}
+{%- endcase -%}

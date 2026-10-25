@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "name": "Header",
   "type": "header",
   "sections": {
@@ -17,37 +17,58 @@
         "block_1": {
           "type": "promo",
           "settings": {
-            "text": "Promotion text goes here",
+            "text": "Everyday comfort, your way.",
             "link": "/collections/all"
-          }
-        },
-        "block_2": {
-          "type": "promo",
-          "settings": {
-            "text": "Promotion text goes here",
-            "link": ""
-          }
-        },
-        "block_3": {
-          "type": "promo",
-          "settings": {
-            "text": "Super long promotion text that will probably break to a second line",
-            "link": ""
           }
         }
       },
-      "block_order": [
-        "block_1",
-        "block_2",
-        "block_3"
-      ],
+      "block_order": ["block_1"],
       "settings": {
-        "color_mode": "dark",
-        "autoplay": true
+        "color_mode": "brand",
+        "autoplay": false
       }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "shop_copy": {
+          "type": "menu_copy",
+          "settings": {
+            "menu_id": "Shop",
+            "parent_menu": "",
+            "eyebrow": "The Lésoles edit",
+            "heading": "Good days start from the ground up.",
+            "description": "Easy comfort for every plan on your calendar.",
+            "link_text": "Explore Shop",
+            "link_url": "/collections/all"
+          }
+        },
+        "shop_card_everyday": {
+          "type": "menu_image",
+          "settings": {
+            "menu_id": "Shop",
+            "parent_menu": "",
+            "fallback_art": "product",
+            "heading": "The everyday edit",
+            "excerpt": "Your go-to pairs for wherever the day takes you.",
+            "link_text": "Explore all",
+            "link_url": "/collections/all"
+          }
+        },
+        "shop_card_moving": {
+          "type": "menu_image",
+          "settings": {
+            "menu_id": "Shop",
+            "parent_menu": "",
+            "fallback_art": "lifestyle",
+            "heading": "Made for moving",
+            "excerpt": "Easy comfort, good energy, all day long.",
+            "link_text": "Shop now",
+            "link_url": "/collections/all"
+          }
+        }
+      },
+      "block_order": ["shop_copy", "shop_card_everyday", "shop_card_moving"],
       "settings": {
         "enable_sticky_header": true,
         "enable_full_width": true,
@@ -57,8 +78,5 @@
       }
     }
   },
-  "order": [
-    "promo-bar",
-    "header"
-  ]
+  "order": ["promo-bar", "header"]
 }

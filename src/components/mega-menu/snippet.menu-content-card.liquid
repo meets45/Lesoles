@@ -1,0 +1,38 @@
+{% liquid
+  assign card_image = block.settings.image
+  assign fallback_art = 'hero-demo-product.svg'
+  assign fallback_width = 1000
+  assign fallback_height = 700
+  if block.settings.fallback_art == 'lifestyle'
+    assign fallback_art = 'hero-demo-lifestyle.svg'
+    assign fallback_width = 800
+    assign fallback_height = 1100
+  endif
+%}
+
+<li class="menu-content-card" {{ block.shopify_attributes }}>
+  {% if block.settings.link_url != blank %}
+    <a class="menu-content-card__inner" href="{{ block.settings.link_url }}">
+  {% else %}
+    <div class="menu-content-card__inner">
+  {% endif %}
+    <span class="menu-content-card__media">
+      {% if card_image != blank %}
+        {{ card_image | image_url: width: 720 | image_tag: widths: '320, 480, 720', sizes: '(max-width: 768px) 220px, 300px', loading: 'lazy' }}
+      {% else %}
+        <img src="{{ fallback_art | asset_url }}" alt="" width="{{ fallback_width }}" height="{{ fallback_height }}" loading="lazy">
+      {% endif %}
+    </span>
+    <span class="menu-content-card__content">
+      {% if block.settings.heading != blank %}<strong class="menu-content-card__title">{{ block.settings.heading }}</strong>{% endif %}
+      {% if block.settings.excerpt != blank %}<span class="menu-content-card__description">{{ block.settings.excerpt }}</span>{% endif %}
+      {% if block.settings.link_text != blank and block.settings.link_url != blank %}
+        <span class="menu-content-card__cta">{{ block.settings.link_text }} <span aria-hidden="true">→</span></span>
+      {% endif %}
+    </span>
+  {% if block.settings.link_url != blank %}
+    </a>
+  {% else %}
+    </div>
+  {% endif %}
+</li>

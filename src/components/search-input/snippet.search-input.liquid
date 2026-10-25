@@ -1,21 +1,27 @@
 <search-input data-component="search-input">
   <div class="search-input">
     <div class="search-input__icon">
-      <div class="icon-m">
-        {% render 'icon-search' %}
-      </div>
+      {% render 'icon-search' %}
     </div>
-    <input id="{{ id }}" class="search-input__input" name="q"
-    ><label for="{{ id }}" class="sr-only">{{ 'general.search.label' | t }}</label>
+    <label for="{{ id }}" class="sr-only">{{ 'content.search_input_label' | t }}</label>
+    <input
+      id="{{ id }}"
+      class="search-input__input"
+      type="search"
+      name="q"
+      value="{{ value | escape }}"
+      placeholder="{{ 'placeholders.search' | t }}"
+      autocomplete="off"
+      enterkeyhint="search"
+    >
     <button
       class="search-input__close"
       type="button"
       data-search-input-clear
+      aria-label="{{ 'actions.clear' | t }}"
+      {% if value == blank %}hidden{% endif %}
     >
-      <span class="sr-only">{{ 'general.search.clear' | t }}</span>
-      <div class="icon-m">
-        {% render 'icon-clear' %}
-      </div>
+      {% render 'icon-clear' %}
     </button>
   </div>
 </search-input>

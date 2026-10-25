@@ -5,87 +5,108 @@
 
 <mobile-mega-menu
   data-component="mobile-mega-menu"
-  style="display:none;"
   data-mobile-mega-menu
   data-active="false"
-  aria-modal="true"
   role="dialog"
+  aria-modal="true"
+  aria-label="Main menu"
   aria-hidden="true"
+  style="display:none;"
 >
-  <nav class="mobile-mega-menu">
-    <div class="mobile-mega-menu__content" data-mobile-mega-menu-content>
-      <ul class="mobile-mega-menu__list" role="menu">
-        {% for link in mobile_mega_menu.links %}
-          <li class="mobile-mega-menu__list-item heading-small" role="menuitem">
-            {% if link.links.size == 0 %}
-              <a href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-            {% endif %}
+  <div class="mobile-mega-menu">
+    <div class="mobile-mega-menu__topbar">
+      {% render 'header-logo', section: section, class: 'mobile-mega-menu__logo' %}
+      <button type="button" class="mobile-mega-menu__close" data-close aria-label="{{ 'actions.close' | t }}">
+        {% render 'icon-close' %}
+      </button>
+    </div>
 
-            {% if link.links.size > 0 %}
+    <nav class="mobile-mega-menu__content" data-mobile-mega-menu-content aria-label="Mobile navigation">
+      <p class="mobile-mega-menu__eyebrow">Explore Lésoles</p>
+      <h2 class="mobile-mega-menu__heading">Where to today?</h2>
+      <ul class="mobile-mega-menu__list">
+        {% for link in mobile_mega_menu.links %}
+          {% liquid
+            assign menu_handle = link.title | handle
+            assign has_menu_content = false
+            for card in section.blocks
+              if card.type == 'menu_image' or card.type == 'menu_copy'
+                assign card_menu_handle = card.settings.menu_id | handle
+                if card_menu_handle == menu_handle and card.settings.parent_menu == blank
+                  assign has_menu_content = true
+                  break
+                endif
+              endif
+            endfor
+          %}
+          <li class="mobile-mega-menu__list-item">
+            {% if link.links.size > 0 or has_menu_content %}
               <button
+                type="button"
                 class="mobile-mega-menu__list-item-button"
-                data-mobile-mega-menu-panel-trigger="mobile-{{ link.title | handle }}-1"
+                data-mobile-mega-menu-panel-trigger="mobile-{{ forloop.index }}"
                 aria-expanded="false"
-                aria-label="{{ 'general.navigation.open_menu' | t: title: link.title }}"
+                aria-label="{{ 'accessibility.show_submenu' | t: title: link.title }}"
               >
-                <span>
-                  {{ link.title }}
-                </span>
-                <div class="icon-m">
-                  {% render 'icon-chevron-right' %}
-                </div>
+                <span>{{ link.title }}</span>
+                {% render 'icon-chevron-right' %}
               </button>
+            {% else %}
+              <a href="{{ link.url }}" class="mobile-mega-menu__list-item-button">
+                <span>{{ link.title }}</span>
+                {% render 'icon-arrow-upper-right' %}
+              </a>
             {% endif %}
           </li>
         {% endfor %}
       </ul>
 
-      {% if mobile_mega_menu.tile_list.value != blank %}
-        <div class="mobile-mega-menu-panel__divider" role="presentation"></div>
-        <div class="mobile-mega-menu__tile-list-wrapper">
-          {% render 'mobile-mega-menu-tile-slider', list: mobile_mega_menu.tile_list.value %}
-        </div>
-      {% endif %}
-
       {% if utility_menu != blank %}
         <div class="mobile-mega-menu__utility-menu">
-          {% render 'mobile-mega-menu-utility-menu',
-            utility_items: utility_menu
-          %}
+          {% render 'mobile-mega-menu-utility-menu', utility_items: utility_menu %}
         </div>
       {% endif %}
-    </div>
+    </nav>
 
     {% for link in mobile_mega_menu.links %}
-      {% if link.links.size > 0 %}
-        {% render 'mobile-mega-menu-panel',
-          parent: link,
-          utility_items: utility_menu,
-          level: 1
-        %}
-
-        {% if link.levels > 1 %}
-          {% for link_1 in link.links %}
-            {% render 'mobile-mega-menu-panel',
-              parent: link_1,
-              utility_items: utility_menu,
-              level: 2
-            %}
-          {% endfor %}
-        {% endif %}
+      {% liquid
+        assign menu_handle = link.title | handle
+        assign has_menu_content = false
+        for card in section.blocks
+          if card.type == 'menu_image' or card.type == 'menu_copy'
+            assign card_menu_handle = card.settings.menu_id | handle
+            if card_menu_handle == menu_handle and card.settings.parent_menu == blank
+              assign has_menu_content = true
+              break
+            endif
+          endif
+        endfor
+      %}
+      {% if link.links.size > 0 or has_menu_content %}
+        {% assign top_panel_id = 'mobile-' | append: forloop.index %}
+        {% render 'mobile-mega-menu-panel', parent: link, panel_id: top_panel_id, level: 1, menu_title: link.title, section: section %}
+        {% for child in link.links %}
+          {% liquid
+            assign menu_handle = link.title | handle
+            assign child_handle = child.title | handle
+            assign has_category_content = false
+            for card in section.blocks
+              if card.type == 'menu_image' or card.type == 'menu_copy'
+                assign card_menu_handle = card.settings.menu_id | handle
+                assign card_parent_handle = card.settings.parent_menu | handle
+                if card_menu_handle == menu_handle and card_parent_handle == child_handle
+                  assign has_category_content = true
+                  break
+                endif
+              endif
+            endfor
+          %}
+          {% if child.links.size > 0 or has_category_content %}
+            {% assign child_panel_id = top_panel_id | append: '-' | append: forloop.index %}
+            {% render 'mobile-mega-menu-panel', parent: child, panel_id: child_panel_id, level: 2, menu_title: link.title, section: section %}
+          {% endif %}
+        {% endfor %}
       {% endif %}
     {% endfor %}
-  </nav>
-
-  {% comment %} this is a load bearing div, required for focus trapping {% endcomment %}
-  <div class="mobile-mega-menu__close-wrapper">
-    <button class="mobile-mega-menu__close" data-close>
-      <span class="sr-only">{{ 'general.navigation.close' | t }}</span>
-      <div class="mobile-mega-menu__close-icon">
-        {% render 'icon-close' %}
-      </div>
-    </button>
   </div>
 </mobile-mega-menu>

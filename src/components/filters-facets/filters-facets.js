@@ -2,7 +2,6 @@ import './filters-facets.scss';
 
 import EVENTS from '@/helpers/events';
 import SectionsAPIService from '@/helpers/sections-api-service';
-import { Header } from '@/components/header/header';
 import parseHTML from '@/helpers/parse-html';
 
 export class FiltersFacets extends HTMLElement {
@@ -16,7 +15,6 @@ export class FiltersFacets extends HTMLElement {
   }
 
   connectedCallback() {
-    Header.disableIdle = true;
     document.addEventListener(EVENTS.FILTER_UPDATE, this.render.bind(this));
     this.addEventListener('change', this.handleChange.bind(this));
     window.addEventListener('scroll', this.handleScroll.bind(this));
@@ -24,7 +22,6 @@ export class FiltersFacets extends HTMLElement {
   }
 
   disconnectedCallback() {
-    Header.disableIdle = false;
     document.removeEventListener(EVENTS.FILTER_UPDATE, this.render.bind(this));
     this.removeEventListener('change', this.handleChange.bind(this));
     window.removeEventListener('scroll', this.handleScroll.bind(this));

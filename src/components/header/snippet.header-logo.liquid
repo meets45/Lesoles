@@ -1,0 +1,9 @@
+{% assign header_logo = section.settings.logo | default: settings.logo %}
+
+<a href="{{ routes.root_url }}" class="{{ class }}" aria-label="{{ 'accessibility.home_logo_alt' | t: store_name: shop.name }}">
+  {% if header_logo != blank %}
+    {{ header_logo | image_url: width: 480 | image_tag: widths: '160, 240, 360, 480', loading: 'eager', alt: shop.name }}
+  {% else %}
+    <img src="{{ 'lesoles-logo.svg' | asset_url }}" alt="Lésoles" width="303" height="70" loading="eager">
+  {% endif %}
+</a>

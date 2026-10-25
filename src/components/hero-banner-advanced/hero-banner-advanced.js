@@ -363,11 +363,11 @@ class HeroBannerAdvanced extends HTMLElement {
   scrollToTarget(prompt) {
     const target = this.findScrollTarget(prompt);
     if (!target) return;
-    const header = document.querySelector('.header');
+    const header = document.querySelector('site-header');
     const headerHeight =
-      header && getComputedStyle(header).position === 'fixed' ? header.getBoundingClientRect().height : 0;
-    const promoHeight =
-      parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-top-offset')) || 0;
+      header && getComputedStyle(header).position === 'sticky' ? header.getBoundingClientRect().height : 0;
+    const promo = document.querySelector('promo-bar');
+    const promoHeight = promo && promo.getBoundingClientRect().bottom > 0 ? promo.getBoundingClientRect().height : 0;
     const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - promoHeight - 12;
     window.scrollTo({ top: Math.max(0, targetTop), behavior: isReducedMotion() ? 'auto' : 'smooth' });
   }
