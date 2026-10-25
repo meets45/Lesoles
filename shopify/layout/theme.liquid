@@ -54,7 +54,9 @@
           crossorigin="anonymous"
         >
       {% endif %}
-      {% render 'styleguide' %}
+      {% if request.page_type == 'page' and page.handle == 'styleguide' %}
+        {% render 'styleguide' %}
+      {% endif %}
       {% render 'variables' %}
     </head>
 
