@@ -1,5 +1,17 @@
+.simple-product-collection,
+simple-product-collection {
+  max-width: 100%;
+  min-width: 0;
+}
+
+simple-product-collection {
+  display: block;
+}
+
 .simple-product-collection {
   background-color: var(--simple-product-collection-background, var(--surface-primary));
+  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -30,6 +42,8 @@
 }
 
 .simple-product-collection__slider {
+  max-width: 100%;
+  min-width: 0;
   position: relative;
 
   & .swiper-slide {
@@ -42,7 +56,7 @@
 }
 
 @media (max-width: 768px) {
-  .simple-product-collection--mobile-slider-disabled .simple-product-collection__slider .swiper {
+  .simple-product-collection--mobile-slider-disabled .simple-product-collection__slider > .swiper {
     overflow: visible;
   }
 

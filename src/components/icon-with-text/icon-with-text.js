@@ -5,6 +5,8 @@ class IconWithText extends HTMLElement {
   constructor() {
     super();
     this.slider = this.querySelector('[data-slider]');
+    this.layoutStyle = this.dataset.layoutStyle;
+    this.benefitsItemsPerView = Number(this.dataset.benefitsItemsPerView) || 3;
     this.desktopGap = Number(this.dataset.desktopGap) || 0;
     this.disableMobileSlider = this.dataset.disableMobileSlider === 'true';
     this.mobileGap = Number(this.dataset.mobileGap) || 0;
@@ -50,9 +52,12 @@ class IconWithText extends HTMLElement {
       breakpoints: {
         769: {
           enabled: true,
-          slidesPerView: this.slidesPerViewDesktop,
-          slidesPerGroup: Math.floor(this.slidesPerViewDesktop),
-          spaceBetween: this.desktopGap,
+          slidesPerView:
+            this.layoutStyle === 'benefits_bar' ? this.benefitsItemsPerView : this.slidesPerViewDesktop,
+          slidesPerGroup: Math.floor(
+            this.layoutStyle === 'benefits_bar' ? this.benefitsItemsPerView : this.slidesPerViewDesktop,
+          ),
+          spaceBetween: this.layoutStyle === 'benefits_bar' ? 0 : this.desktopGap,
         },
       },
       on: {
