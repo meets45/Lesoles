@@ -1119,7 +1119,7 @@
         "max": 80,
         "step": 1,
         "unit": "px",
-        "default": 56
+        "default": 48
       },
       {
         "type": "range",
@@ -1139,7 +1139,7 @@
         "max": 32,
         "step": 1,
         "unit": "px",
-        "default": 16
+        "default": 12
       },
       {
         "type": "range",
@@ -1159,7 +1159,7 @@
         "max": 48,
         "step": 1,
         "unit": "px",
-        "default": 32
+        "default": 24
       },
       {
         "type": "range",
@@ -1218,7 +1218,7 @@
         "max": 50,
         "step": 1,
         "unit": "px",
-        "default": 4
+        "default": 50
       },
       {
         "type": "range",
@@ -1228,7 +1228,7 @@
         "max": 4,
         "step": 1,
         "unit": "px",
-        "default": 2
+        "default": 1
       },
       {
         "type": "select",

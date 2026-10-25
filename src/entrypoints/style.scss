@@ -195,10 +195,15 @@ a.button,
   text-transform: var(--buttons-text-transform, none);
   line-height: var(--buttons-line-height, var(--typography-styles-line-height-heading-small));
   letter-spacing: var(--buttons-letter-spacing, var(--typography-styles-tracking-heading));
-  height: var(--buttons-height-desktop, 56px);
-  padding: var(--buttons-padding-vertical-desktop, var(--spacing-400)) var(--buttons-padding-horizontal, var(--spacing-700));
+  min-height: var(--buttons-height-desktop, 48px);
+  height: auto;
+  padding: var(--buttons-padding-vertical-desktop, var(--spacing-300)) var(--buttons-padding-horizontal, var(--spacing-600));
   border-radius: var(--buttons-border-radius, var(--borders-radius-default));
   border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-primary-background);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 
   &:disabled,
   &[aria-disabled='true'],
@@ -212,17 +217,12 @@ a.button,
   &:active:not(:disabled) {
     border: var(--buttons-border-width, var(--borders-width-focus)) solid var(--buttons-primary-hover);
     background: var(--buttons-primary-hover);
-    transition: transform, 0.4s;
-
-    @media (min-width: 481px) {
-      transform: translateY(-4px);
-    }
   }
 
   @media (max-width: 480px) {
     font-size: var(--buttons-font-size-mobile, var(--typography-styles-sizing-heading-xsmall));
-    height: var(--buttons-height-mobile, 48px);
-    padding: var(--buttons-padding-vertical-mobile, var(--spacing-300)) var(--buttons-padding-horizontal, var(--spacing-700));
+    min-height: var(--buttons-height-mobile, 48px);
+    padding: var(--buttons-padding-vertical-mobile, var(--spacing-300)) var(--buttons-padding-horizontal, var(--spacing-600));
   }
 
   /* variant specific styles */
@@ -261,11 +261,7 @@ a.button,
 
     &:hover:not(:disabled),
     &:active:not(:disabled) {
-      transition: transform, 0.4s;
-
-      @media (min-width: 480px) {
-        transform: translateY(-2px);
-      }
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
   }
 }
