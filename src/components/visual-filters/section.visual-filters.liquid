@@ -1,0 +1,526 @@
+{% liquid
+  assign filter_type = section.settings.filter_type
+  assign filter_variation = section.settings.filter_variation
+  assign graphics_layout = section.settings.graphics_layout
+  assign slides_per_view_mobile = section.settings.slides_per_view_mobile
+  assign slides_per_view_desktop = section.settings.slides_per_view_desktop
+  assign image_width = section.settings.image_width
+  assign image_height = section.settings.image_height
+  assign image_height_mobile = section.settings.image_height_mobile
+  assign graphics_full_width = false
+  assign graphics_full_image = false
+
+  if graphics_layout == 'compact' and section.settings.graphics_full_width
+    assign graphics_full_width = true
+  endif
+
+  if graphics_layout == 'cover' and section.settings.graphics_full_image
+    assign graphics_full_image = true
+  endif
+
+  if graphics_layout == 'compact' and graphics_full_width == false
+    assign image_widths = image_width | append: ''
+    assign image_sizes = image_width | append: 'px'
+  else
+    assign image_widths = '240,360,480,640,800,1200'
+    assign image_sizes = '(min-width: 769px) calc(100vw / ' | append: slides_per_view_desktop | append: '), calc(100vw / ' | append: slides_per_view_mobile | append: ')'
+  endif
+
+  capture component_style
+    echo '--visual-filters-background-color: ' | append: section.settings.background_color | append: ';'
+    echo '--visual-filters-image-width: ' | append: image_width | append: 'px;'
+    echo '--visual-filters-image-height: ' | append: image_height | append: 'px;'
+    echo '--visual-filters-image-height-mobile: ' | append: image_height_mobile | append: 'px;'
+    echo '--visual-filters-carousel-width: ' | append: section.settings.graphics_carousel_width | append: 'px;'
+    echo '--visual-filters-image-background: ' | append: section.settings.image_background_color | append: ';'
+    echo '--visual-filters-image-radius: ' | append: section.settings.image_border_radius | append: 'px;'
+  endcapture
+%}
+
+<visual-filters
+  data-component="visual-filters"
+  data-filter-type="{{ filter_type }}"
+  data-slides-per-view-mobile="{{ slides_per_view_mobile }}"
+  data-slides-per-view-desktop="{{ slides_per_view_desktop }}"
+  data-space-between="{{ section.settings.space_between }}"
+  data-slides-offset-before="{{ section.settings.slides_offset_before }}"
+  data-slides-offset-after="{{ section.settings.slides_offset_after }}"
+>
+  <div
+    class="visual-filters visual-filters--{{ filter_type }} visual-filters--{{ filter_variation }}{% if graphics_layout == 'compact' %} visual-filters--graphics-compact{% endif %}{% if graphics_full_width %} visual-filters--full-width{% endif %}{% if graphics_full_image %} visual-filters--full-image{% endif %}{% if section.settings.show_bottom_divider %} visual-filters--bottom-divider{% endif %}"
+    style="{{ component_style | strip_newlines }}"
+    role="region"
+    aria-label="Visual filters"
+  >
+    {% if section.blocks.size > 0 %}
+      <div class="visual-filters__container">
+        {% if section.settings.heading != blank %}
+          <div class="visual-filters__header">
+            <h2 class="visual-filters__heading {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
+          </div>
+        {% endif %}
+        {% if filter_type == 'graphics' %}
+          <div class="swiper visual-filters__swiper" data-swiper>
+            <div class="swiper-wrapper">
+        {% else %}
+          <ul class="visual-filters__list" aria-label="Visual filters">
+        {% endif %}
+
+        {% for block in section.blocks %}
+          {% liquid
+            assign show_block = true
+            assign tag_match = false
+            assign target_tags = block.settings.target_tags | default: '' | split: ','
+
+            if block.settings.visibility_audience != 'all' and customer != blank
+              for customer_tag in customer.tags
+                for target_tag in target_tags
+                  assign normalized_tag = target_tag | strip
+                  if normalized_tag != blank and customer_tag == normalized_tag
+                    assign tag_match = true
+                    break
+                  endif
+                endfor
+                if tag_match
+                  break
+                endif
+              endfor
+            endif
+
+            if block.settings.visibility_audience == 'show_tags' and tag_match == false
+              assign show_block = false
+            elsif block.settings.visibility_audience == 'hide_tags' and tag_match
+              assign show_block = false
+            endif
+
+            if request.design_mode and block.settings.force_show
+              assign show_block = true
+            endif
+          %}
+
+          {% unless show_block %}
+            {% continue %}
+          {% endunless %}
+          {% if block.settings.link_url == blank %}
+            {% continue %}
+          {% endif %}
+          {% if filter_type != 'graphics' and block.settings.label == blank %}
+            {% continue %}
+          {% endif %}
+
+          {% assign visual_filter_image_alt = block.settings.image.alt | default: block.settings.label | default: 'Browse collection' %}
+
+          {% if filter_type == 'graphics' %}
+            <div class="swiper-slide visual-filters__slide" data-swiper-slide {{ block.shopify_attributes }}>
+              <a
+                href="{{ block.settings.link_url }}"
+                class="visual-filters__slide-link"
+                data-visual-filter-link
+                {% if block.settings.label != blank %}
+                  aria-label="{{ block.settings.label | escape }}"
+                {% else %}
+                  aria-label="Browse collection"
+                {% endif %}
+              >
+                <div class="visual-filters__slide-image-wrapper">
+                  {% if block.settings.image != blank %}
+                    {% if graphics_layout == 'compact' and graphics_full_width == false %}
+                      {{
+                        block.settings.image
+                        | image_url: width: image_width, height: image_width, crop: 'center'
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: image_widths,
+                          sizes: image_sizes,
+                          width: image_width,
+                          height: image_width,
+                          class: 'visual-filters__slide-image',
+                          alt: visual_filter_image_alt
+                      }}
+                    {% elsif graphics_layout == 'compact' %}
+                      {{
+                        block.settings.image
+                        | image_url: width: 1200, height: 1200, crop: 'center'
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: image_widths,
+                          sizes: image_sizes,
+                          class: 'visual-filters__slide-image',
+                          alt: visual_filter_image_alt
+                      }}
+                    {% else %}
+                      {{
+                        block.settings.image
+                        | image_url: width: 1200
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: image_widths,
+                          sizes: image_sizes,
+                          class: 'visual-filters__slide-image',
+                          alt: visual_filter_image_alt
+                      }}
+                    {% endif %}
+                  {% else %}
+                    {{ 'collection-1' | placeholder_svg_tag: 'visual-filters__placeholder' }}
+                  {% endif %}
+
+                  {% if block.settings.label != blank and graphics_layout != 'compact' and graphics_full_image == false %}
+                    <span class="visual-filters__slide-label visual-filters__slide-label--overlay body-small">
+                      {{ block.settings.label | escape }}
+                      {% if block.settings.show_arrow %}
+                        <span class="visual-filters__cta-icon" aria-hidden="true">{% render 'icon-arrow-upper-right' %}</span>
+                      {% endif %}
+                    </span>
+                  {% endif %}
+                </div>
+
+                {% if block.settings.label != blank %}
+                  {% if graphics_layout == 'compact' or graphics_full_image %}
+                    <span class="visual-filters__slide-label body-small">
+                      {{ block.settings.label | escape }}
+                      {% if block.settings.show_arrow %}
+                        <span class="visual-filters__cta-icon" aria-hidden="true">{% render 'icon-arrow-upper-right' %}</span>
+                      {% endif %}
+                    </span>
+                  {% endif %}
+                {% endif %}
+              </a>
+            </div>
+          {% else %}
+            <li {{ block.shopify_attributes }}>
+              <a class="visual-filters__link body-medium" href="{{ block.settings.link_url }}" data-visual-filter-link>
+                {{ block.settings.label | escape }}
+                {% if block.settings.show_arrow %}
+                  <span class="visual-filters__cta-icon" aria-hidden="true">{% render 'icon-arrow-upper-right' %}</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {% if filter_type == 'graphics' %}
+            </div>
+          </div>
+          <button
+            type="button"
+            class="visual-filters__nav-button visual-filters__nav-button--prev button-unstyled"
+            data-swiper-prev
+            aria-label="Previous visual filters"
+          >
+            {% render 'icon-chevron-left' %}
+          </button>
+          <button
+            type="button"
+            class="visual-filters__nav-button visual-filters__nav-button--next button-unstyled"
+            data-swiper-next
+            aria-label="Next visual filters"
+          >
+            {% render 'icon-chevron-right' %}
+          </button>
+        {% else %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</visual-filters>
+
+{% schema %}
+{
+  "name": "Visual filters",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Display"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave blank to hide the heading."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "display-small", "label": "Display small" },
+        { "value": "heading-xlarge", "label": "Extra large" },
+        { "value": "heading-large", "label": "Large" },
+        { "value": "heading-medium", "label": "Medium" },
+        { "value": "heading-small", "label": "Small" }
+      ],
+      "default": "heading-medium",
+      "visible_if": "{{ section.settings.heading != blank }}"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "label": "Filter type",
+      "options": [
+        { "value": "chips", "label": "Chips" },
+        { "value": "links", "label": "Links" },
+        { "value": "graphics", "label": "Graphics" }
+      ],
+      "default": "chips"
+    },
+    {
+      "type": "select",
+      "id": "filter_variation",
+      "label": "Variation",
+      "info": "Inverse uses light text on a dark background.",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "inverse", "label": "Inverse" }
+      ],
+      "default": "default",
+      "visible_if": "{{ section.settings.filter_type != 'graphics' }}"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff",
+      "visible_if": "{{ section.settings.filter_type == 'graphics' or section.settings.filter_variation == 'default' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_divider",
+      "label": "Show bottom divider",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Graphics layout",
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "select",
+      "id": "graphics_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "compact", "label": "Compact" }
+      ],
+      "default": "cover",
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "color",
+      "id": "image_background_color",
+      "label": "Image background color",
+      "default": "#ffffff",
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "graphics_full_image",
+      "label": "Show full image",
+      "info": "Use the image's natural aspect ratio instead of cropping it.",
+      "default": false,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' and section.settings.graphics_layout == 'cover' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "graphics_full_width",
+      "label": "Full width compact carousel",
+      "info": "Expand the compact carousel to the available section width.",
+      "default": false,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' and section.settings.graphics_layout == 'compact' }}"
+    },
+    {
+      "type": "range",
+      "id": "graphics_carousel_width",
+      "label": "Compact carousel width",
+      "min": 320,
+      "max": 960,
+      "step": 16,
+      "unit": "px",
+      "default": 624,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' and section.settings.graphics_layout == 'compact' and section.settings.graphics_full_width == false }}"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "Slides per view - mobile",
+      "min": 1,
+      "max": 4,
+      "step": 0.1,
+      "default": 2.3,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_desktop",
+      "label": "Slides per view - desktop and tablet",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 6,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "range",
+      "id": "space_between",
+      "label": "Space between slides",
+      "min": 0,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "range",
+      "id": "slides_offset_before",
+      "label": "Mobile offset before",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "range",
+      "id": "slides_offset_after",
+      "label": "Mobile offset after",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "header",
+      "content": "Image sizing",
+      "visible_if": "{{ section.settings.filter_type == 'graphics' }}"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Compact image size",
+      "min": 80,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 188,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' and section.settings.graphics_layout == 'compact' and section.settings.graphics_full_width == false }}"
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "label": "Cover image height - mobile",
+      "min": 80,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 124,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' and section.settings.graphics_layout == 'cover' and section.settings.graphics_full_image == false }}"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Cover image height - desktop",
+      "min": 80,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 140,
+      "visible_if": "{{ section.settings.filter_type == 'graphics' and section.settings.graphics_layout == 'cover' and section.settings.graphics_full_image == false }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Visual filter",
+      "limit": 50,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Visibility"
+        },
+        {
+          "type": "select",
+          "id": "visibility_audience",
+          "label": "Visibility audience",
+          "options": [
+            { "value": "all", "label": "Show to everyone" },
+            { "value": "show_tags", "label": "Show only to specific tags" },
+            { "value": "hide_tags", "label": "Hide from specific tags" }
+          ],
+          "default": "all"
+        },
+        {
+          "type": "text",
+          "id": "target_tags",
+          "label": "Customer tags",
+          "info": "Comma-separated exact tags. Required for tag-based visibility.",
+          "visible_if": "{{ block.settings.visibility_audience != 'all' }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "force_show",
+          "label": "Force show in theme editor",
+          "info": "Lets you edit tag-targeted blocks in the theme editor.",
+          "default": false,
+          "visible_if": "{{ block.settings.visibility_audience != 'all' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Filter name"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "Show CTA arrow",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link",
+          "info": "A destination is required for each visual filter."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Visual filters",
+      "settings": {
+        "heading": "Find your comfort"
+      },
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "label": "Shop collection",
+            "show_arrow": true,
+            "link_url": "/collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
